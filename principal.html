@@ -20,9 +20,8 @@
                                             <a href="#">B-Learning</a>
                                             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Ejercicios</a>
                                             <ul class="collapse list-unstyled" id="homeSubmenu">
-                                                <li><a href="#ventanaA">Aelatorio</a></li>
-                                                <li><a data-toggle="modal" data-target="#exampleModal" href="#">Conocido</a></li>
-                                               
+                                                <li><a data-toggle="modal" data-target="#aleatorioModal" href="#ventanaA">Aelatorio</a></li>
+                                                <li><a data-toggle="modal" data-target="#conocidoModal" href="#">Conocido</a></li>
                                             </ul>
                                             <a href="#">Ranking</a>
                                             <a href="#">Estadisticas</a>
@@ -60,8 +59,48 @@
       <script src="js/bootstrap.min.js"></script>
       <script src="js/visual.js"></script>
 </body>
- <!-- Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <!-- Modal de aleatorio-->
+ <div class="modal fade" id="aleatorioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Generacióon aleatoria de expresión booleana</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h5>Variables:</h5>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                  <input type="radio" name="options" id="var3" autocomplete="off" checked> 3
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="var4" autocomplete="off"> 4
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="var5" autocomplete="off"> 5
+                </label>
+              </div>
+              <h5>Resolver por:</h5>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                  <input type="radio" name="options" id="porSumadeP" autocomplete="off" checked> Suma de productos
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="porProddeS" autocomplete="off"> Productos de suma
+                </label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Iniciar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- Modal de conocido-->
+ <div class="modal fade" id="conocidoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -71,11 +110,34 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+            <h5>Variables:</h5>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                  <input type="radio" name="options" id="var3" autocomplete="off" checked> 3
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="var4" autocomplete="off"> 4
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="var5" autocomplete="off"> 5
+                </label>
+              </div>
+              <h5>Datos en:</h5>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                  <input type="radio" name="options" id="porSumadeP" autocomplete="off" checked> Funcion
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="porProddeS" autocomplete="off"> Tabla de verdad
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="porProddeS" autocomplete="off"> Mapa de Karnaugh
+                  </label>
+              </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Iniciar</button>
         </div>
       </div>
     </div>
