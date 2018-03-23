@@ -83,6 +83,14 @@ function CargarFunciones() {
                 }
             });
     });
+
+    $("input[type=radio][name=in_estudia_si]").change(function (event){
+        if(this.value == 1){
+            $("#PreguntasEstudiante").css("display","block");
+        }else{
+            $("#PreguntasEstudiante").css("display","none");
+        }
+    });
 }
 
 function ComprobarRegex(regex, expresion) {
