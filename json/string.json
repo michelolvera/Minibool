@@ -1,5 +1,8 @@
 {
     "es-MX":{
-        "loginFallido":"El usuario o contraseña que ha proporcionado no son correctos."
+        "loginFallido":"El usuario o contraseña que ha proporcionado no son correctos.",
+        "registroFallido":"Se ha producido un error al crear el usuario, por favor inténtelo más tarde.",
+        "registroExitoso":"El usuario se ha creado exitosamente, inicie sesión.",
+        "registroExiste":"El usuario ya existe, intenta con otro."
     }
 }

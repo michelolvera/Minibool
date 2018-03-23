@@ -16,7 +16,7 @@
     <div class="container">
         <br>
         <h2 class="h2 mb-3 font-weight-normal">Registro de cuenta</h2>
-        <form>
+        <form id="new_user_form" onsubmit="return false;">
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
                         <label for="lb_nombre" class="font-weight-bold">Usuario</label>
@@ -303,23 +303,38 @@
                     </div>
                     <div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="in_estudia_si" name="in_estudia_si" class="custom-control-input" value="option1" selected>
+                            <input type="radio" id="in_estudia_si" name="in_estudia_si" class="custom-control-input" value="1">
                             <label class="custom-control-label" for="in_estudia_si">Si</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="in_estudia_no" name="in_estudia_si" class="custom-control-input" value="option2">
+                            <input type="radio" id="in_estudia_no" name="in_estudia_si" class="custom-control-input" value="0" checked>
                             <label class="custom-control-label" for="in_estudia_no">No</label>
+                        </div>
+                    </div>
+                    <div id="PreguntasEstudiante">
+                        <div class="form-group col-sm-12 col-md-6">
+                            <label for="in_escuela" class="font-weight-bold">Escuela</label>
+                            <input type="text" id="in_escuela" class="form-control" placeholder="Nombre de l escuela">
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6">
+                                <label for="in_carrera" class="font-weight-bold">Carrera</label>
+                                <input type="text" id="in_carrera" class="form-control" placeholder="Nombre de la carrera">
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6">
+                                <label for="in_semestre" class="font-weight-bold">Semestre</label>
+                                <input type="number" min="1" max="20" id="in_semestre" class="form-control" placeholder="Semestre cursando">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <a href="login.html" class="btn verde">Cancelar</a>
-                <button class="btn verde">Registrar</button>
+                <button class="btn verde" type="submit">Registrar</button>
             </div>
         </form>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/fun.js"></script>
 </body>
 </html>
