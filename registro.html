@@ -15,51 +15,51 @@
     </header>
     <div class="container">
         <br>
-        <h2 class="h2 mb-3 font-weight-normal">Registro de cuenta</h2>
+        <h2 id="text_registro_cuenta" class="h2 mb-3 font-weight-normal">Registro de cuenta</h2>
         <form id="new_user_form" onsubmit="return false;">
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                        <label for="lb_nombre" class="font-weight-bold">Usuario</label>
+                        <label id="lb_usuario" class="font-weight-bold">Usuario</label>
                         <input type="text" id="in_usuario" class="form-control" placeholder="Solo letras y numeros sin espacios" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
-                        <label for="lb_nombre" class="font-weight-bold">Nombre</label>
+                        <label id="lb_nombre" class="font-weight-bold">Nombre</label>
                         <input type="text" id="in_nombre" class="form-control" placeholder="Escribe tu(s) nombre(s)" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                    <label class="font-weight-bold">Apellido pateno</label>
-                    <input type="text" id="in_apellido_paterno" class="form-control" placeholder="Escribe tu apellido paterno" required>
+                    <label id="lb_apellido_pat" class="font-weight-bold">Apellido pateno</label>
+                    <input type="text" id="in_apellido_pat" class="form-control" placeholder="Escribe tu apellido paterno" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
-                    <label for="lb_apellido_materno" class="font-weight-bold">Apellido materno</label>
-                    <input type="text" id="in_apellido_materno" class="form-control" placeholder="Escribe tu apellido materno" required>
+                    <label id="lb_apellido_mat" class="font-weight-bold">Apellido materno</label>
+                    <input type="text" id="in_apellido_mat" class="form-control" placeholder="Escribe tu apellido materno" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                    <label for="lb_correo" class="font-weight-bold">Correo</label>
+                    <label id="lb_correo" class="font-weight-bold">Correo</label>
                     <input type="email" id="in_correo" class="form-control" placeholder="correo electronico" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
-                    <label for="lb_confirmar_correo" class="font-weight-bold">Confirmar</label>
+                    <label id="lb_confirmar_correo" class="font-weight-bold">Confirmar</label>
                     <input type="email" id="in_confirmar_correo" class="form-control" placeholder="correo electronico" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                    <label for="lb_contrasena" class="font-weight-bold">Contraseña</label>
-                    <input type="password" id="in_contrasena" class="form-control" placeholder="8 caracteres minimo" required>
+                    <label id="lb_contrasenia" class="font-weight-bold">Contraseña</label>
+                    <input type="password" id="in_contrasenia" class="form-control" placeholder="8 caracteres minimo" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
-                    <label for="lb_confirmar_contrasena" class="font-weight-bold">Confirmar</label>
-                    <input type="password" id="in_confirmar_contrasena" class="form-control" placeholder="8 caracteres minimo" required>
+                    <label id="lb_confirmar_contrasenia" class="font-weight-bold">Confirmar</label>
+                    <input type="password" id="in_confirmar_contrasenia" class="form-control" placeholder="8 caracteres minimo" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                    <label for="lb_ciudad" class="font-weight-bold">Ciudad</label>
+                    <label id="lb_ciudad" class="font-weight-bold">Ciudad</label>
                     <select class="custom-select mr-sm-2" id="combo_pais">
                             <option value="AF">Afganistán</option>
                             <option value="AL">Albania</option>
@@ -299,37 +299,37 @@
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
                     <div>
-                        <label for="lb_estudiante" class="font-weight-bold">¿Eres estudiante?</label>
+                        <label id="lb_estudiante" class="font-weight-bold">¿Eres estudiante?</label>
                     </div>
                     <div>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="in_estudia_si" name="in_estudia_si" class="custom-control-input" value="1">
-                            <label class="custom-control-label" for="in_estudia_si">Si</label>
+                            <label id="lb_estudia_si" class="custom-control-label" for="in_estudia_si">Si</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="in_estudia_no" name="in_estudia_si" class="custom-control-input" value="0" checked>
-                            <label class="custom-control-label" for="in_estudia_no">No</label>
+                            <label id="lb_estudia_no" class="custom-control-label" for="in_estudia_no">No</label>
                         </div>
                     </div>
                     <div id="PreguntasEstudiante" style="display: none;">
                         <div class="form-group col-sm-12 col-md-6">
-                            <label for="in_escuela" class="font-weight-bold">Escuela</label>
+                            <label id="lb_escuela" for="in_escuela" class="font-weight-bold">Escuela</label>
                             <input type="text" id="in_escuela" class="form-control" placeholder="Nombre de l escuela">
                         </div>
                         <div class="form-group col-sm-12 col-md-6">
-                                <label for="in_carrera" class="font-weight-bold">Carrera</label>
+                                <label id="lb_carrera" for="in_carrera" class="font-weight-bold">Carrera</label>
                                 <input type="text" id="in_carrera" class="form-control" placeholder="Nombre de la carrera">
                         </div>
                         <div class="form-group col-sm-12 col-md-6">
-                                <label for="in_semestre" class="font-weight-bold">Semestre</label>
+                                <label id="lb_semestre" for="in_semestre" class="font-weight-bold">Semestre</label>
                                 <input type="number" min="1" max="20" id="in_semestre" class="form-control" placeholder="Semestre cursando">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <a href="login.html" class="btn verde">Cancelar</a>
-                <button class="btn verde" type="submit">Registrar</button>
+                <a href="login.html" id="btn_cancelar" class="btn verde">Cancelar</a>
+                <button id="btn_registrar" class="btn verde" type="submit">Registrar</button>
             </div>
         </form>
     </div>
