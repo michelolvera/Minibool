@@ -37,7 +37,7 @@ function CargarFunciones() {
                 }
                 else if(msg == 2){
                     alert(JsonIdioma["registroExiste"]);
-                } 
+                }
                 else {
                     alert(JsonIdioma["registroFallido"]);
                 }
@@ -51,4 +51,8 @@ function CargarFunciones() {
             $("#PreguntasEstudiante").css("display","none");
         }
     });
+}
+
+function cargarTextosPagina(){
+
 }

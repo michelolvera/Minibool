@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shirink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
     <title>Inicio de sesión</title>
 </head>
@@ -17,11 +17,13 @@
         <form id="login_form" class="form-signin" onsubmit="return false;">
             <br>
             <h2 class="h2 mb-3 font-weight-normal">Inicio de sesión</h2>
-            <label for="lb_usuario" class="sr-only">Usuario:</label>       
+            <label for="lb_usuario" class="sr-only">Usuario:</label>
             <input type="text" class="form-control" id="in_usuario" placeholder="Usuario:" required autofocus>
             <label for="lb_contrasena" class="sr-only">Contraseña:</label>
             <input type="password" class="form-control" id="in_contrasena" placeholder="Contraseña:" required>
             <br>
+            <label for="in_recordar">Recordar contraseña</label>
+            <input type="checkbox" id="in_recordar">
             <button class="btn btn-lg verde btn-block" type="submit" id="btn_acceso">Entrar</button>
             <br>
             <a href="new_password.html" id="btn_olvido_contrasena">¿Olvidaste tu contraseña?</a>

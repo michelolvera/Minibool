@@ -3,6 +3,9 @@ var JsonIdioma;
 
 //El documento se ha cargado completamente, ahora se puede añadir funcionamiento.
 $(document).ready(function () {
+    //Validar Cookie de usuario
+    ValidarCookie();
+    //Cargar cookie de Idioma
     var lang = getCookie("lang");
     if(lang != ""){
         CargarIdioma(lang);
@@ -33,10 +36,13 @@ function ComprobarRegex(regex, expresion) {
 }
 
 function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    if(exdays!=0){
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      var expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }else
+      document.cookie = cname + "=" + cvalue + ";;path=/";
 }
 
 function getCookie(cname) {
