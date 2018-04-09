@@ -1,3 +1,5 @@
+var langPath = "json/string.json";
+
 function CargarFunciones() {
   $("#combo_lang").val(getCookie("lang"));
   $("#login_form").submit(function (event) {

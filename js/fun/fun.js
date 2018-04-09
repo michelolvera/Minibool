@@ -20,7 +20,7 @@ $(document).ready(function () {
 function CargarIdioma(idioma) {
     $.ajax({
         method: "post",
-        url: "json/string.json",
+        url: langPath,
         dataType: "json"
     })
         .done(function (jsonObject) {
@@ -43,7 +43,7 @@ function setCookie(cname, cvalue, exdays) {
       var expires = "expires="+ d.toUTCString();
       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }else
-      document.cookie = cname + "=" + cvalue + ";;path=/";
+      document.cookie = cname + "=" + cvalue + ";path=/";
 }
 
 function getCookie(cname) {

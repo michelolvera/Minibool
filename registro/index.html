@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="css/estilos.css">
-    <title>Registro</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title id="titulo">Crear una cuenta</title>
 </head>
 <body>
     <header>
@@ -15,51 +15,51 @@
     </header>
     <div class="container">
         <br>
-        <h2 id="text_registro_cuenta" class="h2 mb-3 font-weight-normal">Registro de cuenta</h2>
+        <h2 id="text_nueva_cuenta" class="h2 mb-3 font-weight-normal">Nueva cuenta</h2>
         <form id="new_user_form" onsubmit="return false;">
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                        <label id="lb_usuario" class="font-weight-bold">Usuario</label>
-                        <input type="text" id="in_usuario" class="form-control" placeholder="Solo letras y numeros sin espacios" required>
+                        <label id="lb_usuario" for="in_usuario" class="font-weight-bold">Usuario</label>
+                        <input type="text" id="in_usuario" class="form-control" placeholder="Solo letras y números sin espacios" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
-                        <label id="lb_nombre" class="font-weight-bold">Nombre</label>
-                        <input type="text" id="in_nombre" class="form-control" placeholder="Escribe tu(s) nombre(s)" required>
+                        <label id="lb_nombre" for="in_nombre" class="font-weight-bold">Nombre</label>
+                        <input type="text" id="in_nombre" class="form-control" placeholder="Escribe tu nombre" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                    <label id="lb_apellido_pat" class="font-weight-bold">Apellido pateno</label>
+                    <label id="lb_apellido_pat" for="in_apellido_pat" class="font-weight-bold">Apellido paterno</label>
                     <input type="text" id="in_apellido_pat" class="form-control" placeholder="Escribe tu apellido paterno" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
-                    <label id="lb_apellido_mat" class="font-weight-bold">Apellido materno</label>
+                    <label id="lb_apellido_mat" for="in_apellido_mat" class="font-weight-bold">Apellido materno</label>
                     <input type="text" id="in_apellido_mat" class="form-control" placeholder="Escribe tu apellido materno" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                    <label id="lb_correo" class="font-weight-bold">Correo</label>
-                    <input type="email" id="in_correo" class="form-control" placeholder="correo electronico" required>
+                    <label id="lb_correo" for="in_correo" class="font-weight-bold">Correo electrónico</label>
+                    <input type="email" id="in_correo" class="form-control" placeholder="Correo electrónico" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
-                    <label id="lb_confirmar_correo" class="font-weight-bold">Confirmar</label>
-                    <input type="email" id="in_confirmar_correo" class="form-control" placeholder="correo electronico" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-sm-12 col-md-6">
-                    <label id="lb_contrasenia" class="font-weight-bold">Contraseña</label>
-                    <input type="password" id="in_contrasenia" class="form-control" placeholder="8 caracteres minimo" required>
-                </div>
-                <div class="form-group col-sm-12 col-md-6">
-                    <label id="lb_confirmar_contrasenia" class="font-weight-bold">Confirmar</label>
-                    <input type="password" id="in_confirmar_contrasenia" class="form-control" placeholder="8 caracteres minimo" required>
+                    <label id="lb_confirmar_correo" for="in_confirmar_correo" class="font-weight-bold">Confirmar correo electrónico</label>
+                    <input type="email" id="in_confirmar_correo" class="form-control" placeholder="Correo electrónico" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-12 col-md-6">
-                    <label id="lb_ciudad" class="font-weight-bold">Ciudad</label>
+                    <label id="lb_contrasenia" for="in_contrasenia" class="font-weight-bold">Contraseña</label>
+                    <input type="password" id="in_contrasenia" class="form-control" placeholder="Ocho caracteres como mínimo" required>
+                </div>
+                <div class="form-group col-sm-12 col-md-6">
+                    <label id="lb_confirmar_contrasenia" for="in_confirmar_contrasenia" class="font-weight-bold">Confirmar contraseña</label>
+                    <input type="password" id="in_confirmar_contrasenia" class="form-control" placeholder="Ocho caracteres como mínimo" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12 col-md-6">
+                    <label id="lb_pais" for="combo_pais" class="font-weight-bold">País</label>
                     <select class="custom-select mr-sm-2" id="combo_pais">
                             <option value="AF">Afganistán</option>
                             <option value="AL">Albania</option>
@@ -299,7 +299,7 @@
                 </div>
                 <div class="form-group col-sm-12 col-md-6">
                     <div>
-                        <label id="lb_estudiante" class="font-weight-bold">¿Eres estudiante?</label>
+                        <span id="sp_estudiante" class="font-weight-bold">¿Eres estudiante?</span>
                     </div>
                     <div>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -314,28 +314,28 @@
                     <div id="PreguntasEstudiante" style="display: none;">
                         <div class="form-group col-sm-12 col-md-6">
                             <label id="lb_escuela" for="in_escuela" class="font-weight-bold">Escuela</label>
-                            <input type="text" id="in_escuela" class="form-control" placeholder="Nombre de l escuela">
+                            <input type="text" id="in_escuela" class="form-control" placeholder="Nombre de la escuela">
                         </div>
                         <div class="form-group col-sm-12 col-md-6">
-                                <label id="lb_carrera" for="in_carrera" class="font-weight-bold">Carrera</label>
-                                <input type="text" id="in_carrera" class="form-control" placeholder="Nombre de la carrera">
+                                <label id="lb_carrera" for="in_carrera" class="font-weight-bold">Especialidad o licenciatura</label>
+                                <input type="text" id="in_carrera" class="form-control" placeholder="Nombre de la especialidad o licenciatura">
                         </div>
                         <div class="form-group col-sm-12 col-md-6">
                                 <label id="lb_semestre" for="in_semestre" class="font-weight-bold">Semestre</label>
-                                <input type="number" min="1" max="20" id="in_semestre" class="form-control" placeholder="Semestre cursando">
+                                <input type="number" min="1" max="20" id="in_semestre" class="form-control" placeholder="Número de semestre">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <a href="login.html" id="btn_cancelar" class="btn verde">Cancelar</a>
-                <button id="btn_registrar" class="btn verde" type="submit">Registrar</button>
+                <a href="../" id="btn_cancelar" class="btn verde">Cancelar</a>
+                <button id="btn_registrar" class="btn verde" type="submit">Crear cuenta</button>
             </div>
         </form>
     </div>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/fun/registro.js"></script>
-    <script src="js/fun/fun.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/fun/registro.js"></script>
+    <script src="../js/fun/fun.js"></script>
 </body>
 </html>
