@@ -9,7 +9,6 @@
     <title>Ventana de inicio</title>
 </head>
 <body>
-    
             <nav class="navbar navbar-expand-lg navbar-light verde ">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav mr-auto ">
@@ -17,8 +16,12 @@
                                 <div class="container-fluid" >
                                         <div id="mySidenav" class="sidenav">
                                             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                            <a href="#">B-Learning</a>
-                                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Ejercicios</a>
+                                            <a href="#">Simplificación Booleana</a>
+                                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                                                    <i class="glyphicon glyphicon-home"></i>
+                                                    Ejercicios
+                                                </a>
                                             <ul class="collapse " id="homeSubmenu">
                                                 <li><a data-toggle="modal" data-target="#aleatorioModal" href="#ventanaA">  Aelatorio</a></li>
                                                 <li><a data-toggle="modal" data-target="#conocidoModal" href="#"> Conocido</a></li>
@@ -30,7 +33,7 @@
                                         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
                                 </div>  
                         </li>
-                        <a class="navbar-brand" href="#">B-Learning</a>
+                        <a class="navbar-brand" href="#">Simplificación Booleana</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
@@ -51,16 +54,15 @@
                       </ul>
                     </div>
                   </nav>
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-6 col-md-4 ">
-                              <img src="imagenes/Itmorelia.png" class="img-responsive">
-                            </div>
-                            <div class="col-6 col-md-4 ">
-                              <img src="imagenes/Logo-TecNM.png" class="img-responsive">
-                            </div>
-                      </div>
+                  <div class="container" id="head">
+                      
+                        <img id="logoITM" src="imagenes/Itmorelia.png" class="rounded float-left">
+                        <img id="logoTecN" src="imagenes/Logo-TecNM.png" class="rounded float-right">
+                      
                   </div>
+                  <div class="text-center">
+                      <img src="imagenes/bienvenidos.png" id="bienvenidos" class="rounded">
+                    </div>
                  
     
           
@@ -113,7 +115,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Simplificación de expresión booleana</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -134,15 +136,21 @@
               <h5>Datos en:</h5>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                  <input type="radio" name="options" id="porSumadeP" autocomplete="off" checked> Funcion
+                  <input type="radio" name="options" id="porSumadeP" autocomplete="off" checked onclick="mFuncion"> Función
                 </label>
                 <label class="btn btn-primary">
-                  <input type="radio" name="options" id="porProddeS" autocomplete="off"> Tabla de verdad
+                  <input type="radio" name="options" id="porProddeS" autocomplete="off" onclick="oFuncion"> Tabla de verdad
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="porProddeS" autocomplete="off"> Mapa de Karnaugh
+                    <input type="radio" name="options" id="porProddeS" autocomplete="off" onclick="oFuncion"> Mapa de Karnaugh
                   </label>
               </div>
+              <div id="intFuncion" class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Función:</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="">
+                </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

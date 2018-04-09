@@ -73,3 +73,16 @@ img {
   max-width: 50%;
   height: auto;
 }
+#head{
+  margin: auto;
+  height: 100px;
+}
+#logoITM{
+  height: 100%;
+}
+#bienvenidos{
+  height: 80%;
+}
+#logoTecN{
+  height: 100%;
+}
