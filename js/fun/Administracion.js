@@ -22,7 +22,7 @@ function CargarTextosPagina(){
 function llenar_tabla(nombre, apellidoPat, apellidoMat) {
     $.ajax({
         method: "post",
-        url: phpPath,
+        url: "php/Selector.php",
         data: {funcion:"consultaUsuarios", likeNombre:nombre, likeApellidoPat:apellidoPat, likeApellidoMat:apellidoMat},
         dataType: "json"
       })
@@ -32,7 +32,4 @@ function llenar_tabla(nombre, apellidoPat, apellidoMat) {
       .fail(function () {
         alert("Error");
       });
-    for(var ind=0; ind <datos.lengt; ind++){
-        d+='<tr>'
-    }
 }
