@@ -1,5 +1,5 @@
 function CargarFunciones() {
-  $("#lb_lang").val(getCookie("lang"));
+  $("#combo_lang").val(getCookie("lang"));
   $("#login_form").submit(function (event) {
     var usuario = $("#in_usuario").val();
     var contraseña = $("#in_contrasena").val();

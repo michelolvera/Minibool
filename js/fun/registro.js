@@ -58,5 +58,5 @@ function CargarTextosPagina(){
 }
 
 function ValidarCookie() {
-
+//No necesario ya que se registrara.
 }
