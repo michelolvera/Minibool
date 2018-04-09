@@ -6,6 +6,6 @@ function ValidarCookie() {
 
 }
 
-function cargarTextosPagina(){
+function CargarTextosPagina(){
 
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shirink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <title>Inicio de sesión</title>
+    <title id="titulo">Inicio de sesión</title>
 </head>
 <body>
     <header>
@@ -16,8 +16,8 @@
     <div class="container text-center">
         <form id="login_form" class="form-signin" onsubmit="return false;">
             <br>
-            <h2 class="h2 mb-3 font-weight-normal">Inicio de sesión</h2>
-            <label for="lb_usuario" class="sr-only">Usuario:</label>
+            <h2 id="titulo_h2" class="h2 mb-3 font-weight-normal">Inicio de sesión</h2>
+            <label id="lb_usuario"for="lb_usuario" class="sr-only">Usuario:</label>
             <input type="text" class="form-control" id="in_usuario" placeholder="Usuario:" required autofocus>
             <label for="lb_contrasena" class="sr-only">Contraseña:</label>
             <input type="password" class="form-control" id="in_contrasena" placeholder="Contraseña:" required>

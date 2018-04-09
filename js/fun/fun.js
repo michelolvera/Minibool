@@ -25,6 +25,7 @@ function CargarIdioma(idioma) {
         .done(function (jsonObject) {
             JsonIdioma = jsonObject[idioma];
             CargarFunciones();
+            CargarTextosPagina();
         })
         .fail(function () {
             alert("Error: Idioma no cargado, recargar pagina.");

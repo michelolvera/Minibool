@@ -3,18 +3,24 @@
         "loginFallido":"El correo electrónico o contraseña que ingresaste no coinciden con ninguna cuenta.",
         "registroFallido":"Se ha producido un error al crear el usuario, por favor inténtelo más tarde.",
         "registroExitoso":"El usuario se ha creado exitosamente, inicie sesión.",
-        "registroExiste":"El nombre de usuario ya existe, intente con otro."
+        "registroExiste":"El nombre de usuario ya existe, intente con otro.",
+        "tituloLogin":"Inicio de sesión",
+        "Usuario":"Usuario"
     },
     "en-US":{
         "loginFallido":"The email or password you entered does not match any account.",
         "registroFallido":"An error occurred while creating the user, please try again later.",
         "registroExitoso":"The user has been successfully created, log in.",
-        "registroExiste":"The username already exists, try another."
+        "registroExiste":"The username already exists, try another.",
+        "tituloLogin":"Login",
+        "Usuario":"User"
     },
     "fr-FR":{
         "loginFallido":"L'adresse e-mail ou le mot de passe que vous avez entré ne correspond à aucun compte.",
         "registroFallido":"Une erreur est survenue lors de la création de l'utilisateur, veuillez réessayer plus tard.",
         "registroExitoso":"L'utilisateur a été créé avec succès, connectez-vous.",
-        "registroExiste":"Le nom d'utilisateur existe déjà, essayez-en un autre."
+        "registroExiste":"Le nom d'utilisateur existe déjà, essayez-en un autre.",
+        "tituloLogin":"S'identifier",
+        "Usuario":"Utilisateur"
     }
 }

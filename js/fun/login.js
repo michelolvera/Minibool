@@ -30,6 +30,9 @@ function ValidarCookie() {
   }
 }
 
-function cargarTextosPagina(){
-
+function CargarTextosPagina(){
+  $("#titulo").text(JsonIdioma["tituloLogin"]);
+  $("#titulo_h2").text(JsonIdioma["tituloLogin"]);
+  $("#lb_usuario").text(JsonIdioma["Usuario"]+":");
+  $("#in_usuario").attr("placeholder", JsonIdioma["Usuario"]+":");
 }

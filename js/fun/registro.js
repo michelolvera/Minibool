@@ -53,6 +53,10 @@ function CargarFunciones() {
     });
 }
 
-function cargarTextosPagina(){
+function CargarTextosPagina(){
+
+}
+
+function ValidarCookie() {
 
 }
