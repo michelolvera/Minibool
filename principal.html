@@ -136,20 +136,21 @@
               <h5>Datos en:</h5>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                  <input id="botonFuncion" type="radio" name="options" id="porSumadeP" autocomplete="off" checked onclick="mFuncion"> Función
+                  <input  type="radio" name="options" id="botonporFuncion" autocomplete="off" checked onclick="mFuncion"> Función
                 </label>
                 <label class="btn btn-primary">
-                  <input id="botonTablaV" type="radio" name="options" id="porProddeS" autocomplete="off" onclick="oFuncion"> Tabla de verdad
+                  <input  type="radio" name="options" id="botonporTabladeVerdad" autocomplete="off" onclick="oFuncion"> Tabla de verdad
                 </label>
                 <label class="btn btn-primary">
-                    <input id="botonMapaK" type="radio" name="options" id="porProddeS" autocomplete="off" onclick="oFuncion"> Mapa de Karnaugh
+                    <input  type="radio" name="options" id="botonporMapaK" autocomplete="off" onclick="oFuncion"> Mapa de Karnaugh
                   </label>
               </div>
-              <div id="intFuncion" class="input-group mb-3">
+              <p> </p>
+              <div id="inpFuncion" class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span id="inputFuncion" class="input-group-text">Función:</span>
+                    <span id="spaninputFuncion" class="input-group-text">Función:</span>
                   </div>
-                  <input type="text" class="form-control" aria-label="">
+                  <input id="inputFuncion" type="text" class="form-control" aria-label="">
                 </div>
         </div>
         <div class="modal-footer">
@@ -157,9 +158,7 @@
           <button id="btnIniciar" type="button" class="btn btn-primary">Iniciar</button>
         </div>
       </div>
-      <div class="alert alert-primary" role="alert">
-        Alerta
-      </div>
+      
     </div>
   </div>
 </html>

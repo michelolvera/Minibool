@@ -1,6 +1,6 @@
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
-    //$('.alert').alert('close')
 }
 
 function closeNav() {
@@ -11,10 +11,25 @@ function closeNav() {
         $('#exampleModal').trigger('focus')
     })
 
+    $("#botonporTabladeVerdad").on("change",function(){
+        document.getElementById("inpFuncion").style.visibility = false;
+    });
+    $("#botonporMapaK").on("change",function(){
+        document.getElementById("inpFuncion").style.visibility = false;
+    });
+    $("#botonporFuncion").on("change",function(){
+        document.getElementById("inpFuncion").style.visibility = true;
+    });
 function mFuncion(){
-    document.getElementById("intFuncion").style.display = block;
-    $('.alert').alert('close')
+    document.getElementById("inpFuncion").style.visibility = true;
+    var x = document.getElementById("botonporTabladeVerdad");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 function oFuncion(){
-    document.getElementById("intFuncion").style.display = none;
+    document.getElementById("inpFuncion").style.visibility = false;
+    var x = document.getElementById("botonporTabladeVerdad");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
+
