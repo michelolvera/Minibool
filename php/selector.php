@@ -27,5 +27,13 @@ switch ($funcion){
   $respuesta = consultaSQL("CALL sp_crear_usuario('".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$codigoPais."','".$passUsuario."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."','0');");
   echo $respuesta[0]['Creado'];
   break;
+
+  case 'consultaUsuarios':
+    $likeNombre = $_REQUEST["likeNombre"];
+    $likeApellidoPat = $_REQUEST["likeApellidoPat"];
+    $likeApellidoMat = $_REQUEST["likeApellidoMat"];
+    $respuesta = consultaSQL("SELECT nombre, apellido_paterno, apellido_materno FROM usuarios WHERE nombre LIKE '%"+.$likeNombre.+"%' AND apellido_paterno LIKE '%"+.$likeApellidoPat.+"%' AND apellido_materno LIKE '%"+.$likeApellidoMat.+"%';");
+    echo json_encode($respuesta);
+  break;
 }
 ?>
