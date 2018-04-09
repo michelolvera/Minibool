@@ -35,4 +35,11 @@ function CargarTextosPagina(){
   $("#titulo_h2").text(JsonIdioma["tituloLogin"]);
   $("#lb_usuario").text(JsonIdioma["Usuario"]+":");
   $("#in_usuario").attr("placeholder", JsonIdioma["Usuario"]+":");
+  $("#lb_contrasena").text(JsonIdioma["Pass"]+":");
+  $("#in_contrasena").attr("placeholder", JsonIdioma["Pass"]+":");
+  $("#lb_recordar").text(JsonIdioma["RecordarPass"]);
+  $("#btn_acceso").text(JsonIdioma["IniciarSesion"]);
+  $("#btn_olvido_contrasena").text(JsonIdioma["OlvidastePass"]);
+  $("#lb_no_cuenta").text(JsonIdioma["SinCuenta"]);
+  $("#btn_crear_cuenta").text(JsonIdioma["CreaCuenta"]);
 }

@@ -17,17 +17,17 @@
         <form id="login_form" class="form-signin" onsubmit="return false;">
             <br>
             <h2 id="titulo_h2" class="h2 mb-3 font-weight-normal">Inicio de sesión</h2>
-            <label id="lb_usuario"for="lb_usuario" class="sr-only">Usuario:</label>
+            <label id="lb_usuario"for="in_usuario" class="sr-only">Usuario:</label>
             <input type="text" class="form-control" id="in_usuario" placeholder="Usuario:" required autofocus>
-            <label for="lb_contrasena" class="sr-only">Contraseña:</label>
+            <label id="lb_contrasena" for="in_contrasena" class="sr-only">Contraseña:</label>
             <input type="password" class="form-control" id="in_contrasena" placeholder="Contraseña:" required>
             <br>
-            <label for="in_recordar">Recordar contraseña</label>
+            <label id="lb_recordar" for="in_recordar">Recordar contraseña</label>
             <input type="checkbox" id="in_recordar">
-            <button class="btn btn-lg verde btn-block" type="submit" id="btn_acceso">Entrar</button>
+            <button class="btn btn-lg verde btn-block" type="submit" id="btn_acceso">Iniciar sesión</button>
             <br>
             <a href="new_password.html" id="btn_olvido_contrasena">¿Olvidaste tu contraseña?</a>
-            <label for="lb_no_cuenta">¿No tienes cuenta?</label>
+            <label id="lb_no_cuenta" for="btn_crear_cuenta">¿No tienes cuenta?</label>
             <a href="registro.html" id="btn_crear_cuenta">Crear una cuenta</a>
         </form>
     </div>

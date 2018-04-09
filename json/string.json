@@ -5,7 +5,13 @@
         "registroExitoso":"El usuario se ha creado exitosamente, inicie sesión.",
         "registroExiste":"El nombre de usuario ya existe, intente con otro.",
         "tituloLogin":"Inicio de sesión",
-        "Usuario":"Usuario"
+        "Usuario":"Usuario",
+        "Pass":"Contraseña",
+        "RecordarPass":"Recordar contraseña",
+        "IniciarSesion":"Iniciar sesión",
+        "OlvidastePass":"¿Olvidaste tu contraseña?",
+        "SinCuenta":"¿No tienes cuenta?",
+        "CreaCuenta":"Crear una cuenta"
     },
     "en-US":{
         "loginFallido":"The email or password you entered does not match any account.",
@@ -13,7 +19,13 @@
         "registroExitoso":"The user has been successfully created, log in.",
         "registroExiste":"The username already exists, try another.",
         "tituloLogin":"Login",
-        "Usuario":"User"
+        "Usuario":"User",
+        "Pass":"Password",
+        "RecordarPass":"Remenber password",
+        "IniciarSesion":"Log in",
+        "OlvidastePass":"Did you forget your password?",
+        "SinCuenta":"You do not have an account?",
+        "CreaCuenta":"Create an account"
     },
     "fr-FR":{
         "loginFallido":"L'adresse e-mail ou le mot de passe que vous avez entré ne correspond à aucun compte.",
@@ -21,6 +33,12 @@
         "registroExitoso":"L'utilisateur a été créé avec succès, connectez-vous.",
         "registroExiste":"Le nom d'utilisateur existe déjà, essayez-en un autre.",
         "tituloLogin":"S'identifier",
-        "Usuario":"Utilisateur"
+        "Usuario":"Utilisateur",
+        "Pass":"Mot de passe",
+        "RecordarPass":"Mémoriser le mot de passe",
+        "IniciarSesion":"Connexion",
+        "OlvidastePass":"Vous avez oublié votre mot de passe?",
+        "SinCuenta":"Vous n'avez pas de compte?",
+        "CreaCuenta":"Créer un compte"
     }
 }
