@@ -21,21 +21,25 @@
       <input type="text" class="form-control" id="in_usuario" placeholder="Usuario:" required autofocus>
       <label id="lb_contrasena" for="in_contrasena" class="sr-only">Contraseña:</label>
       <input type="password" class="form-control" id="in_contrasena" placeholder="Contraseña:" required>
+      <div class="">
+        <label id="lb_recordar" for="in_recordar">Recordar contraseña</label>
+        <input type="checkbox" id="in_recordar">
+      </div>
       <br>
-      <label id="lb_recordar" for="in_recordar">Recordar contraseña</label>
-      <input type="checkbox" id="in_recordar">
       <button class="btn btn-lg verde btn-block" type="submit" id="btn_acceso">Iniciar sesión</button>
       <br>
       <a href="new_password.html" id="btn_olvido_contrasena">¿Olvidaste tu contraseña?</a>
       <label id="lb_no_cuenta" for="btn_crear_cuenta">¿No tienes cuenta?</label>
       <a href="registro/" id="btn_crear_cuenta">Crear una cuenta</a>
+      <br>
+      <br>
+      <label for="combo_lang" id="lb_lang">Idioma:</label>
+      <select class="custom-select mr-sm-2" id="combo_lang">
+        <option value="es-MX">Español - México</option>
+        <option value="en-US">English - United States</option>
+        <option value="fr-FR">Française - France</option>
+      </select>
     </form>
-    <label for="combo_lang" id="lb_lang">Idioma:</label>
-    <select class="custom-select mr-sm-2" id="combo_lang">
-      <option value="es-MX">Español - México</option>
-      <option value="en-US">English - United States</option>
-      <option value="fr-FR">Française - France</option>
-    </select>
   </div>
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
