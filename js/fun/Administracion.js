@@ -9,6 +9,10 @@ var tabla='<tr>'+
 
 function CargarFunciones() {
     llenar_tabla("","","");
+
+    $("#btn_busqueda").click(function (event){
+      llenar_tabla( $("#in_nombre").val(),$("#in_apellido_pat").val(),$("#in_apellido_mat").val());
+    });
 }
 
 function ValidarCookie() {
