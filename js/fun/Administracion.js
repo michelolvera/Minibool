@@ -31,7 +31,11 @@ function llenar_tabla(nombre, apellidoPat, apellidoMat) {
         dataType: "json"
       })
       .done(function (jsonObject) {
-        console.log(jsonObject);
+        $("#tabla").empty();
+        $("#tabla").append(tabla);
+        jsonObject.forEach(row => {
+          $("#tabla").append("<tr><td>"+row["nombre"]+"</td><td>"+row[apellido_parterno]+"</td><td>"+row[apellido_materno]+"</td><td><div class='btn-toolbar'><div class='btn-group'><button class='btn btn-default verde'>Detalles</button><button class='btn btn-default btn-danger'>Eliminar</button></div></div></td></tr>");
+        });
       })
       .fail(function () {
         alert("Error");
