@@ -1,4 +1,5 @@
 function CargarFunciones() {
+  $("#lb_lang").val(getCookie("lang"));
   $("#login_form").submit(function (event) {
     var usuario = $("#in_usuario").val();
     var contraseña = $("#in_contrasena").val();
@@ -22,6 +23,11 @@ function CargarFunciones() {
       }
     });
   });
+
+  $("#combo_lang").change(function (event){
+    setCookie("lang", this.value, 30);
+    CargarIdioma(this.value);
+  });
 }
 
 function ValidarCookie() {
@@ -42,4 +48,5 @@ function CargarTextosPagina(){
   $("#btn_olvido_contrasena").text(JsonIdioma["OlvidastePass"]);
   $("#lb_no_cuenta").text(JsonIdioma["SinCuenta"]);
   $("#btn_crear_cuenta").text(JsonIdioma["CreaCuenta"]);
+  $("#lb_lang").text(JsonIdioma["Idioma"]+":");
 }

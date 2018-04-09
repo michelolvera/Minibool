@@ -4,7 +4,7 @@ var JsonIdioma;
 //El documento se ha cargado completamente, ahora se puede añadir funcionamiento.
 $(document).ready(function () {
     //Validar Cookie de usuario
-    ValidarCookie();
+    ValidarCookie();//Cada pagina maneja esto de manera diferente.
     //Cargar cookie de Idioma
     var lang = getCookie("lang");
     if(lang != ""){
@@ -14,6 +14,7 @@ $(document).ready(function () {
         lang = "es-MX"
     }
     setCookie("lang", lang, 30);
+    CargarFunciones();
 });
 
 function CargarIdioma(idioma) {
@@ -24,7 +25,6 @@ function CargarIdioma(idioma) {
     })
         .done(function (jsonObject) {
             JsonIdioma = jsonObject[idioma];
-            CargarFunciones();
             CargarTextosPagina();
         })
         .fail(function () {
