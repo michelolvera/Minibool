@@ -1,5 +1,6 @@
 {
   "es-MX":{
+    "nombreIdioma":"Español - México",
     "loginFallido":"El correo electrónico o contraseña que ingresaste no coinciden con ninguna cuenta.",
     "registroFallido":"Se ha producido un error al crear el usuario, por favor inténtelo más tarde.",
     "registroExitoso":"El usuario se ha creado exitosamente, inicie sesión.",
@@ -40,6 +41,7 @@
     "CrearCuenta":"Crear cuenta"
   },
   "en-US":{
+    "nombreIdioma":"English - United States",
     "loginFallido":"The email or password you entered does not match any account.",
     "registroFallido":"An error occurred while creating the user, please try again later.",
     "registroExitoso":"The user has been successfully created, log in.",
@@ -80,6 +82,7 @@
     "CrearCuenta":"Create Account"
   },
   "fr-FR":{
+    "nombreIdioma":"Française - France",
     "loginFallido":"L'adresse e-mail ou le mot de passe que vous avez entré ne correspond à aucun compte.",
     "registroFallido":"Une erreur est survenue lors de la création de l'utilisateur, veuillez réessayer plus tard.",
     "registroExitoso":"L'utilisateur a été créé avec succès, connectez-vous.",
