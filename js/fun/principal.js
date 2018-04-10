@@ -2,15 +2,13 @@ var langPath = "../json/string.json";
 
 function CargarFunciones() {
     $("#btnCerrarSesion").click(function (event) {
-        setCookie("user", "", -1);
-        setCookie("pass", "", -1);
-        location.href = "../";
+        CerrarSesion();
     });
 }
 
 function ValidarCookie() {
     if (getCookie("user") == "" && getCookie("pass") == "") {
-        location.href = "../";
+        location.replace("../");
     } else {
         $.ajax({
             method: "POST",
@@ -18,9 +16,7 @@ function ValidarCookie() {
             data: { funcion: "login", userName: getCookie("user"), userPass: getCookie("pass") }
         }).done(function (msg) {
             if (msg == 0) {
-                setCookie("user", "", -1);
-                setCookie("pass", "", -1);
-                location.href = "../";
+                CerrarSesion();
             }
         });
     }
@@ -28,4 +24,10 @@ function ValidarCookie() {
 
 function CargarTextosPagina() {
     $("#textoUsuario").text(JsonIdioma["Usuario"] + ": " + getCookie("user"));
+}
+
+function CerrarSesion() {
+    setCookie("user", "", -1);
+    setCookie("pass", "", -1);
+    location.replace("../");
 }
