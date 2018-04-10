@@ -19,7 +19,7 @@ function CargarFunciones() {
           setCookie("user", usuario, 0);
           setCookie("pass", contraseña, 0);
         }
-        location.href = "principal.html";
+        location.href = "principal/";
       } else {
         alert(JsonIdioma["loginFallido"]);
       }
@@ -34,7 +34,7 @@ function CargarFunciones() {
 
 function ValidarCookie() {
   if(getCookie("user") != "" && getCookie("pass") != ""){
-    location.href = "principal.html";
+    location.href = "principal/";
   }
 }
 
