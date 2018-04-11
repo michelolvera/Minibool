@@ -33,7 +33,5 @@ function oFuncion(){
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 var crear = function(){
-  $('#content').html ='
-      hola
-  ';
+  $('#content').html ='hola';//?????????
 }

@@ -39,7 +39,14 @@
     "NumeroSemestre": "Número de semestre",
     "Cancelar": "Cancelar",
     "CrearCuenta": "Crear cuenta",
-    "SimplificacionBolenana":"Simplificación Booleana"
+    "SimplificacionBolenana":"Simplificación Booleana",
+    "Ejercicios":"Ejercicios",
+    "Aelatorio":"Aelatorio",
+    "Conocido":"Conocido",
+    "Clasificacion":"Clasificación",
+    "Estadisticas":"Estadisticas",
+    "Administración":"Administración",
+    "ConfigurarCuenta":"Configurar cuenta"
   },
   "en-US": {
     "nombreIdioma": "English - United States",
