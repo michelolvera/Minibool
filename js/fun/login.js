@@ -64,8 +64,5 @@ function CargarListaIdiomas() {
         $("#combo_lang").append("<option value='" + lang + "'>" + jsonObject[lang]["nombreIdioma"] + "</option>");
       }
       $("#combo_lang").val(getCookie("lang"));
-    })
-    .fail(function () {
-      alert("Error: Idioma no cargado, recargar pagina.");
     });
 }
