@@ -48,10 +48,27 @@
                 <div class="btn-toolbar">
                     <div class="btn-group btn-group-lg">
                         <button id="btn_respaldar_todo" class="btn btn-default verde">Respaldar todo</button>
-                        <button id="btn_eliminar_todo" class="btn btn-default btn-danger">Eliminar todo</button>
+                        <button href="#confirmacion" id="btn_eliminar_todo" class="btn btn-default btn-danger" onclick="selection(0,'eliminarTodo')" data-toggle="modal">Eliminar todo</button>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="modal fade" id="confirmacion">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="text_titulo_confirmacion" class="modal-title">Confirmacion</h3>
+                        <button id="btn_cerrar" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
+                    </div>
+                    <div class="modal-body">
+                        <h4 id="text_confirmacion">¿Esta seguro de la accion que desea realizar?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn_si" class="btn btn-lg btn-danger" onclick="realizar_accion();">Si</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <script src="js/jquery.js"></script>
