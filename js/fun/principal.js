@@ -24,6 +24,8 @@ function ValidarCookie() {
 
 function CargarTextosPagina() {
     $("#textoUsuario").text(JsonIdioma["Usuario"] + ": " + getCookie("user"));
+    $("#btnTitulo").text(JsonIdioma["SimplificacionBolenana"]);
+    $("#btnTituloSB").text(JsonIdioma["SimplificacionBolenana"]);
 }
 
 function CerrarSesion() {
