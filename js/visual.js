@@ -39,12 +39,12 @@ var al = "";
 var crear = function(tf){
   closeNav();
   $('#content').load('tablaDeVerdad.html');
-  if($('#var4').is(':checked')){
+  if($('#var4').is(':checked') || $('#Cvar4').is(':checked')){
       vars='<th scope="col">D</th>'
       al='<td><div '+tf+'>0</div></td>'
       console.log('cuatro');
   }
-  if($('#var5').is(':checked')){
+  if($('#var5').is(':checked') || $('#Cvar5').is(':checked')){
     vars='<th scope="col">D</th><th scope="col">E</th>'
     al='<td><div '+tf+'>0</div></td><td><div '+tf+'>0</div></td>'
     console.log('cinco');
