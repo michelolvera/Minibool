@@ -32,7 +32,6 @@ function CargarTextosPagina() {
     $("#btnEstadistica").text(JsonIdioma["Estadisticas"]);
     $("#btnAdministracion").text(JsonIdioma["Administración"]);
     $("#btnTituloSB").text(JsonIdioma["SimplificacionBolenana"]);
-    $("#textoUsuario").text(JsonIdioma["Usuario"]);
     $("#btnConfigurarCuenta").text(JsonIdioma["ConfigurarCuenta"]);
     $("#btnMisResultados").text(JsonIdioma["MisResultados"]);
     $("#btnCerrarSesion").text(JsonIdioma["CerrarSesion"]);
