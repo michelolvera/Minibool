@@ -137,7 +137,7 @@
           </label>
         </div>
         <h5 id="labelResolverpor">Resolver por:</h5>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <div id="options" class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
             <input type="radio" name="options" id="inputporSumadeP" autocomplete="off" checked><span id="spanSumadeP">Suma de productos</span>
           </label>
@@ -177,16 +177,10 @@
           </label>
         </div>
         <h5 id="datosTitulo">Datos en:</h5>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="options" id="botonporFuncion" autocomplete="off" checked onclick="mFuncion()"><span id="spanFun">Función</span>
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="botonporTabladeVerdad" autocomplete="off" onclick="oFuncion()"><span id="spanTablaVerdad">Tabla de verdad</span>
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="botonporMapaK" autocomplete="off" onclick="oFuncion()"><span id="spanMapaK">Mapa de Karnaugh</span>
-          </label>
+        <div class="btn-group btn-group-md">
+            <button id="botonporFuncion" onClick="func()" class="btn btn-primary active">Función</button>
+            <button id="botonporTabladeVerdad" onClick="tabla()" class="btn btn-primary">Tabla de verdad</button>
+            <button id="botonporMapaK" onClick="mapak()" class="btn btn-primary">Mapa de Karnaugh</button>
         </div>
         <p> </p>
         <div id="inpFuncion" class="input-group mb-3">

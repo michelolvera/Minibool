@@ -20,19 +20,23 @@ function closeNav() {
     $("#botonporFuncion").on("change",function(){
         document.getElementById("inpFuncion").style.visibility = true;
     });
-var mFuncion = function (){
-  console.log("molis");
-    document.getElementById("inpFuncion").style.visibility = true;
-    var x = document.getElementById("botonporTabladeVerdad");
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+var func = function (){
+  $('#botonporFuncion').addClass('active');
+  $('#botonporTabladeVerdad').removeClass('active');
+  $('#botonporMapaK').removeClass('active');
+  $("#inpFuncion").show();
 }
-var oFuncion = function(){
-    console.log("olis");
-    document.getElementById("inpFuncion").style.visibility = false;
-    var x = document.getElementById("botonporTabladeVerdad");
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+var tabla = function(){
+  $('#botonporTabladeVerdad').addClass('active');
+  $('#botonporFuncion').removeClass('active');
+  $('#botonporMapaK').removeClass('active');
+     $("#inpFuncion").hide();
+}
+var mapak = function(){
+  $('#botonporMapaK').addClass('active');
+  $('#botonporTabladeVerdad').removeClass('active');
+  $('#botonporFuncion').removeClass('active');
+     $("#inpFuncion").hide();
 }
 var vars = "";
 var al = "";
