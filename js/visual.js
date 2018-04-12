@@ -34,16 +34,50 @@ var oFuncion = function(){
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
-
-var crear = function(){
+var vars = "";
+var al = "";
+var crear = function(tf){
   closeNav();
   $('#content').load('tablaDeVerdad.html');
   if($('#var4').is(':checked')){
-    console.log('cuatro');
-     $('td:nth-child(2),th:nth-child(2)').hide();
+      vars='<th scope="col">D</th>'
+      al='<td><div '+tf+'>0</div></td>'
+      console.log('cuatro');
   }
   if($('#var5').is(':checked')){
-    $('td:nth-child(3),th:nth-child(3)').hide();
+    vars='<th scope="col">D</th><th scope="col">E</th>'
+    al='<td><div '+tf+'>0</div></td><td><div '+tf+'>0</div></td>'
+    console.log('cinco');
   }
-
+      $("#tablaVerdad").append('<thead>'+
+      '<tr>'+
+        '<th scope="col">A</th>'+
+        '<th scope="col">B</th>'+
+        '<th scope="col">C</th>'+
+        vars+
+        '<th scope="col">F</th>'+
+      '</tr>'+
+      '</thead>'+
+      '<tbody>'+
+      '<tr>'+
+        '<th scope="row"><div '+tf+'>0</div></th>'+
+        '<td><div '+tf+'>0</div></td>'+
+        '<td><div '+tf+'>0</div</td>'+
+        al+
+        '<td><div '+tf+'>0</div></td>'+
+      '</tr>'+
+      '<tr>'+
+        '<th scope="row"><div '+tf+'>0</div></th>'+
+        '<td><div '+tf+'>0</div></td>'+
+        '<td><div '+tf+'>0</div></td>'+
+        al+
+        '<td><div '+tf+'>0</div></td></tr>'+
+      '<tr>'+
+        '<th scope="row"><div '+tf+'>0</div></th>'+
+        '<td><div '+tf+'>0</div></td>'+
+        '<td><div '+tf+'>0</div></td>'+
+        al+
+        '<td><div '+tf+'>0</div></td>'+
+      '</tr>'+
+      '</tbody>');
 };
