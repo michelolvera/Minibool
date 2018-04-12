@@ -18,7 +18,7 @@
             <div id="mySidenav" class="sidenav">
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
               <a id="btnTitulo" href="#">Simplificación Booleana</a>
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"></a>
                 <a id="btnEjercicios" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Ejercicios</a>
                 <ul class="collapse " id="homeSubmenu">
                   <li>
@@ -29,8 +29,23 @@
                   </li>
                 </ul>
                 <a id="btnRanking" href="#">Clasificación</a>
-                <a id="btnEstadistica" href="#">Estadísticas</a>
-                <a id="btnAdministracion" href="#">Administración</a>
+
+                  <a id="btnAdmin" href="#adminSubmenu" data-toggle="collapse" aria-expanded="false">Administración</a>
+                  <ul class="collapse " id="adminSubmenu">
+                    <li>
+                    <a id="btnpond"  data-toggle="collapse" href="#">Ponderación</a>
+                  </li>
+                  <li>
+                    <a id="btnNotificaciones"  data-toggle="collapse" href="#">Notificaciones</a>
+                  </li>
+                  <li>
+                    <a id="btnUsuarios" data-toggle="collapse"  href="#">Usuarios</a>
+                  </li>
+                  <li>
+                    <a id="btnEstadistica" href="#">Estadistica</a>
+                  </li>
+                  </ul>
+
             </div>
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
           </div>
@@ -43,6 +58,21 @@
 
       </ul>
       <ul class="navbar-nav ml-auto ">
+        <li class="nav-item dropdown ml-auto ">
+          <a id="textoNotificaciones" class="nav-link btn-lg dropdown-toggle ml-auto" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Notificaciones</a>
+            <div class="dropdown-menu">
+              <div class="alert alert-success" role="alert">
+                Notificacion
+              </div>
+              <div class="alert alert-danger" role="alert">
+                Notificacion
+              </div>
+              <div class="alert alert-warning" role="alert">
+                Notificacion
+              </div>
+            </div>
+        </li>
         <li class="nav-item dropdown ml-auto ">
           <a id="textoUsuario" class="nav-link btn-lg dropdown-toggle ml-auto" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Usuario</a>
@@ -60,14 +90,23 @@
 
     <img id="logoITM" src="../imagenes/Itmorelia.png" class="rounded float-left">
     <img id="logoTecN" src="../imagenes/Logo-TecNM.png" class="rounded float-right">
-
+    <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a id="tabtablaVerdad" data-toggle="tab" class="nav-link disabled" href="#">Tabla de verdad</a>
+    </li>
+    <li class="nav-item">
+      <a id="tabMapakarnaugh" data-toggle="tab" class="nav-link disabled" href="#">Mapa de Karnaugh</a>
+    </li>
+    <li class="nav-item">
+      <a id="tabCircuito" data-toggle="tab" class="nav-link disabled" href="#">Circuito lógico</a>
+    </li>
+  </ul>
   </div>
-  <div class="container" id="content">
-  <div class="text-center">
-    <img src="../imagenes/bienvenidos.png" id="bienvenidos" class="rounded">
+  <div id="content">
+  <div id="bienvenidos" class="text-center">
+    <img src="../imagenes/bienvenidos.png"  class="rounded" alt="Responsive image">
   </div>
 </div>
-
 
 
   <script src="../js/jquery.js"></script>
@@ -112,7 +151,7 @@
       </div>
       <div class="modal-footer">
         <button id="btnCerrarAleatorio" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button id="btnIniciarAleatorio" onclick="crear()" type="btnIniciar" class="btn btn-primary">Iniciar</button>
+        <button id="btnIniciarAleatorio" onClick="crear()" type="btnIniciar" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
       </div>
     </div>
   </div>
@@ -143,13 +182,13 @@
         <h5 id="datosTitulo">Datos en:</h5>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
-            <input type="radio" name="options" id="botonporFuncion" autocomplete="off" checked onclick="mFuncion"><span id="spanFun">Función</span>
+            <input type="radio" name="options" id="botonporFuncion" autocomplete="off" checked onclick="mFuncion()"><span id="spanFun">Función</span>
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="options" id="botonporTabladeVerdad" autocomplete="off" onclick="oFuncion"><span id="spanTablaVerdad">Tabla de verdad</span>
+            <input type="radio" name="options" id="botonporTabladeVerdad" autocomplete="off" onclick="oFuncion()"><span id="spanTablaVerdad">Tabla de verdad</span>
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="options" id="botonporMapaK" autocomplete="off" onclick="oFuncion"><span id="spanMapaK">Mapa de Karnaugh</span>
+            <input type="radio" name="options" id="botonporMapaK" autocomplete="off" onclick="oFuncion()"><span id="spanMapaK">Mapa de Karnaugh</span>
           </label>
         </div>
         <p> </p>
