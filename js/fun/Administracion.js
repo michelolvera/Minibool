@@ -36,7 +36,7 @@ function llenar_tabla(nombre, apellidoPat, apellidoMat) {
         $("#tabla").empty();
         $("#tabla").append(tabla);
         jsonObject.forEach(row => {
-          $("#tabla").append("<tr><td>"+row["nombre"]+"</td><td>"+row["apellido_paterno"]+"</td><td>"+row["apellido_materno"]+"</td><td><div class='btn-toolbar'><div class='btn-group'><button class='btn btn-default verde' data-toggle='modal'>Detalles</button><button href='#confirmacion' class='btn btn-default btn-danger' onclick='seleccion("+row["id_usuario"]+", \"eliminar\");' data-toggle='modal'>Eliminar</button></div></div></td></tr>");
+          $("#tabla").append("<tr><td>"+row["nombre"]+"</td><td>"+row["apellido_paterno"]+"</td><td>"+row["apellido_materno"]+"</td><td><div class='btn-toolbar'><div class='btn-group'><button href='#detalles' class='btn btn-default verde' data-toggle='modal'>Detalles</button><button href='#confirmacion' class='btn btn-default btn-danger' onclick='seleccion("+row["id_usuario"]+", \"eliminar\");' data-toggle='modal'>Eliminar</button></div></div></td></tr>");
         });
       })
       .fail(function () {
@@ -54,8 +54,10 @@ function realizar_accion(){
     })
     .done(function (respuesta) {
       if(respuesta == 1){
+        console.log("si");
         alert(JsonIdioma["EliminadoExistoso"]);
       }else{
+        console.log("no");
         alert(JsonIdioma["EliminadoFallido"]);
       }
     })
@@ -74,4 +76,7 @@ function seleccion(usuario, accion){
   idUsuarioEliminar=usuario;
   queAccion=accion;
   console.log("selecionados "+ idUsuarioEliminar +" "+ queAccion);
+}
+function guardar_detalles(){
+  $("#btn_cerrar_detalles").click();
 }
