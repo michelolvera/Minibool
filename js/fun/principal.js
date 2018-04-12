@@ -52,6 +52,10 @@ function CargarTextosPagina() {
     $("#spaninputFuncion").text(JsonIdioma["Funcion"]+":");
     $("#btnCerrarConocido").text(JsonIdioma["Cancelar"]);
     $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
+    $("#labelResolverpor").text(JsonIdioma["ResolverPor"]+":");
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
 }
 
 function CerrarSesion() {
