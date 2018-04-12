@@ -19,32 +19,32 @@
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
               <a id="btnTitulo" href="#">Simplificación Booleana</a>
               <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"></a>
-                <a id="btnEjercicios" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Ejercicios</a>
-                <ul class="collapse " id="homeSubmenu">
-                  <li>
-                    <a id="btnAelatorio" data-toggle="modal" data-target="#aleatorioModal" href="#">Aleatorio</a>
-                  </li>
-                  <li>
-                    <a id="btnConocido" data-toggle="modal" data-target="#conocidoModal" href="#">Conocido</a>
-                  </li>
-                </ul>
-                <a id="btnRanking" href="#">Clasificación</a>
+              <a id="btnEjercicios" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Ejercicios</a>
+              <ul class="collapse " id="homeSubmenu">
+                <li>
+                  <a id="btnAelatorio" data-toggle="modal" data-target="#aleatorioModal" href="#">Aleatorio</a>
+                </li>
+                <li>
+                  <a id="btnConocido" data-toggle="modal" data-target="#conocidoModal" href="#">Conocido</a>
+                </li>
+              </ul>
+              <a id="btnRanking" href="#">Clasificación</a>
 
-                  <a id="btnAdmin" href="#adminSubmenu" data-toggle="collapse" aria-expanded="false">Administración</a>
-                  <ul class="collapse " id="adminSubmenu">
-                    <li>
-                    <a id="btnpond"  data-toggle="collapse" href="../admin/ponderacion/index.html">Ponderación</a>
-                  </li>
-                  <li>
-                    <a id="btnNotificaciones"  data-toggle="collapse" href="../admin/notificaciones/index.html">Notificaciones</a>
-                  </li>
-                  <li>
-                    <a id="btnUsuarios" data-toggle="collapse"  href="../admin/usuarios/index.html">Usuarios</a>
-                  </li>
-                  <li>
-                    <a id="btnEstadistica" href="../admin/estadisticas/index.html">Estadistica</a>
-                  </li>
-                  </ul>
+              <a id="btnAdmin" href="#adminSubmenu" data-toggle="collapse" aria-expanded="false">Administración</a>
+              <ul class="collapse " id="adminSubmenu">
+                <li>
+                  <a id="btnpond" href="../admin/ponderacion/">Ponderación</a>
+                </li>
+                <li>
+                  <a id="btnNotificaciones" href="../admin/notificaciones/">Notificaciones</a>
+                </li>
+                <li>
+                  <a id="btnUsuarios" href="../admin/usuarios/">Usuarios</a>
+                </li>
+                <li>
+                  <a id="btnEstadistica" href="../admin/estadisticas/">Estadistica</a>
+                </li>
+              </ul>
 
             </div>
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
@@ -61,17 +61,17 @@
         <li class="nav-item dropdown ml-auto ">
           <a id="textoNotificaciones" class="nav-link btn-lg dropdown-toggle ml-auto" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Notificaciones</a>
-            <div class="dropdown-menu">
-              <div class="alert alert-success" role="alert">
-                Notificacion
-              </div>
-              <div class="alert alert-danger" role="alert">
-                Notificacion
-              </div>
-              <div class="alert alert-warning" role="alert">
-                Notificacion
-              </div>
+          <div class="dropdown-menu">
+            <div class="alert alert-success" role="alert">
+              Notificacion
             </div>
+            <div class="alert alert-danger" role="alert">
+              Notificacion
+            </div>
+            <div class="alert alert-warning" role="alert">
+              Notificacion
+            </div>
+          </div>
         </li>
         <li class="nav-item dropdown ml-auto ">
           <a id="textoUsuario" class="nav-link btn-lg dropdown-toggle ml-auto" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -93,17 +93,17 @@
 
   </div>
   <div id="content">
-  <div id="bienvenidos" class="text-center">
-    <img src="../imagenes/bienvenidos.png"  class="rounded" alt="Responsive image">
-  </div>
-</div>
-<div class="container">
-    <div class="table-responsive">
-        <table id="tablaVerdad" class="table table-striped table-bordered table-hover">
-
-        </table>
+    <div id="bienvenidos" class="text-center">
+      <img src="../imagenes/bienvenidos.png" class="rounded" alt="Responsive image">
     </div>
-</div>
+  </div>
+  <div class="container">
+    <div class="table-responsive">
+      <table id="tablaVerdad" class="table table-striped table-bordered table-hover">
+
+      </table>
+    </div>
+  </div>
 
 
   <script src="../js/jquery.js"></script>
@@ -139,10 +139,12 @@
         <h5 id="labelResolverpor">Resolver por:</h5>
         <div id="options" class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
-            <input type="radio" name="options" id="inputporSumadeP" autocomplete="off" checked><span id="spanSumadeP">Suma de productos</span>
+            <input type="radio" name="options" id="inputporSumadeP" autocomplete="off" checked>
+            <span id="spanSumadeP">Suma de productos</span>
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="options" id="inputporProddeS" autocomplete="off"><span id="spanProddeS">Productos de suma</span>
+            <input type="radio" name="options" id="inputporProddeS" autocomplete="off">
+            <span id="spanProddeS">Productos de suma</span>
           </label>
         </div>
       </div>
@@ -178,9 +180,9 @@
         </div>
         <h5 id="datosTitulo">Datos en:</h5>
         <div class="btn-group btn-group-md">
-            <button id="botonporFuncion" onClick="func()" class="btn btn-primary active">Función</button>
-            <button id="botonporTabladeVerdad" onClick="tabla()" class="btn btn-primary">Tabla de verdad</button>
-            <button id="botonporMapaK" onClick="mapak()" class="btn btn-primary">Mapa de Karnaugh</button>
+          <button id="botonporFuncion" onClick="func()" class="btn btn-primary active">Función</button>
+          <button id="botonporTabladeVerdad" onClick="tabla()" class="btn btn-primary">Tabla de verdad</button>
+          <button id="botonporMapaK" onClick="mapak()" class="btn btn-primary">Mapa de Karnaugh</button>
         </div>
         <p> </p>
         <div id="inpFuncion" class="input-group mb-3">
