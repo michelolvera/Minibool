@@ -25,7 +25,36 @@ function ValidarCookie() {
 function CargarTextosPagina() {
     $("#textoUsuario").text(JsonIdioma["Usuario"] + ": " + getCookie("user"));
     $("#btnTitulo").text(JsonIdioma["SimplificacionBolenana"]);
+    $("#btnEjercicios").text(JsonIdioma["Ejercicios"]);
+    $("#btnAelatorio").text(JsonIdioma["Aelatorio"]);
+    $("#btnConocido").text(JsonIdioma["Conocido"]);
+    $("#btnRanking").text(JsonIdioma["Clasificacion"]);
+    $("#btnEstadistica").text(JsonIdioma["Estadisticas"]);
+    $("#btnAdministracion").text(JsonIdioma["Administración"]);
     $("#btnTituloSB").text(JsonIdioma["SimplificacionBolenana"]);
+    $("#btnConfigurarCuenta").text(JsonIdioma["ConfigurarCuenta"]);
+    $("#btnMisResultados").text(JsonIdioma["MisResultados"]);
+    $("#btnCerrarSesion").text(JsonIdioma["CerrarSesion"]);
+    $("#labelTituloModal1").text(JsonIdioma["ModoAleatorio"]);
+    $("#labelVariablesAleatorio").text(JsonIdioma["Variables"]+":");
+    $("#Resolverpor").text(JsonIdioma["ResolverPor"]+":");
+    $("#spanSumadeP").text(JsonIdioma["SumaProductos"]);
+    $("#spanProddeS").text(JsonIdioma["ProductosSuma"]);
+    $("#btnCerrarAleatorio").text(JsonIdioma["Cancelar"]);
+    $("#btnIniciarAleatorio").text(JsonIdioma["Iniciar"]);
+    $("#labelTituloModal2").text(JsonIdioma["ModoConocido"]);
+    $("#labelVariablesConocido").text(JsonIdioma["Variables"]+":");
+    $("#datosTitulo").text(JsonIdioma["DatosEn"]+":");
+    $("#spanFun").text(JsonIdioma["Funcion"]);
+    $("#spanTablaVerdad").text(JsonIdioma["TablaVerdad"]);
+    $("#spanMapaK").text(JsonIdioma["MapaKarnaugh"]);
+    $("#spaninputFuncion").text(JsonIdioma["Funcion"]+":");
+    $("#btnCerrarConocido").text(JsonIdioma["Cancelar"]);
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
+    $("#labelResolverpor").text(JsonIdioma["ResolverPor"]+":");
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
 }
 
 function CerrarSesion() {
