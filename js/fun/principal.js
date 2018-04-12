@@ -32,7 +32,6 @@ function CargarTextosPagina() {
     $("#btnEstadistica").text(JsonIdioma["Estadisticas"]);
     $("#btnAdministracion").text(JsonIdioma["Administración"]);
     $("#btnTituloSB").text(JsonIdioma["SimplificacionBolenana"]);
-    $("#textoUsuario").text(JsonIdioma["Usuario"]);
     $("#btnConfigurarCuenta").text(JsonIdioma["ConfigurarCuenta"]);
     $("#btnMisResultados").text(JsonIdioma["MisResultados"]);
     $("#btnCerrarSesion").text(JsonIdioma["CerrarSesion"]);
@@ -51,6 +50,10 @@ function CargarTextosPagina() {
     $("#spanMapaK").text(JsonIdioma["MapaKarnaugh"]);
     $("#spaninputFuncion").text(JsonIdioma["Funcion"]+":");
     $("#btnCerrarConocido").text(JsonIdioma["Cancelar"]);
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
+    $("#labelResolverpor").text(JsonIdioma["ResolverPor"]+":");
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
+    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
     $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
 }
 
