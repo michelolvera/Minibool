@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shirink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Administración</title>
+</head>
+<body>
+    <header>
+        <div class="container-fluid" >
+            <h1>Simplificación Booleana</h1>
+        </div>
+    </header>
+    <div class="container">
+        <br>
+        <h2 id="text_ponderacion" class="h2 mb-3 font-weight-normal">Ponderación de problemas</h2>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-lg-3">
+                <label id="lb_ejercicio" for="lb_tres_variables"><h3>Ejercicio</h3></label>
+            </div>
+            <div class="col-lg-3">
+                <label id="lb_Aleatorio" for="in_tres_aleatorio"><h3>Aleatorio</h3></label>
+            </div>
+            <div class="col-lg-3">
+                <label id="lb_Deterministico" for="in_tres_deterministico"><h3>Determinístico</h3></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <label id="lb_tres_variables" for="in_tres_aleatorio"><h4>Tres variables</h4></label>
+            </div>
+            <div class="col-lg-3">
+                <input id="in_tres_aleatorio" type="number" class="form-control">
+            </div>
+            <div class="col-lg-3">
+                <input id="in_tres_deterministico" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <label id="lb_cuatro_variables" for="in_cuatro_aleatorio"><h4>Cuatro variables</h4></label>
+            </div>
+            <div class="col-lg-3">
+                <input id="in_cuatro_aleatorio" type="number" class="form-control">
+            </div>
+            <div class="col-lg-3">
+                <input id="in_cuatro_deterministico" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-3">
+                    <label id="lb_cinco_variables" for="in_cinco_aleatorio"><h4>Cinco variables</h4></label>
+                </div>
+                <div class="col-lg-3">
+                    <input id="in_cinco_aleatorio" type="number" class="form-control">
+                </div>
+                <div class="col-lg-3">
+                    <input id="in_cinco_deterministico" type="number" class="form-control">
+                </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-3">
+                <button id="btn_guardar" class="btn btn-lg verde">Guardar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
