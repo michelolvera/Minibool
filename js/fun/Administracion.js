@@ -1,5 +1,5 @@
-var phpPath = "php/Selector.php";
-var langPath = "json/string.json";
+var phpPath = "../../php/Selector.php";
+var langPath = "../../json/string.json";
 var idUsuarioEliminar=0;
 var queAccion="";
 var tabla='<tr>'+
@@ -28,7 +28,7 @@ function CargarTextosPagina(){
 function llenar_tabla(nombre, apellidoPat, apellidoMat) {
     $.ajax({
         method: "post",
-        url: "php/Selector.php",
+        url: phpPath,
         data: {funcion:"consultaUsuarios", likeNombre:nombre, likeApellidoPat:apellidoPat, likeApellidoMat:apellidoMat},
         dataType: "json"
       })
@@ -49,7 +49,7 @@ function realizar_accion(){
     case 'eliminar':
     $.ajax({
       method: "post",
-      url: "php/Selector.php",
+      url: phpPath,
       data: {funcion:"eliminarUsuario", idUsuario:idUsuarioEliminar, userName:getCookie("user"), userPass:getCookie("pass")},
     })
     .done(function (respuesta) {
