@@ -8,42 +8,51 @@ function CargarFunciones() {
     var apellidoMaterno = $("#in_apellido_mat").val();
     var correo = $("#in_correo").val();
     var contraseña = $("#in_contrasenia").val();
+    var correoConfirmar = $("#in_confirmar_correo").val();
+    var contraseñaConfirmar = $("#in_confirmar_contrasenia").val();
     var pais = $("#combo_pais").val();
     var estudiante = $('[name=in_estudia_si]:checked').val();
     var escuela = $("#in_escuela").val();
     var carrera = $("#in_carrera").val();
     var semestre = $("#in_semestre").val();
 
-    $.ajax({
-      method: "POST",
-      url: "../php/Selector.php",
-      data: {
-        funcion: "nuevoUsuario",
-        nombreUsuario: usuario,
-        nombreReal: nombre,
-        apellidoP: apellidoPaterno,
-        apellidoM: apellidoMaterno,
-        correoElectronico: correo,
-        passUsuario: contraseña,
-        codigoPais: pais,
-        esEstudiante: estudiante,
-        nombreEscuela: escuela,
-        nombreCarrera: carrera,
-        numSemestre: semestre
-      }
-    })
-    .done(function (msg) {
-      if (msg == 1) {
-        alert(JsonIdioma["registroExitoso"]);
-        location.href = "../";
-      }
-      else if(msg == 2){
-        alert(JsonIdioma["registroExiste"]);
-      }
-      else {
-        alert(JsonIdioma["registroFallido"]);
-      }
-    });
+    if (correo == correoConfirmar){
+      if (contraseña == contraseñaConfirmar){
+        $.ajax({
+          method: "POST",
+          url: "../php/Selector.php",
+          data: {
+            funcion: "nuevoUsuario",
+            nombreUsuario: usuario,
+            nombreReal: nombre,
+            apellidoP: apellidoPaterno,
+            apellidoM: apellidoMaterno,
+            correoElectronico: correo,
+            passUsuario: contraseña,
+            codigoPais: pais,
+            esEstudiante: estudiante,
+            nombreEscuela: escuela,
+            nombreCarrera: carrera,
+            numSemestre: semestre
+          }
+        })
+        .done(function (msg) {
+          if (msg == 1) {
+            alert(JsonIdioma["registroExitoso"]);
+            location.href = "../";
+          }
+          else if(msg == 2){
+            alert(JsonIdioma["registroExiste"]);
+          }
+          else {
+            alert(JsonIdioma["registroFallido"]);
+          }
+        });
+      }else
+        alert(JsonIdioma["PassError"]);
+    }else
+      alert(JsonIdioma["CorreoError"]);
+
   });
 
   $("input[type=radio][name=in_estudia_si]").change(function (event){

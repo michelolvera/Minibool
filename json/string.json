@@ -61,7 +61,10 @@
     "TablaVerdad": "Tabla de verdad",
     "MapaKarnaugh": "Mapa de Karnaugh",
     "EliminadoExitoso": "El usuario seleccionado ha sido eliminado",
-    "EliminadoFallido": "Se produjo un error al eliminar el usuario"
+    "EliminadoFallido": "Se produjo un error al eliminar el usuario",
+    "PassError":"Las contraseñas no coinciden",
+    "CorreoError":"Los conrreos no coinciden",
+    "Notificacion":"Notificaciones"
   },
   "en-US": {
     "nombreIdioma": "English - United States",
@@ -125,7 +128,10 @@
     "TablaVerdad": "True table",
     "MapaKarnaugh": "Karnaugh map",
     "EliminadoExitoso": "The selected user has been removed",
-    "EliminadoFallido": "An error occurred while deleting the user."
+    "EliminadoFallido": "An error occurred while deleting the user.",
+    "PassError":"Passwords do not match",
+    "CorreoError":"The emails do not match",
+    "Notificacion":"Notifications"
   },
   "fr-FR": {
     "nombreIdioma": "Française - France",
@@ -189,6 +195,9 @@
     "TablaVerdad": "Table de vérité",
     "MapaKarnaugh": "Table de Karnaugh",
     "EliminadoExitoso": "L'utilisateur sélectionné a été supprimé",
-    "EliminadoFallido": "Une erreur est survenue lors de la suppression de l'utilisateur"
+    "EliminadoFallido": "Une erreur est survenue lors de la suppression de l'utilisateur",
+    "PassError":"Les mots de passe ne correspondent pas",
+    "CorreoError":"Les e-mails ne correspondent pas",
+    "Notificacion":"Notifications"
   }
 }
