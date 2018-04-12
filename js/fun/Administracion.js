@@ -55,7 +55,7 @@ function realizar_accion(){
     .done(function (respuesta) {
       if(respuesta == 1){
         console.log("si");
-        alert(JsonIdioma["EliminadoExistoso"]);
+        alert(JsonIdioma["EliminadoExitoso"]);
       }else{
         console.log("no");
         alert(JsonIdioma["EliminadoFallido"]);
