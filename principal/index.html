@@ -22,10 +22,10 @@
                 <a id="btnEjercicios" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Ejercicios</a>
                 <ul class="collapse " id="homeSubmenu">
                   <li>
-                    <a data-toggle="modal" data-target="#aleatorioModal" href="#ventanaA">Aleatorio</a>
+                    <a id="btnAelatorio" data-toggle="modal" data-target="#aleatorioModal" href="#ventanaA">Aleatorio</a>
                   </li>
                   <li>
-                    <a data-toggle="modal" data-target="#conocidoModal" href="#">Conocido</a>
+                    <a id="btnConocido" data-toggle="modal" data-target="#conocidoModal" href="#">Conocido</a>
                   </li>
                 </ul>
                 <a id="btnRanking" href="#">Clasificación</a>
@@ -88,7 +88,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <h5 id="labelVariables">Variables:</h5>
+        <h5 id="labelVariablesAleatorio">Variables:</h5>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
             <input type="radio" name="options" id="var3" autocomplete="off" checked>3
@@ -103,16 +103,16 @@
         <h5 id="labelResolverpor">Resolver por:</h5>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
-            <input type="radio" name="options" id="inputporSumadeP" autocomplete="off" checked>Suma de productos
+            <input type="radio" name="options" id="inputporSumadeP" autocomplete="off" checked><span id="spanSumadeP">Suma de productos</span>
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="options" id="inputporProddeS" autocomplete="off">Productos de suma
+            <input type="radio" name="options" id="inputporProddeS" autocomplete="off"><span id="spanProddeS">Productos de suma</span>
           </label>
         </div>
       </div>
       <div class="modal-footer">
-        <button id="btnCerrar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button onclick="crear()" type="btnIniciar" class="btn btn-primary">Iniciar</button>
+        <button id="btnCerrarAleatorio" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button id="btnIniciarAleatorio" onclick="crear()" type="btnIniciar" class="btn btn-primary">Iniciar</button>
       </div>
     </div>
   </div>
@@ -128,7 +128,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <h5 id="labelVariables">Variables:</h5>
+        <h5 id="labelVariablesConocido">Variables:</h5>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
             <input type="radio" name="options" id="var3" autocomplete="off" checked>3
@@ -140,16 +140,16 @@
             <input type="radio" name="options" id="var5" autocomplete="off">5
           </label>
         </div>
-        <h5>Datos en:</h5>
+        <h5 id="datosTitulo">Datos en:</h5>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
-            <input type="radio" name="options" id="botonporFuncion" autocomplete="off" checked onclick="mFuncion">Función
+            <input type="radio" name="options" id="botonporFuncion" autocomplete="off" checked onclick="mFuncion"><span id="spanFun">Función</span>
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="options" id="botonporTabladeVerdad" autocomplete="off" onclick="oFuncion">Tabla de verdad
+            <input type="radio" name="options" id="botonporTabladeVerdad" autocomplete="off" onclick="oFuncion"><span id="spanTablaVerdad">Tabla de verdad</span>
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="options" id="botonporMapaK" autocomplete="off" onclick="oFuncion">Mapa de Karnaugh
+            <input type="radio" name="options" id="botonporMapaK" autocomplete="off" onclick="oFuncion"><span id="spanMapaK">Mapa de Karnaugh</span>
           </label>
         </div>
         <p> </p>
@@ -161,8 +161,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button id="btnCerrar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button id="btnIniciar" type="button" class="btn btn-primary">Iniciar</button>
+        <button id="btnCerrarConocido" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button id="btnIniciarConocido" type="button" class="btn btn-primary">Iniciar</button>
       </div>
     </div>
 
