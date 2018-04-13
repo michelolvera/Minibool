@@ -50,16 +50,13 @@ function CargarTextosPagina() {
     $("#labelTituloModal2").text(JsonIdioma["ModoConocido"]);
     $("#labelVariablesConocido").text(JsonIdioma["Variables"]+":");
     $("#datosTitulo").text(JsonIdioma["DatosEn"]+":");
-    $("#spanFun").text(JsonIdioma["Funcion"]);
-    $("#spanTablaVerdad").text(JsonIdioma["TablaVerdad"]);
-    $("#spanMapaK").text(JsonIdioma["MapaKarnaugh"]);
+    $("#botonporFuncion").text(JsonIdioma["Funcion"]);
+    $("#botonporTabladeVerdad").text(JsonIdioma["TablaVerdad"]);
+    $("#botonporMapaK").text(JsonIdioma["MapaKarnaugh"]);
     $("#spaninputFuncion").text(JsonIdioma["Funcion"]+":");
     $("#btnCerrarConocido").text(JsonIdioma["Cancelar"]);
     $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
     $("#labelResolverpor").text(JsonIdioma["ResolverPor"]+":");
-    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
-    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
-    $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
 }
 
 function CerrarSesion() {

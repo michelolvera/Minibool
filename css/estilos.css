@@ -1,8 +1,7 @@
-header{
-  background:#009688;
-  color:#fff;
+.cabecera{
   padding: 15px;
 }
+
 .verde{
   background:#009688;
   color:#fff;
@@ -11,6 +10,10 @@ header{
   background:#009688;
   color:#fff;
   margin-left: 1em
+}
+
+.margen_despues_nav{
+  margin-top: 4rem;
 }
 
 .form-signin {
