@@ -12,7 +12,7 @@
 <body>
     <header class="">
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand btn" href="#">Simplificación booleana</a>
+            <a id="btnTitulo" class="navbar-brand btn" href="#">Simplificación Booleana</a>
             <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#barra_navegacion" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -20,19 +20,19 @@
             <div class="collapse navbar-collapse" id="barra_navegacion">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                        <a id="btn_dd_ejercicios" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ejercicios</a>
-                        <div class="dropdown-menu" aria-labelledby="btn_dd_ejercicios">
-                            <a id="btn_ej_aleatorio" class="dropdown-item" href="#">Aleatorio</a>
-                            <a id="btn_ej_deterministico" class="dropdown-item" href="#">Determinístico</a>
+                        <a id="btnEjercicios" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ejercicios</a>
+                        <div class="dropdown-menu" aria-labelledby="btnEjercicios">
+                            <a id="btnAelatorio" class="dropdown-item" data-toggle="modal" data-target="#aleatorioModal" href="#">Aleatorio</a>
+                            <a id="btnConocido" class="dropdown-item" data-toggle="modal" data-target="#conocidoModal" href="#">Determinístico</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Clasificación</a>
+                        <a class="nav-link" id="btnRanking" href="#">Clasificación</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a id="btn_dd_administracion" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        <a id="btnAdmin" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Administracion</a>
-                        <div class="dropdown-menu" aria-labelledby="btn_dd_administracion">
+                        <div class="dropdown-menu" aria-labelledby="btnAdmin">
                             <a id="btn_adm_ponderacion" class="dropdown-item" href="#">Ponderación</a>
                             <a id="btn_adm_notificaciones" class="dropdown-item" href="#">Notificaciones</a>
                             <a id="btn_adm_usuarios" class="dropdown-item" href="#">Usuarios</a>
@@ -45,11 +45,11 @@
                         <a id="btn_dd_usuario_actual" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Usuario:</a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btn_dd_usuario_actual">
-                            <a id="btn_adm_ponderacion" class="dropdown-item" href="#">Configurar cuenta</a>
-                            <a id="btn_adm_notificaciones" class="dropdown-item" href="#">Mis resultados</a>
+                            <a id="btn_usuario_cuenta" class="dropdown-item" href="#">Configurar cuenta</a>
+                            <a id="btn_usuario_resultados" class="dropdown-item" href="#">Mis resultados</a>
                             <div class="dropdown-divider" ></div>
                             <div class="container">
-                                <a id="btn_adm_usuarios" class="btn btn-outline-danger" style="width: 100%;" href="#">Cerrar sesión</a>
+                                <a id="btn_usuario_cerrar" class="btn btn-outline-danger" style="width: 100%;" href="#">Cerrar sesión</a>
                             </div>
                         </div>
                     </li>
@@ -58,10 +58,154 @@
         </nav>
     </header>
 
+    <section id="principal" class="container">
+        <p>
+            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, temporibus atque assumenda fuga, porro at iure voluptatem laborum accusamus voluptates blanditiis eius! Tempora dolorem omnis, fugit possimus reiciendis est similique.</span>
+            <span>Sapiente consectetur, recusandae asperiores rem omnis eaque doloribus cum, doloremque corporis esse molestiae, incidunt maiores quas ea ad eum a reiciendis ex perspiciatis voluptate fugit magnam illo nesciunt. Corrupti, at.</span>
+            <span>Dolorem quos molestias voluptatem ullam cumque ex iste, voluptatibus odit totam nulla nisi velit tempora est. Voluptatem, qui quam sapiente totam ratione libero exercitationem accusamus cumque nemo odit voluptatum incidunt!</span>
+            <span>Sapiente numquam pariatur impedit eligendi aliquid cumque, voluptatem quo rerum perferendis corporis porro iste, exercitationem at autem ut? Sunt veritatis voluptate nisi placeat odit aspernatur officiis eos quam temporibus nihil!</span>
+            <span>Iure dicta enim laborum distinctio nesciunt quo earum. Rerum suscipit neque nulla, ad eveniet officiis quia atque vitae, veritatis quasi molestias aspernatur vero eum? Alias ullam velit eum quae atque.</span>
+            <span>Facilis laborum sunt ipsum. Saepe exercitationem, laudantium doloremque consectetur eaque distinctio fugiat sunt dicta, accusamus animi illo ipsam, sit a itaque reiciendis aspernatur earum laborum aperiam. Harum sit nihil eligendi.</span>
+            <span>Fugiat eos expedita nostrum, repudiandae assumenda amet mollitia! Saepe rerum nulla doloremque pariatur, exercitationem hic soluta rem totam minima illo tempore quam quas perferendis delectus illum cum vero. Ea, rerum.</span>
+            <span>Eligendi architecto vel id voluptatum animi, repellat inventore doloremque? Neque laborum repellat laboriosam consequatur animi. Aspernatur, exercitationem quidem sapiente doloremque excepturi nemo, ipsum voluptatum ab eum odio distinctio asperiores fuga.</span>
+            <span>Reiciendis rerum ut impedit dolore? Consequatur at sapiente accusamus aspernatur saepe voluptatem laboriosam vel praesentium tempora necessitatibus et porro vitae autem ipsum magnam quia exercitationem excepturi, numquam dignissimos fugiat voluptas?</span>
+            <span>Nobis fuga eveniet qui, saepe inventore sit neque cum voluptatem mollitia atque, molestias perferendis officiis similique obcaecati nam aperiam assumenda! Mollitia est at aut, quidem veritatis magni esse placeat blanditiis.</span>
+            <span>Laborum nisi veniam voluptates. Pariatur fugiat tenetur eum laborum eveniet tempora ducimus id soluta, consequuntur dolorem nobis magni dolores ex aliquid illo ipsa, corporis et quod consectetur eos iusto! Labore.</span>
+            <span>Odit ab quia consectetur praesentium omnis debitis labore tempore facere. Ratione officiis saepe deserunt fuga porro architecto similique at. Temporibus quis architecto ex nesciunt molestiae culpa quod distinctio, id non!</span>
+            <span>Exercitationem, animi sint! Vero minus laboriosam iusto perferendis dicta quo neque nostrum. Rerum adipisci praesentium cumque, veritatis quibusdam esse explicabo. Vero libero ex hic dignissimos aspernatur consequuntur neque iure commodi!</span>
+            <span>Sapiente laborum amet similique in deleniti esse veniam dolores, libero deserunt consectetur recusandae totam sunt tenetur, voluptates, autem cum fugit? Modi, beatae veniam maiores sit non enim animi molestias explicabo.</span>
+            <span>Ipsum voluptas similique quaerat velit, nobis veniam pariatur provident, rerum amet quasi, commodi dolores eaque voluptatem. Quaerat voluptatem velit consequuntur aliquid ratione at maxime rem necessitatibus cupiditate? Optio, ducimus. Optio.</span>
+            <span>Magnam et minima ipsum ab omnis neque cumque. Voluptate dolor nihil, quam rerum, velit fugit aperiam tempora distinctio aliquam explicabo, aliquid dolorum. Labore dolorum, eum aut nulla doloribus ut id?</span>
+            <span>Neque, enim tempora eaque sint itaque eveniet voluptatum dolor non ab delectus cum alias aliquid! Consequatur unde eaque inventore repellat provident nobis consequuntur, modi molestiae corrupti deserunt soluta odio a!</span>
+            <span>Ad dignissimos omnis atque dolorem sunt velit tempore nobis sequi nam dolor accusamus, non voluptatem quae necessitatibus tempora in quidem fuga et. Fugit, iure eaque. Quos labore odio iure magnam!</span>
+            <span>Deserunt expedita at culpa molestias velit eligendi blanditiis placeat nam. Nam voluptates, necessitatibus excepturi magni non doloribus exercitationem saepe aliquam eius nesciunt architecto sint recusandae voluptatum commodi reiciendis maiores corporis!</span>
+            <span>Recusandae qui suscipit inventore expedita consequatur modi beatae id est dignissimos dolorum repellat voluptates hic veritatis natus, quidem nesciunt, corrupti at cumque quam? Consequatur rem, eum quo exercitationem dolores labore.</span>
+            <span>Error nobis quibusdam, fugit asperiores tempora explicabo maxime iusto! Tempora veniam tenetur fugit cupiditate minus est ullam fugiat dolorem quos, saepe, accusamus doloremque, incidunt consectetur aliquid. Voluptas facilis ullam accusamus.</span>
+            <span>Impedit ea quis ratione magnam a rerum cumque voluptas animi soluta nesciunt! Voluptas labore quia pariatur accusantium, ad repellendus animi nisi ducimus, error veniam adipisci inventore explicabo doloribus ea ipsum!</span>
+            <span>Voluptatem amet modi error veniam eveniet vitae voluptatibus quia odit excepturi sequi ea dolorum delectus expedita laudantium consectetur, aspernatur nam repudiandae. Ducimus explicabo, ipsum debitis tenetur quaerat libero nulla dolor?</span>
+            <span>Veritatis, saepe a. Dolore, nesciunt ipsum maxime mollitia repudiandae nostrum porro illum velit eius qui illo dignissimos? Fugit, esse nulla? Dolore eum ab officiis iste enim. Quaerat dolore neque deleniti.</span>
+            <span>Rem laudantium beatae quidem saepe aperiam iusto repudiandae earum doloremque hic officia maxime cupiditate impedit itaque temporibus molestias, deserunt sed consequuntur ratione? Odio perferendis rerum ea. Cupiditate cumque similique sit?</span>
+            <span>Voluptatibus quasi eius ullam nostrum eum quam voluptates temporibus corrupti error, recusandae vitae saepe amet officiis pariatur dolorem et quidem nisi laborum. Amet architecto et eligendi eius aliquam omnis iusto.</span>
+            <span>Ipsum laudantium id dolorem culpa eius odio fuga, eum vitae earum, facilis suscipit nobis quae et debitis. Minus, impedit perspiciatis, odio vitae repellat quidem quisquam recusandae sint ipsa porro fugit!</span>
+            <span>Illum officiis atque nesciunt, a explicabo perferendis. Architecto eaque dolor ad sunt fugit adipisci ipsum tempora tempore. Omnis iusto sapiente aspernatur ullam! Illo facere repellendus obcaecati earum, non laboriosam fugiat.</span>
+            <span>Illum natus sed quibusdam doloremque rerum sapiente inventore. Incidunt accusantium fugiat cumque officiis facilis, optio sapiente ullam animi voluptas neque tempore perferendis quo distinctio esse doloremque architecto totam sit voluptates!</span>
+            <span>Ipsam repudiandae eos, possimus explicabo ullam sed nemo vel eaque, impedit architecto nobis modi! Cupiditate, ea? Provident omnis dicta illum, assumenda accusamus illo voluptate, nihil, perferendis vitae nam quae corrupti.</span>
+            <span>Vero deleniti laborum eius nesciunt aperiam earum mollitia a quos, commodi tempora minus iusto sed alias voluptate ratione in eveniet eaque cum beatae minima. Tempora nobis eum neque sapiente quia.</span>
+            <span>Velit, tempora repellendus! Natus suscipit veritatis, repellendus nisi fugiat omnis neque et id aut nam voluptas. Porro nemo non consectetur suscipit facere iste odio eaque perferendis ad, repellat explicabo dicta.</span>
+            <span>Consectetur ex sapiente magnam architecto mollitia quidem dolorem necessitatibus expedita incidunt earum eaque itaque dolor, et, quas laudantium quae asperiores ab minima totam quia odit vel. Molestias vitae cumque culpa?</span>
+            <span>Quaerat facere fuga quasi sunt, rerum aliquam deserunt pariatur tempora, veniam cupiditate veritatis molestias ad iure quas officia recusandae ea corporis aperiam numquam doloribus ut consequatur. Dolores quis dolore dicta!</span>
+            <span>Aliquid quo quasi fuga. Tenetur consectetur delectus officiis aliquam quis provident, molestias consequuntur? Quasi nisi velit excepturi, fugiat nesciunt voluptates a! Eveniet asperiores et odio aliquid, eos culpa ipsa saepe.</span>
+            <span>Architecto, at porro? Dignissimos consequatur alias beatae, veniam nemo cumque mollitia maxime! Laudantium, repudiandae. Excepturi deserunt doloremque eius quas, dicta iure corrupti nemo eligendi, maxime, ea magnam repellendus ipsam vero.</span>
+            <span>Tenetur itaque maiores rem quisquam maxime, consectetur eveniet consequuntur! Accusamus quaerat blanditiis quasi harum fuga sit rem nemo nisi alias. Ratione neque eum magni nesciunt similique voluptatibus magnam deserunt dicta!</span>
+            <span>Repellat minima doloribus voluptatibus numquam ipsam delectus tempora vero nemo! Dolorem iste velit ab explicabo consequatur laboriosam vel quam aut, tempore repellendus excepturi possimus alias nemo tenetur dolore, vero corporis!</span>
+            <span>Eum, quae aliquam. Rem quia, repellendus earum vitae, in sunt eum cum vero nobis praesentium ex ipsum asperiores voluptatibus, natus officia hic suscipit. Tempore nihil aut similique, culpa impedit delectus?</span>
+            <span>Cupiditate temporibus iure accusantium eum vel eveniet officiis deserunt iusto vero amet non consequuntur vitae quis et reprehenderit magnam, officia nesciunt eligendi voluptatum quam eius neque facere quas pariatur? Debitis!</span>
+            <span>Fugiat fuga porro est earum unde in quasi labore ut numquam possimus quibusdam culpa soluta dicta ad ea ipsa, quia facilis et quos? Asperiores, voluptatibus debitis hic facere deserunt esse.</span>
+            <span>Rerum illo sint quae eius debitis voluptatum ex? Modi minima tempora facilis praesentium pariatur quae accusantium eveniet minus illo iste, obcaecati dolore sint nemo! Dignissimos qui itaque quod ducimus maxime.</span>
+            <span>Alias, quam officiis? Accusantium explicabo architecto nam soluta excepturi facilis pariatur repudiandae quis est, itaque, culpa et dolorum ex laboriosam voluptatem ad officia atque quam! Officiis ab facere cum similique.</span>
+            <span>Obcaecati doloremque voluptatem quasi accusamus commodi eligendi sequi architecto, magni dolores, deleniti reiciendis cumque excepturi! Temporibus omnis ipsum reprehenderit sit delectus repellat, harum voluptatem sunt itaque! Voluptate culpa odio perspiciatis?</span>
+            <span>Aut libero quasi qui? Nam quo, nemo enim, recusandae labore, ratione vitae perferendis alias pariatur accusantium expedita earum delectus consectetur dignissimos tempore. Praesentium fugiat perspiciatis maxime vel facere deserunt eos.</span>
+            <span>Ducimus odio, eaque dolores in laudantium magnam cum quod eligendi, quae tempora animi! Sunt explicabo, id est perspiciatis vero dolorem veritatis ullam modi soluta eligendi inventore error, perferendis fugiat natus?</span>
+            <span>Esse cumque nam odit iure iste ea? Ea exercitationem asperiores ex quam nulla iusto a quae, totam qui ratione odio voluptates libero eos enim aliquam ipsa nesciunt dolor fugiat ut!</span>
+            <span>Molestias saepe quas, non ducimus rem impedit quae doloribus provident totam porro eaque sapiente asperiores! Sequi velit, magnam nesciunt et obcaecati excepturi iste, culpa dolores enim accusamus earum voluptates porro!</span>
+            <span>Porro nemo, earum, hic inventore cumque voluptas iste, sapiente quaerat dolorem quam sunt! Voluptate et dolor enim id aliquid dolorum ratione praesentium alias nulla. Ipsam, soluta? Impedit laboriosam nostrum distinctio!</span>
+            <span>Repudiandae excepturi, adipisci veritatis eos voluptates voluptate reiciendis corrupti? Delectus repudiandae atque excepturi quasi facilis natus quod, modi laboriosam expedita quibusdam, quaerat veniam veritatis reiciendis laudantium aliquid, dignissimos facere quas?</span>
+        </p>
+    </section>
+
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/visual.js"></script>
     <script src="../js/fun/principal.js"></script>
     <script src="../js/fun/fun.js"></script>
 </body>
+
+<!-- Modal de aleatorio-->
+<div class="modal fade" id="aleatorioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="labelTituloModal1">Generación aleatoria de expresión booleana</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5 id="labelVariablesAleatorio">Variables:</h5>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="options" id="var3" autocomplete="off" checked>3
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="var4" autocomplete="off">4
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="var5" autocomplete="off">5
+            </label>
+          </div>
+          <h5 id="labelResolverpor">Resolver por:</h5>
+          <div id="options" class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="options" id="inputporSumadeP" autocomplete="off" checked>
+              <span id="spanSumadeP">Suma de productos</span>
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="inputporProddeS" autocomplete="off">
+              <span id="spanProddeS">Productos de suma</span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="btnCerrarAleatorio" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button id="btnIniciarAleatorio" onClick="crear('')" type="btnIniciar" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de conocido-->
+  <div class="modal fade" id="conocidoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="labelTituloModal2">Simplificación de expresión booleana</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5 id="labelVariablesConocido">Variables:</h5>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="options" id="Cvar3" autocomplete="off" checked>3
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="Cvar4" autocomplete="off">4
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="Cvar5" autocomplete="off">5
+            </label>
+          </div>
+          <h5 id="datosTitulo">Datos en:</h5>
+          <div class="btn-group btn-group-md">
+            <button id="botonporFuncion" onClick="func()" class="btn btn-primary active">Función</button>
+            <button id="botonporTabladeVerdad" onClick="tabla()" class="btn btn-primary">Tabla de verdad</button>
+            <button id="botonporMapaK" onClick="mapak()" class="btn btn-primary">Mapa de Karnaugh</button>
+          </div>
+          <p> </p>
+          <div id="inpFuncion" class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span id="spaninputFuncion" class="input-group-text">Función:</span>
+            </div>
+            <input id="inputFuncion" type="text" class="form-control" aria-label="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="btnCerrarConocido" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button id="btnIniciarConocido" onClick="crear('contenteditable')" type="button" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 
 </html>

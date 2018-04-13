@@ -1,7 +1,7 @@
 var langPath = "../json/string.json";
 
 function CargarFunciones() {
-    $("#btnCerrarSesion").click(function (event) {
+    $("#btn_usuario_cerrar").click(function (event) {
         CerrarSesion();
     });
 }
@@ -23,18 +23,23 @@ function ValidarCookie() {
 }
 
 function CargarTextosPagina() {
-    $("#textoUsuario").text(JsonIdioma["Usuario"] + ": " + getCookie("user"));
     $("#btnTitulo").text(JsonIdioma["SimplificacionBolenana"]);
     $("#btnEjercicios").text(JsonIdioma["Ejercicios"]);
-    $("#btnAelatorio").text(JsonIdioma["Aelatorio"]);
+    $("#btnAelatorio").text(JsonIdioma["Aleatorio"]);
     $("#btnConocido").text(JsonIdioma["Conocido"]);
     $("#btnRanking").text(JsonIdioma["Clasificacion"]);
     $("#btnEstadistica").text(JsonIdioma["Estadisticas"]);
-    $("#btnAdministracion").text(JsonIdioma["Administración"]);
-    $("#btnTituloSB").text(JsonIdioma["SimplificacionBolenana"]);
-    $("#btnConfigurarCuenta").text(JsonIdioma["ConfigurarCuenta"]);
-    $("#btnMisResultados").text(JsonIdioma["MisResultados"]);
-    $("#btnCerrarSesion").text(JsonIdioma["CerrarSesion"]);
+    $("#btnAdmin").text(JsonIdioma["Administración"]);
+    $("#btn_adm_ponderacion").text(JsonIdioma["Ponderacion"]);
+    $("#btn_adm_notificaciones").text(JsonIdioma["Notificacion"]);
+    $("#btn_adm_usuarios").text(JsonIdioma["Usuarios"]);
+    $("#btn_adm_estadisticas").text(JsonIdioma["Estadisticas"]);
+    $("#btn_dd_usuario_actual").text(JsonIdioma["Usuario"]+": "+getCookie("user"));
+    $("#btn_usuario_cuenta").text(JsonIdioma["ConfigurarCuenta"]);
+    $("#btn_usuario_resultados").text(JsonIdioma["MisResultados"]);
+    $("#btn_usuario_cerrar").text(JsonIdioma["CerrarSesion"]);
+
+    //Modal
     $("#labelTituloModal1").text(JsonIdioma["ModoAleatorio"]);
     $("#labelVariablesAleatorio").text(JsonIdioma["Variables"]+":");
     $("#Resolverpor").text(JsonIdioma["ResolverPor"]+":");

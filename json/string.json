@@ -41,8 +41,8 @@
     "CrearCuenta": "Crear cuenta",
     "SimplificacionBolenana": "Simplificación Booleana",
     "Ejercicios": "Ejercicios",
-    "Aelatorio": "Aelatorio",
-    "Conocido": "Conocido",
+    "Aleatorio": "Aleatorio",
+    "Conocido": "Determinístico",
     "Clasificacion": "Clasificación",
     "Estadisticas": "Estadísticas",
     "Administración": "Administración",
@@ -64,7 +64,9 @@
     "EliminadoFallido": "Se produjo un error al eliminar el usuario",
     "PassError":"Las contraseñas no coinciden",
     "CorreoError":"Los conrreos no coinciden",
-    "Notificacion":"Notificaciones"
+    "Notificacion":"Notificaciones",
+    "Ponderacion":"Ponderación",
+    "Usuarios":"Usuarios"
   },
   "en-US": {
     "nombreIdioma": "English - United States",
@@ -108,8 +110,8 @@
     "CrearCuenta": "Create Account",
     "SimplificacionBolenana": "Boolean Simplification",
     "Ejercicios": "Training",
-    "Aelatorio": "Random",
-    "Conocido": "Known problem",
+    "Aleatorio": "Random",
+    "Conocido": "Deterministic",
     "Clasificacion": "Ranking",
     "Estadisticas": "Statistics",
     "Administración": "Administration",
@@ -131,7 +133,9 @@
     "EliminadoFallido": "An error occurred while deleting the user.",
     "PassError":"Passwords do not match",
     "CorreoError":"The emails do not match",
-    "Notificacion":"Notifications"
+    "Notificacion":"Notifications",
+    "Ponderacion":"Weighing",
+    "Usuarios":"Users"
   },
   "fr-FR": {
     "nombreIdioma": "Française - France",
@@ -175,8 +179,8 @@
     "CrearCuenta": "Créer un compte",
     "SimplificacionBolenana": "Simplification Booléenne",
     "Ejercicios": "Exercices",
-    "Aelatorio": "Aléatoire",
-    "Conocido": "Problème connu",
+    "Aleatorio": "Aléatoire",
+    "Conocido": "Déterministe",
     "Clasificacion": "Classification",
     "Estadisticas": "Statistiques",
     "Administración": "Administration",
@@ -198,6 +202,8 @@
     "EliminadoFallido": "Une erreur est survenue lors de la suppression de l'utilisateur",
     "PassError":"Les mots de passe ne correspondent pas",
     "CorreoError":"Les e-mails ne correspondent pas",
-    "Notificacion":"Notifications"
+    "Notificacion":"Notifications",
+    "Ponderacion":"Pondération",
+    "Usuarios":"Utilisateurs"
   }
 }
