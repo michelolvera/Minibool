@@ -59,7 +59,7 @@ switch ($funcion){
     $in_det_4 = $_REQUEST["in_det_4"];
     $in_det_5 = $_REQUEST["in_det_5"];
     $respuesta = consultaSQL("CALL sp_actualizar_ponderaciones('".$userName."','".$userPass."','".$in_al_3."','".$in_al_4."','".$in_al_5."','".$in_det_3."','".$in_det_4."','".$in_det_5."');");
-    echo $respuesta;
+    echo $respuesta[0]['Actualizado'];
   break;
 }
 ?>

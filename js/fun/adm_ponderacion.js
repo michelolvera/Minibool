@@ -51,7 +51,3 @@ function llenar_inputs() {
       alert("Error");
     });
 }
-
-function guardar_ponderaciones() {
-
-}
