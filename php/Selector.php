@@ -43,5 +43,23 @@ switch ($funcion){
     $respuesta = consultaSQL("CALL sp_eliminar_usuario('".$userName."','".$userPass."','".$idUsuario."');");
     echo $respuesta[0]['Eliminado'];
   break;
+
+  case'consultarPonderaciones':
+    $respuesta = consultaSQL("SELECT id_ejercicio, puntos FROM ejercicios;");
+    echo json_encode($respuesta);
+  break;
+
+  case 'actualizarPonderaciones':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $in_al_3 = $_REQUEST["in_al_3"];
+    $in_al_4 = $_REQUEST["in_al_4"];
+    $in_al_5 = $_REQUEST["in_al_5"];
+    $in_det_3 = $_REQUEST["in_det_3"];
+    $in_det_4 = $_REQUEST["in_det_4"];
+    $in_det_5 = $_REQUEST["in_det_5"];
+    $respuesta = consultaSQL("CALL sp_actualizar_ponderaciones('".$userName."','".$userPass."','".$in_al_3."','".$in_al_4."','".$in_al_5."','".$in_det_3."','".$in_det_4."','".$in_det_5."');");
+    echo $respuesta;
+  break;
 }
 ?>
