@@ -36,7 +36,7 @@ function llenar_tabla(nombre, apellidoPat, apellidoMat) {
         $("#tabla").empty();
         $("#tabla").append(tabla);
         jsonObject.forEach(row => {
-          $("#tabla").append("<tr><td>"+row["nombre"]+"</td><td>"+row["apellido_paterno"]+"</td><td>"+row["apellido_materno"]+"</td><td><div class='btn-toolbar'><div class='btn-group'><button href='#detalles' class='btn btn-outline-info' data-toggle='modal'>Detalles</button><button href='#confirmacion' class='btn btn-outline-danger' onclick='seleccion("+row["id_usuario"]+", \"eliminar\");' data-toggle='modal'>Eliminar</button></div></div></td></tr>");
+          $("#tabla").append("<tr><td>"+row["nombre"]+"</td><td>"+row["apellido_paterno"]+"</td><td>"+row["apellido_materno"]+"</td><td><div class='btn-toolbar'><div class='btn-group'><button href='#detalles' class='btn btn-outline-info' data-toggle='modal'>Detalles</button><button href='#actualizar' class='btn btn-outline-success right' data-toggle='modal'>Actualizar</button><button href='#confirmacion' class='btn btn-outline-danger' onclick='seleccion("+row["id_usuario"]+", \"eliminar\");' data-toggle='modal'>Eliminar</button></div></div></td></tr>");
         });
       })
       .fail(function () {
@@ -77,6 +77,6 @@ function seleccion(usuario, accion){
   queAccion=accion;
   console.log("selecionados "+ idUsuarioEliminar +" "+ queAccion);
 }
-function guardar_detalles(){
-  $("#btn_cerrar_detalles").click();
+function guardar_actualizar(){
+  $("#btn_cerrar_actualizar").click();
 }
