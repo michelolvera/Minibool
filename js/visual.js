@@ -30,9 +30,20 @@ var mapak = function () {
   $('#inpTabla').hide();
 }
 var limpiar = function(tabla) {
-
+  $(tabla).html('');
+}
+var activarEjercicios = function() {
+  $('#btnEjercicios').removeClass('disabled')
 }
 var crear = function (tabla, isAl) {
+  $('#btnEjercicios').addClass('disabled')
+  $('#tabtablaVerdad').removeClass('disabled')
+  $('#tabtablaVerdad').addClass('active')
+  $('#tabMapakarnaugh').removeClass('disabled')
+  $('#tabCircuito').removeClass('disabled')
+  $('#cardFuncion').html('<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
+
+  limpiar(tabla);
   var vars = "";
   var f = "";
   var tablaContent = "";
