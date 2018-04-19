@@ -62,13 +62,13 @@
 
       <ul class="nav nav-tabs nav-justified">
         <li class="nav-item">
-          <a id="tabtablaVerdad" data-toggle="tab" class="nav-link disabled" href="./tablaDeVerdad.html">Tabla de verdad</a>
+          <a id="tabtablaVerdad" data-toggle="tab" class="nav-link disabled" onclick="tabTablaclick()">Tabla de verdad</a>
         </li>
         <li class="nav-item">
-          <a id="tabMapakarnaugh" data-toggle="tab" class="nav-link disabled" href="#">Mapa de Karnaugh</a>
+          <a id="tabMapakarnaugh" data-toggle="tab" class="nav-link disabled" onclick="tabMapaclick()">Mapa de Karnaugh</a>
         </li>
         <li class="nav-item">
-          <a id="tabCircuito" data-toggle="tab" class="nav-link disabled" href="#">Circuito lógico</a>
+          <a id="tabCircuito" data-toggle="tab" class="nav-link disabled" onclick="tabCircuitoclick()">Circuito lógico</a>
         </li>
       </ul>
       <div class="card" style="width: auto;">
@@ -76,12 +76,15 @@
           <a id="cardFuncion">Para iniciar, vaya a la sección de ejercicios del menu principal</a>
         </div>
       </div>
+      <div id="tablaContenedor">
+        <div class="table-responsive">
+          <table id="tablaVerdad" class="table table-striped table-bordered table-hover">
 
-      <div id="tablaContenedor" class="table-responsive">
-        <table id="tablaVerdad" class="table table-striped table-bordered table-hover">
-
-        </table>
+          </table>
+        </div>
       </div>
+      <div id="mapaContenedor"></div>
+      <div id="circuitoContenedor"></div>
     </section>
 
     <script src="../js/jquery.js"></script>

@@ -142,3 +142,19 @@ function cambiarNum(num){
     $('#btnTabla'+num).html('0');
   }
 }
+
+var tabTablaclick = function(){
+  $('#tablaContenedor').show();
+  $('#mapaContenedor').hide();
+  $('#circuitoContenedor').hide();
+}
+var tabMapaclick = function() {
+  $('#tablaContenedor').hide();
+  $('#mapaContenedor').show();
+  $('#circuitoContenedor').hide();
+}
+var tabCircuitoclick = function() {
+  $('#tablaContenedor').hide();
+  $('#mapaContenedor').hide();
+  $('#circuitoContenedor').show();
+}
