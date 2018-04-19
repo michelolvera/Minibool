@@ -53,7 +53,6 @@ function CargarTextosPagina() {
     $("#botonporFuncion").text(JsonIdioma["Funcion"]);
     $("#botonporTabladeVerdad").text(JsonIdioma["TablaVerdad"]);
     $("#botonporMapaK").text(JsonIdioma["MapaKarnaugh"]);
-    $("#spaninputFuncion").text(JsonIdioma["Funcion"]+":");
     $("#btnCerrarConocido").text(JsonIdioma["Cancelar"]);
     $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
     $("#labelResolverpor").text(JsonIdioma["ResolverPor"]+":");

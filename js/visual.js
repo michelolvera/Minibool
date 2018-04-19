@@ -1,5 +1,7 @@
 $(document).ready(function () {
   $('#inpTabla').hide();
+  $('#mapaContenedor').hide();
+  $('#circuitoContenedor').hide();
 });
 
 $('#exampleModal').on('shown.bs.modal', function () {
@@ -36,12 +38,14 @@ var activarEjercicios = function() {
   $('#btnEjercicios').removeClass('disabled')
 }
 var crear = function (tabla, isAl) {
-  $('#btnEjercicios').addClass('disabled')
-  $('#tabtablaVerdad').removeClass('disabled')
-  $('#tabtablaVerdad').addClass('active')
-  $('#tabMapakarnaugh').removeClass('disabled')
-  $('#tabCircuito').removeClass('disabled')
-  $('#cardFuncion').html('<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
+  if(isAl){
+    $('#btnEjercicios').addClass('disabled')
+    $('#tabtablaVerdad').removeClass('disabled')
+    $('#tabtablaVerdad').addClass('active')
+    $('#tabMapakarnaugh').removeClass('disabled')
+    $('#tabCircuito').removeClass('disabled')
+    $('#cardFuncion').html('<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
+  }
 
   limpiar(tabla);
   var vars = "";
