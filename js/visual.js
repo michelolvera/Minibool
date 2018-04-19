@@ -3,8 +3,11 @@ $(document).ready(function () {
   $('#mapaContenedor').hide();
   $('#circuitoContenedor').hide();
 });
+$(document).on('click', '.modal', function() {
 
-$('#exampleModal').on('shown.bs.modal', function () {
+    // su acción
+});
+$('#conocidoModal').on('shown.bs.modal', function () {
   $('#exampleModal').trigger('focus')
 })
 
@@ -14,6 +17,7 @@ var func = function () {
   $('#botonporMapaK').removeClass('active');
   $("#inpFuncion").show();
   $('#inpTabla').hide();
+  $('#inputFuncion').focus();
 }
 var tabla = function () {
   $('#botonporTabladeVerdad').addClass('active');
