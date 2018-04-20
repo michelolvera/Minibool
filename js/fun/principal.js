@@ -1,5 +1,5 @@
 var langPath = "../json/string.json";
-
+var phpPath = "../php/Selector.php"
 function CargarFunciones() {
     $("#btn_usuario_cerrar").click(function (event) {
         CerrarSesion();
@@ -12,7 +12,7 @@ function ValidarCookie() {
     } else {
         $.ajax({
             method: "POST",
-            url: "../php/Selector.php",
+            url: phpPath,
             data: { funcion: "login", userName: getCookie("user"), userPass: getCookie("pass") }
         }).done(function (msg) {
             if (msg == 0) {
