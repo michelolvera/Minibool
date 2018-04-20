@@ -75,12 +75,12 @@ var crear = function (tabla, isAl) {
 
     }
   if(isAl){
-    $('#btnEjercicios').addClass('disabled')
     $('#tabtablaVerdad').removeClass('disabled')
     $('#tabtablaVerdad').addClass('active')
     $('#tabMapakarnaugh').removeClass('disabled')
     $('#tabCircuito').removeClass('disabled')
   }
+  $('#btnEjercicios').addClass('disabled')
   $('#cardFuncion').html('F='+mainFuncion+'<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
   limpiar(tabla);
   var vars = "";
