@@ -26,7 +26,7 @@ function CargarFunciones() {
 }
 
 function ValidarCookie() {
-
+  comprobarAdminPagina();
 }
 
 function CargarTextosPagina() {

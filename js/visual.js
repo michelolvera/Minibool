@@ -1,7 +1,9 @@
 $(document).ready(function () {
+  $("#inpFuncion").hide();
   $('#inpTabla').hide();
   $('#mapaContenedor').hide();
   $('#circuitoContenedor').hide();
+  $('#inputFuncion').val("");
 });
 $(document).on('click', '.modal', function() {
 
@@ -18,6 +20,24 @@ var func = function () {
   $("#inpFuncion").show();
   $('#inpTabla').hide();
   $('#inputFuncion').focus();
+  if ($('#Cvar3').is(':checked')) {
+    $('#teclaD').addClass('disabled')
+    $('#teclaD').removeClass('btn-primary')
+    $('#teclaE').addClass('disabled')
+    $('#teclaE').removeClass('btn-primary')
+  }
+  if ($('#Cvar4').is(':checked')) {
+    $('#teclaD').removeClass('disabled')
+    $('#teclaE').addClass('disabled')
+    $('#teclaD').addClass('btn-primary')
+    $('#teclaE').removeClass('btn-primary')
+  }
+  if ($('#Cvar5').is(':checked')) {
+    $('#teclaD').removeClass('disabled')
+    $('#teclaE').addClass('btn-primary')
+    $('#teclaD').addClass('btn-primary')
+    $('#teclaE').removeClass('disabled')
+  }
 }
 var tabla = function () {
   $('#botonporTabladeVerdad').addClass('active');
@@ -42,15 +62,26 @@ var activarEjercicios = function() {
   $('#btnEjercicios').removeClass('disabled')
 }
 var crear = function (tabla, isAl) {
+  var mainFuncion ="";
+  var valA ="";
+  var valB ="";
+  var valC ="";
+  var valD ="";
+  var valE ="";
+  if($('#botonporFuncion').hasClass('active')) {
+    mainFuncion = $("#inputFuncion").val();
+    }
+    else{
+
+    }
   if(isAl){
-    $('#btnEjercicios').addClass('disabled')
     $('#tabtablaVerdad').removeClass('disabled')
     $('#tabtablaVerdad').addClass('active')
     $('#tabMapakarnaugh').removeClass('disabled')
     $('#tabCircuito').removeClass('disabled')
-    $('#cardFuncion').html('<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
   }
-
+  $('#btnEjercicios').addClass('disabled')
+  $('#cardFuncion').html('F='+mainFuncion+'<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
   limpiar(tabla);
   var vars = "";
   var f = "";
@@ -62,10 +93,10 @@ var crear = function (tabla, isAl) {
   if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
     vueltas = 16;
   }
-    if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
-      console.log("cinco jalas1");
-      vueltas = 32;
-    }
+  if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
+    console.log("cinco jalas1");
+    vueltas = 32;
+  }
     tablaContent = '<thead>' +
       '<tr>' +
       '<th scope="col">A</th>' +
@@ -90,14 +121,20 @@ var crear = function (tabla, isAl) {
       '</thead>' +
       '<tbody>';
     for (var num = 0; num < vueltas; num++) {
-      console.log("entre al for");
       tablaContent += '<tr>';
       if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
+        valA = dec2bin(num, 3).charAt(0);
+        valB = dec2bin(num, 3).charAt(1);
+        valC = dec2bin(num, 3).charAt(2);
         tablaContent += '<td scope="row">' + dec2bin(num, 3).charAt(0) + '</th>' +
           '<td>' + dec2bin(num, 3).charAt(1) + '</td>' +
           '<td>' + dec2bin(num, 3).charAt(2) + '</td>';
       }
       if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
+        valA = dec2bin(num, 4).charAt(0);
+        valB = dec2bin(num, 4).charAt(1);
+        valC = dec2bin(num, 4).charAt(2);
+        valD = dec2bin(num, 4).charAt(3);
         tablaContent += '<td scope="row">' + dec2bin(num, 4).charAt(0) + '</th>' +
           '<td>' + dec2bin(num, 4).charAt(1) + '</td>' +
           '<td>' + dec2bin(num, 4).charAt(2) + '</td>' +
@@ -105,7 +142,11 @@ var crear = function (tabla, isAl) {
       }
 
       if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
-        console.log("cinco jalas");
+        valA = dec2bin(num, 5).charAt(0);
+        valB = dec2bin(num, 5).charAt(1);
+        valC = dec2bin(num, 5).charAt(2);
+        valD = dec2bin(num, 5).charAt(3);
+        valE = dec2bin(num, 5).charAt(4);
         tablaContent += '<td scope="row">' + dec2bin(num, 5).charAt(0) + '</th>' +
           '<td>' + dec2bin(num, 5).charAt(1) + '</td>' +
           '<td>' + dec2bin(num, 5).charAt(2) + '</td>' +
@@ -117,7 +158,27 @@ var crear = function (tabla, isAl) {
           tablaContent += '<td>' + getRandom() + '</td>';
         }
         else {
-          tablaContent += '<td>' + $('#btnTabla'+num).html() + '</td>';
+          if($('#botonporFuncion').hasClass('active')) {
+            var replaceFuncion = mainFuncion;
+            var res="";
+            replaceFuncion = replaceFuncion.replace('A',valA)
+            replaceFuncion = replaceFuncion.replace('B',valB)
+            replaceFuncion = replaceFuncion.replace('C',valC)
+            replaceFuncion = replaceFuncion.replace('D',valD)
+            replaceFuncion = replaceFuncion.replace('E',valE)
+            replaceFuncion = replaceFuncion.replace('*',"&&")
+            replaceFuncion = replaceFuncion.replace("1'","0")
+            replaceFuncion = replaceFuncion.replace("0'","1")
+            if(!!eval(replaceFuncion)){
+              res="1"
+            }else{
+              res="0"
+            }
+            tablaContent += '<td>' + res + '</td>';
+          }
+          else{
+              tablaContent += '<td>' + $('#btnTabla'+num).html() + '</td>';
+          }
         }
       }
       else{
@@ -128,6 +189,7 @@ var crear = function (tabla, isAl) {
     tablaContent += '</tbody>';
     $(tabla).append(tablaContent);
     console.log('fin append');
+
   };
 
 function dec2bin(dec, c) {
@@ -165,4 +227,39 @@ var tabCircuitoclick = function() {
   $('#tablaContenedor').hide();
   $('#mapaContenedor').hide();
   $('#circuitoContenedor').show();
+}
+
+function teclaAClick(){
+  $('#inputFuncion').val($('#inputFuncion').val()+"A");
+}
+function teclaBClick(){
+  $('#inputFuncion').val($('#inputFuncion').val()+"B");
+}
+function teclaCClick(){
+  $('#inputFuncion').val($('#inputFuncion').val()+"C");
+}
+function teclaDClick(){
+  if($('#teclaD').hasClass('btn-primary')) {
+    $('#inputFuncion').val($('#inputFuncion').val()+"D");
+  }
+}
+function teclaEClick(){
+  if($('#teclaE').hasClass('btn-primary')) {
+    $('#inputFuncion').val($('#inputFuncion').val()+"E");
+  }
+}
+function teclaIzqClick(){
+  $('#inputFuncion').val($('#inputFuncion').val()+"(");
+}
+function teclaDerClick(){
+  $('#inputFuncion').val($('#inputFuncion').val()+")");
+}
+function teclaNegClick(){
+  $('#inputFuncion').val($('#inputFuncion').val()+"'");
+}
+function teclaMasClick(){
+  $('#inputFuncion').val($('#inputFuncion').val()+"+");
+}
+function teclaPorClick(){
+  $('#inputFuncion').val($('#inputFuncion').val()+"*");
 }

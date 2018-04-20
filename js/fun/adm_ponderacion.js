@@ -26,12 +26,13 @@ function CargarFunciones() {
 }
 
 function ValidarCookie() {
-
+  comprobarAdminPagina();
 }
 
 function CargarTextosPagina() {
 
 }
+
 function llenar_inputs() {
   $.ajax({
     method: "post",

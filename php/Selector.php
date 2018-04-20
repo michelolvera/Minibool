@@ -88,5 +88,12 @@ switch ($funcion){
     $respuesta = consultaSQL("CALL sp_actualizar_ponderaciones('".$userName."','".$userPass."','".$in_al_3."','".$in_al_4."','".$in_al_5."','".$in_det_3."','".$in_det_4."','".$in_det_5."');");
     echo $respuesta[0]['Actualizado'];
   break;
+
+  case 'esAdministrador':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $respuesta = consultaSQL("SELECT administrador FROM usuarios WHERE usuario = '".$userName."' AND contrasenia = AES_ENCRYPT('".$userPass."', '%b_learning%')");
+    echo $respuesta[0]["administrador"];
+  break;
 }
 ?>
