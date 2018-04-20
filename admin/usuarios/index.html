@@ -86,28 +86,28 @@
                             <input type="text" id="in_usuario" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label id="lb_nombre" for="in_nombre" class="font-weight-bold">Nombre</label>
-                            <input type="text" id="in_nombre" class="form-control" required>
+                            <label id="lb_nombre" for="in_nombre_act" class="font-weight-bold">Nombre</label>
+                            <input type="text" id="in_nombre_act" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label id="lb_apellido_pat" for="in_apellido_pat" class="font-weight-bold">Apellido paterno</label>
-                            <input type="text" id="in_apellido_pat" class="form-control" required>
+                            <label id="lb_apellido_pat" for="in_apellido_pat_act" class="font-weight-bold">Apellido paterno</label>
+                            <input type="text" id="in_apellido_pat_act" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label id="lb_apellido_mat" for="in_apellido_mat" class="font-weight-bold">Apellido materno</label>
-                            <input type="text" id="in_apellido_mat" class="form-control" required>
+                            <label id="lb_apellido_mat" for="in_apellido_mat_act" class="font-weight-bold">Apellido materno</label>
+                            <input type="text" id="in_apellido_mat_act" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label id="lb_correo" for="in_correo" class="font-weight-bold">Correo electrónico</label>
-                            <input type="email" id="in_correo" class="form-control" placeholder="Correo electrónico" required>
+                            <label id="lb_correo" for="in_correo_act" class="font-weight-bold">Correo electrónico</label>
+                            <input type="email" id="in_correo_act" class="form-control" required>
+                        </div>
+                        <div class="input-group">
+                            <label id="lb_administrador" for="in_administrador_act" class="font-weight-bold">Administrador</label>
+                            <input type="checkbox" id="in_administrador_act" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label id="lb_contrasenia" for="in_contrasenia" class="font-weight-bold">Contraseña</label>
-                            <input type="password" id="in_contrasenia" class="form-control" placeholder="Ocho caracteres como mínimo" required>
-                        </div>
-                        <div class="form-group">
-                            <label id="lb_pais" for="combo_pais" class="font-weight-bold">País</label>
-                            <select class="custom-select mr-sm-2" id="combo_pais">
+                            <label id="lb_pais" for="combo_pais_act" class="font-weight-bold">País</label>
+                            <select class="custom-select mr-sm-2" id="combo_pais_act">
                                 <option value="AF">Afganistán</option>
                                 <option value="AL">Albania</option>
                                 <option value="DE">Alemania</option>
@@ -344,7 +344,7 @@
                                 <option value="ZW">Zimbabue</option>
                             </select>
                         </div>
-                        <div class="form-group col-sm-12 col-md-6">
+                        <div class="form-group">
                             <div>
                                 <span id="sp_estudiante" class="font-weight-bold">¿Eres estudiante?</span>
                             </div>
@@ -360,22 +360,22 @@
                             </div>
                             <div id="PreguntasEstudiante" style="display: none;">
                                 <div class="form-group">
-                                    <label id="lb_escuela" for="in_escuela" class="font-weight-bold">Escuela</label>
-                                    <input type="text" id="in_escuela" class="form-control" placeholder="Nombre de la escuela">
+                                    <label id="lb_escuela" for="in_escuela_act" class="font-weight-bold">Escuela</label>
+                                    <input type="text" id="in_escuela_act" class="form-control" placeholder="Nombre de la escuela">
                                 </div>
                                 <div class="form-group">
-                                    <label id="lb_carrera" for="in_carrera" class="font-weight-bold">Especialidad o licenciatura</label>
-                                    <input type="text" id="in_carrera" class="form-control" placeholder="Nombre de la especialidad o licenciatura">
+                                    <label id="lb_carrera" for="in_carrera_act" class="font-weight-bold">Especialidad o licenciatura</label>
+                                    <input type="text" id="in_carrera_act" class="form-control" placeholder="Nombre de la especialidad o licenciatura">
                                 </div>
                                 <div class="form-group">
-                                    <label id="lb_semestre" for="in_semestre" class="font-weight-bold">Semestre</label>
-                                    <input type="number" min="1" max="20" id="in_semestre" class="form-control" placeholder="Número de semestre">
+                                    <label id="lb_semestre" for="in_semestre_act" class="font-weight-bold">Semestre</label>
+                                    <input type="number" min="1" max="20" id="in_semestre_act" class="form-control" placeholder="Número de semestre">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="btn_guardar_acualizar" class="btn btn-md btn-outline-success" onclick="guardar_actualizar();">Guardar</button>
+                        <button id="btn_guardar_acualizar" class="btn btn-md btn-outline-success" onclick="realizar_accion();">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -390,7 +390,6 @@
                     <div class="modal-body">
                         <h3>En proceso xD</h3>    
                     </div>
-                    
                 </div>
             </div>
         </div>
