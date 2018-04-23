@@ -67,7 +67,7 @@ switch ($funcion){
   $nombreEscuela = $_REQUEST["nombreEscuela"];
   $nombreCarrera = $_REQUEST["nombreCarrera"];
   $numSemestre = $_REQUEST["numSemestre"];
-  $respuesta = consultaSQL("CALL sp_actualizar_usuario('".$userName."','".$userPass."','".$idUsuario."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$codigoPais."','".$administrador."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."','0');");
+  $respuesta = consultaSQL("CALL sp_actualizar_usuario('".$userName."','".$userPass."','".$idUsuario."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$codigoPais."','".$administrador."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."');");
   echo $respuesta[0]['Actualizado'];
   break;
 

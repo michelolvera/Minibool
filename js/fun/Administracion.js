@@ -23,6 +23,14 @@ function CargarFunciones() {
       $("#PreguntasEstudiante").css("display", "none");
     }
   });
+  
+  $('#in_administrador_act').change(function(event) { 
+    if ($('#in_administrador_act').val("1")==1) {
+      $('#in_administrador_act').val("0");
+    } else {
+      $('#in_administrador_act').val("1");
+    }
+})
 }
 
 function ValidarCookie() {
@@ -73,24 +81,23 @@ function realizar_accion() {
       })
         .done(function (respuesta) {
           if (respuesta == 1) {
-            console.log("si");
             alert(JsonIdioma["EliminadoExitoso"]);
+            llenar_tabla($("#in_nombre").val(), $("#in_apellido_pat").val(), $("#in_apellido_mat").val());
           } else {
-            console.log("no");
             alert(JsonIdioma["EliminadoFallido"]);
           }
         })
         .fail(function () {
           alert("Error");
         });
-      llenar_tabla($("#in_nombre").val(), $("#in_apellido_pat").val(), $("#in_apellido_mat").val());
       break;
     case 'eliminarTodo':
       alert("eliminar todo");
       break;
     case 'actualizar':
       $("#btn_cerrar_actualizar").click();
-      /*$.ajax({
+      console.log( $("#in_administrador_act").val());
+      $.ajax({
         method: "post",
         url: phpPath,
         data: { 
@@ -98,36 +105,37 @@ function realizar_accion() {
           idUsuario: idUsuarioSeleccionado, 
           userName: getCookie("user"), 
           userPass: getCookie("pass"), 
-          nombreUsuario: $("#in_usuario").val(), 
-          nombreReal: $("#in_nombre_act").val(), 
-          apellidoP: $("#in_apellido_pat_act").val(), 
-          apellidoM: $("#in_apellido_mat_act").val(), 
-          correoElectronico: $("#in_correo_act").val(), 
-          administrador, 
-          codigoPais: $("#combo_pais_act").val(), 
-          esEstudiante, 
-          nombreEscuela:$("#in_escuela_act").val(), 
-          nombreCarrera:$("#in_carrera_act").val(), 
-          numSemestre:$("#in_semestre_act").val() 
+          numSemestre:    $("#in_semestre_act").val(), 
+          nombreCarrera:  $("#in_carrera_act").val(), 
+          nombreEscuela:  $("#in_escuela_act").val(), 
+          esEstudiante: $('[name=in_estudia_si]:checked').val(), 
+          codigoPais:     $("#combo_pais_act").val(), 
+          administrador : $("#in_administrador_act").val(), 
+          correoElectronico:  $("#in_correo_act").val(), 
+          apellidoM:      $("#in_apellido_mat_act").val(), 
+          apellidoP:      $("#in_apellido_pat_act").val(), 
+          nombreReal:     $("#in_nombre_act").val(), 
+          nombreUsuario:  $("#in_usuario").val(), 
         },
       })
         .done(function (respuesta) {
           if (respuesta == 1) {
             alert("Datos actualiazados exitozamente");
+            llenar_tabla($("#in_nombre").val(), $("#in_apellido_pat").val(), $("#in_apellido_mat").val());
           } else {
             alert("Error al momento de actualizar datos no cuenta con los permisos");
           }
         })
         .fail(function () {
           alert("Error");
-        });*/
+        });
       break;
   }
+  
 }
 function seleccion(usuario, accion) {
   idUsuarioSeleccionado = usuario;
   queAccion = accion;
-  console.log("selecionados " + idUsuarioSeleccionado + " " + queAccion);
   if (accion == 'actualizar') {
     cargarUsuario();
   }
@@ -152,20 +160,18 @@ function cargarUsuario() {
     dataType: "json"
   })
     .done(function (jsonObject) {
-      console.log(jsonObject);
       $("#in_usuario").val(jsonObject[0]["usuario"]);
       $("#in_nombre_act").val(jsonObject[0]["nombre"]);
       $("#in_apellido_pat_act").val(jsonObject[0]["apellido_paterno"]);
       $("#in_apellido_mat_act").val(jsonObject[0]["apellido_materno"]);
       $("#in_correo_act").val(jsonObject[0]["correo"]);
-      console.log(jsonObject[0]["administrador"]);
       if (jsonObject[0]["administrador"] == 1) {
         $("#in_administrador_act").prop('checked', true);
-        console.log("si");
+        $("#in_administrador_act").val("1");
       }
       else {
         $("#in_administrador_act").prop('checked', false);
-        console.log("no")
+        $("#in_administrador_act").val("0");
       }
       $("#combo_pais_act").val(jsonObject[0]["pais"]);
       if (jsonObject[0]["estudiante"] == 1) {
