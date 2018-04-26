@@ -61,6 +61,17 @@ var limpiar = function(tabla) {
 var activarEjercicios = function() {
   $('#btnEjercicios').removeClass('disabled')
 }
+var cambioCvar = function(){
+    if($('#botonporFuncion').hasClass('active')) {
+      func();
+    }
+    else if($('#botonporTabladeVerdad').hasClass('active')) {
+      tabla();
+    }
+    else if($('#botonporMapaK').hasClass('active')) {
+      mapak();
+    }
+}
 var crear = function (tabla, isAl) {
   var mainFuncion ="";
   var valA ="";
@@ -80,8 +91,11 @@ var crear = function (tabla, isAl) {
     $('#tabMapakarnaugh').removeClass('disabled')
     $('#tabCircuito').removeClass('disabled')
   }
-  $('#btnEjercicios').addClass('disabled')
-  $('#cardFuncion').html('F='+mainFuncion+'<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
+  if (tabla == "#tablaVerdad"){
+    $('#btnEjercicios').addClass('disabled')
+    $('#cardFuncion').html('F='+mainFuncion+'<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
+  }
+
   limpiar(tabla);
   var vars = "";
   var f = "";
