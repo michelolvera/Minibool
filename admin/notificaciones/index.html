@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <label for="lb_notificacion" class="sr-only">Notificación nueva:</label>
-                        <input type="text" class="form-control" id="in_nombre" placeholder="Notificación nueva">
+                        <textarea type="text" class="form-control" id="in_notificacion" placeholder="Notificación nueva"></textarea>
                         <select name="tipo" class="custom-select combo-sm" id="combo_tipo">
                             <option value="primary">Primary</option>
                             <option value="secondary">Secondary</option>
@@ -34,7 +34,7 @@
                             <option value="info">Info</option>
                         </select>
                         <span class="input-group-btn">
-                            <button id="btn_enviar" class="btn btn-outline-info" onclick="crear_nueva">Enviar</button>
+                            <button id="btn_enviar" class="btn btn-outline-info" onclick="crear_nueva();">Enviar</button>
                         </span>
                     </div>
                     <br>
@@ -80,7 +80,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label id="lb_notificacion_act" for="in_notificacion_act" class="font-weight-bold">Usuario</label>
-                            <input type="text" id="in_usuario_act" class="form-control" required>
+                            <textarea type="text" id="in_usuario_act" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
                                 <label id="lb_tipo_act" for="combo_tipo_act" class="font-weight-bold">Tipo</label>

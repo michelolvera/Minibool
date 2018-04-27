@@ -94,6 +94,39 @@ switch ($funcion){
     echo json_encode($respuesta);
   break;
 
+  case 'consultaNotificacion':
+      $id_notificacion=$_REQUEST["id_notificacion"]; 
+      $respuesta = consultaSQL("SELECT notificacion, tipo FROM notificaciones WHERE id='".$id_notificacion."';");
+      echo json_encode($respuesta);
+    break;
+
+  case 'crearNotificacion':
+      $userName = $_REQUEST["userName"];
+      $userPass = $_REQUEST["userPass"];
+      $notificacion = $_REQUEST["notificacion"];
+      $tipo = $_REQUEST["tipo"];
+      $respuesta = consultaSQL("CALL sp_crear_notificacion('".$userName."','".$userPass."','".$notificacion."','".$tipo."');");
+      echo $respuesta[0]['Creado'];
+    break;  
+
+  case 'eliminarNotificacion':
+      $userName = $_REQUEST["userName"];
+      $userPass = $_REQUEST["userPass"];
+      $id_notificacion=$_REQUEST["id_notificacion"]; 
+      $respuesta = consultaSQL("CALL sp_elimiar_notificacion('".$userName."','".$userPass."','".$id_notificacion."');");
+      echo $respuesta[0]['Elimiada'];
+    break;
+
+  case 'actualizarNotificacion':
+      $userName = $_REQUEST["userName"];
+      $userPass = $_REQUEST["userPass"];
+      $notificacion = $_REQUEST["notificacion"];
+      $tipo = $_REQUEST["tipo"];
+      $id_notificacion=$_REQUEST["id_notificacion"];
+      $respuesta = consultaSQL("CALL sp_actualizar_notificacion('".$userName."','".$userPass."','".$notificacion."','".$tipo."','".$id_notificacion."');");
+    echo $respuesta[0]['Actualizada'];
+    break;
+
   case 'esAdministrador':
     $userName = $_REQUEST["userName"];
     $userPass = $_REQUEST["userPass"];

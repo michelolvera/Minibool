@@ -35,7 +35,6 @@ function llenar_tabla() {
     dataType: "json"
   })
     .done(function (jsonObject) {
-      console.log(jsonObject);
       $("#tabla_notificaciones").empty();
       $("#tabla_notificaciones").append(tabla);
       jsonObject.forEach(row => {
@@ -58,7 +57,8 @@ function realizar_accion() {
           funcion: "eliminarNotificacion",
           id: idSeleccionado,
           userName: getCookie("user"),
-          userPass: getCookie("pass")
+          userPass: getCookie("pass"),
+          id_notificacion: idSeleccionado
         },
       })
         .done(function (respuesta) {
@@ -80,15 +80,17 @@ function realizar_accion() {
         url: phpPath,
         data: {
           funcion: "actualizarNotificacion",
-          id: idSeleccionado,
+          id_notificacion: idSeleccionado,
           userName: getCookie("user"),
           userPass: getCookie("pass"),
+          notificacion:$("#in_usuario_act").val(), 
+          tipo: $("#combo_tipo_act").val(),
         },
       })
         .done(function (respuesta) {
           if (respuesta == 1) {
             alert("Datos actualiazados exitozamente");
-            llenar_tabla($("#in_nombre").val(), $("#in_apellido_pat").val(), $("#in_apellido_mat").val());
+            llenar_tabla();
           } else {
             alert("Error al momento de actualizar datos no cuenta con los permisos");
           }
@@ -109,5 +111,51 @@ function seleccion(notificacion, accion) {
 
 }
 function cargarNotificacion(){
-  
+  $.ajax({
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "consultaNotificacion",
+      id_notificacion: idSeleccionado
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      console.log(jsonObject);
+      $("#in_usuario_act").val(jsonObject[0]["notificacion"]);
+      $("#combo_tipo_act").val(jsonObject[0]["tipo"]);
+    })
+    .fail(function () {
+      alert("Error");
+    });
+}
+
+function crear_nueva(){
+  $.ajax({
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "crearNotificacion",
+      id: idSeleccionado,
+      userName: getCookie("user"),
+      userPass: getCookie("pass"),
+      notificacion: $("#in_notificacion").val(),
+      tipo: $("#combo_tipo").val() 
+    },
+  })
+    .done(function (respuesta) {
+      if (respuesta == 1) {
+        alert("Notificacion Creada");
+        llenar_tabla();
+        $("#in_notificacion").val("");
+        $("#combo_tipo").val("primary");
+      } else {
+        alert("Error no cuenta con los permisos para crear notificaciones");
+        $("#in_notificacion").val("");
+        $("#combo_tipo").val("primary");
+      }
+    })
+    .fail(function () {
+      alert("Error");
+    });
 }
