@@ -66,7 +66,9 @@
     "CorreoError":"Los conrreos no coinciden",
     "Notificacion":"Notificaciones",
     "Ponderacion":"Ponderación",
-    "Usuarios":"Usuarios"
+    "Usuarios":"Usuarios",
+    "invalidParenthMessage":"¡Función invalida!: Revise que no haya dejado parentesis abiertos",
+    "invalidNullFunMessage":"¡Función invalida!: Campo de la función vacio"
   },
   "en-US": {
     "nombreIdioma": "English - United States",
@@ -135,7 +137,9 @@
     "CorreoError":"The emails do not match",
     "Notificacion":"Notifications",
     "Ponderacion":"Weighing",
-    "Usuarios":"Users"
+    "Usuarios":"Users",
+    "invalidParenthMessage":"¡Invalid function!: Check that you have not left open parentheses",
+    "invalidNullFunMessage":"¡Invalid function!: Function field is empty"
   },
   "fr-FR": {
     "nombreIdioma": "Française - France",
@@ -204,6 +208,8 @@
     "CorreoError":"Les e-mails ne correspondent pas",
     "Notificacion":"Notifications",
     "Ponderacion":"Pondération",
-    "Usuarios":"Utilisateurs"
+    "Usuarios":"Utilisateurs",
+    "invalidParenthMessage":"¡Fonction invalide!: Vérifiez que vous n'avez pas laissé de parenthèses ouvertes",
+    "invalidNullFunMessage":"¡Fonction invalide!: Le champ de fonction est vide"
   }
 }

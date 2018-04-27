@@ -46,6 +46,9 @@ function teclaPorClick(){
 
 ////////////////////  FUNCIONES PARA VALIDAR FUNCIONES  ///////////////////
 function validarEntrada(){
+  if($("#inputFuncion").val()===null){
+    $("#invalidMessage").text(JsonIdioma["invalidParenthMessage"]);
+  }
   isBalanced();
   if($("#inputFuncion").hasClass('is-invalid')){
     return false;
@@ -107,10 +110,12 @@ function printToScreen(bool) {
     $( "#inputFuncion" ).removeClass('is-invalid')
     $( "#inputFuncion" ).addClass('is-valid')
     $('#btnIniciarConocido').show();
+    $("#invalidMessage").text("");
   } else {
     $( "#inputFuncion" ).removeClass('is-valid')
     $( "#inputFuncion" ).addClass('is-invalid')
     $('#btnIniciarConocido').hide();
+    $("#invalidMessage").text(JsonIdioma["invalidParenthMessage"]);
   }
 }
 
