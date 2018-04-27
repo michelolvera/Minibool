@@ -10,6 +10,10 @@ var tabla = '<tr>' +
   '</tr>';
 
 function CargarFunciones() {
+  Inicializacion();
+}
+
+function Inicializacion() {
   llenar_tabla("", "", "");
 
   $("#btn_busqueda").click(function (event) {
@@ -23,14 +27,14 @@ function CargarFunciones() {
       $("#PreguntasEstudiante").css("display", "none");
     }
   });
-  
-  $('#in_administrador_act').change(function(event) { 
-    if ($('#in_administrador_act').val("1")==1) {
+
+  $('#in_administrador_act').change(function (event) {
+    if ($('#in_administrador_act').val("1") == 1) {
       $('#in_administrador_act').val("0");
     } else {
       $('#in_administrador_act').val("1");
     }
-})
+  })
 }
 
 function ValidarCookie() {
@@ -45,11 +49,11 @@ function llenar_tabla(nombre, apellidoPat, apellidoMat) {
   $.ajax({
     method: "post",
     url: phpPath,
-    data: { 
-      funcion: "consultaUsuarios", 
-      likeNombre: nombre, 
-      likeApellidoPat: apellidoPat, 
-      likeApellidoMat: apellidoMat 
+    data: {
+      funcion: "consultaUsuarios",
+      likeNombre: nombre,
+      likeApellidoPat: apellidoPat,
+      likeApellidoMat: apellidoMat
     },
     dataType: "json"
   })
@@ -72,11 +76,11 @@ function realizar_accion() {
       $.ajax({
         method: "post",
         url: phpPath,
-        data: { 
-          funcion: "eliminarUsuario", 
-          idUsuario: idUsuarioSeleccionado, 
-          userName: getCookie("user"), 
-          userPass: getCookie("pass") 
+        data: {
+          funcion: "eliminarUsuario",
+          idUsuario: idUsuarioSeleccionado,
+          userName: getCookie("user"),
+          userPass: getCookie("pass")
         },
       })
         .done(function (respuesta) {
@@ -96,26 +100,26 @@ function realizar_accion() {
       break;
     case 'actualizar':
       $("#btn_cerrar_actualizar").click();
-      console.log( $("#in_administrador_act").val());
+      console.log($("#in_administrador_act").val());
       $.ajax({
         method: "post",
         url: phpPath,
-        data: { 
-          funcion: "actualizarUsuario", 
-          idUsuario: idUsuarioSeleccionado, 
-          userName: getCookie("user"), 
-          userPass: getCookie("pass"), 
-          numSemestre:    $("#in_semestre_act").val(), 
-          nombreCarrera:  $("#in_carrera_act").val(), 
-          nombreEscuela:  $("#in_escuela_act").val(), 
-          esEstudiante: $('[name=in_estudia_si]:checked').val(), 
-          codigoPais:     $("#combo_pais_act").val(), 
-          administrador : $("#in_administrador_act").val(), 
-          correoElectronico:  $("#in_correo_act").val(), 
-          apellidoM:      $("#in_apellido_mat_act").val(), 
-          apellidoP:      $("#in_apellido_pat_act").val(), 
-          nombreReal:     $("#in_nombre_act").val(), 
-          nombreUsuario:  $("#in_usuario").val(), 
+        data: {
+          funcion: "actualizarUsuario",
+          idUsuario: idUsuarioSeleccionado,
+          userName: getCookie("user"),
+          userPass: getCookie("pass"),
+          numSemestre: $("#in_semestre_act").val(),
+          nombreCarrera: $("#in_carrera_act").val(),
+          nombreEscuela: $("#in_escuela_act").val(),
+          esEstudiante: $('[name=in_estudia_si]:checked').val(),
+          codigoPais: $("#combo_pais_act").val(),
+          administrador: $("#in_administrador_act").val(),
+          correoElectronico: $("#in_correo_act").val(),
+          apellidoM: $("#in_apellido_mat_act").val(),
+          apellidoP: $("#in_apellido_pat_act").val(),
+          nombreReal: $("#in_nombre_act").val(),
+          nombreUsuario: $("#in_usuario").val(),
         },
       })
         .done(function (respuesta) {
@@ -131,13 +135,16 @@ function realizar_accion() {
         });
       break;
   }
-  
+
 }
 function seleccion(usuario, accion) {
   idUsuarioSeleccionado = usuario;
   queAccion = accion;
   if (accion == 'actualizar') {
     cargarUsuario();
+  }
+  if (accion == 'detalles') {
+    cargar_detalles();
   }
 }
 
@@ -153,10 +160,12 @@ function cargarUsuario() {
   $.ajax({
     method: "post",
     url: phpPath,
-    data: { funcion: "consultarUsuario",
+    data: {
+      funcion: "consultarUsuario",
       idUsuario: idUsuarioSeleccionado,
       userName: getCookie("user"),
-      userPass: getCookie("pass")},
+      userPass: getCookie("pass")
+    },
     dataType: "json"
   })
     .done(function (jsonObject) {
@@ -189,4 +198,8 @@ function cargarUsuario() {
     .fail(function () {
       alert("Error");
     });
+}
+function cargar_detalles(){
+  $("#lb_ultimo_acceso").empty();
+  $("#lb_ultimo_acceso").append("no se xD solo se que su id es: "+idUsuarioSeleccionado);
 }

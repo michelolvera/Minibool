@@ -89,6 +89,11 @@ switch ($funcion){
     echo $respuesta[0]['Actualizado'];
   break;
 
+  case 'consultaNotificaciones':
+    $respuesta = consultaSQL("SELECT id, notificacion, fecha, tipo FROM notificaciones;");
+    echo json_encode($respuesta);
+  break;
+
   case 'esAdministrador':
     $userName = $_REQUEST["userName"];
     $userPass = $_REQUEST["userPass"];
