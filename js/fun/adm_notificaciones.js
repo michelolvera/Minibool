@@ -3,7 +3,7 @@ var langPath = "../../json/string.json";
 var tabla = '<tr>' +
   '<th id="text_tabla_fecha">Fecha</th>' +
   '<th id="text_tabla_notificacion">Notificación</th>' +
-  '<th id="text_tabla_tipo">Tipo</th>' +
+  '<th id="text_tabla_tipo">Color</th>' +
   '<th id="text_tabla_accion">Accion</th>' +
   '</tr>';
 var idSeleccionado='';
@@ -38,7 +38,7 @@ function llenar_tabla() {
       $("#tabla_notificaciones").empty();
       $("#tabla_notificaciones").append(tabla);
       jsonObject.forEach(row => {
-        $("#tabla_notificaciones").append("<tr><td>" + row["fecha"] + "</td><td>" + row["notificacion"] + "</td><td>" + row["tipo"] + "</td><td><div class='btn-toolbar'><div class='btn-group'><button href='#actualizar' class='btn btn-outline-success' onclick='seleccion(" + row["id"] + ", \"actualizar\");' data-toggle='modal'>Actualizar</button><button href='#confirmacion' class='btn btn-outline-danger' onclick='seleccion(" + row["id"] + ", \"eliminar\");' data-toggle='modal'>Eliminar</button></div></div></td></tr>");
+        $("#tabla_notificaciones").append("<tr><td>" + row["fecha"] + "</td><td>" + row["notificacion"] + "</td><td>" + Color(row["tipo"])  + "</td><td><div class='btn-toolbar'><div class='btn-group'><button href='#actualizar' class='btn btn-outline-success' onclick='seleccion(" + row["id"] + ", \"actualizar\");' data-toggle='modal'>Actualizar</button><button href='#confirmacion' class='btn btn-outline-danger' onclick='seleccion(" + row["id"] + ", \"eliminar\");' data-toggle='modal'>Eliminar</button></div></div></td></tr>");
       });
     })
     .fail(function () {
@@ -158,4 +158,27 @@ function crear_nueva(){
     .fail(function () {
       alert("Error");
     });
+}
+
+function Color(color){
+  switch(color){
+    case 'primary':
+    return "Azul";
+    break;
+    case 'secondary':
+    return "Gris";
+    break;
+    case 'success':
+    return "Verde";
+    break;
+    case 'danger':
+    return "Rojo";
+    break;
+    case 'warning':
+    return "Azul";
+    break;
+    case 'info':
+    return "Turquesa";
+    break;
+  }
 }
