@@ -1,86 +1,70 @@
 //Variables de informacion
 var cantidadVariables = 0;
 var kmapResultado = [1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0];
-var cantidadUnos = [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5];
-var numBinarios = ["00000","00001","00010","00011","00100","00101","00110","00111","01000","01001","01010","01011","01100","01101","01110","01111","10000","10001","10010","10011","10100","10101","10110","10111","11000","11001","11010","11011","11100","11101","11110","11111"];
 
-//Variables de grupos de cantidades de 1s
-var grupoIndice0 = Array();
-var grupoIndice1 = Array();
-var grupoIndice2 = Array();
-var grupoIndice3 = Array();
-var grupoIndice4 = Array();
-var grupoIndice5 = Array();
+//Arreglo de mini terminos
+var miniTerminos = Array();
 
-function ObtenerKmapAMinTerms(funcionResultado) {
+function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
-    let cantidadResultados = funcionResultado.length;
-    while (cantidadResultados>=2){
-        cantidadVariables++;
-        cantidadResultados/=2;
-    }
-    
+    cantidadVariables = Math.log2(tablaVerdad.length);
     var minTerms = Array();
-    for (let index = 0; index < funcionResultado.length; index++) {
-        if (funcionResultado[index] == 1) {
+    for (let index = 0; index < tablaVerdad.length; index++) {
+        if (tablaVerdad[index] == 1) {
             //Nuevo MinTerm en la posicion index
-            minTerms.push(index);
+            minTerms.push({ "dec": index, "bin": GenerarBinariosATexto(index), "indice": ContarUnos(GenerarBinariosATexto(index)) });
         }
     }
+
+    //Ordenarlos de menor a mayor cantidad de unos mendiante burbuja
+    let miniTermino;
+    for (let i = 0; i < minTerms.length; i++) {
+        for (let j = 0; j < minTerms.length - 1; j++) {
+            if (minTerms[j]["indice"] > minTerms[j + 1]["indice"]){
+                miniTermino = minTerms[j]
+                minTerms[j]= minTerms[j + 1];
+                minTerms[j+1]=miniTermino;
+            }
+        }
+    }
+
     return minTerms;
 }
 
-function AgruparMinTerms(minTerms) {
-    for (let index = 0; index < minTerms.length; index++) {
-        switch (cantidadUnos[minTerms[index]]) {
-            case 0:
-                grupoIndice0.push(minTerms[index]);
-                break;
-            case 1:
-                grupoIndice1.push(minTerms[index]);
-                break;
-            case 2:
-                grupoIndice2.push(minTerms[index]);
-                break;
-            case 3:
-                grupoIndice3.push(minTerms[index]);
-                break;
-            case 4:
-                grupoIndice4.push(minTerms[index]);
-                break;
-            case 5:
-                grupoIndice5.push(minTerms[index]);
-                break;
+function GenerarBinariosATexto(numDec) {
+    if (numDec.toString(2).length < cantidadVariables) {
+        let stringAux = "";
+        for (let index = 0; index < cantidadVariables - numDec.toString(2).length; index++) {
+            stringAux += "0";
         }
+        return stringAux + numDec.toString(2);
     }
+    return numDec.toString(2);
 }
 
-function compararMinTerms(mTerm1, mTerm2){
+function ContarUnos(StringBool) {
+    let aux = 0;
+    for (let index = 0; index < StringBool.length; index++) {
+        if (StringBool.charAt(index) == '1')
+            aux++;
+    }
+    return aux;
+}
+
+function CompararMinTerms(mTerm1, mTerm2) {
     let cantidadDiferencias = 0;
     let posCambio;
     for (let index = 0; index < cantidadVariables; index++) {
-        if(mTerm1.charAt(index) != mTerm2.charAt(index)){
+        if (mTerm1.charAt(index) != mTerm2.charAt(index)) {
             cantidadDiferencias++;
             posCambio = index;
         }
     }
-    if (cantidadDiferencias == 1){
+    if (cantidadDiferencias == 1) {
         //Nuevo MinTermino
     }
 }
 
-console.log(ObtenerKmapAMinTerms(kmapResultado));
-console.log("Cantidad de Varibles: "+cantidadVariables);
-AgruparMinTerms(ObtenerKmapAMinTerms(kmapResultado));
-console.log("Grupo 0:");
-console.log(grupoIndice0);
-console.log("Grupo 1:");
-console.log(grupoIndice1);
-console.log("Grupo 2:");
-console.log(grupoIndice2);
-console.log("Grupo 3:");
-console.log(grupoIndice3);
-console.log("Grupo 4:");
-console.log(grupoIndice4);
-console.log("Grupo 5:");
-console.log(grupoIndice5);
+function IniciarReduccion() {
+
+}
