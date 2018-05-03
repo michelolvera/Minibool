@@ -63,3 +63,27 @@ function CerrarSesion() {
     setCookie("pass", "", -1);
     location.replace("../");
 }
+
+function cargar_notificaciones(){
+    $.ajax({
+        method: "post",
+        url: phpPath,
+        data: {
+          funcion: "consultaNotificaciones",
+        },
+        dataType: "json"
+      })
+        .done(function (jsonObject) {
+          $("#tabla_notificaciones").empty();
+          $("#tabla_notificaciones").append(tabla);
+          jsonObject.forEach(row => {
+            $("#lista_notificaciones").append("<div class='alert alert-"+row["tipo"]+"' role='alert'>"+ row["notificacion"] +"</div>");
+          });
+        })
+        .fail(function () {
+          alert("Error");
+        });
+}
+function consulta_numero_notificaciones(){
+    
+}
