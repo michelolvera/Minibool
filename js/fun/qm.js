@@ -1,9 +1,6 @@
 //Variables de informacion
 var cantidadVariables = 0;
-var kmapResultado = [0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1];
-
-//Arreglo de mini terminos
-var miniTerminos = Array();
+var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];
 
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
@@ -53,7 +50,6 @@ function ContarUnos(StringBool) {
 function CompararMinTerms(mTerm1, mTerm2) {
     let cantidadDiferencias = 0;
     let posCambio;
-    let newMinTerm = { "minterms": Array(), "bin": "", "indice": 0 };
     for (let index = 0; index < cantidadVariables; index++) {
         if (mTerm1["bin"].charAt(index) != mTerm2["bin"].charAt(index)) {
             cantidadDiferencias++;
@@ -63,20 +59,65 @@ function CompararMinTerms(mTerm1, mTerm2) {
         }
     }
 
+    if (cantidadDiferencias == 0)
+        return mTerm1;
+
     //Agrega todos los miniterminos que componen el nuevo minitermino
+    let newMinTerm = { "minterms": Array(), "bin": "", "indice": 0 };
     for (let i = 0; i < mTerm1["minterms"].length; i++) {
         newMinTerm["minterms"].push(mTerm1["minterms"][i]);
     }
 
     for (let j = 0; j < mTerm2["minterms"].length; j++) {
-        newMinTerm["minterms"].push(mTerm2["minterms"][j]);
+        if(!newMinTerm["minterms"].includes(mTerm2["minterms"][j]))
+            newMinTerm["minterms"].push(mTerm2["minterms"][j]);
     }
-
     newMinTerm["bin"] = mTerm1["bin"].substring(0, posCambio) + "-" + mTerm1["bin"].substring(posCambio + 1, mTerm1["bin"].length);
-
+    newMinTerm["indice"] = ContarUnos(newMinTerm["bin"]);
     return newMinTerm;
 }
 
-function IniciarReduccion() {
+function ReductorRecursivo(miniTerms) {
+    console.log(miniTerms);
+    let contadorConbinaciones = 0;
+    let implicantesPrimarios = Array();
+    let gruposDiferentes = true;
+    for (let i = 0; i < miniTerms.length - 1; i++) {
+        let combinado = false;
+        for (let j = i + 1; j < miniTerms.length; j++) {
+            if (miniTerms[i]["indice"] == miniTerms[j]["indice"]) {
+                gruposDiferentes = false;
+                continue;
+            }
+            gruposDiferentes = true;
+            let miniTerm = CompararMinTerms(miniTerms[i], miniTerms[j]);
+            if (miniTerm) {
+                contadorConbinaciones++;
+                implicantesPrimarios.push(miniTerm);
+                combinado = true;
+            }
+        }
+        if (!combinado) {
+            implicantesPrimarios.push(miniTerms[i]);
+        }
+    }
+    return contadorConbinaciones == 0 ? miniTerms : ReductorRecursivo(implicantesPrimarios);
+}
 
+function IniciarReduccion() {
+    var miniTerminos = ObtenerMiniTerminos(kmapResultado);
+    var implicantes = ReductorRecursivo(miniTerminos);
+    //Limpiar Implicantes Duplicados
+    let posRepetido = Array();
+    for (let i = 0; i < implicantes.length - 1; i++) {
+        for (let j = i + 1; j < implicantes.length; j++) {
+            if (implicantes[i]["bin"]==implicantes[j]["bin"]){
+                posRepetido.push(j);
+            }
+        }
+    }
+    for (let index = 0; index < posRepetido.length; index++) {
+        delete implicantes[posRepetido[index]];
+    }
+    console.log(implicantes);
 }
