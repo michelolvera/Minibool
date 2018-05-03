@@ -1,6 +1,7 @@
 //Variables de informacion
 var cantidadVariables = 0;
 var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];
+//var kmapResultado = [0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1];
 
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
