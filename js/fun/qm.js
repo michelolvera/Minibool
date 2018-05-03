@@ -1,6 +1,6 @@
 //Variables de informacion
 var cantidadVariables = 0;
-var kmapResultado = [1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0];
+var kmapResultado = [0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1];
 
 //Arreglo de mini terminos
 var miniTerminos = Array();
@@ -12,7 +12,7 @@ function ObtenerMiniTerminos(tablaVerdad) {
     for (let index = 0; index < tablaVerdad.length; index++) {
         if (tablaVerdad[index] == 1) {
             //Nuevo MinTerm en la posicion index
-            minTerms.push({ "dec": index, "bin": GenerarBinariosATexto(index), "indice": ContarUnos(GenerarBinariosATexto(index)) });
+            minTerms.push({ "minterms": [index], "bin": GenerarBinariosATexto(index), "indice": ContarUnos(GenerarBinariosATexto(index)) });
         }
     }
 
@@ -20,14 +20,13 @@ function ObtenerMiniTerminos(tablaVerdad) {
     let miniTermino;
     for (let i = 0; i < minTerms.length; i++) {
         for (let j = 0; j < minTerms.length - 1; j++) {
-            if (minTerms[j]["indice"] > minTerms[j + 1]["indice"]){
+            if (minTerms[j]["indice"] > minTerms[j + 1]["indice"]) {
                 miniTermino = minTerms[j]
-                minTerms[j]= minTerms[j + 1];
-                minTerms[j+1]=miniTermino;
+                minTerms[j] = minTerms[j + 1];
+                minTerms[j + 1] = miniTermino;
             }
         }
     }
-
     return minTerms;
 }
 
@@ -54,15 +53,28 @@ function ContarUnos(StringBool) {
 function CompararMinTerms(mTerm1, mTerm2) {
     let cantidadDiferencias = 0;
     let posCambio;
+    let newMinTerm = { "minterms": Array(), "bin": "", "indice": 0 };
     for (let index = 0; index < cantidadVariables; index++) {
-        if (mTerm1.charAt(index) != mTerm2.charAt(index)) {
+        if (mTerm1["bin"].charAt(index) != mTerm2["bin"].charAt(index)) {
             cantidadDiferencias++;
+            if (cantidadDiferencias >= 2)
+                return false;
             posCambio = index;
         }
     }
-    if (cantidadDiferencias == 1) {
-        //Nuevo MinTermino
+
+    //Agrega todos los miniterminos que componen el nuevo minitermino
+    for (let i = 0; i < mTerm1["minterms"].length; i++) {
+        newMinTerm["minterms"].push(mTerm1["minterms"][i]);
     }
+
+    for (let j = 0; j < mTerm2["minterms"].length; j++) {
+        newMinTerm["minterms"].push(mTerm2["minterms"][j]);
+    }
+
+    newMinTerm["bin"] = mTerm1["bin"].substring(0, posCambio) + "-" + mTerm1["bin"].substring(posCambio + 1, mTerm1["bin"].length);
+
+    return newMinTerm;
 }
 
 function IniciarReduccion() {
