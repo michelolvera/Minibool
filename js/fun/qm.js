@@ -9,7 +9,7 @@ function ObtenerMiniTerminos(tablaVerdad) {
     for (let index = 0; index < tablaVerdad.length; index++) {
         if (tablaVerdad[index] == 1) {
             //Nuevo MinTerm en la posicion index
-            minTerms.push({ "minterms": [index], "bin": GenerarBinariosATexto(index), "indice": ContarUnos(GenerarBinariosATexto(index)) });
+            minTerms.push({ "minterms": [index], "bin": GenerarBinariosATexto(index), "indice": ContarUnos(GenerarBinariosATexto(index)), "combinado": false });
         }
     }
 
@@ -63,13 +63,13 @@ function CompararMinTerms(mTerm1, mTerm2) {
         return mTerm1;
 
     //Agrega todos los miniterminos que componen el nuevo minitermino
-    let newMinTerm = { "minterms": Array(), "bin": "", "indice": 0 };
+    let newMinTerm = { "minterms": Array(), "bin": "", "indice": 0, "combinado": false };
     for (let i = 0; i < mTerm1["minterms"].length; i++) {
         newMinTerm["minterms"].push(mTerm1["minterms"][i]);
     }
 
     for (let j = 0; j < mTerm2["minterms"].length; j++) {
-        if(!newMinTerm["minterms"].includes(mTerm2["minterms"][j]))
+        if (!newMinTerm["minterms"].includes(mTerm2["minterms"][j]))
             newMinTerm["minterms"].push(mTerm2["minterms"][j]);
     }
     newMinTerm["bin"] = mTerm1["bin"].substring(0, posCambio) + "-" + mTerm1["bin"].substring(posCambio + 1, mTerm1["bin"].length);
@@ -81,25 +81,23 @@ function ReductorRecursivo(miniTerms) {
     console.log(miniTerms);
     let contadorConbinaciones = 0;
     let implicantesPrimarios = Array();
-    let gruposDiferentes = true;
-    for (let i = 0; i < miniTerms.length - 1; i++) {
-        let combinado = false;
-        for (let j = i + 1; j < miniTerms.length; j++) {
-            if (miniTerms[i]["indice"] == miniTerms[j]["indice"]) {
-                gruposDiferentes = false;
-                continue;
+    for (let i = 0; i < miniTerms.length; i++) {
+        if (j = i + 1 != null)
+            for (let j = i + 1; j < miniTerms.length; j++) {
+                if (miniTerms[i]["indice"] == miniTerms[j]["indice"]) {
+                    continue;
+                }
+                let miniTerm = CompararMinTerms(miniTerms[i], miniTerms[j]);
+                if (miniTerm) {
+                    contadorConbinaciones++;
+                    implicantesPrimarios.push(miniTerm);
+                    miniTerms[i]["combinado"] = true;
+                    miniTerms[j]["combinado"] = true;
+                }
             }
-            gruposDiferentes = true;
-            let miniTerm = CompararMinTerms(miniTerms[i], miniTerms[j]);
-            if (miniTerm) {
-                contadorConbinaciones++;
-                implicantesPrimarios.push(miniTerm);
-                combinado = true;
-            }
-        }
-        if (!combinado) {
+        if (!miniTerms[i]["combinado"]){
             implicantesPrimarios.push(miniTerms[i]);
-        }
+        }   
     }
     return contadorConbinaciones == 0 ? miniTerms : ReductorRecursivo(implicantesPrimarios);
 }
@@ -111,7 +109,7 @@ function IniciarReduccion() {
     let posRepetido = Array();
     for (let i = 0; i < implicantes.length - 1; i++) {
         for (let j = i + 1; j < implicantes.length; j++) {
-            if (implicantes[i]["bin"]==implicantes[j]["bin"]){
+            if (implicantes[i]["bin"] == implicantes[j]["bin"]) {
                 posRepetido.push(j);
             }
         }
