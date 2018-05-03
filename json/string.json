@@ -68,7 +68,8 @@
     "Ponderacion":"Ponderación",
     "Usuarios":"Usuarios",
     "invalidParenthMessage":"¡Función invalida!: Revise que no haya dejado parentesis abiertos",
-    "invalidNullFunMessage":"¡Función invalida!: Campo de la función vacio"
+    "invalidNullFunMessage":"¡Función invalida!: Campo de la función vacio",
+    "invalidMainMessage":"¡Función invalida!"
   },
   "en-US": {
     "nombreIdioma": "English - United States",
@@ -139,7 +140,8 @@
     "Ponderacion":"Weighing",
     "Usuarios":"Users",
     "invalidParenthMessage":"¡Invalid function!: Check that you have not left open parentheses",
-    "invalidNullFunMessage":"¡Invalid function!: Function field is empty"
+    "invalidNullFunMessage":"¡Invalid function!: Function field is empty",
+    "invalidMainMessage":"¡Invalid function!"
   },
   "fr-FR": {
     "nombreIdioma": "Française - France",
@@ -210,6 +212,7 @@
     "Ponderacion":"Pondération",
     "Usuarios":"Utilisateurs",
     "invalidParenthMessage":"¡Fonction invalide!: Vérifiez que vous n'avez pas laissé de parenthèses ouvertes",
-    "invalidNullFunMessage":"¡Fonction invalide!: Le champ de fonction est vide"
+    "invalidNullFunMessage":"¡Fonction invalide!: Le champ de fonction est vide",
+    "invalidMainMessage":"¡Fonction invalide!"
   }
 }

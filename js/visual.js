@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $("#inpFuncion").hide();
   $('#inpTabla').hide();
+  $('#inpTablaK').hide();
   $('#mapaContenedor').hide();
   $('#circuitoContenedor').hide();
   $('#inputFuncion').val("");
@@ -19,6 +20,7 @@ var func = function () {
   $('#botonporMapaK').removeClass('active');
   $("#inpFuncion").show();
   $('#inpTabla').hide();
+  $('#inpTablaK').hide();
   $('#inputFuncion').focus();
   if ($('#Cvar3').is(':checked')) {
     $('#teclaD').addClass('disabled')
@@ -45,6 +47,7 @@ var tabla = function () {
   $('#botonporFuncion').removeClass('active');
   $('#botonporMapaK').removeClass('active');
   $("#inpFuncion").hide();
+  $('#inpTablaK').hide();
   crear('#tablaVerdadMini', false);
   $('#inpTabla').show();
   $('#btnIniciarConocido').show();
@@ -55,7 +58,9 @@ var mapak = function () {
   $('#botonporFuncion').removeClass('active');
   $("#inpFuncion").hide();
   $('#inpTabla').hide();
+  $('#inpTablaK').show();
   $('#btnIniciarConocido').show();
+  //crear('#tablaMapaKMini', false)
 }
 var limpiar = function(tabla) {
   $(tabla).html('');
@@ -81,28 +86,25 @@ var crear = function (tabla, isAl) {
   var valC ="";
   var valD ="";
   var valE ="";
+  var vars = "";
+  var f = "";
+  var tablaContent = "";
+  var vueltas = 0;
+  limpiar(tabla);
   if($('#botonporFuncion').hasClass('active')) {
     mainFuncion = $("#inputFuncion").val();
     }
     else{
 
     }
-  if(isAl){
+  if (tabla == "#tablaVerdad"){
+    $('#btnEjercicios').addClass('disabled')
+    $('#cardFuncion').html('F='+mainFuncion+'<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
     $('#tabtablaVerdad').removeClass('disabled')
     $('#tabtablaVerdad').addClass('active')
     $('#tabMapakarnaugh').removeClass('disabled')
     $('#tabCircuito').removeClass('disabled')
   }
-  if (tabla == "#tablaVerdad"){
-    $('#btnEjercicios').addClass('disabled')
-    $('#cardFuncion').html('F='+mainFuncion+'<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
-  }
-
-  limpiar(tabla);
-  var vars = "";
-  var f = "";
-  var tablaContent = "";
-  var vueltas = 0;
   if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
     vueltas = 8;
   }
@@ -196,7 +198,7 @@ var crear = function (tabla, isAl) {
         }
       }
       else{
-        tablaContent += '<td><button id="btnTabla'+num+'"class="btn verde" onClick="cambiarNum('+num+')">0</button></td>';
+        tablaContent += '<td class="no-border"><button id="btnTabla'+num+'" class="btn verde"  onClick="cambiarNum('+num+')">0</button></td>';
       }
       tablaContent += '</tr>';
     }
