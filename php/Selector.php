@@ -100,6 +100,11 @@ switch ($funcion){
       echo json_encode($respuesta);
     break;
 
+  case 'consultaNumeroNotificaciones':
+      $respuesta = consultaSQL("SELECT count(*) as suma from notificaciones;");
+      echo json_encode($respuesta);
+    break;
+
   case 'crearNotificacion':
       $userName = $_REQUEST["userName"];
       $userPass = $_REQUEST["userPass"];

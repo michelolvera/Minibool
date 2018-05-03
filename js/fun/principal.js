@@ -4,6 +4,7 @@ function CargarFunciones() {
     $("#btn_usuario_cerrar").click(function (event) {
         CerrarSesion();
     });
+    consulta_numero_notificaciones();
 }
 
 function ValidarCookie() {
@@ -74,8 +75,7 @@ function cargar_notificaciones(){
         dataType: "json"
       })
         .done(function (jsonObject) {
-          $("#tabla_notificaciones").empty();
-          $("#tabla_notificaciones").append(tabla);
+          $("#lista_notificaciones").empty();
           jsonObject.forEach(row => {
             $("#lista_notificaciones").append("<div class='alert alert-"+row["tipo"]+"' role='alert'>"+ row["notificacion"] +"</div>");
           });
@@ -85,5 +85,19 @@ function cargar_notificaciones(){
         });
 }
 function consulta_numero_notificaciones(){
-    
+    $.ajax({
+        method: "post",
+        url: phpPath,
+        data: {
+          funcion: "consultaNumeroNotificaciones",
+        },
+        dataType: "json"
+      })
+        .done(function (jsonObject) {
+            console.log(jsonObject);
+            $("#btn_mostrar_notificaciones span").text(jsonObject[0]["suma"]);
+        })
+        .fail(function () {
+          alert("Error");
+        });
 }

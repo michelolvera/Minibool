@@ -2,6 +2,10 @@
   padding: 15px;
 }
 
+#in_notificacion{
+  height: 38px;
+}
+
 .verde{
   background:#009688;
   color:#fff;
