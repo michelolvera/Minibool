@@ -1,6 +1,7 @@
 //Variables de informacion
 var cantidadVariables = 0;
-var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];
+var kmapResultado = [1, 0, 1, 1, 1, 1, 0, 1];
+//var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];
 //var kmapResultado = [0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1];
 
 function ObtenerMiniTerminos(tablaVerdad) {
@@ -103,6 +104,31 @@ function ReductorRecursivo(miniTerms) {
     return contadorConbinaciones == 0 ? miniTerms : ReductorRecursivo(implicantesPrimarios);
 }
 
+function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos){
+    //Ordenar mini terminos de mayor a menor en valor binario
+    let miniTermino;
+    for (let i = 0; i < miniTerminos.length; i++) {
+        for (let j = 0; j < miniTerminos.length - 1; j++) {
+            if (miniTerminos[j]["minterms"][0] > miniTerminos[j + 1]["minterms"][0]) {
+                miniTermino = miniTerminos[j]
+                miniTerminos[j] = miniTerminos[j + 1];
+                miniTerminos[j + 1] = miniTermino;
+            }
+        }
+    }
+
+    let tabla = Array();
+    for (let i = 0; i < implicantesPrimos.length; i++) {
+        let fila = Array();
+        for (let j = 0; j < miniTerminos.length; j++) {
+            fila.push(implicantesPrimos[i]["minterms"].includes(miniTerminos[j]["minterms"][0]) ? true : false);
+        }
+        tabla.push(fila);
+    }
+
+    return tabla;
+}
+
 function IniciarReduccion() {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado);
     var implicantes = ReductorRecursivo(miniTerminos);
@@ -115,8 +141,13 @@ function IniciarReduccion() {
             }
         }
     }
-    for (let index = 0; index < posRepetido.length; index++) {
-        delete implicantes[posRepetido[index]];
+    let aux = Array();
+    for (let index = 0; index < implicantes.length; index++) {
+        if(!posRepetido.includes(index))
+            aux.push(implicantes[index]);
     }
+    implicantes=aux;
     console.log(implicantes);
+    var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
+    console.log(tablaImplicantes);
 }
