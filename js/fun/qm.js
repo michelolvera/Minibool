@@ -129,6 +129,10 @@ function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos){
     return tabla;
 }
 
+function OrdenarMiniTerminos(cantidadUnos){
+    
+}
+
 function IniciarReduccion() {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado);
     var implicantes = ReductorRecursivo(miniTerminos);
