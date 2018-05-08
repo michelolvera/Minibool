@@ -15,18 +15,7 @@ function ObtenerMiniTerminos(tablaVerdad) {
         }
     }
 
-    //Ordenarlos de menor a mayor cantidad de unos mendiante burbuja
-    let miniTermino;
-    for (let i = 0; i < minTerms.length; i++) {
-        for (let j = 0; j < minTerms.length - 1; j++) {
-            if (minTerms[j]["indice"] > minTerms[j + 1]["indice"]) {
-                miniTermino = minTerms[j]
-                minTerms[j] = minTerms[j + 1];
-                minTerms[j + 1] = miniTermino;
-            }
-        }
-    }
-    return minTerms;
+    return OrdenarMiniTerminos(minTerms, true);
 }
 
 function GenerarBinariosATexto(numDec) {
@@ -97,25 +86,16 @@ function ReductorRecursivo(miniTerms) {
                     miniTerms[j]["combinado"] = true;
                 }
             }
-        if (!miniTerms[i]["combinado"]){
+        if (!miniTerms[i]["combinado"]) {
             implicantesPrimarios.push(miniTerms[i]);
-        }   
+        }
     }
     return contadorConbinaciones == 0 ? miniTerms : ReductorRecursivo(implicantesPrimarios);
 }
 
-function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos){
+function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos) {
     //Ordenar mini terminos de mayor a menor en valor binario
-    let miniTermino;
-    for (let i = 0; i < miniTerminos.length; i++) {
-        for (let j = 0; j < miniTerminos.length - 1; j++) {
-            if (miniTerminos[j]["minterms"][0] > miniTerminos[j + 1]["minterms"][0]) {
-                miniTermino = miniTerminos[j]
-                miniTerminos[j] = miniTerminos[j + 1];
-                miniTerminos[j + 1] = miniTermino;
-            }
-        }
-    }
+    miniTerminos = OrdenarMiniTerminos(miniTerminos);
 
     let tabla = Array();
     for (let i = 0; i < implicantesPrimos.length; i++) {
@@ -129,8 +109,32 @@ function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos){
     return tabla;
 }
 
-function OrdenarMiniTerminos(cantidadUnos){
-    
+function OrdenarMiniTerminos(miniTerminos, cantidadUnos = false) {
+    let miniTermino;
+
+    if (cantidadUnos) {
+        for (let i = 0; i < miniTerminos.length; i++) {
+            for (let j = 0; j < miniTerminos.length - 1; j++) {
+                if (miniTerminos[j]["indice"] > miniTerminos[j + 1]["indice"]) {
+                    miniTermino = miniTerminos[j]
+                    miniTerminos[j] = miniTerminos[j + 1];
+                    miniTerminos[j + 1] = miniTermino;
+                }
+            }
+        }
+    } else {
+        for (let i = 0; i < miniTerminos.length; i++) {
+            for (let j = 0; j < miniTerminos.length - 1; j++) {
+                if (miniTerminos[j]["minterms"][0] > miniTerminos[j + 1]["minterms"][0]) {
+                    miniTermino = miniTerminos[j]
+                    miniTerminos[j] = miniTerminos[j + 1];
+                    miniTerminos[j + 1] = miniTermino;
+                }
+            }
+        }
+    }
+
+    return miniTerminos;
 }
 
 function IniciarReduccion() {
@@ -147,10 +151,10 @@ function IniciarReduccion() {
     }
     let aux = Array();
     for (let index = 0; index < implicantes.length; index++) {
-        if(!posRepetido.includes(index))
+        if (!posRepetido.includes(index))
             aux.push(implicantes[index]);
     }
-    implicantes=aux;
+    implicantes = aux;
     console.log(implicantes);
     var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
     console.log(tablaImplicantes);
