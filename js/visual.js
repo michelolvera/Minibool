@@ -5,12 +5,14 @@ $(document).ready(function () {
   $('#mapaContenedor').hide();
   $('#circuitoContenedor').hide();
   $('#inputFuncion').val("");
+  $('#btnIniciarConocido').hide();
 });
 $(document).on('click', '.modal', function() {
 
     // su acción
 });
 $('#conocidoModal').on('shown.bs.modal', function () {
+
   $('#exampleModal').trigger('focus')
 })
 
@@ -104,6 +106,24 @@ var crear = function (tabla, isAl) {
     $('#tabtablaVerdad').addClass('active')
     $('#tabMapakarnaugh').removeClass('disabled')
     $('#tabCircuito').removeClass('disabled')
+    tablaContent = '<thead>' +
+      '<tr>' +
+      '<th scope="col">A</th>' +
+      '<th scope="col">B</th>' +
+      '<th scope="col">C</th>';
+  }
+  else if(tabla == "#tablaMapaKMini"){
+
+  }
+  else if(tabla == "#tablaMapaK"){
+
+  }
+  else if (tabla== "#tablaVerdadMini") {
+    tablaContent = '<thead>' +
+      '<tr>' +
+      '<th scope="col">A</th>' +
+      '<th scope="col">B</th>' +
+      '<th scope="col">C</th>';
   }
   if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
     vueltas = 8;
@@ -114,11 +134,6 @@ var crear = function (tabla, isAl) {
   if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
     vueltas = 32;
   }
-    tablaContent = '<thead>' +
-      '<tr>' +
-      '<th scope="col">A</th>' +
-      '<th scope="col">B</th>' +
-      '<th scope="col">C</th>';
     if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
       tablaContent += '<th scope="col">D</th>';
     }
@@ -129,13 +144,16 @@ var crear = function (tabla, isAl) {
     }
     if (tabla == "#tablaVerdad") {
       tablaContent += '<th scope="col">F</th>';
+      tablaContent += '</tr>' +
+        '</thead>' +
+        '<tbody>';
     }
-    else{
+    else if (tabla== "#tablaVerdadMini"){
       tablaContent += '<th scope="col">F</th>';
+      tablaContent += '</tr>' +
+        '</thead>' +
+        '<tbody>';
     }
-    tablaContent += '</tr>' +
-      '</thead>' +
-      '<tbody>';
     for (var num = 0; num < vueltas; num++) {
       tablaContent += '<tr>';
       if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
@@ -197,7 +215,7 @@ var crear = function (tabla, isAl) {
           }
         }
       }
-      else{
+      else if (tabla== "#tablaVerdadMini"){
         tablaContent += '<td class="no-border"><button id="btnTabla'+num+'" class="btn verde"  onClick="cambiarNum('+num+')">0</button></td>';
       }
       tablaContent += '</tr>';
@@ -237,6 +255,7 @@ var tabMapaclick = function() {
   $('#tablaContenedor').hide();
   $('#mapaContenedor').show();
   $('#circuitoContenedor').hide();
+  crear('#tablaMapaK',false)
 }
 var tabCircuitoclick = function() {
   $('#tablaContenedor').hide();
