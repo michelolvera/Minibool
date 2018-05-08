@@ -6,6 +6,7 @@ $(document).ready(function () {
   $('#circuitoContenedor').hide();
   $('#inputFuncion').val("");
   $('#btnIniciarConocido').hide();
+  $('#mapaContenedor').hide();
 });
 $(document).on('click', '.modal', function() {
 
@@ -54,15 +55,15 @@ var tabla = function () {
   $('#inpTabla').show();
   $('#btnIniciarConocido').show();
 }
-var mapak = function () {
+function mapak() {
   $('#botonporMapaK').addClass('active');
   $('#botonporTabladeVerdad').removeClass('active');
   $('#botonporFuncion').removeClass('active');
   $("#inpFuncion").hide();
   $('#inpTabla').hide();
-  $('#inpTablaK').show();
+  $('#tablaMapaKMini').show();
   $('#btnIniciarConocido').show();
-  //crear('#tablaMapaKMini', false)
+  crear('#tablaMapaKMini', false)
 }
 var limpiar = function(tabla) {
   $(tabla).html('');
@@ -82,6 +83,7 @@ var cambioCvar = function(){
     }
 }
 var crear = function (tabla, isAl) {
+
   var mainFuncion ="";
   var valA ="";
   var valB ="";
@@ -93,6 +95,15 @@ var crear = function (tabla, isAl) {
   var tablaContent = "";
   var vueltas = 0;
   limpiar(tabla);
+  if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
+    vueltas = 8;
+  }
+  if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
+    vueltas = 16;
+  }
+  if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
+    vueltas = 32;
+  }
   if($('#botonporFuncion').hasClass('active')) {
     mainFuncion = $("#inputFuncion").val();
     }
@@ -106,34 +117,45 @@ var crear = function (tabla, isAl) {
     $('#tabtablaVerdad').addClass('active')
     $('#tabMapakarnaugh').removeClass('disabled')
     $('#tabCircuito').removeClass('disabled')
+
+  if(tabla == "#tablaMapaKMini"){
+    console.log('si entro al caso de la tabla tablaMapaKMini');
+    tablaContent+='  <div class="row no-gutters">' +
+        '<div class="col-2 col-md-1">' +
+          '<span id="varsIzq" class="align-middle">' +
+            '<br/>' +
+            '<br/>' +
+            '<br/>' +
+            '<br/>' ;
+            if($('#var3').is(':checked') ||$('#Cvar3').is(':checked')){
+              tablaContent+= '<b>A</b>';
+            }
+            else{
+              tablaContent+= '<br/>' +
+              '<br/>' +
+              '<b>A</b>'+
+              '<br/>' +
+              '<br/>' +
+              '<br/>' +
+              '<b>B</b>';
+            }
+          '</span>' +
+        '</div>'+
+        '<div class="col-12 col-sm-6 col-md-11">'+
+        '  <div  class="table-responsive">'+
+        '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
+  }
+  if(tabla == "#tablaMapaK"){
+
+  }
+  if (tabla== "#tablaVerdadMini") {
     tablaContent = '<thead>' +
       '<tr>' +
       '<th scope="col">A</th>' +
       '<th scope="col">B</th>' +
       '<th scope="col">C</th>';
   }
-  else if(tabla == "#tablaMapaKMini"){
 
-  }
-  else if(tabla == "#tablaMapaK"){
-
-  }
-  else if (tabla== "#tablaVerdadMini") {
-    tablaContent = '<thead>' +
-      '<tr>' +
-      '<th scope="col">A</th>' +
-      '<th scope="col">B</th>' +
-      '<th scope="col">C</th>';
-  }
-  if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
-    vueltas = 8;
-  }
-  if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
-    vueltas = 16;
-  }
-  if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
-    vueltas = 32;
-  }
     if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
       tablaContent += '<th scope="col">D</th>';
     }
@@ -153,6 +175,96 @@ var crear = function (tabla, isAl) {
       tablaContent += '</tr>' +
         '</thead>' +
         '<tbody>';
+    }
+    if(tabla == "#tablaMapaKMini"){
+      if($('#var3').is(':checked') || $('#Cvar3').is(':checked')){
+        tablaContent+= '<b>BC</b>';
+      }
+      else if($('#var4').is(':checked') || $('#Cvar4').is(':checked')){
+        tablaContent+= '<b>CD</b>';
+      }
+      else if($('#var5').is(':checked') || $('#Cvar5').is(':checked')){
+        tablaContent+= '<b>CDE</b>';
+      }
+      tablaContent += '</div>'
+      '<table  class="table table-striped table-bordered table-hover">'+
+      '<thead>'+
+        '<tr>'+
+        '<th scope="col"></th>';
+        if($('#var5').is(':checked') || $('#Cvar5').is(':checked')){
+          tablaContent+='<th scope="col">000</th>'+
+          '<th scope="col">001</th>'+
+          '<th scope="col">011</th>'+
+          '<th scope="col">010</th>'+
+          '<th scope="col">110</th>'+
+          '<th scope="col">111</th>'+
+          '<th scope="col">101</th>'+
+          '<th scope="col">100</th>';
+        }
+        else{
+          tablaContent+= '<th scope="col">00</th>'+
+          '<th scope="col">01</th>'+
+          '<th scope="col">11</th>'+
+          '<th scope="col">10</th>';
+        }
+        tablaContent+='</tr>'+
+      '</thead>'+
+      '<tbody>'+
+      '<tr>';
+      for (var num = 0; num < vueltas; num++) {
+        if($('#var3').is(':checked') || $('#Cvar3').is(':checked')){
+          if(num==0){
+            tablaContent+='<th scope="row">0</th>'
+          }
+          else if(num==4){
+            tablaContent+='</tr><tr><th scope="row">1</th>'
+          }
+          tablaContent+= '<td>'+
+            '<button id="btnMapak'+num+'" class="btn verde" onClick="cambiarNumK('+num+')">0</button>'+
+          '</td>';
+        }
+        if($('#var4').is(':checked') || $('#Cvar4').is(':checked')){
+          if(num==0){
+            tablaContent+='<th scope="row">00</th>'
+          }
+          else if(num==4){
+            tablaContent+='</tr><tr><th scope="row">01</th>'
+          }
+          else if(num==8){
+            tablaContent+='</tr><tr><th scope="row">11</th>'
+          }
+          else if(num==12){
+            tablaContent+='</tr><tr><th scope="row">10</th>'
+          }
+          tablaContent+= '<td>'+
+            '<button id="btnMapak'+num+'" class="btn verde" onClick="cambiarNumK('+num+')">0</button>'+
+          '</td>';
+        }
+        if($('#var5').is(':checked') || $('#Cvar5').is(':checked')){
+          if(num==0){
+            tablaContent+='<th scope="row">00</th>'
+          }
+          else if(num==8){
+            tablaContent+='</tr><tr><th scope="row">01</th>'
+          }
+          else if(num==16){
+            tablaContent+='</tr><tr><th scope="row">11</th>'
+          }
+          else if(num==24){
+            tablaContent+='</tr><tr><th scope="row">10</th>'
+          }
+          tablaContent+= '<td>'+
+            '<button id="btnMapak'+num+'" class="btn verde" onClick="cambiarNumK('+num+')">0</button>'+
+          '</td>';
+        }
+      }
+      tablaContent+='</tr>'+
+      '</tbody>'+
+      '</table>'+
+      '</div></div></div>';
+      $(tabla).append(tablaContent);
+    }else if(tabla == "#tablaMapaK"){
+
     }
     for (var num = 0; num < vueltas; num++) {
       tablaContent += '<tr>';
@@ -220,9 +332,8 @@ var crear = function (tabla, isAl) {
       }
       tablaContent += '</tr>';
     }
-    tablaContent += '</tbody>';
+    if (tabla== "#tablaVerdadMini" || tabla== "#tablaVerdad"){tablaContent += '</tbody>';}
     $(tabla).append(tablaContent);
-
   };
 
 function dec2bin(dec, c) {
@@ -244,6 +355,12 @@ function cambiarNum(num){
   else{
     $('#btnTabla'+num).html('0');
   }
+  if($('#btnMapak'+num).html()=='0'){
+    $('#btnMapak'+num).html('1');
+  }
+  else{
+    $('#btnMapak'+num).html('0');
+  }
 }
 
 var tabTablaclick = function(){
@@ -255,7 +372,6 @@ var tabMapaclick = function() {
   $('#tablaContenedor').hide();
   $('#mapaContenedor').show();
   $('#circuitoContenedor').hide();
-  crear('#tablaMapaK',false)
 }
 var tabCircuitoclick = function() {
   $('#tablaContenedor').hide();
