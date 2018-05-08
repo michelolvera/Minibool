@@ -332,7 +332,7 @@ var crear = function (tabla, isAl) {
       }
       tablaContent += '</tr>';
     }
-    if (tabla== "#tablaVerdadMini" || tabla== "#tablaVerdad"){tablaContent += '</tbody>';}
+      if (tabla== "#tablaVerdadMini" || tabla== "#tablaVerdad"){tablaContent += '</tbody>';}
     $(tabla).append(tablaContent);
   };
 
