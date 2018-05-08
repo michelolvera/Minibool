@@ -11,9 +11,54 @@
 
 <body>
     <header class="bg-info text-white cabecera">
-        <div class="container-fluid">
-            <h1>Simplificación Booleana</h1>
-        </div>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info">
+            <a id="btnTitulo" class="navbar-brand btn" href="../../">MiniBool</a>
+            <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#barra_navegacion" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="barra_navegacion">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a id="btnEjercicios" role="button" class="nav-link button" href="../../principal/">Ejercicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="btnRanking" href="#">Clasificación</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="btnAdmin" role="button" class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            href="#">Administracion</a>
+                        <div class="dropdown-menu" aria-labelledby="btnAdmin">
+                            <a id="btn_adm_ponderacion" class="dropdown-item" href="../ponderacion/">Ponderación</a>
+                            <a id="btn_adm_notificaciones" class="dropdown-item active" href="#">Notificaciones</a>
+                            <a id="btn_adm_usuarios" class="dropdown-item" href="../usuarios/">Usuarios</a>
+                            <a id="btn_adm_estadisticas" class="dropdown-item" href="../estadisticas/">Estadísticas</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a id="btn_mostrar_notificaciones" role="button" class="nav-link" href="#vntn_notificaciones" data-toggle="modal" onclick="cargar_notificaciones();">
+                            Notificaciones
+                            <span class="badge badge-light">0</span>
+                            <span class="sr-only">unread messages</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="btn_dd_usuario_actual" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" href="#">Usuario:</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btn_dd_usuario_actual">
+                            <a id="btn_usuario_cuenta" class="dropdown-item" href="#">Configurar cuenta</a>
+                            <a id="btn_usuario_resultados" class="dropdown-item" href="#">Mis resultados</a>
+                            <div class="dropdown-divider"></div>
+                            <div class="container">
+                                <a id="btn_usuario_cerrar" class="btn btn-outline-danger" style="width: 100%;" href="#">Cerrar sesión</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <div class="container">
         <br>
@@ -55,51 +100,68 @@
         </div>
     </div>
     <div class="modal fade" id="confirmacion">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 id="text_titulo_confirmacion" class="modal-title">Confirmacion</h3>
-                        <button id="btn_cerrar" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <h4 id="text_confirmacion">¿Esta seguro de la accion que desea realizar?</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="btn_si" class="btn btn-lg btn-outline-danger" onclick="realizar_accion();">Si</button>
-                    </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="text_titulo_confirmacion" class="modal-title">Confirmacion</h3>
+                    <button id="btn_cerrar" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h4 id="text_confirmacion">¿Esta seguro de la accion que desea realizar?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_si" class="btn btn-lg btn-outline-danger" onclick="realizar_accion();">Si</button>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="actualizar">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 id="text_titulo_actualizar_notificaciones" class="modal-title">Actualizar Notificaciones</h3>
-                        <button id="btn_cerrar_actualizar" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    </div>
+    <div class="modal fade" id="actualizar">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="text_titulo_actualizar_notificaciones" class="modal-title">Actualizar Notificaciones</h3>
+                    <button id="btn_cerrar_actualizar" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label id="lb_notificacion_act" for="in_notificacion_act" class="font-weight-bold">Usuario</label>
+                        <textarea type="text" id="in_usuario_act" class="form-control" required></textarea>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label id="lb_notificacion_act" for="in_notificacion_act" class="font-weight-bold">Usuario</label>
-                            <textarea type="text" id="in_usuario_act" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                                <label id="lb_tipo_act" for="combo_tipo_act" class="font-weight-bold">Tipo</label>
-                        </div>
-                        <select name="tipo" class="custom-select combo-sm" id="combo_tipo_act">
-                                <option value="primary">Azul</option>
-                                <option value="secondary">Gris</option>
-                                <option value="success">Verde</option>
-                                <option value="danger">Rojo</option>
-                                <option value="warning">Amarillo</option>
-                                <option value="info">Turquesa</option>
-                        </select>
+                    <div class="form-group">
+                        <label id="lb_tipo_act" for="combo_tipo_act" class="font-weight-bold">Tipo</label>
                     </div>
-                    <div class="modal-footer">
-                        <button id="btn_guardar_acualizar" class="btn btn-md btn-outline-success" onclick="realizar_accion();">Guardar</button>
-                    </div>
+                    <select name="tipo" class="custom-select combo-sm" id="combo_tipo_act">
+                        <option value="primary">Azul</option>
+                        <option value="secondary">Gris</option>
+                        <option value="success">Verde</option>
+                        <option value="danger">Rojo</option>
+                        <option value="warning">Amarillo</option>
+                        <option value="info">Turquesa</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_guardar_acualizar" class="btn btn-md btn-outline-success" onclick="realizar_accion();">Guardar</button>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Modal notificaciones-->
+    <div class="modal fade" id="vntn_notificaciones">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="text_titulo_notificaciones_principal" class="modal-title">Notificaciones</h3>
+                    <button id="btn_cerrar_notificaciones_principal" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <div id="lista_notificaciones">
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/fun/seguridad_admin.js"></script>

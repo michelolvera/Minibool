@@ -15,6 +15,7 @@ $(document).ready(function () {
   }
   setCookie("lang", lang, 30);
   CargarFunciones();
+  consulta_numero_notificaciones();
 });
 
 function CargarIdioma(idioma) {
@@ -60,4 +61,42 @@ function getCookie(cname) {
     }
   }
   return "";
+}
+
+function cargar_notificaciones(){
+  $.ajax({
+      method: "post",
+      url: phpPath,
+      data: {
+        funcion: "consultaNotificaciones",
+      },
+      dataType: "json"
+    })
+      .done(function (jsonObject) {
+        $("#lista_notificaciones").empty();
+        jsonObject.forEach(row => {
+          $("#lista_notificaciones").append("<div class='alert alert-"+row["tipo"]+"' role='alert'>"+ row["notificacion"] +"</div>");
+        });
+      })
+      .fail(function () {
+        alert("Error");
+      });
+}
+
+function consulta_numero_notificaciones(){
+  $.ajax({
+      method: "post",
+      url: phpPath,
+      data: {
+        funcion: "consultaNumeroNotificaciones",
+      },
+      dataType: "json"
+    })
+      .done(function (jsonObject) {
+          console.log(jsonObject);
+          $("#btn_mostrar_notificaciones span").text(jsonObject[0]["suma"]);
+      })
+      .fail(function () {
+        alert("Error");
+      });
 }
