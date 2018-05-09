@@ -141,8 +141,20 @@ function MetodoDePetrick(productosDeSumas) {
     let productosRecursivos = Array();
     if (productosDeSumas.length > 1) {
         //Distribuir y buscar similares con las reglas x+x=x, xx=x y x+xy=x, volver a llamar este metodo.
+        let sumas = Array();
+        //Distribuir
+        for (let i of productosDeSumas[0]) {
+            for (let j of productosDeSumas[1]) {
+                let distrib = new Set();
+                distrib.add(i);
+                distrib.add(j);
+                sumas.push(distrib);
+            }
+        }
+        //
+        console.log(sumas);
     } else if (productosDeSumas.length == 1) {
-        //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x
+        //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x y retornar el ultimo resultado
     } else
         return Array();
 }
@@ -183,6 +195,7 @@ function IniciarReduccion() {
             aux.push(implicantes[index]);
     }
     implicantes = aux;
+    /////////////////////////////
     console.log(implicantes);
     var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
     console.log(tablaImplicantes);
