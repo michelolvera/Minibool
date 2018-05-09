@@ -141,6 +141,8 @@ function MetodoDePetrick(productosDeSumas) {
     let productosRecursivos = Array();
     if (productosDeSumas.length > 1) {
         //Distribuir y buscar similares con las reglas x+x=x, xx=x y x+xy=x, volver a llamar este metodo.
+
+        //Distribuir y aplicar xx=x
         let distribuido = Array();
         for (let i = 0; i < productosDeSumas[0].length; i++) {
             for (let j = 0; j < productosDeSumas[1].length; j++) {
@@ -148,9 +150,23 @@ function MetodoDePetrick(productosDeSumas) {
                 distribuido.push(new Set([...productosDeSumas[0][i],...productosDeSumas[1][j]]));
             }
         }
-        let prueba = new Set([new Set(["A","B"])]);
-        prueba.add(new Set(["B","A"]));
-        console.log(prueba);
+        //Aplicar x+x=x encontrando las diferencias de conjuntos.
+        let eliminar = Array();
+        for (let i = 0; i < distribuido.length; i++) {
+            for (let j = i+1; j < distribuido.length; j++) {
+                if(new Set([...distribuido[i]].filter(x => !distribuido[j].has(x))).size == 0 && new Set([...distribuido[j]].filter(x => !distribuido[i].has(x))).size == 0){
+                    eliminar.push(j);
+                }
+            }
+        }
+        let aux = Array();
+        for (let i = 0; i < distribuido.length; i++) {
+            if(eliminar.includes(i))
+                continue;
+            aux.push(distribuido[i]);
+        }
+        distribuido = aux;
+        //Aplicar x+xy=x
     } else if (productosDeSumas.length == 1) {
         //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x y retornar el ultimo resultado
     } else
