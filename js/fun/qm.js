@@ -167,6 +167,22 @@ function MetodoDePetrick(productosDeSumas) {
         }
         distribuido = aux;
         //Aplicar x+xy=x
+        eliminar = Array();
+        for (let i = 0; i < distribuido.length; i++) {
+            for (let j = i+1; j < distribuido.length; j++) {
+                if(new Set([...distribuido[i]].filter(x => !distribuido[j].has(x))).size == 0){
+                    eliminar.push(j);
+                }
+            }
+        }
+        aux = Array();
+        for (let i = 0; i < distribuido.length; i++) {
+            if(eliminar.includes(i))
+                continue;
+            aux.push(distribuido[i]);
+        }
+        distribuido = aux;
+        console.log(distribuido);
     } else if (productosDeSumas.length == 1) {
         //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x y retornar el ultimo resultado
     } else
