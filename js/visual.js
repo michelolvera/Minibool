@@ -24,6 +24,7 @@
         $("#inpFuncion").show();
         $('#inpTabla').hide();
         $('#inpTablaK').hide();
+        $("#tablaMapaKMini").hide();
         $('#inputFuncion').focus();
         if ($('#Cvar3').is(':checked')) {
             $('#teclaD').addClass('disabled')
@@ -54,6 +55,7 @@
         crear('#tablaVerdadMini', false);
         $('#inpTabla').show();
         $('#btnIniciarConocido').show();
+        $("#tablaMapaKMini").hide();
     }
     function mapak() {
         $('#botonporMapaK').addClass('active');
@@ -63,6 +65,7 @@
         $('#inpTabla').hide();
         $('#tablaMapaKMini').show();
         $('#btnIniciarConocido').show();
+        $("#tablaMapaKMini").hide();
         crear('#tablaMapaKMini', false)
     }
     var limpiar = function (tabla) {
@@ -94,7 +97,7 @@
         var tablaContent = "";
         var vueltas = 0;
         limpiar(tabla);
-        limpiar("#tablaMapaKMini");
+        $("#tablaMapaKMini").hide();
         if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
             vueltas = 8;
         }
@@ -159,6 +162,7 @@
         }
         //Caso los dos mapas de Karnaugh
         if (tabla == "#tablaMapaK" || tabla == "#tablaMapaKMini") {
+          $("#tablaMapaKMini").show();
           console.log('si entro al caso de la tabla tablaMapaKMini');
           tablaContent = '  <div class="row no-gutters">' +
               '<div class="col-2 col-md-1">' +
