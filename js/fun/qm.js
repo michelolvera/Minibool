@@ -141,18 +141,16 @@ function MetodoDePetrick(productosDeSumas) {
     let productosRecursivos = Array();
     if (productosDeSumas.length > 1) {
         //Distribuir y buscar similares con las reglas x+x=x, xx=x y x+xy=x, volver a llamar este metodo.
-        let sumas = Array();
-        //Distribuir
-        for (let i of productosDeSumas[0]) {
-            for (let j of productosDeSumas[1]) {
-                let distrib = new Set();
-                distrib.add(i);
-                distrib.add(j);
-                sumas.push(distrib);
+        let distribuido = Array();
+        for (let i = 0; i < productosDeSumas[0].length; i++) {
+            for (let j = 0; j < productosDeSumas[1].length; j++) {
+                //Unir conjuntos
+                distribuido.push(new Set([...productosDeSumas[0][i],...productosDeSumas[1][j]]));
             }
         }
-        //
-        console.log(sumas);
+        let prueba = new Set([new Set(["A","B"])]);
+        prueba.add(new Set(["B","A"]));
+        console.log(prueba);
     } else if (productosDeSumas.length == 1) {
         //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x y retornar el ultimo resultado
     } else
@@ -165,9 +163,9 @@ function ObtenerProductosDeSumas(implicantes) {
         for (let j = i + 1; j < implicantes.length; j++) {
             for (let k = 0; k < implicantes[i].length; k++) {
                 if (implicantes[i][k] && implicantes[j][k]) {
-                    let suma = new Set();
-                    suma.add(String.fromCharCode(65 + i));
-                    suma.add(String.fromCharCode(65 + j));
+                    let suma = Array();
+                    suma.push(new Set().add(String.fromCharCode(65 + i)));
+                    suma.push(new Set().add(String.fromCharCode(65 + j)));
                     productosDeSumas.push(suma);
                     break;
                 }
