@@ -182,7 +182,6 @@ function MetodoDePetrick(productosDeSumas) {
             aux.push(distribuido[i]);
         }
         distribuido = aux;
-        console.log(distribuido);
     } else if (productosDeSumas.length == 1) {
         //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x y retornar el ultimo resultado
     } else
