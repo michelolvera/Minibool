@@ -139,11 +139,12 @@ function OrdenarMiniTerminos(miniTerminos, cantidadUnos = false) {
 
 function MetodoDePetrick(productosDeSumas) {
     let productosRecursivos = Array();
-    for (let i = 0; i < productosDeSumas[0].length; i++) {
-      for (let j = 0; j < productosDeSumas[1].length; j++) {
-
-      }
-    }
+    if (productosDeSumas.length > 1) {
+        //Distribuir y buscar similares con las reglas x+x=x, xx=x y x+xy=x, volver a llamar este metodo.
+    } else if (productosDeSumas.length == 1) {
+        //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x
+    } else
+        return Array();
 }
 
 function ObtenerProductosDeSumas(implicantes) {
@@ -152,7 +153,7 @@ function ObtenerProductosDeSumas(implicantes) {
         for (let j = i + 1; j < implicantes.length; j++) {
             for (let k = 0; k < implicantes[i].length; k++) {
                 if (implicantes[i][k] && implicantes[j][k]) {
-                    let suma =new Set();
+                    let suma = new Set();
                     suma.add(String.fromCharCode(65 + i));
                     suma.add(String.fromCharCode(65 + j));
                     productosDeSumas.push(suma);
