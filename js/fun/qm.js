@@ -137,6 +137,33 @@ function OrdenarMiniTerminos(miniTerminos, cantidadUnos = false) {
     return miniTerminos;
 }
 
+function MetodoDePetrick(productosDeSumas) {
+    let productosRecursivos = Array();
+    for (let i = 0; i < productosDeSumas[0].length; i++) {
+      for (let j = 0; j < productosDeSumas[1].length; j++) {
+
+      }
+    }
+}
+
+function ObtenerProductosDeSumas(implicantes) {
+    let productosDeSumas = Array();
+    for (let i = 0; i < implicantes.length; i++) {
+        for (let j = i + 1; j < implicantes.length; j++) {
+            for (let k = 0; k < implicantes[i].length; k++) {
+                if (implicantes[i][k] && implicantes[j][k]) {
+                    let suma =new Set();
+                    suma.add(String.fromCharCode(65 + i));
+                    suma.add(String.fromCharCode(65 + j));
+                    productosDeSumas.push(suma);
+                    break;
+                }
+            }
+        }
+    }
+    return productosDeSumas;
+}
+
 function IniciarReduccion() {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado);
     var implicantes = ReductorRecursivo(miniTerminos);
@@ -158,4 +185,7 @@ function IniciarReduccion() {
     console.log(implicantes);
     var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
     console.log(tablaImplicantes);
+    var productosDeSumas = ObtenerProductosDeSumas(tablaImplicantes);
+    console.log(productosDeSumas);
+    var terminosPetrick = MetodoDePetrick(productosDeSumas);
 }
