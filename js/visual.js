@@ -267,6 +267,7 @@ var crear = function (tabla, isAl) {
                   '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
                   '</td>';
           }
+        }
     }
     // CASO MAPA DE KARNAUGH MINI
     if (tabla == "#tablaMapaKMini") {
