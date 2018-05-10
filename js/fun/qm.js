@@ -1,8 +1,8 @@
 //Variables de informacion
 var cantidadVariables = 0;
-var kmapResultado = [1, 0, 1, 1, 1, 1, 0, 1];
-//var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];
-//var kmapResultado = [0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1];
+var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
+//var kmapResultado = [1, 0, 1, 1, 1, 1, 0, 1];//Multiples soluciones qm.pdf
+//var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];//Solucion unica qm.pdf
 
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
@@ -69,7 +69,6 @@ function CompararMinTerms(mTerm1, mTerm2) {
 }
 
 function ReductorRecursivo(miniTerms) {
-    console.log(miniTerms);
     let contadorConbinaciones = 0;
     let implicantesPrimarios = Array();
     for (let i = 0; i < miniTerms.length; i++) {
@@ -96,7 +95,6 @@ function ReductorRecursivo(miniTerms) {
 function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos) {
     //Ordenar mini terminos de mayor a menor en valor binario
     miniTerminos = OrdenarMiniTerminos(miniTerminos);
-
     let tabla = Array();
     for (let i = 0; i < implicantesPrimos.length; i++) {
         let fila = Array();
@@ -141,51 +139,95 @@ function MetodoDePetrick(productosDeSumas) {
     let productosRecursivos = Array();
     if (productosDeSumas.length > 1) {
         //Distribuir y buscar similares con las reglas x+x=x, xx=x y x+xy=x, volver a llamar este metodo.
-
         //Distribuir y aplicar xx=x
+        let dis1, dis2;
         let distribuido = Array();
-        for (let i = 0; i < productosDeSumas[0].length; i++) {
-            for (let j = 0; j < productosDeSumas[1].length; j++) {
+        let continuar = true;
+        for (let i = 0; i < productosDeSumas.length; i++) {
+            for (let j = i + 1; j < productosDeSumas.length; j++) {
+                for (let k = 0; k < productosDeSumas[i].length; k++) {
+                    for (let l = 0; l < productosDeSumas[j].length; l++) {
+                        if (new Set([...productosDeSumas[i][k]].filter(x => productosDeSumas[j][l].has(x))).size != 0) {
+                            dis1 = i;
+                            dis2 = j;
+                            continuar = false;
+                            break;
+                        }
+                        if (!continuar) break
+                    }
+                    if (!continuar) break
+                }
+                if (!continuar) break
+            }
+            if (!continuar) break
+        }
+        for (let i = 0; i < productosDeSumas[dis1].length; i++) {
+            for (let j = 0; j < productosDeSumas[dis2].length; j++) {
                 //Unir conjuntos
-                distribuido.push(new Set([...productosDeSumas[0][i],...productosDeSumas[1][j]]));
+                distribuido.push(new Set([...productosDeSumas[dis1][i], ...productosDeSumas[dis2][j]]));
             }
         }
-        //Aplicar x+x=x encontrando las diferencias de conjuntos.
-        let eliminar = Array();
-        for (let i = 0; i < distribuido.length; i++) {
-            for (let j = i+1; j < distribuido.length; j++) {
-                if(new Set([...distribuido[i]].filter(x => !distribuido[j].has(x))).size == 0 && new Set([...distribuido[j]].filter(x => !distribuido[i].has(x))).size == 0){
-                    eliminar.push(j);
-                }
-            }
-        }
-        let aux = Array();
-        for (let i = 0; i < distribuido.length; i++) {
-            if(eliminar.includes(i))
+        //Llenar arreglo
+        for (let i = 0; i < productosDeSumas.length; i++) {
+            if (i == dis1 || i == dis2)
                 continue;
-            aux.push(distribuido[i]);
+            productosRecursivos.push(productosDeSumas[i]);
         }
-        distribuido = aux;
-        //Aplicar x+xy=x
-        eliminar = Array();
-        for (let i = 0; i < distribuido.length; i++) {
-            for (let j = i+1; j < distribuido.length; j++) {
-                if(new Set([...distribuido[i]].filter(x => !distribuido[j].has(x))).size == 0){
-                    eliminar.push(j);
-                }
-            }
-        }
-        aux = Array();
-        for (let i = 0; i < distribuido.length; i++) {
-            if(eliminar.includes(i))
-                continue;
-            aux.push(distribuido[i]);
-        }
-        distribuido = aux;
+        //Aplicar identidades
+        distribuido = indentidadesPetrick(distribuido);
+        productosRecursivos.push(distribuido);
+        return MetodoDePetrick(productosRecursivos);
     } else if (productosDeSumas.length == 1) {
-        //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x y retornar el ultimo resultado
+        //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x?? y retornar el ultimo resultado        
+        return productosDeSumas[0];;
     } else
         return Array();
+}
+
+function indentidadesPetrick(sumas) {
+    //Aplicar x+x=x encontrando las diferencias de conjuntos.
+    //let cambios = 0;//Recursivo
+    let eliminar = Array();
+    for (let i = 0; i < sumas.length; i++) {
+        for (let j = i + 1; j < sumas.length; j++) {
+            if (new Set([...sumas[i]].filter(x => !sumas[j].has(x))).size == 0 && new Set([...sumas[j]].filter(x => !sumas[i].has(x))).size == 0) {
+                eliminar.push(j);
+            }
+        }
+    }
+    let aux = Array();
+    for (let i = 0; i < sumas.length; i++) {
+        if (eliminar.includes(i)){
+            continue;
+            //cambios++;
+        }      
+        aux.push(sumas[i]);
+    }
+    sumas = aux;
+    //Aplicar x+xy=x
+    eliminar = Array();
+    for (let i = 0; i < sumas.length; i++) {
+        for (let j = i + 1; j < sumas.length; j++) {
+            if (new Set([...sumas[i]].filter(x => !sumas[j].has(x))).size == 0) {
+                eliminar.push(j);
+                continue;
+            }
+            if (new Set([...sumas[j]].filter(x => !sumas[i].has(x))).size == 0){
+                eliminar.push(i);
+                continue;
+            }
+        }
+    }
+    aux = Array();
+    for (let i = 0; i < sumas.length; i++) {
+        if (eliminar.includes(i)){
+            continue;
+            //cambios++;
+        }
+        aux.push(sumas[i]);
+    }
+    //return cambios==0 ? aux : indentidadesPetrick(aux);//Recursivo
+    return aux;
 }
 
 function ObtenerProductosDeSumas(implicantes) {
@@ -195,8 +237,8 @@ function ObtenerProductosDeSumas(implicantes) {
             for (let k = 0; k < implicantes[i].length; k++) {
                 if (implicantes[i][k] && implicantes[j][k]) {
                     let suma = Array();
-                    suma.push(new Set().add(String.fromCharCode(65 + i)));
-                    suma.push(new Set().add(String.fromCharCode(65 + j)));
+                    suma.push(new Set().add(String.fromCharCode(65 + i)));//String.fromCharCode(65 + i)
+                    suma.push(new Set().add(String.fromCharCode(65 + j)));//String.fromCharCode(65 + j)
                     productosDeSumas.push(suma);
                     break;
                 }
@@ -229,6 +271,8 @@ function IniciarReduccion() {
     var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
     console.log(tablaImplicantes);
     var productosDeSumas = ObtenerProductosDeSumas(tablaImplicantes);
+    //Si productosDeSumas.length = 1 no es necesario petrick ya que hay solucion unica
     console.log(productosDeSumas);
     var terminosPetrick = MetodoDePetrick(productosDeSumas);
+    console.log(terminosPetrick);
 }
