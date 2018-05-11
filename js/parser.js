@@ -144,13 +144,13 @@ function MissingTokenException(given, expected, position){
 	this.given = given;
 	this.expected = expected;
 	this.toString = function(){
-		return "Missing token. Expected " + this.expected + " at position " + this.position;
+		return "Simbolo faltante. Se esperaba " + this.expected + " en la posición " + this.position;
 	}
 }
 
 function InvalidExpressionException(){
 	this.toString = function(){
-		return "Invalid Expression";
+		return "Expresion invalida";
 	}
 }
 
@@ -212,6 +212,5 @@ function BooleanExpressionLexer(expr){
 
 		return vars_array;
 	}
-
 	parse();
 }
