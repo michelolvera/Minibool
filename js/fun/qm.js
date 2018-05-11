@@ -1,8 +1,10 @@
 //Variables de informacion
 var cantidadVariables = 0;
-var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
+//var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
 //var kmapResultado = [1, 0, 1, 1, 1, 1, 0, 1];//Multiples soluciones qm.pdf
 //var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];//Solucion unica qm.pdf
+//var kmapResultado = [1,1,0,1,0,0,0,1,1,1,0,1,0,0,0,1]; //Solucion unica sin necesidad de Petrick https://www.youtube.com/watch?v=l1jgq0R5EwQ
+var kmapResultado = [1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1];//Solucion unica con multiples soluciones incorrectas https://www.youtube.com/watch?v=VnZLRrJYa2I
 
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
@@ -94,7 +96,6 @@ function ReductorRecursivo(miniTerms) {
 
 function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos) {
     //Ordenar mini terminos de mayor a menor en valor binario
-    miniTerminos = OrdenarMiniTerminos(miniTerminos);
     let tabla = Array();
     for (let i = 0; i < implicantesPrimos.length; i++) {
         let fila = Array();
@@ -197,10 +198,10 @@ function indentidadesPetrick(sumas) {
     }
     let aux = Array();
     for (let i = 0; i < sumas.length; i++) {
-        if (eliminar.includes(i)){
+        if (eliminar.includes(i)) {
             continue;
             //cambios++;
-        }      
+        }
         aux.push(sumas[i]);
     }
     sumas = aux;
@@ -212,7 +213,7 @@ function indentidadesPetrick(sumas) {
                 eliminar.push(j);
                 continue;
             }
-            if (new Set([...sumas[j]].filter(x => !sumas[i].has(x))).size == 0){
+            if (new Set([...sumas[j]].filter(x => !sumas[i].has(x))).size == 0) {
                 eliminar.push(i);
                 continue;
             }
@@ -220,7 +221,7 @@ function indentidadesPetrick(sumas) {
     }
     aux = Array();
     for (let i = 0; i < sumas.length; i++) {
-        if (eliminar.includes(i)){
+        if (eliminar.includes(i)) {
             continue;
             //cambios++;
         }
@@ -268,11 +269,33 @@ function IniciarReduccion() {
     implicantes = aux;
     /////////////////////////////
     console.log(implicantes);
+    miniTerminos = OrdenarMiniTerminos(miniTerminos);//Ordenar mini terminos
     var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
     console.log(tablaImplicantes);
     var productosDeSumas = ObtenerProductosDeSumas(tablaImplicantes);
-    //Si productosDeSumas.length = 1 no es necesario petrick ya que hay solucion unica
+    //Si productosDeSumas.length < 3 no es necesario petrick ya que hay solucion unica
     console.log(productosDeSumas);
+
+    //Aplicar metodo de Petrick
     var terminosPetrick = MetodoDePetrick(productosDeSumas);
+    //Limpiar resultados erroneos usando la tabla de implicantes primos
+    let auxPetrick = Array();
+    for (let i = 0; i < terminosPetrick.length; i++) {
+        let comprobar = Array(miniTerminos.length);
+        let agregar = true;
+        for (let implicante of terminosPetrick[i]) {
+            for (let j = 0; j < tablaImplicantes[implicante.charCodeAt(0) - 65].length; j++) {
+                if (tablaImplicantes[implicante.charCodeAt(0) - 65][j])
+                    comprobar[j] = true;
+            }
+        }
+        for (let j = 0; j < comprobar.length; j++) {
+            if (!comprobar[j])
+                agregar = false;
+        }
+        if (agregar)
+            auxPetrick.push(terminosPetrick[i]);
+    }
+    terminosPetrick = auxPetrick;
     console.log(terminosPetrick);
 }
