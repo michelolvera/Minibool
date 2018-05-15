@@ -275,7 +275,7 @@
                   //CASO TABLA MAPA DE KARNAUGH GRANDE DENTRO DE LOS DOS KARNAUGH
                   if (tabla == "#tablaMapaK") {
                     console.log('entre caso tabala de mapak GRANDE');
-                    
+
                       if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
                           if (num == 0) {
                             tablaContent += '<th scope="row">0</th>'
@@ -389,9 +389,13 @@
                               var replaceFuncion = mainFuncion;
                               var res = "";
                               replaceFuncion = replaceFuncion.replace('A', valA)
+                              console.log(valA);
                               replaceFuncion = replaceFuncion.replace('B', valB)
+                              console.log(valB);
                               replaceFuncion = replaceFuncion.replace('C', valC)
+                              console.log(valC);
                               replaceFuncion = replaceFuncion.replace('D', valD)
+                              console.log(valD);
                               replaceFuncion = replaceFuncion.replace('E', valE)
                               replaceFuncion = replaceFuncion.replace('*', "&&")
                               replaceFuncion = replaceFuncion.replace("1'", "0")
