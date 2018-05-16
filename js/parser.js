@@ -17,7 +17,7 @@ booleanFun = /*
     this.expected = expected;
     this.found    = found;
     this.location = location;
-    this.name     = "SyntaxError";
+    this.name     = "Error de sintaxis";
 
     if (typeof Error.captureStackTrace === "function") {
       Error.captureStackTrace(this, peg$SyntaxError);
@@ -117,17 +117,17 @@ booleanFun = /*
           return descriptions[0];
 
         case 2:
-          return descriptions[0] + " or " + descriptions[1];
+          return descriptions[0] + " o " + descriptions[1];
 
         default:
           return descriptions.slice(0, -1).join(", ")
-            + ", or "
+            + ", o "
             + descriptions[descriptions.length - 1];
       }
     }
 
     function describeFound(found) {
-      return found ? "\"" + literalEscape(found) + "\"" : "end of input";
+      return found ? "\"" + literalEscape(found) + "\"" : "fin de la linea";
     }
 
     return "Se esperaba " + describeExpected(expected) + " pero " + describeFound(found) + " encontrado.";
@@ -161,7 +161,7 @@ booleanFun = /*
         peg$c8 = ")",
         peg$c9 = peg$literalExpectation(")", false),
         peg$c10 = function(expr) { return "("+expr+")"; },
-        peg$c11 = peg$otherExpectation("var"),
+        peg$c11 = peg$otherExpectation("variable"),
         peg$c12 = /^[A-Ea-e]/,
         peg$c13 = peg$classExpectation([["A", "E"], ["a", "e"]], false, false),
         peg$c14 = function() { return text().toUpperCase(); },
