@@ -93,7 +93,6 @@ function consulta_numero_notificaciones(){
       dataType: "json"
     })
       .done(function (jsonObject) {
-          console.log(jsonObject);
           $("#btn_mostrar_notificaciones span").text(jsonObject[0]["suma"]);
       })
       .fail(function () {

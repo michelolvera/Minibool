@@ -84,6 +84,7 @@
           else if ($('#botonporMapaK').hasClass('active')) {
               mapak();
           }
+          validarEntrada();
       }
       var crear = function (tabla, isAl) {
           var mainFuncion = "";
@@ -94,6 +95,7 @@
           var valE = "";
           var vars = "";
           var f = "";
+          var res = "";
           var tablaContent = "";
           var vueltas = 0;
           var entrado = false;
@@ -118,6 +120,7 @@
           //Caso tabla de verdad grande
           if (tabla == "#tablaVerdad") {
               $('#btnEjercicios').addClass('disabled')
+              $('#btnEjercicios').removeClass('active')
               $('#tabtablaVerdad').removeClass('disabled')
               $('#tabtablaVerdad').addClass('active')
               $('#tabMapakarnaugh').removeClass('disabled')
@@ -163,7 +166,6 @@
           //Caso los dos mapas de Karnaugh
           if (tabla == "#tablaMapaK" || tabla == "#tablaMapaKMini") {
             $("#tablaMapaKMini").show();
-            console.log('si entro al caso de la tabla tablaMapaKMini');
             tablaContent = '  <div class="row no-gutters">' +
                 '<div class="col-2 col-md-1">' +
                 '<span id="varsIzq" class="align-middle">' +
@@ -274,8 +276,10 @@
                   }
                   //CASO TABLA MAPA DE KARNAUGH GRANDE DENTRO DE LOS DOS KARNAUGH
                   if (tabla == "#tablaMapaK") {
-                    console.log('entre caso tabala de mapak GRANDE');
-
+                    if(isAl){
+                      console.log("cao aleatorio de mapak");
+                    }
+                    else{
                       if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
                           if (num == 0) {
                             tablaContent += '<th scope="row">0</th>'
@@ -284,11 +288,9 @@
                             tablaContent += '</tr><tr><th scope="row">1</th>'
                         }
                         if($('#botonporMapaK').hasClass('active')){
-                          console.log('entre mapak');
                           tablaContent += '<td>' + $('#btnMapak' + num).html()+'</td>';
                         }
                         else{
-                          console.log('entre tabla');
                           tablaContent += '<td>' + $('#btnTabla' + num).html()+'</td>';
                         }
                       }
@@ -306,11 +308,9 @@
                             tablaContent += '</tr><tr><th scope="row">10</th>'
                         }
                         if($('#botonporMapaK').hasClass('active')){
-                          console.log('entre mapak');
                           tablaContent += '<td>' + $('#btnMapak' + num).html()+'</td>';
                         }
                         else {
-                          console.log('entre tabla');
                           tablaContent += '<td>' + $('#btnTabla' + num).html()+'</td>';
                         }
                       }
@@ -328,15 +328,13 @@
                             tablaContent += '</tr><tr><th scope="row">10</th>'
                         }
                         if($('#botonporMapaK').hasClass('active')){
-                          console.log('entre mapak');
                           tablaContent += '<td>' + $('#btnMapak' + num).html()+'</td>';
                         }
                         else{
-                          console.log('entre tabla donde debo de entrar');
                           tablaContent += '<td>' + $('#btnTabla' + num).html()+'</td>';
                         }
                       }
-
+                    }
                   }
                 }
                 tablaContent += '</tr>' +
@@ -356,6 +354,7 @@
                       tablaContent += '<td scope="row">' + dec2bin(num, 3).charAt(0) + '</th>' +
                           '<td>' + dec2bin(num, 3).charAt(1) + '</td>' +
                           '<td>' + dec2bin(num, 3).charAt(2) + '</td>';
+                          console.log(valA);
                   }
                   if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
                       valA = dec2bin(num, 4).charAt(0);
@@ -386,24 +385,26 @@
                       }
                       else {
                           if ($('#botonporFuncion').hasClass('active')) {
-                              var replaceFuncion = mainFuncion;
-                              var res = "";
-                              replaceFuncion = replaceFuncion.replace('A', valA)
-                              console.log(valA);
-                              replaceFuncion = replaceFuncion.replace('B', valB)
-                              console.log(valB);
-                              replaceFuncion = replaceFuncion.replace('C', valC)
-                              console.log(valC);
-                              replaceFuncion = replaceFuncion.replace('D', valD)
-                              console.log(valD);
-                              replaceFuncion = replaceFuncion.replace('E', valE)
-                              replaceFuncion = replaceFuncion.replace('*', "&&")
-                              replaceFuncion = replaceFuncion.replace("1'", "0")
-                              replaceFuncion = replaceFuncion.replace("0'", "1")
-                              if (!!eval(replaceFuncion)) {
-                                  res = "1"
-                              } else {
-                                  res = "0"
+                            replaceFuncion = mainFuncion.toUpperCase();
+                              try {
+                                replaceFuncion = booleanFun.parse(mainFuncion);
+                                console.log(replaceFuncion);
+                                replaceFuncion = replaceFuncion.replace('A', valA)
+                                replaceFuncion = replaceFuncion.replace('B', valB)
+                                replaceFuncion = replaceFuncion.replace('C', valC)
+                                replaceFuncion = replaceFuncion.replace('D', valD)
+                                replaceFuncion = replaceFuncion.replace('E', valE)
+                              } catch (e) {
+                                error = e;
+                              }
+                              try {
+                                if (!!eval(replaceFuncion)) {
+                                    res = "1"
+                                } else {
+                                    res = "0"
+                                }
+                              } catch (e) {
+                                error = "Error al evaluar la función "+e;
                               }
                               tablaContent += '<td>' + res + '</td>';
                           }
@@ -414,7 +415,6 @@
                                   mainFuncion+='+';
                                 }
                                 entrado = true;
-                                mainFuncion+='(';
                                 if(valA=='1'){
                                   mainFuncion+='A';
                                 }
@@ -445,7 +445,6 @@
                                 if(valE=='0'){
                                   mainFuncion+="E'";
                                 }
-                                mainFuncion+=')';
                               }
                           }
                           if ($('#botonporMapaK').hasClass('active')) {
@@ -517,10 +516,8 @@
           return Math.floor(Math.random() * (2 - 0)) + 0;
       }
       function cambiarNum(num) {
-          console.log('entre a la funcion cambiarNum');
           if ($('#btnTabla' + num).html() == '0') {
               $('#btnTabla' + num).html('1');
-              console.log('entre al if');
           }
           else {
               $('#btnTabla' + num).html('0');
