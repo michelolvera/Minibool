@@ -1,3 +1,4 @@
+var resultados =  new Array(32);
       $(document).ready(function () {
           $("#inpFuncion").hide();
           $('#inpTabla').hide();
@@ -287,12 +288,8 @@
                         else if (num == 4) {
                             tablaContent += '</tr><tr><th scope="row">1</th>'
                         }
-                        if($('#botonporMapaK').hasClass('active')){
-                          tablaContent += '<td>' + $('#btnMapak' + num).html()+'</td>';
-                        }
-                        else{
-                          tablaContent += '<td>' + $('#btnTabla' + num).html()+'</td>';
-                        }
+                          tablaContent += '<td>' + resultados[num]+'</td>';
+
                       }
                       if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
                         if (num == 0) {
@@ -307,12 +304,8 @@
                         else if (num == 12) {
                             tablaContent += '</tr><tr><th scope="row">10</th>'
                         }
-                        if($('#botonporMapaK').hasClass('active')){
-                          tablaContent += '<td>' + $('#btnMapak' + num).html()+'</td>';
-                        }
-                        else {
-                          tablaContent += '<td>' + $('#btnTabla' + num).html()+'</td>';
-                        }
+                          tablaContent += '<td>' + resultados[num]+'</td>';
+
                       }
                       if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
                         if (num == 0) {
@@ -327,12 +320,8 @@
                         else if (num == 24) {
                             tablaContent += '</tr><tr><th scope="row">10</th>'
                         }
-                        if($('#botonporMapaK').hasClass('active')){
-                          tablaContent += '<td>' + $('#btnMapak' + num).html()+'</td>';
-                        }
-                        else{
-                          tablaContent += '<td>' + $('#btnTabla' + num).html()+'</td>';
-                        }
+                          tablaContent += '<td>' + resultados[num]+'</td>';
+
                       }
                     }
                   }
@@ -354,7 +343,6 @@
                       tablaContent += '<td scope="row">' + dec2bin(num, 3).charAt(0) + '</th>' +
                           '<td>' + dec2bin(num, 3).charAt(1) + '</td>' +
                           '<td>' + dec2bin(num, 3).charAt(2) + '</td>';
-                          console.log(valA);
                   }
                   if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
                       valA = dec2bin(num, 4).charAt(0);
@@ -380,7 +368,8 @@
                           '<td>' + dec2bin(num, 5).charAt(4) + '</td>';
                   }
                   if (tabla == "#tablaVerdad") {
-                      if (isAl) {
+                      if (isAl){
+                          resultados[num]=getRandom();
                           tablaContent += '<td>' + getRandom() + '</td>';
                       }
                       else {
@@ -410,8 +399,10 @@
                               }
                               try {
                                 if (!!eval(replaceFuncion)) {
+                                  resultados[num]=1;
                                     res = "1"
                                 } else {
+                                  resultados[num]=0;
                                     res = "0"
                                 }
                               } catch (e) {
@@ -419,9 +410,10 @@
                               }
                               tablaContent += '<td>' + res + '</td>';
                           }
-                          if ($('#botonporTabladeVerdad').hasClass('active')) {
-                              tablaContent += '<td>' + $('#btnTabla' + num).html() + '</td>';
-                              if($('#btnTabla' + num).html()=='1'){
+                          tablaContent += '<td>' + resultados[num] + '</td>';
+                        }
+
+                              if(resultados[num]==1){
                                 if(entrado){
                                   mainFuncion+='+';
                                 }
@@ -457,49 +449,7 @@
                                   mainFuncion+="E'";
                                 }
                               }
-                          }
-                          if ($('#botonporMapaK').hasClass('active')) {
-                              tablaContent += '<td>' + $('#btnMapak' + num).html() + '</td>';
-                              if($('#btnMapak' + num).html()=='1'){
-                                if(entrado){
-                                  mainFuncion+='+';
-                                }
-                                entrado = true;
-                                mainFuncion+='(';
-                                if(valA=='1'){
-                                  mainFuncion+='A';
-                                }
-                                if(valA=='0'){
-                                  mainFuncion+="A'";
-                                }
-                                if(valB=='1'){
-                                  mainFuncion+='B';
-                                }
-                                if(valB=='0'){
-                                  mainFuncion+="B'";
-                                }
-                                if(valC=='1'){
-                                  mainFuncion+='C';
-                                }
-                                if(valC=='0'){
-                                  mainFuncion+="C'";
-                                }
-                                if(valD=='1'){
-                                  mainFuncion+='D';
-                                }
-                                if(valD=='0'){
-                                  mainFuncion+="D'";
-                                }
-                                if(valE=='1'){
-                                  mainFuncion+='E';
-                                }
-                                if(valE=='0'){
-                                  mainFuncion+="E'";
-                                }
-                                mainFuncion+=')';
-                              }
-                          }
-                      }
+
                   }
                   else if (tabla == "#tablaVerdadMini") {
                       tablaContent += '<td class="no-border"><button id="btnTabla' + num + '" class="btn verde"  onClick="cambiarNum(' + num + ')">0</button></td>';
@@ -525,8 +475,8 @@
       }
       function getRandom() {
         var num=Math.random();
-        if(num < 0.8) return 1;  //probability 0.8
-        else return 0;  //probability 0.2
+        if(num < 0.8) return 1;  //probabilidad 0.8
+        else return 0;  //probabilidad 0.2
       }
       function cambiarNum(num) {
           if ($('#btnTabla' + num).html() == '0') {
