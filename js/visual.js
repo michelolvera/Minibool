@@ -524,7 +524,9 @@
           return num;
       }
       function getRandom() {
-          return Math.floor(Math.random() * (2 - 0)) + 0;
+        var num=Math.random();
+        if(num < 0.8) return 1;  //probability 0.8
+        else return 0;  //probability 0.2
       }
       function cambiarNum(num) {
           if ($('#btnTabla' + num).html() == '0') {
