@@ -385,15 +385,26 @@
                       }
                       else {
                           if ($('#botonporFuncion').hasClass('active')) {
-                            replaceFuncion = mainFuncion.toUpperCase();
+                            replaceFuncion = mainFuncion;
                               try {
                                 replaceFuncion = booleanFun.parse(mainFuncion);
-                                console.log(replaceFuncion);
-                                replaceFuncion = replaceFuncion.replace('A', valA)
-                                replaceFuncion = replaceFuncion.replace('B', valB)
-                                replaceFuncion = replaceFuncion.replace('C', valC)
-                                replaceFuncion = replaceFuncion.replace('D', valD)
-                                replaceFuncion = replaceFuncion.replace('E', valE)
+                                for (var i = 0; i < replaceFuncion.length; i++) {
+                                  replaceFuncion = replaceFuncion.replace('A', valA)
+                                  replaceFuncion = replaceFuncion.replace('B', valB)
+                                  replaceFuncion = replaceFuncion.replace('C', valC)
+                                  replaceFuncion = replaceFuncion.replace('D', valD)
+                                  replaceFuncion = replaceFuncion.replace('E', valE)
+                                  replaceFuncion = replaceFuncion.replace('a', valA)
+                                  replaceFuncion = replaceFuncion.replace('b', valB)
+                                  replaceFuncion = replaceFuncion.replace('c', valC)
+                                  replaceFuncion = replaceFuncion.replace('d', valD)
+                                  replaceFuncion = replaceFuncion.replace('e', valE)
+                                  mainFuncion = mainFuncion.replace('a', 'A')
+                                  mainFuncion = mainFuncion.replace('b', 'B')
+                                  mainFuncion = mainFuncion.replace('c', 'C')
+                                  mainFuncion = mainFuncion.replace('d', 'D')
+                                  mainFuncion = mainFuncion.replace('e', 'E')
+                                }
                               } catch (e) {
                                 error = e;
                               }
