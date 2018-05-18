@@ -138,5 +138,16 @@ switch ($funcion){
     $respuesta = consultaSQL("SELECT administrador FROM usuarios WHERE usuario = '".$userName."' AND contrasenia = AES_ENCRYPT('".$userPass."', '%b_learning%')");
     echo $respuesta[0]["administrador"];
   break;
+  case 'GraficaUsuarios':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $respuesta = consultaSQL("SELECT COUNT(*) as total, pais from usuarios GROUP BY pais;");
+    echo json_encode($respuesta);
+  break;
+
+  case 'ObtenerRanking':
+    $respuesta = consultaSQL("SELECT U.usuario, SUM(E.puntos) AS total FROM ejercicio_usuario as EU INNER JOIN usuarios as U ON EU.id_usuario=U.id_usuario INNER JOIN ejercicios AS E ON EU.id_ejercicio= E.id_ejercicio GROUP BY U.usuario DESC; ");
+    echo json_encode($respuesta);
+  break;
 }
 ?>

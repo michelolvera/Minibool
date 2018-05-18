@@ -99,3 +99,23 @@ function consulta_numero_notificaciones(){
         alert("Error");
       });
 }
+
+function cargar_ranking(){
+  $.ajax({
+      method: "post",
+      url: phpPath,
+      data: {
+        funcion: "ObtenerRanking",
+      },
+      dataType: "json"
+    })
+      .done(function (jsonObject) {
+        $("#lista_notificaciones").empty();
+        jsonObject.forEach(row => {
+          $("#lista_notificaciones").append("<div class='alert aler-info' role='alert'>"+ row["usuario"] +" "+ row["total"]+"</div>");
+        });
+      })
+      .fail(function () {
+        alert("Error");
+      });
+}

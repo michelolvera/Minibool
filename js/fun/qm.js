@@ -1,11 +1,14 @@
 //Variables de informacion
 var cantidadVariables = 0;
-var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
+//var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
 //var kmapResultado = [1, 0, 1, 1, 1, 1, 0, 1];//Multiples soluciones qm.pdf
 //var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];//Solucion unica qm.pdf
 //var kmapResultado = [1,1,0,1,0,0,0,1,1,1,0,1,0,0,0,1]; //Solucion unica sin necesidad de Petrick https://www.youtube.com/watch?v=l1jgq0R5EwQ
 //var kmapResultado = [1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1];//Solucion unica con multiples soluciones incorrectas https://www.youtube.com/watch?v=VnZLRrJYa2I
-
+//var kmapResultado = [0,0,0,0,1,1,0,0]; //Ejercicio Profe
+//var kmapResultado = [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,0,1,0,0,0,0,0,1,0,0];
+//var kmapResultado = [0,1,0,1,0,1,0,1,0,0,0,1,0,0,0,1];
+var kmapResultado = [1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0];
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
     cantidadVariables = Math.log2(tablaVerdad.length);
@@ -291,6 +294,7 @@ function IniciarReduccion() {
 
     //Aplicar metodo de Petrick
     var terminosPetrick = MetodoDePetrick(productosDeSumas);
+    console.log(terminosPetrick);
     //Limpiar resultados erroneos usando la tabla de implicantes primos
     let auxPetrick = Array();
     for (let i = 0; i < terminosPetrick.length; i++) {
@@ -322,7 +326,6 @@ function IniciarReduccion() {
             }
             terminosPetrick[0].add(String.fromCharCode(65 + i));
         }
-        console.log(comprobar);
         for (let j = 0; j < comprobar.length; j++) {
             if (!comprobar[j])
                 return null;
