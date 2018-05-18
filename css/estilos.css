@@ -70,3 +70,8 @@ img {
   margin-right: 3%;
   margin-left: auto;
 }
+
+canvas {
+  width: 100%;
+  height: auto;
+}

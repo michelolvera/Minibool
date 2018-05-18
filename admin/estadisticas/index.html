@@ -64,6 +64,26 @@
     <br>
     <h2 id="text_gestion_estadisticas" class="h2 mb-3 font-weight-normal">Estadísticas</h2>
     <br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <canvas id="grafica_deterministicos" width="400px" height="400px">
+            
+          </canvas>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <canvas id="grafica_aleatorios" width="400px" height="400px">
+            
+          </canvas>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <canvas id="grafica_estudiantes" width="400px" height="400px">
+            
+          </canvas>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Modal notificaciones-->
   <div class="modal fade" id="vntn_notificaciones">
@@ -87,6 +107,7 @@
   <script src="../../js/fun/seguridad_admin.js"></script>
   <script src="../../js/fun/adm_estadisticas.js"></script>
   <script src="../../js/fun/fun.js"></script>
+  <script src="../../dist/Chart.bundle.min.js" ></script>
 </body>
 
 </html>
