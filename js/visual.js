@@ -1,4 +1,4 @@
-var resultados =  new Array(32);
+var resultados =  new Array();
       $(document).ready(function () {
           $("#inpFuncion").hide();
           $('#inpTabla').hide();
@@ -9,12 +9,7 @@ var resultados =  new Array(32);
           $('#btnIniciarConocido').hide();
           $('#mapaContenedor').hide();
       });
-      $(document).on('click', '.modal', function () {
-
-          // su acción
-      });
       $('#conocidoModal').on('shown.bs.modal', function () {
-
           $('#exampleModal').trigger('focus')
       })
 
@@ -65,9 +60,9 @@ var resultados =  new Array(32);
           $("#inpFuncion").hide();
           $('#inpTabla').hide();
           $('#tablaMapaKMini').show();
-          $('#btnIniciarConocido').show();
           $("#tablaMapaKMini").hide();
           crear('#tablaMapaKMini', false)
+          $('#btnIniciarConocido').show();
       }
       var limpiar = function (tabla) {
           $(tabla).html('');
@@ -78,14 +73,16 @@ var resultados =  new Array(32);
       var cambioCvar = function () {
           if ($('#botonporFuncion').hasClass('active')) {
               func();
+              validarEntrada();
           }
           else if ($('#botonporTabladeVerdad').hasClass('active')) {
               tabla();
           }
           else if ($('#botonporMapaK').hasClass('active')) {
-              mapak();
+            mapak();
+            //$('#btnIniciarConocido').show();
           }
-          validarEntrada();
+
       }
       var crear = function (tabla, isAl) {
           var mainFuncion = "";
@@ -273,14 +270,9 @@ var resultados =  new Array(32);
                             '<button id="btnMapak' +num+ '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
                             '</td>';
                     }
-                    console.log($('#btnMapak' + num).html());
                   }
                   //CASO TABLA MAPA DE KARNAUGH GRANDE DENTRO DE LOS DOS KARNAUGH
                   if (tabla == "#tablaMapaK") {
-                    if(isAl){
-                      console.log("cao aleatorio de mapak");
-                    }
-                    else{
                       if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
                           if (num == 0) {
                             tablaContent += '<th scope="row">0</th>'
@@ -323,7 +315,7 @@ var resultados =  new Array(32);
                           tablaContent += '<td>' + resultados[num]+'</td>';
 
                       }
-                    }
+
                   }
                 }
                 tablaContent += '</tr>' +
@@ -367,10 +359,11 @@ var resultados =  new Array(32);
                           '<td>' + dec2bin(num, 5).charAt(3) + '</td>' +
                           '<td>' + dec2bin(num, 5).charAt(4) + '</td>';
                   }
+                  // Tabla de verdad dentro de las dos tablas
                   if (tabla == "#tablaVerdad") {
                       if (isAl){
                           resultados[num]=getRandom();
-                          tablaContent += '<td>' + getRandom() + '</td>';
+                          tablaContent += '<td class="table-success">' + resultados[num] + '</td>';
                       }
                       else {
                           if ($('#botonporFuncion').hasClass('active')) {
@@ -408,11 +401,17 @@ var resultados =  new Array(32);
                               } catch (e) {
                                 error = "Error al evaluar la función "+e;
                               }
-                              tablaContent += '<td>' + res + '</td>';
+                              resultados[num] = res;
                           }
-                          tablaContent += '<td>' + resultados[num] + '</td>';
-                        }
-
+                          if ($('#botonporTabladeVerdad').hasClass('active')) {
+                            resultados[num]=$('#btnTabla' + num).html();
+                          }
+                          if ($('#botonporMapaK').hasClass('active')) {
+                              resultados[num]=$('#btnMapak' + num).html();
+                          }
+                              tablaContent += '<td class="table-success">' + resultados[num] + '</td>';
+                            }
+                            if(!$('#botonporFuncion').hasClass('active')){
                               if(resultados[num]==1){
                                 if(entrado){
                                   mainFuncion+='+';
@@ -449,20 +448,24 @@ var resultados =  new Array(32);
                                   mainFuncion+="E'";
                                 }
                               }
-
+                            }
                   }
-                  else if (tabla == "#tablaVerdadMini") {
+                  // Tabla de verdad mini dentro de las dos tablas
+                  if (tabla == "#tablaVerdadMini") {
                       tablaContent += '<td class="no-border"><button id="btnTabla' + num + '" class="btn verde"  onClick="cambiarNum(' + num + ')">0</button></td>';
                   }
                   tablaContent += '</tr>';
               }
               tablaContent += '</tbody>';
-              console.log('esta es la funcion:'+mainFuncion);
-              $('#cardFuncion').html('F=' + mainFuncion + '<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
+              if (tabla == "#tablaVerdad"){$('#cardFuncion').html('F=' + mainFuncion + '<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')}
           }
           $(tabla).append(tablaContent);
           if(tabla!='#tablaMapaK' && tabla!='#tablaMapaKMini'){
-            crear('#tablaMapaK', false);
+            if(isAl){
+              crear('#tablaMapaK', true);
+            }else{
+              crear('#tablaMapaK', false);
+            }
           }
       };
 
