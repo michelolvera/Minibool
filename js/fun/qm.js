@@ -1,10 +1,10 @@
 //Variables de informacion
 var cantidadVariables = 0;
-//var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
+var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
 //var kmapResultado = [1, 0, 1, 1, 1, 1, 0, 1];//Multiples soluciones qm.pdf
 //var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];//Solucion unica qm.pdf
 //var kmapResultado = [1,1,0,1,0,0,0,1,1,1,0,1,0,0,0,1]; //Solucion unica sin necesidad de Petrick https://www.youtube.com/watch?v=l1jgq0R5EwQ
-var kmapResultado = [1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1];//Solucion unica con multiples soluciones incorrectas https://www.youtube.com/watch?v=VnZLRrJYa2I
+//var kmapResultado = [1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1];//Solucion unica con multiples soluciones incorrectas https://www.youtube.com/watch?v=VnZLRrJYa2I
 
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
@@ -16,7 +16,6 @@ function ObtenerMiniTerminos(tablaVerdad) {
             minTerms.push({ "minterms": [index], "bin": GenerarBinariosATexto(index), "indice": ContarUnos(GenerarBinariosATexto(index)), "combinado": false });
         }
     }
-
     return OrdenarMiniTerminos(minTerms, true);
 }
 
@@ -249,6 +248,21 @@ function ObtenerProductosDeSumas(implicantes) {
     return productosDeSumas;
 }
 
+function ConvertirImplicanteAConjuntoExpresion(implicante) {
+    let expresion = new Set();
+    for (let i = 0; i < implicante["bin"].length; i++) {
+        switch (implicante["bin"].charAt(i)) {
+            case '0':
+                expresion.add({ "var": String.fromCharCode(65 + i), "negada": true });
+                break;
+            case '1':
+                expresion.add({ "var": String.fromCharCode(65 + i), "negada": false });
+                break;
+        }
+    }
+    return expresion;
+}
+
 function IniciarReduccion() {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado);
     var implicantes = ReductorRecursivo(miniTerminos);
@@ -273,7 +287,6 @@ function IniciarReduccion() {
     var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
     console.log(tablaImplicantes);
     var productosDeSumas = ObtenerProductosDeSumas(tablaImplicantes);
-    //Si productosDeSumas.length < 3 no es necesario petrick ya que hay solucion unica
     console.log(productosDeSumas);
 
     //Aplicar metodo de Petrick
@@ -297,5 +310,33 @@ function IniciarReduccion() {
             auxPetrick.push(terminosPetrick[i]);
     }
     terminosPetrick = auxPetrick;
+    if (terminosPetrick.length == 0) {
+        //Petrick no regreso solucion correcta, por lo tanto la solucion debe ser unica, comprobar solucion
+        terminosPetrick = [new Set()];
+        let comprobar = Array(miniTerminos.length);
+        for (let i = 0; i < tablaImplicantes.length; i++) {
+            for (let j = 0; j < tablaImplicantes[i].length; j++) {
+                if (tablaImplicantes[i][j]) {
+                    comprobar[j] = true;
+                }
+            }
+            terminosPetrick[0].add(String.fromCharCode(65 + i));
+        }
+        console.log(comprobar);
+        for (let j = 0; j < comprobar.length; j++) {
+            if (!comprobar[j])
+                return null;
+        }
+    }
     console.log(terminosPetrick);
+    //Solucion encontrada, convertir a expresion
+    let solucionesFinales = Array();
+    for (let i = 0; i < terminosPetrick.length; i++) {
+        let solucion = new Set();
+        for (let implicante of terminosPetrick[i]) {
+            solucion.add(ConvertirImplicanteAConjuntoExpresion(implicantes[implicante.charCodeAt(0) - 65]));
+        }
+        solucionesFinales.push(solucion);
+    }
+    return solucionesFinales;
 }
