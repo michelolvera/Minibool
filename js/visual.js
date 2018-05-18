@@ -60,7 +60,6 @@ var resultados =  new Array();
           $("#inpFuncion").hide();
           $('#inpTabla').hide();
           $('#tablaMapaKMini').show();
-          $('#btnIniciarConocido').show();
           $("#tablaMapaKMini").hide();
           crear('#tablaMapaKMini', false)
           $('#btnIniciarConocido').show();
@@ -74,14 +73,16 @@ var resultados =  new Array();
       var cambioCvar = function () {
           if ($('#botonporFuncion').hasClass('active')) {
               func();
+              validarEntrada();
           }
           else if ($('#botonporTabladeVerdad').hasClass('active')) {
               tabla();
           }
           else if ($('#botonporMapaK').hasClass('active')) {
-              mapak();
+            mapak();
+            //$('#btnIniciarConocido').show();
           }
-          validarEntrada();
+
       }
       var crear = function (tabla, isAl) {
           var mainFuncion = "";
@@ -272,10 +273,6 @@ var resultados =  new Array();
                   }
                   //CASO TABLA MAPA DE KARNAUGH GRANDE DENTRO DE LOS DOS KARNAUGH
                   if (tabla == "#tablaMapaK") {
-                    if(isAl){
-                      console.log("caso aleatorio de mapak");
-                    }
-                    else{
                       if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
                           if (num == 0) {
                             tablaContent += '<th scope="row">0</th>'
@@ -318,7 +315,7 @@ var resultados =  new Array();
                           tablaContent += '<td>' + resultados[num]+'</td>';
 
                       }
-                    }
+
                   }
                 }
                 tablaContent += '</tr>' +
@@ -460,8 +457,7 @@ var resultados =  new Array();
                   tablaContent += '</tr>';
               }
               tablaContent += '</tbody>';
-              console.log('esta es la funcion:'+mainFuncion);
-              $('#cardFuncion').html('F=' + mainFuncion + '<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')
+              if (tabla == "#tablaVerdad"){$('#cardFuncion').html('F=' + mainFuncion + '<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>')}
           }
           $(tabla).append(tablaContent);
           if(tabla!='#tablaMapaK' && tabla!='#tablaMapaKMini'){
