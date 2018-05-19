@@ -3,12 +3,12 @@ var cantidadVariables = 0;
 //var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
 //var kmapResultado = [1, 0, 1, 1, 1, 1, 0, 1];//Multiples soluciones qm.pdf
 //var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];//Solucion unica qm.pdf
-//var kmapResultado = [1,1,0,1,0,0,0,1,1,1,0,1,0,0,0,1]; //Solucion unica sin necesidad de Petrick https://www.youtube.com/watch?v=l1jgq0R5EwQ
+//var kmapResultado = [1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1]; //Solucion unica sin necesidad de Petrick https://www.youtube.com/watch?v=l1jgq0R5EwQ
 //var kmapResultado = [1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1];//Solucion unica con multiples soluciones incorrectas https://www.youtube.com/watch?v=VnZLRrJYa2I
-//var kmapResultado = [0,0,0,0,1,1,0,0]; //Ejercicio Profe
-//var kmapResultado = [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,0,1,0,0,0,0,0,1,0,0];
-//var kmapResultado = [0,1,0,1,0,1,0,1,0,0,0,1,0,0,0,1];
-var kmapResultado = [1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0];
+//var kmapResultado = [0, 0, 0, 0, 1, 1, 0, 0]; //Ejercicio Profe
+//var kmapResultado = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0];
+//var kmapResultado = [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1];
+var kmapResultado = [1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0];
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
     cantidadVariables = Math.log2(tablaVerdad.length);
@@ -177,13 +177,13 @@ function MetodoDePetrick(productosDeSumas, multiplesIdentidades = true) {
             productosRecursivos.push(productosDeSumas[i]);
         }
         //Aplicar identidades
-        if(multiplesIdentidades)
+        if (multiplesIdentidades)
             distribuido = indentidadesPetrick(distribuido);//Necesario distribuir desde el principio?
         productosRecursivos.push(distribuido);
         return MetodoDePetrick(productosRecursivos, multiplesIdentidades);
     } else if (productosDeSumas.length == 1) {
         //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x?? y retornar el ultimo resultado
-        if(!multiplesIdentidades)     
+        if (!multiplesIdentidades)
             return indentidadesPetrick(productosDeSumas)[0];
         return productosDeSumas[0];
     } else
@@ -269,7 +269,7 @@ function ConvertirImplicanteAConjuntoExpresion(implicante) {
     return expresion;
 }
 
-function comprobarSolucionesPetrick (soluciones, miniTerminos, tablaImplicantes){
+function comprobarSolucionesPetrick(soluciones, miniTerminos, tablaImplicantes) {
     let auxPetrick = Array();
     for (let i = 0; i < soluciones.length; i++) {
         let comprobar = Array(miniTerminos.length);
@@ -325,7 +325,7 @@ function IniciarReduccion() {
         //Petrick no regreso solucion correcta utilizando multiples identidades, comprobar una sola identidad, por lo tanto la solucion debe ser unica, comprobar solucion
         terminosPetrick = MetodoDePetrick(productosDeSumas, false);
         terminosPetrick = comprobarSolucionesPetrick(terminosPetrick, miniTerminos, tablaImplicantes);
-        if (terminosPetrick.length == 0){
+        if (terminosPetrick.length == 0) {
             //No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.
             terminosPetrick = [new Set()];
             let comprobar = Array(miniTerminos.length);
