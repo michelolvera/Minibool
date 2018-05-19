@@ -1,6 +1,6 @@
 //Variables de informacion
 var cantidadVariables = 0;
-//var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
+var kmapResultado = [1, 1, 1, 0, 0, 1, 1, 1];//Multiples soluciones wikipedia petrick
 //var kmapResultado = [1, 0, 1, 1, 1, 1, 0, 1];//Multiples soluciones qm.pdf
 //var kmapResultado = [1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];//Solucion unica qm.pdf
 //var kmapResultado = [1,1,0,1,0,0,0,1,1,1,0,1,0,0,0,1]; //Solucion unica sin necesidad de Petrick https://www.youtube.com/watch?v=l1jgq0R5EwQ
@@ -8,7 +8,7 @@ var cantidadVariables = 0;
 //var kmapResultado = [0,0,0,0,1,1,0,0]; //Ejercicio Profe
 //var kmapResultado = [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,0,1,0,0,0,0,0,1,0,0];
 //var kmapResultado = [0,1,0,1,0,1,0,1,0,0,0,1,0,0,0,1];
-var kmapResultado = [1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0];
+//var kmapResultado = [1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0];
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
     cantidadVariables = Math.log2(tablaVerdad.length);
@@ -177,12 +177,13 @@ function MetodoDePetrick(productosDeSumas) {
             productosRecursivos.push(productosDeSumas[i]);
         }
         //Aplicar identidades
-        distribuido = indentidadesPetrick(distribuido);
+        distribuido = indentidadesPetrick(distribuido);//Necesario distribuir desde el principio?
         productosRecursivos.push(distribuido);
         return MetodoDePetrick(productosRecursivos);
     } else if (productosDeSumas.length == 1) {
         //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x?? y retornar el ultimo resultado        
-        return productosDeSumas[0];;
+        //return indentidadesPetrick(productosDeSumas)[0];
+        return productosDeSumas[0];
     } else
         return Array();
 }
