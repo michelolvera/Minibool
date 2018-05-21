@@ -112,7 +112,7 @@ function cargar_ranking(){
       .done(function (jsonObject) {
         $("#lista_notificaciones").empty();
         jsonObject.forEach(row => {
-          $("#lista_notificaciones").append("<div class='alert aler-info' role='alert'>"+ row["usuario"] +" "+ row["total"]+"</div>");
+          $("#lista_notificaciones").append("<tr><td style='width: 80%;'><div class='alert alert-info' role='alert'>"+ row["usuario"] +"</div></td><td style='width: 20%;'><div class='alert alert-info' role='alert'>"+ row["total"] +"</div></td></tr>");
         });
       })
       .fail(function () {
