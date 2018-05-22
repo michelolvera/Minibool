@@ -10,11 +10,85 @@ function ValidarCookie() {
 }
 
 function CargarTextosPagina() {
-
+    
 }
 
 function inicializacion() {
     grafica_paises();
+    grafica_ejercicios_det();
+    grafica_ejercicios_alea();
+}
+
+function grafica_ejercicios_det(){
+    var datos = {
+        labels : ["3 Variables", "4 Variables", "5 Variables"],
+        datasets : [{
+            label : "Correctos",
+            backgroundColor : dame_color_aleatorio(),
+            data : [70,80,50]
+        },
+        {
+            label : "Incorrectos",
+            backgroundColor : dame_color_aleatorio(),
+            data : [60,70,40]
+        }]
+    };
+
+    var $myCanvas = $('#grafica_deterministicos');
+    grafica = new Chart($myCanvas, {
+        type : "bar",
+        data : datos,
+        options : {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            },
+            responsive : true,
+            title : {
+                display : true,
+                text : "Ejercicos deterministicos"
+            }
+        }
+    });
+}
+
+function grafica_ejercicios_alea(){
+    var datos = {
+        labels : ["3 Variables", "4 Variables", "5 Variables"],
+        datasets : [{
+            label : "Correctos",
+            backgroundColor : dame_color_aleatorio(),
+            data : [70,80,50]
+        },
+        {
+            label : "Incorrectos",
+            backgroundColor : dame_color_aleatorio(),
+            data : [60,70,40]
+        }]
+    };
+
+    var $myCanvas = $('#grafica_aleatorios');
+    grafica = new Chart($myCanvas, {
+        type : "bar",
+        data : datos,
+        options : {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            },
+            responsive : true,
+            title : {
+                display : true,
+                text : "Ejercicos aleatorios"
+            }
+        }
+    });
 }
 
 function grafica_paises(){
