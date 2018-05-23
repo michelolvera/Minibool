@@ -105,7 +105,7 @@ function cargar_ranking(){
       method: "post",
       url: phpPath,
       data: {
-        funcion: "ObtenerRanking",
+        funcion: "obtenerRanking",
       },
       dataType: "json"
     })

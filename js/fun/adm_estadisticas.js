@@ -10,7 +10,7 @@ function ValidarCookie() {
 }
 
 function CargarTextosPagina() {
-    
+
 }
 
 function inicializacion() {
@@ -19,79 +19,66 @@ function inicializacion() {
     grafica_ejercicios_alea();
 }
 
-function grafica_ejercicios_det(){
-    var datos = {
-        labels : ["3 Variables", "4 Variables", "5 Variables"],
-        datasets : [{
-            label : "Correctos",
-            backgroundColor : dame_color_aleatorio(),
-            data : [70,80,50]
-        },
-        {
-            label : "Incorrectos",
-            backgroundColor : dame_color_aleatorio(),
-            data : [60,70,40]
-        }]
-    };
+function grafica_ejercicios_det() {
 
     var $myCanvas = $('#grafica_deterministicos');
     grafica = new Chart($myCanvas, {
-        type : "bar",
-        data : datos,
-        options : {
+        type: "bar",
+        data: datos,
+        options: {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero: true
                     }
                 }]
             },
-            responsive : true,
-            title : {
-                display : true,
-                text : "Ejercicos deterministicos"
+            responsive: true,
+            title: {
+                display: true,
+                text: "Ejercicos deterministicos"
             }
         }
     });
 }
 
-function grafica_ejercicios_alea(){
+function grafica_ejercicios_alea() {
     var datos = {
-        labels : ["3 Variables", "4 Variables", "5 Variables"],
-        datasets : [{
-            label : "Correctos",
-            backgroundColor : dame_color_aleatorio(),
-            data : [70,80,50]
+        labels: ["3 Variables", "4 Variables", "5 Variables"],
+        datasets: [{
+            label: "Correctos",
+            backgroundColor: dame_color_aleatorio(),
+            data: [70, 80, 50]
         },
         {
-            label : "Incorrectos",
-            backgroundColor : dame_color_aleatorio(),
-            data : [60,70,40]
+            label: "Incorrectos",
+            backgroundColor: dame_color_aleatorio(),
+            data: [60, 70, 40]
         }]
     };
 
     var $myCanvas = $('#grafica_aleatorios');
     grafica = new Chart($myCanvas, {
-        type : "bar",
-        data : datos,
-        options : {
+        type: "bar",
+        data: datos,
+        options: {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero: true
                     }
                 }]
             },
-            responsive : true,
-            title : {
-                display : true,
-                text : "Ejercicos aleatorios"
+            responsive: true,
+            title: {
+                display: true,
+                text: "Ejercicos aleatorios"
             }
         }
     });
 }
 
-function grafica_paises(){
+function grafica_paises() {
     var datos_usuario = [];
     var colores_usuario = [];
     var labels_paises = [];
@@ -120,7 +107,7 @@ function grafica_paises(){
         method: "post",
         url: phpPath,
         data: {
-            funcion: "GraficaUsuarios",
+            funcion: "graficaUsuarios",
             userName: getCookie("user"),
             userPass: getCookie("pass")
         },
