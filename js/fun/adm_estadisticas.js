@@ -20,62 +20,173 @@ function inicializacion() {
 }
 
 function grafica_ejercicios_det() {
-
+    correctos = [];
+    incorrectos = [];
     var $myCanvas = $('#grafica_deterministicos');
-    grafica = new Chart($myCanvas, {
-        type: "bar",
-        data: datos,
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            },
-            responsive: true,
-            title: {
-                display: true,
-                text: "Ejercicos deterministicos"
-            }
-        }
-    });
-}
 
-function grafica_ejercicios_alea() {
     var datos = {
         labels: ["3 Variables", "4 Variables", "5 Variables"],
         datasets: [{
             label: "Correctos",
             backgroundColor: dame_color_aleatorio(),
-            data: [70, 80, 50]
+            data: [0,0,0]
         },
         {
             label: "Incorrectos",
             backgroundColor: dame_color_aleatorio(),
-            data: [60, 70, 40]
+            data: [0,0,0]
         }]
     };
+    
+    
 
-    var $myCanvas = $('#grafica_aleatorios');
-    grafica = new Chart($myCanvas, {
-        type: "bar",
-        data: datos,
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
+
+    $.ajax({
+        method: "post",
+        url: phpPath,
+        data: {
+            funcion: "grafica",
+            userName: getCookie("user"),
+            userPass: getCookie("pass"),
+            tipo : "Deterministico",
+            correcto :1
+        },
+        dataType: "json"
+    })
+        .done(function (jsonObject) {
+            jsonObject.forEach(element => {
+                correctos.push(element["count(*)"]);
+            });
+            datos.datasets[0].data=correctos;
+            $.ajax({
+                method: "post",
+                url: phpPath,
+                data: {
+                    funcion: "grafica",
+                    userName: getCookie("user"),
+                    userPass: getCookie("pass"),
+                    tipo : "Deterministico",
+                    correcto :0
+                },
+                dataType: "json"
+            })
+                .done(function (jsonObject) {
+                    jsonObject.forEach(element => {
+                        incorrectos.push(element["count(*)"]);
+                    });
+                    datos.datasets[1].data=incorrectos;
+                    grafica = new Chart($myCanvas, {
+                    type: "bar",
+                    data: datos,
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        },
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: "Ejercicos deterministicos"
+                        }
                     }
-                }]
-            },
-            responsive: true,
-            title: {
-                display: true,
-                text: "Ejercicos aleatorios"
-            }
-        }
-    });
+                });
+                    
+                })
+                .fail(function () {
+                    alert("No tienes los privilegios para ver esto");
+                });
+        })
+        .fail(function () {
+            alert("No tienes los privilegios para ver esto");
+        });
+}
+
+function grafica_ejercicios_alea() {
+    correctos = [];
+    incorrectos = [];
+    var $myCanvas = $('#grafica_aleatorios');
+
+    var datos = {
+        labels: ["3 Variables", "4 Variables", "5 Variables"],
+        datasets: [{
+            label: "Correctos",
+            backgroundColor: dame_color_aleatorio(),
+            data: [0,0,0]
+        },
+        {
+            label: "Incorrectos",
+            backgroundColor: dame_color_aleatorio(),
+            data: [0,0,0]
+        }]
+    };
+    
+    
+
+
+    $.ajax({
+        method: "post",
+        url: phpPath,
+        data: {
+            funcion: "grafica",
+            userName: getCookie("user"),
+            userPass: getCookie("pass"),
+            tipo : "Aleatorio",
+            correcto :1
+        },
+        dataType: "json"
+    })
+        .done(function (jsonObject) {
+            jsonObject.forEach(element => {
+                correctos.push(element["count(*)"]);
+            });
+            datos.datasets[0].data=correctos;
+            $.ajax({
+                method: "post",
+                url: phpPath,
+                data: {
+                    funcion: "grafica",
+                    userName: getCookie("user"),
+                    userPass: getCookie("pass"),
+                    tipo : "Aleatorio",
+                    correcto :0
+                },
+                dataType: "json"
+            })
+                .done(function (jsonObject) {
+                    jsonObject.forEach(element => {
+                        incorrectos.push(element["count(*)"]);
+                    });
+                    datos.datasets[1].data=incorrectos;
+                    grafica = new Chart($myCanvas, {
+                    type: "bar",
+                    data: datos,
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        },
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: "Ejercicos aleatorios"
+                        }
+                    }
+                });
+                    
+                })
+                .fail(function () {
+                    alert("No tienes los privilegios para ver esto");
+                });
+        })
+        .fail(function () {
+            alert("No tienes los privilegios para ver esto");
+        });       
 }
 
 function grafica_paises() {
