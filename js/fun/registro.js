@@ -16,8 +16,8 @@ function CargarFunciones() {
     var carrera = $("#in_carrera").val();
     var semestre = $("#in_semestre").val();
 
-    if (correo == correoConfirmar){
-      if (contraseña == contraseñaConfirmar){
+    if (correo == correoConfirmar) {
+      if (contraseña == contraseñaConfirmar) {
         $.ajax({
           method: "POST",
           url: "../php/Selector.php",
@@ -36,35 +36,35 @@ function CargarFunciones() {
             numSemestre: semestre
           }
         })
-        .done(function (msg) {
-          if (msg == 1) {
-            alert(JsonIdioma["registroExitoso"]);
-            location.href = "../";
-          }
-          else if(msg == 2){
-            alert(JsonIdioma["registroExiste"]);
-          }
-          else {
-            alert(JsonIdioma["registroFallido"]);
-          }
-        });
-      }else
+          .done(function (msg) {
+            if (msg == 1) {
+              alert(JsonIdioma["registroExitoso"]);
+              location.href = "../";
+            }
+            else if (msg == 2) {
+              alert(JsonIdioma["registroExiste"]);
+            }
+            else {
+              alert(JsonIdioma["registroFallido"]);
+            }
+          });
+      } else
         alert(JsonIdioma["PassError"]);
-    }else
+    } else
       alert(JsonIdioma["CorreoError"]);
 
   });
 
-  $("input[type=radio][name=in_estudia_si]").change(function (event){
-    if(this.value == 1){
-      $("#PreguntasEstudiante").css("display","block");
-    }else{
-      $("#PreguntasEstudiante").css("display","none");
+  $("input[type=radio][name=in_estudia_si]").change(function (event) {
+    if (this.value == 1) {
+      $("#PreguntasEstudiante").css("display", "block");
+    } else {
+      $("#PreguntasEstudiante").css("display", "none");
     }
   });
 }
 
-function CargarTextosPagina(){
+function CargarTextosPagina() {
   $("#titulo").text(JsonIdioma["TituloRegistro"]);
   $("#text_nueva_cuenta").text(JsonIdioma["NuevaCuenta"]);
   $("#lb_usuario").text(JsonIdioma["Usuario"]);

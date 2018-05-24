@@ -1,9 +1,8 @@
 var langPath = "../json/string.json";
 var phpPath = "../php/Selector.php"
+var homePath = "../";
 function CargarFunciones() {
-    $("#btn_usuario_cerrar").click(function (event) {
-        CerrarSesion();
-    });
+
 }
 
 function ValidarCookie() {
@@ -34,32 +33,26 @@ function CargarTextosPagina() {
     $("#btn_adm_notificaciones").text(JsonIdioma["Notificacion"]);
     $("#btn_adm_usuarios").text(JsonIdioma["Usuarios"]);
     $("#btn_adm_estadisticas").text(JsonIdioma["Estadisticas"]);
-    $("#btn_dd_usuario_actual").text(JsonIdioma["Usuario"]+": "+getCookie("user"));
+    $("#btn_dd_usuario_actual").text(JsonIdioma["Usuario"] + ": " + getCookie("user"));
     $("#btn_usuario_cuenta").text(JsonIdioma["ConfigurarCuenta"]);
     $("#btn_usuario_resultados").text(JsonIdioma["MisResultados"]);
     $("#btn_usuario_cerrar").text(JsonIdioma["CerrarSesion"]);
 
     //Modal
     $("#labelTituloModal1").text(JsonIdioma["ModoAleatorio"]);
-    $("#labelVariablesAleatorio").text(JsonIdioma["Variables"]+":");
-    $("#Resolverpor").text(JsonIdioma["ResolverPor"]+":");
+    $("#labelVariablesAleatorio").text(JsonIdioma["Variables"] + ":");
+    $("#Resolverpor").text(JsonIdioma["ResolverPor"] + ":");
     $("#spanSumadeP").text(JsonIdioma["SumaProductos"]);
     $("#spanProddeS").text(JsonIdioma["ProductosSuma"]);
     $("#btnCerrarAleatorio").text(JsonIdioma["Cancelar"]);
     $("#btnIniciarAleatorio").text(JsonIdioma["Iniciar"]);
     $("#labelTituloModal2").text(JsonIdioma["ModoConocido"]);
-    $("#labelVariablesConocido").text(JsonIdioma["Variables"]+":");
-    $("#datosTitulo").text(JsonIdioma["DatosEn"]+":");
+    $("#labelVariablesConocido").text(JsonIdioma["Variables"] + ":");
+    $("#datosTitulo").text(JsonIdioma["DatosEn"] + ":");
     $("#botonporFuncion").text(JsonIdioma["Funcion"]);
     $("#botonporTabladeVerdad").text(JsonIdioma["TablaVerdad"]);
     $("#botonporMapaK").text(JsonIdioma["MapaKarnaugh"]);
     $("#btnCerrarConocido").text(JsonIdioma["Cancelar"]);
     $("#btnIniciarConocido").text(JsonIdioma["Iniciar"]);
-    $("#labelResolverpor").text(JsonIdioma["ResolverPor"]+":");
-}
-
-function CerrarSesion() {
-    setCookie("user", "", -1);
-    setCookie("pass", "", -1);
-    location.replace("../");
+    $("#labelResolverpor").text(JsonIdioma["ResolverPor"] + ":");
 }

@@ -1,5 +1,7 @@
 var phpPath = "../../php/Selector.php";
 var langPath = "../../json/string.json";
+var homePath = "../../";
+
 
 function CargarFunciones() {
   llenar_inputs();
@@ -8,7 +10,7 @@ function CargarFunciones() {
     $.ajax({
       method: "post",
       url: phpPath,
-      data: { funcion: "actualizarPonderaciones", userName: getCookie("user"), userPass: getCookie("pass"), in_al_3:$("#in_tres_aleatorio").val(), in_al_4:$("#in_cuatro_aleatorio").val(), in_al_5:$("#in_cinco_aleatorio").val(), in_det_3:$("#in_tres_deterministico").val(), in_det_4:$("#in_cuatro_deterministico").val(), in_det_5:$("#in_cinco_deterministico").val()},
+      data: { funcion: "actualizarPonderaciones", userName: getCookie("user"), userPass: getCookie("pass"), in_al_3: $("#in_tres_aleatorio").val(), in_al_4: $("#in_cuatro_aleatorio").val(), in_al_5: $("#in_cinco_aleatorio").val(), in_det_3: $("#in_tres_deterministico").val(), in_det_4: $("#in_cuatro_deterministico").val(), in_det_5: $("#in_cinco_deterministico").val() },
     })
       .done(function (respuesta) {
         console.log(respuesta);
@@ -29,7 +31,7 @@ function ValidarCookie() {
 }
 
 function CargarTextosPagina() {
-
+  $("#btn_dd_usuario_actual").text(JsonIdioma["Usuario"] + ": " + getCookie("user"));
 }
 
 function llenar_inputs() {

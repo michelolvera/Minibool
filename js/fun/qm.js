@@ -355,3 +355,23 @@ function IniciarReduccion() {
     }
     return solucionesFinales;
 }
+
+function ComprobarRespuesta() {
+    let respuesta = document.getElementById("txt_respuesta").value.toUpperCase().split(/\+/);
+    var respuestaSet = new Set();
+    for (let i = 0; i < respuesta.length; i++) {
+        let producto = new Set();
+        for (let j = 0; j < respuesta[i].length; j++) {
+            if ((/[A-Z]/).test(respuesta[i].charAt(j))) {
+                if (respuesta[i].charAt(j + 1) == "'") {
+                    producto.add({ "var": respuesta[i].charAt(j), "negada": true });
+                    j++;
+                } else {
+                    producto.add({ "var": respuesta[i].charAt(j), "negada": false });
+                }
+            }
+            respuestaSet.add(producto);
+        }
+    }
+    var resultados = IniciarReduccion();
+}

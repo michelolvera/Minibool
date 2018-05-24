@@ -15,6 +15,9 @@ $(document).ready(function () {
   }
   setCookie("lang", lang, 30);
   CargarFunciones();
+  $("#btn_usuario_cerrar").click(function (event) {
+    CerrarSesion();
+  });
   consulta_numero_notificaciones();
 });
 
@@ -63,59 +66,65 @@ function getCookie(cname) {
   return "";
 }
 
-function cargar_notificaciones(){
+function cargar_notificaciones() {
   $.ajax({
-      method: "post",
-      url: phpPath,
-      data: {
-        funcion: "consultaNotificaciones",
-      },
-      dataType: "json"
-    })
-      .done(function (jsonObject) {
-        $("#lista_notificaciones").empty();
-        jsonObject.forEach(row => {
-          $("#lista_notificaciones").append("<div class='alert alert-"+row["tipo"]+"' role='alert'>"+ row["notificacion"] +"</div>");
-        });
-      })
-      .fail(function () {
-        alert("Error");
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "consultaNotificaciones",
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      $("#lista_notificaciones").empty();
+      jsonObject.forEach(row => {
+        $("#lista_notificaciones").append("<div class='alert alert-" + row["tipo"] + "' role='alert'>" + row["notificacion"] + "</div>");
       });
+    })
+    .fail(function () {
+      alert("Error");
+    });
 }
 
-function consulta_numero_notificaciones(){
+function consulta_numero_notificaciones() {
   $.ajax({
-      method: "post",
-      url: phpPath,
-      data: {
-        funcion: "consultaNumeroNotificaciones",
-      },
-      dataType: "json"
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "consultaNumeroNotificaciones",
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      $("#btn_mostrar_notificaciones span").text(jsonObject[0]["suma"]);
     })
-      .done(function (jsonObject) {
-          $("#btn_mostrar_notificaciones span").text(jsonObject[0]["suma"]);
-      })
-      .fail(function () {
-        alert("Error");
-      });
+    .fail(function () {
+      alert("Error");
+    });
 }
 
-function cargar_ranking(){
+function cargar_ranking() {
   $.ajax({
-      method: "post",
-      url: phpPath,
-      data: {
-        funcion: "obtenerRanking",
-      },
-      dataType: "json"
-    })
-      .done(function (jsonObject) {
-        $("#lista_notificaciones").empty();
-        jsonObject.forEach(row => {
-          $("#lista_notificaciones").append("<tr><td style='width: 80%;'><div class='alert alert-secondary' role='alert'>"+ row["usuario"] +"</div></td><td style='width: 20%;'><div class='alert alert-secondary' role='alert'>"+ row["total"] +"</div></td></tr>");
-        });
-      })
-      .fail(function () {
-        alert("Error");
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "obtenerRanking",
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      $("#lista_notificaciones").empty();
+      jsonObject.forEach(row => {
+        $("#lista_notificaciones").append("<tr><td style='width: 80%;'><div class='alert alert-secondary' role='alert'>" + row["usuario"] + "</div></td><td style='width: 20%;'><div class='alert alert-secondary' role='alert'>" + row["total"] + "</div></td></tr>");
       });
+    })
+    .fail(function () {
+      alert("Error");
+    });
+}
+
+function CerrarSesion() {
+  setCookie("user", "", -1);
+  setCookie("pass", "", -1);
+  location.replace(homePath);
 }

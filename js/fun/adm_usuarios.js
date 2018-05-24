@@ -8,6 +8,8 @@ var tabla = '<tr>' +
   '<th id="text_tabla_apellido_mat">Apellido materno</th>' +
   '<th id="text_tabla_accion">Accion</th> ' +
   '</tr>';
+var homePath = "../../";
+
 
 function CargarFunciones() {
   Inicializacion();
@@ -42,7 +44,7 @@ function ValidarCookie() {
 }
 
 function CargarTextosPagina() {
-
+  $("#btn_dd_usuario_actual").text(JsonIdioma["Usuario"] + ": " + getCookie("user"));
 }
 
 function llenar_tabla(nombre, apellidoPat, apellidoMat) {
@@ -199,7 +201,7 @@ function cargarUsuario() {
       alert("Error");
     });
 }
-function cargar_detalles(){
+function cargar_detalles() {
   $("#lb_ultimo_acceso").empty();
-  $("#lb_ultimo_acceso").append("no se xD solo se que su id es: "+idUsuarioSeleccionado);
+  $("#lb_ultimo_acceso").append("no se xD solo se que su id es: " + idUsuarioSeleccionado);
 }

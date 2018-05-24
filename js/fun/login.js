@@ -1,4 +1,5 @@
 var langPath = "json/string.json";
+var phpPath = "php/Selector.php";
 
 function CargarFunciones() {
   CargarListaIdiomas();
@@ -7,7 +8,7 @@ function CargarFunciones() {
     var contraseña = $("#in_contrasena").val();
     $.ajax({
       method: "POST",
-      url: "php/Selector.php",
+      url: phpPath,
       data: { funcion: "login", userName: usuario, userPass: contraseña }
     })
       .done(function (msg) {
