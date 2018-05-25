@@ -102,7 +102,6 @@ function realizar_accion() {
       break;
     case 'actualizar':
       $("#btn_cerrar_actualizar").click();
-      console.log($("#in_administrador_act").val());
       $.ajax({
         method: "post",
         url: phpPath,

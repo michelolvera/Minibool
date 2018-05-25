@@ -159,5 +159,29 @@ switch ($funcion){
     $respuesta = consultaSQL("SELECT U.usuario, SUM(E.puntos) AS total FROM ejercicio_usuario as EU INNER JOIN usuarios as U ON EU.id_usuario=U.id_usuario INNER JOIN ejercicios AS E ON EU.id_ejercicio= E.id_ejercicio WHERE EU.correcto=1 GROUP BY U.usuario ORDER BY SUM(E.puntos) DESC; ");
     echo json_encode($respuesta);
   break;
+
+  case 'GestionarUsuario':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $respuesta = consultaSQL("CALL sp_gestionar_usuario('".$userName."','".$userPass."');");
+    echo json_encode($respuesta);
+  break;
+
+  case 'guardarUsuario':
+  $userName = $_REQUEST["userName"];
+  $userPass = $_REQUEST["userPass"];
+  $nombreUsuario = $_REQUEST["nombreUsuario"];
+  $nombreReal = $_REQUEST["nombreReal"];
+  $apellidoP = $_REQUEST["apellidoP"];
+  $apellidoM = $_REQUEST["apellidoM"];
+  $correoElectronico = $_REQUEST["correoElectronico"];
+  $codigoPais = $_REQUEST["codigoPais"];
+  $esEstudiante = $_REQUEST["esEstudiante"];
+  $nombreEscuela = $_REQUEST["nombreEscuela"];
+  $nombreCarrera = $_REQUEST["nombreCarrera"];
+  $numSemestre = $_REQUEST["numSemestre"];
+  $respuesta = consultaSQL("CALL sp_guardar_usuario('".$userName."','".$userPass."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$codigoPais."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."');");
+  echo $respuesta[0]['Actualizado'];
+  break;
 }
 ?>

@@ -128,3 +128,81 @@ function CerrarSesion() {
   setCookie("pass", "", -1);
   location.replace(homePath);
 }
+
+function cargar_datos_usuario() {
+  $("#in_usuario_gestion").val("");
+  $("#in_nombre_act_gestion").val("");
+  $("#in_apellido_pat_act_gestion").val("");
+  $("#in_apellido_mat_act_gestion").val("");
+  $("#in_correo_act_gestion").val("");
+  $("#in_escuela_act_gestion").val("");
+  $("#in_carrera_act_gestion").val("");
+  $("#in_semestre_act_gestion").val("");
+  $.ajax({
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "GestionarUsuario",
+      userName: getCookie("user"),
+      userPass: getCookie("pass")
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      console.log(jsonObject);
+      $("#in_usuario_gestion").val(jsonObject[0]["usuario"]);
+      $("#in_nombre_act_gestion").val(jsonObject[0]["nombre"]);
+      $("#in_apellido_pat_act_gestion").val(jsonObject[0]["apellido_paterno"]);
+      $("#in_apellido_mat_act_gestion").val(jsonObject[0]["apellido_materno"]);
+      $("#in_correo_act_gestion").val(jsonObject[0]["correo"]);
+      $("#combo_pais_act_gestion").val(jsonObject[0]["pais"]);
+      if (jsonObject[0]["estudiante"] == 1) {
+        $("input[type=radio][name=in_estudia_si_gestion]")[0].checked = true;
+        $("#PreguntasEstudiante_gestion").css("display", "block");
+        $("#in_escuela_act_gestion").val(jsonObject[0]["escuela"]);
+        $("#in_carrera_act_gestion").val(jsonObject[0]["carrera"]);
+        $("#in_semestre_act_gestion").val(jsonObject[0]["semestre"]);
+      } else {
+        $('input[type=radio][name=in_estudia_si_gestion]')[1].checked = true;
+        $("#PreguntasEstudiante_gestion").css("display", "none");
+      }
+
+    })
+    .fail(function () {
+      alert("Error");
+    });
+}
+
+function guardar_datos_usuario(){
+  $("#btn_cerrar_usuario_gestion").click();
+      $.ajax({
+        method: "post",
+        url: phpPath,
+        data: {
+          funcion: "guardarUsuario",
+          userName: getCookie("user"),
+          userPass: getCookie("pass"),
+          numSemestre: $("#in_semestre_act_gestion").val(),
+          nombreCarrera: $("#in_carrera_act_gestion").val(),
+          nombreEscuela: $("#in_escuela_act_gestion").val(),
+          esEstudiante: $('[name=in_estudia_si_gestion]:checked').val(),
+          codigoPais: $("#combo_pais_act_gestion").val(),
+          correoElectronico: $("#in_correo_act_gestion").val(),
+          apellidoM: $("#in_apellido_mat_act_gestion").val(),
+          apellidoP: $("#in_apellido_pat_act_gestion").val(),
+          nombreReal: $("#in_nombre_act_gestion").val(),
+          nombreUsuario: $("#in_usuario_gestion").val(),
+        },
+      })
+        .done(function (respuesta) {
+
+          if (respuesta == 1) {
+            alert("Datos actualiazados exitozamente");
+          } else {
+            alert("Error al momento de actualizar datos");
+          }
+        })
+        .fail(function () {
+          alert("Error");
+        });
+}
