@@ -255,14 +255,14 @@ function ObtenerProductosDeSumas(implicantes) {
 }
 
 function ConvertirImplicanteAConjuntoExpresion(implicante) {
-    let expresion = new Set();
+    let expresion = "";
     for (let i = 0; i < implicante["bin"].length; i++) {
         switch (implicante["bin"].charAt(i)) {
             case '0':
-                expresion.add({ "var": String.fromCharCode(65 + i), "negada": true });
+                expresion+=(String.fromCharCode(65 + i)+"'");
                 break;
             case '1':
-                expresion.add({ "var": String.fromCharCode(65 + i), "negada": false });
+                expresion+=(String.fromCharCode(65 + i));
                 break;
         }
     }
@@ -309,16 +309,12 @@ function IniciarReduccion() {
     }
     implicantes = aux;
     /////////////////////////////
-    console.log(implicantes);
     miniTerminos = OrdenarMiniTerminos(miniTerminos);//Ordenar mini terminos
     var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
-    console.log(tablaImplicantes);
     var productosDeSumas = ObtenerProductosDeSumas(tablaImplicantes);
-    console.log(productosDeSumas);
 
     //Aplicar metodo de Petrick
     var terminosPetrick = MetodoDePetrick(productosDeSumas);
-    console.log(terminosPetrick);
     //Limpiar resultados erroneos usando la tabla de implicantes primos
     terminosPetrick = comprobarSolucionesPetrick(terminosPetrick, miniTerminos, tablaImplicantes);
     if (terminosPetrick.length == 0) {
@@ -343,7 +339,6 @@ function IniciarReduccion() {
             }
         }
     }
-    console.log(terminosPetrick);
     //Solucion encontrada, convertir a expresion
     let solucionesFinales = Array();
     for (let i = 0; i < terminosPetrick.length; i++) {
@@ -357,21 +352,15 @@ function IniciarReduccion() {
 }
 
 function ComprobarRespuesta() {
-    let respuesta = document.getElementById("txt_respuesta").value.toUpperCase().split(/\+/);
-    var respuestaSet = new Set();
-    for (let i = 0; i < respuesta.length; i++) {
-        let producto = new Set();
-        for (let j = 0; j < respuesta[i].length; j++) {
-            if ((/[A-Z]/).test(respuesta[i].charAt(j))) {
-                if (respuesta[i].charAt(j + 1) == "'") {
-                    producto.add({ "var": respuesta[i].charAt(j), "negada": true });
-                    j++;
-                } else {
-                    producto.add({ "var": respuesta[i].charAt(j), "negada": false });
-                }
-            }
-            respuestaSet.add(producto);
-        }
-    }
+    let respuesta = new Set(...[document.getElementById("txt_respuesta").value.toUpperCase().split('+')]);
     var resultados = IniciarReduccion();
+    console.log(resultados);
+    console.log(respuesta);
+    for (let i = 0; i < resultados.length; i++) {
+        if (new Set([...respuesta].filter(x => !resultados[i].has(x))).size == 0){
+            console.log("Correcto");
+            break;
+        }else
+            console.log("Incorrecto");
+    }
 }
