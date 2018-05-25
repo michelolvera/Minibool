@@ -21,8 +21,8 @@ function inicializacion() {
 }
 
 function grafica_ejercicios_det() {
-    correctos = [];
-    incorrectos = [];
+    var correctos_det = [];
+    var incorrectos_det = [];
     var $myCanvas = $('#grafica_deterministicos');
 
     var datos = {
@@ -56,9 +56,9 @@ function grafica_ejercicios_det() {
     })
         .done(function (jsonObject) {
             jsonObject.forEach(element => {
-                correctos.push(element["count(*)"]);
+                correctos_det.push(element["count(*)"]);
             });
-            datos.datasets[0].data = correctos;
+            datos.datasets[0].data = correctos_det;
             $.ajax({
                 method: "post",
                 url: phpPath,
@@ -73,9 +73,9 @@ function grafica_ejercicios_det() {
             })
                 .done(function (jsonObject) {
                     jsonObject.forEach(element => {
-                        incorrectos.push(element["count(*)"]);
+                        incorrectos_det.push(element["count(*)"]);
                     });
-                    datos.datasets[1].data = incorrectos;
+                    datos.datasets[1].data = incorrectos_det;
                     grafica = new Chart($myCanvas, {
                         type: "bar",
                         data: datos,
@@ -106,8 +106,8 @@ function grafica_ejercicios_det() {
 }
 
 function grafica_ejercicios_alea() {
-    correctos = [];
-    incorrectos = [];
+    var correctos_ale = [];
+    var incorrectos_ale = [];
     var $myCanvas = $('#grafica_aleatorios');
 
     var datos = {
@@ -141,9 +141,9 @@ function grafica_ejercicios_alea() {
     })
         .done(function (jsonObject) {
             jsonObject.forEach(element => {
-                correctos.push(element["count(*)"]);
+                correctos_ale.push(element["count(*)"]);
             });
-            datos.datasets[0].data = correctos;
+            datos.datasets[0].data = correctos_ale;
             $.ajax({
                 method: "post",
                 url: phpPath,
@@ -158,9 +158,9 @@ function grafica_ejercicios_alea() {
             })
                 .done(function (jsonObject) {
                     jsonObject.forEach(element => {
-                        incorrectos.push(element["count(*)"]);
+                        incorrectos_ale.push(element["count(*)"]);
                     });
-                    datos.datasets[1].data = incorrectos;
+                    datos.datasets[1].data = incorrectos_ale;
                     grafica = new Chart($myCanvas, {
                         type: "bar",
                         data: datos,
