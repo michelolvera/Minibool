@@ -71,7 +71,10 @@ img {
   float: left;
   margin-right: auto;
 }
-
+#btnEnviarRes{
+  margin-top: 1em;
+  margin-right: 0%;
+}
 canvas {
   width: 100%;
   height: auto;
