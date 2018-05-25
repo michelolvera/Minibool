@@ -1,5 +1,6 @@
 var resultados =  new Array();
       $(document).ready(function () {
+        
           $("#inpFuncion").hide();
           $('#inpTabla').hide();
           $('#inpTablaK').hide();

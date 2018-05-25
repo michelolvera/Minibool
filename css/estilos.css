@@ -49,13 +49,13 @@ img {
   height: 100px;
 }
 #logoITM{
-  height: 100%;
+  height: 100px;
 }
 #bienvenidos{
   height: 80%;
 }
 #logoTecN{
-  height: 100%;
+  height: 100px;
 }
 #content{
   margin-left: 8%;
@@ -70,6 +70,15 @@ img {
 .izquierda{
   float: left;
   margin-right: auto;
+}
+#principal{
+  min-height: 450px;
+  height: auto;
+}
+footer {
+  bottom: 0;
+    width:100%;
+  height: 100px;
 }
 #btnEnviarRes{
   margin-top: 1em;
