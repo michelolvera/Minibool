@@ -8,6 +8,7 @@ var resultados =  new Array();
           $('#inputFuncion').val("");
           $('#btnIniciarConocido').hide();
           $('#mapaContenedor').hide();
+          $("#respCont").hide();
       });
       $('#conocidoModal').on('shown.bs.modal', function () {
           $('#exampleModal').trigger('focus')
@@ -117,6 +118,7 @@ var resultados =  new Array();
           }
           //Caso tabla de verdad grande
           if (tabla == "#tablaVerdad") {
+            $("#respCont").show();
               $('#btnEjercicios').addClass('disabled')
               $('#btnEjercicios').removeClass('active')
               $('#tabtablaVerdad').removeClass('disabled')
@@ -399,7 +401,7 @@ var resultados =  new Array();
                                     res = "0"
                                 }
                               } catch (e) {
-                                error = "Error al evaluar la función "+e;
+                                console.log("Error al evaluar la función "+e);
                               }
                               resultados[num] = res;
                           }
