@@ -8,7 +8,7 @@ var cantidadVariables = 0;
 //var kmapResultado = [0, 0, 0, 0, 1, 1, 0, 0]; //Ejercicio Profe
 //var kmapResultado = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0];
 //var kmapResultado = [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1];
-var kmapResultado = [1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0];
+//var kmapResultado = [1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0];
 function ObtenerMiniTerminos(tablaVerdad) {
     //Calcular cantidad de variables
     cantidadVariables = Math.log2(tablaVerdad.length);
@@ -259,10 +259,10 @@ function ConvertirImplicanteAConjuntoExpresion(implicante) {
     for (let i = 0; i < implicante["bin"].length; i++) {
         switch (implicante["bin"].charAt(i)) {
             case '0':
-                expresion+=(String.fromCharCode(65 + i)+"'");
+                expresion += (String.fromCharCode(65 + i) + "'");
                 break;
             case '1':
-                expresion+=(String.fromCharCode(65 + i));
+                expresion += (String.fromCharCode(65 + i));
                 break;
         }
     }
@@ -290,7 +290,7 @@ function comprobarSolucionesPetrick(soluciones, miniTerminos, tablaImplicantes) 
     return auxPetrick;
 }
 
-function IniciarReduccion() {
+function IniciarReduccion(kmapResultado) {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado);
     var implicantes = ReductorRecursivo(miniTerminos);
     //Limpiar Implicantes Duplicados
@@ -351,16 +351,14 @@ function IniciarReduccion() {
     return solucionesFinales;
 }
 
-function ComprobarRespuesta() {
-    let respuesta = new Set(...[document.getElementById("txt_respuesta").value.toUpperCase().split('+')]);
-    var resultados = IniciarReduccion();
-    console.log(resultados);
-    console.log(respuesta);
+function ComprobarRespuesta(resultados) {
+    let respuesta = new Set(...[document.getElementById("inputResp").value.toUpperCase().split('+')]);
+    //var resultados = IniciarReduccion();
     for (let i = 0; i < resultados.length; i++) {
-        if (new Set([...respuesta].filter(x => !resultados[i].has(x))).size == 0){
-            console.log("Correcto");
+        if (new Set([...respuesta].filter(x => !resultados[i].has(x))).size == 0) {
+            return true;
             break;
-        }else
-            console.log("Incorrecto");
+        }
     }
+    return false;
 }
