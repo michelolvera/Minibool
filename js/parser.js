@@ -153,7 +153,7 @@ booleanFun = /*
         peg$c5 = function(head, tail) {
               return tail.reduce(function(izq,element) {
                 if (element[1] === "'") { return "!"+izq ; }
-                else {return izq +"&&"+ element[1]; }
+                else {return "("+izq +"&&"+ element[1]+")"; }
               }, head);
             },
         peg$c6 = "(",
@@ -161,7 +161,7 @@ booleanFun = /*
         peg$c8 = ")",
         peg$c9 = peg$literalExpectation(")", false),
         peg$c10 = function(expr) { return "("+expr+")"; },
-        peg$c11 = peg$otherExpectation("variable"),
+        peg$c11 = peg$otherExpectation("var"),
         peg$c12 = /^[A-Ea-e]/,
         peg$c13 = peg$classExpectation([["A", "E"], ["a", "e"]], false, false),
         peg$c14 = function() { return text().toUpperCase(); },

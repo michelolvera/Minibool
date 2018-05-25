@@ -61,14 +61,15 @@ img {
   margin-left: 8%;
   margin-right: 8%;
 }
-#tablaContenedor{
-  width: 50%;
-  margin-right: 50%;
-}
 .derecha{
   float: right;
   margin-right: 3%;
   margin-left: auto;
+
+}
+.izquierda{
+  float: left;
+  margin-right: auto;
 }
 
 canvas {
