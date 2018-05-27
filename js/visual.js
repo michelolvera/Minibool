@@ -515,7 +515,6 @@ var tabCircuitoclick = function () {
     $('#circuitoContenedor').show();
 }
 
-
 function validarRes() {
     console.log(resultados);
     var resultadosOptimos = IniciarReduccion(resultados);
