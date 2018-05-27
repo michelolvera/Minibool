@@ -429,10 +429,10 @@ var crear = function (tabla, isAl) {
                     else if (num == 8) {
                         tablaContent += '</tr><tr><th scope="row">01</th>'
                     }
-                    else if (num == 16) {
+                    else if (num == 24) {
                         tablaContent += '</tr><tr><th scope="row">11</th>'
                     }
-                    else if (num == 24) {
+                    else if (num == 16) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui seccion de los valores
