@@ -9,9 +9,10 @@ var cantidadVariables = 0;
 //var kmapResultado = [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0];
 //var kmapResultado = [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1];
 //var kmapResultado = [1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0];
-function ObtenerMiniTerminos(tablaVerdad) {
+function ObtenerMiniTerminos(tablaVerdad, calcularVariables = true) {
     //Calcular cantidad de variables
-    cantidadVariables = Math.log2(tablaVerdad.length);
+    if (calcularVariables)
+        cantidadVariables = Math.log2(tablaVerdad.length);
     var minTerms = Array();
     for (let index = 0; index < tablaVerdad.length; index++) {
         if (tablaVerdad[index] == 1) {
@@ -138,13 +139,15 @@ function OrdenarMiniTerminos(miniTerminos, cantidadUnos = false) {
     return miniTerminos;
 }
 
-function MetodoDePetrick(productosDeSumas, multiplesIdentidades = true) {
+function MetodoDePetrickAlgebraico(productosDeSumas, multiplesIdentidades = true) {
+    console.log(productosDeSumas);
     let productosRecursivos = Array();
     if (productosDeSumas.length > 1) {
+        let distribuido = Array();
         //Distribuir y buscar similares con las reglas x+x=x, xx=x y x+xy=x, volver a llamar este metodo.
         //Distribuir y aplicar xx=x
+        /* //Buscar conincidencias de literales
         let dis1, dis2;
-        let distribuido = Array();
         let continuar = true;
         for (let i = 0; i < productosDeSumas.length; i++) {
             for (let j = i + 1; j < productosDeSumas.length; j++) {
@@ -163,24 +166,30 @@ function MetodoDePetrick(productosDeSumas, multiplesIdentidades = true) {
                 if (!continuar) break
             }
             if (!continuar) break
-        }
-        for (let i = 0; i < productosDeSumas[dis1].length; i++) {
-            for (let j = 0; j < productosDeSumas[dis2].length; j++) {
+        }*/
+        //Si se uniran conjuntos conincidentes, cambiar 0 por dis1 y 1 por dis2
+        for (let i = 0; i < productosDeSumas[0].length; i++) {
+            for (let j = 0; j < productosDeSumas[1].length; j++) {
                 //Unir conjuntos
-                distribuido.push(new Set([...productosDeSumas[dis1][i], ...productosDeSumas[dis2][j]]));
+                distribuido.push(new Set([...productosDeSumas[0][i], ...productosDeSumas[1][j]]));
             }
         }
         //Llenar arreglo
+        /*
         for (let i = 0; i < productosDeSumas.length; i++) {
             if (i == dis1 || i == dis2)
                 continue;
             productosRecursivos.push(productosDeSumas[i]);
-        }
+        }*/
         //Aplicar identidades
         if (multiplesIdentidades)
             distribuido = indentidadesPetrick(distribuido);//Necesario distribuir desde el principio?
         productosRecursivos.push(distribuido);
-        return MetodoDePetrick(productosRecursivos, multiplesIdentidades);
+        //Llenar arreglo
+        for (let i = 2; i < productosDeSumas.length; i++) {
+            productosRecursivos.push(productosDeSumas[i]);
+        }
+        return MetodoDePetrickAlgebraico(productosRecursivos, multiplesIdentidades);
     } else if (productosDeSumas.length == 1) {
         //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x?? y retornar el ultimo resultado
         if (!multiplesIdentidades)
@@ -292,6 +301,11 @@ function comprobarSolucionesPetrick(soluciones, miniTerminos, tablaImplicantes) 
 
 function IniciarReduccion(kmapResultado) {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado);
+    if (miniTerminos[miniTerminos.length-1]["minterms"][0] <= Math.pow(2, cantidadVariables - 1) - 1) {
+        alert("Una variable se eliminara ya que nunca esta activa.");
+        cantidadVariables--;
+        var miniTerminos = ObtenerMiniTerminos(kmapResultado, false);
+    }
     var implicantes = ReductorRecursivo(miniTerminos);
     //Limpiar Implicantes Duplicados
     let posRepetido = Array();
@@ -314,29 +328,27 @@ function IniciarReduccion(kmapResultado) {
     var productosDeSumas = ObtenerProductosDeSumas(tablaImplicantes);
 
     //Aplicar metodo de Petrick
-    var terminosPetrick = MetodoDePetrick(productosDeSumas);
+    var terminosPetrick = MetodoDePetrickAlgebraico(productosDeSumas);
+    console.log(tablaImplicantes);
+    console.log(productosDeSumas);
+    console.log(terminosPetrick);
     //Limpiar resultados erroneos usando la tabla de implicantes primos
     terminosPetrick = comprobarSolucionesPetrick(terminosPetrick, miniTerminos, tablaImplicantes);
     if (terminosPetrick.length == 0) {
-        //Petrick no regreso solucion correcta utilizando multiples identidades, comprobar una sola identidad, por lo tanto la solucion debe ser unica, comprobar solucion
-        terminosPetrick = MetodoDePetrick(productosDeSumas, false);
-        terminosPetrick = comprobarSolucionesPetrick(terminosPetrick, miniTerminos, tablaImplicantes);
-        if (terminosPetrick.length == 0) {
-            //No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.
-            terminosPetrick = [new Set()];
-            let comprobar = Array(miniTerminos.length);
-            for (let i = 0; i < tablaImplicantes.length; i++) {
-                for (let j = 0; j < tablaImplicantes[i].length; j++) {
-                    if (tablaImplicantes[i][j]) {
-                        comprobar[j] = true;
-                    }
+        //No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.
+        terminosPetrick = [new Set()];
+        let comprobar = Array(miniTerminos.length);
+        for (let i = 0; i < tablaImplicantes.length; i++) {
+            for (let j = 0; j < tablaImplicantes[i].length; j++) {
+                if (tablaImplicantes[i][j]) {
+                    comprobar[j] = true;
                 }
-                terminosPetrick[0].add(String.fromCharCode(65 + i));
             }
-            for (let j = 0; j < comprobar.length; j++) {
-                if (!comprobar[j])
-                    return null;
-            }
+            terminosPetrick[0].add(String.fromCharCode(65 + i));
+        }
+        for (let j = 0; j < comprobar.length; j++) {
+            if (!comprobar[j])
+                return null;
         }
     }
     //Solucion encontrada, convertir a expresion
