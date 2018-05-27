@@ -226,18 +226,34 @@ var crear = function (tabla, isAl) {
             '<tbody>' +
             '<tr>';
         for (var num = 0; num < vueltas; num++) {
+          var aux=0;
             // CASO MAPA DE KARNAUGH MINI DENTRO DE LOS DOS KARNAUGH
             if (tabla == "#tablaMapaKMini") {
                 if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
                     if (num == 0) {
                         tablaContent += '<th scope="row">0</th>'
                     }
-                    else if (num == 4) {
+                    if (num == 4) {
                         tablaContent += '</tr><tr><th scope="row">1</th>'
                     }
-                    tablaContent += '<td>' +
-                        '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                        '</td>';
+                    //aqui seccion de los valores
+                    if (num==2 || num ==6) {
+                      aux = num+1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                    }
+                    else if(num==3 || num ==7){
+                      aux = num-1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                    }
+                    else {
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                          '</td>';
+                    }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
                     if (num == 0) {
@@ -246,15 +262,40 @@ var crear = function (tabla, isAl) {
                     else if (num == 4) {
                         tablaContent += '</tr><tr><th scope="row">01</th>'
                     }
-                    else if (num == 8) {
+                    else if (num == 12) {
                         tablaContent += '</tr><tr><th scope="row">11</th>'
                     }
-                    else if (num == 12) {
+                    else if (num == 8) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
-                    tablaContent += '<td>' +
-                        '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                        '</td>';
+                    //aqui seccion de los valores
+                    if (num==2 || num ==6 || num==14 || num==10) {
+                      aux = num+1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                    }
+                    else if(num==3 || num ==7 || num==15 || num==11){
+                      aux = num-1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                        if (num==7) {
+                          num+=4;
+                        }
+                        if (entrado && num==11) {
+                          num=15;
+                        }
+                        if (num==15 && !entrado) {
+                          num-=8;
+                          entrado=true;
+                        }
+                    }
+                    else {
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                          '</td>';
+                    }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
                     if (num == 0) {
@@ -263,15 +304,64 @@ var crear = function (tabla, isAl) {
                     else if (num == 8) {
                         tablaContent += '</tr><tr><th scope="row">01</th>'
                     }
-                    else if (num == 16) {
+                    else if (num == 24) {
                         tablaContent += '</tr><tr><th scope="row">11</th>'
                     }
-                    else if (num == 24) {
+                    else if (num == 16) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
-                    tablaContent += '<td>' +
-                        '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                        '</td>';
+                    //aqui la seccion de los valores
+                    if (num==7) {
+                      aux = num-3;
+                    }
+                    if (num==15) {
+                      aux = num-3;
+                      num+=8;
+                    }
+                    if (entrado && num==23) {
+                      aux = num-3;
+                      num=31;
+                    }
+                    if (num==31 && !entrado) {
+                      aux = num-3;
+                      num-=16;
+                      entrado=true;
+                    }
+                    if (num==2 || num==10 || num==18 || num==26) {
+                      aux = num+1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                    }
+                    else if(num==3 || num ==11 || num==19 || num==27){
+                      aux = num-1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                    }
+                    else if(num==4 || num ==12 || num==20 || num==28 || num==5 || num==13 || num==21 || num==29) {
+                      aux = num+2;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                    }
+                    else if(num==7 || num==15 || num==23 || num==31){
+
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                    }
+                    else if(num==6 || num==14 || num==22 || num==30){
+                      aux = num-1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                    }
+                    else {
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                          '</td>';
+                    }
                 }
             }
             //CASO TABLA MAPA DE KARNAUGH GRANDE DENTRO DE LOS DOS KARNAUGH
@@ -283,8 +373,18 @@ var crear = function (tabla, isAl) {
                     else if (num == 4) {
                         tablaContent += '</tr><tr><th scope="row">1</th>'
                     }
-                    tablaContent += '<td>' + resultados[num] + '</td>';
-
+                    //aqui seccion de los valores
+                    if (num==2 || num ==6) {
+                      aux = num+1;
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    }
+                    else if(num==3 || num ==7){
+                      aux = num-1;
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    }
+                    else {
+                      tablaContent += '<td>' + resultados[num] + '</td>';;
+                    }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
                     if (num == 0) {
@@ -299,8 +399,28 @@ var crear = function (tabla, isAl) {
                     else if (num == 12) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
-                    tablaContent += '<td>' + resultados[num] + '</td>';
-
+                    //aqui seccion de los valores
+                    if (num==2 || num ==6 || num==14 || num==10) {
+                      aux = num+1;
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    }
+                    else if(num==3 || num ==7 || num==15 || num==11){
+                      aux = num-1;
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                        if (num==7) {
+                          num+=4;
+                        }
+                        if (entrado && num==11) {
+                          num=15;
+                        }
+                        if (num==15 && !entrado) {
+                          num-=8;
+                          entrado=true;
+                        }
+                    }
+                    else {
+                      tablaContent += '<td>' + resultados[num] + '</td>';
+                    }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
                     if (num == 0) {
@@ -315,8 +435,45 @@ var crear = function (tabla, isAl) {
                     else if (num == 24) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
-                    tablaContent += '<td>' + resultados[num] + '</td>';
-
+                    //aqui seccion de los valores
+                    if (num==7) {
+                      aux = num-3;
+                    }
+                    if (num==15) {
+                      aux = num-3;
+                      num+=8;
+                    }
+                    if (entrado && num==23) {
+                      aux = num-3;
+                      num=31;
+                    }
+                    if (num==31 && !entrado) {
+                      aux = num-3;
+                      num-=16;
+                      entrado=true;
+                    }
+                    if (num==2 || num==10 || num==18 || num==26) {
+                      aux = num+1;
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    }
+                    else if(num==3 || num ==11 || num==19 || num==27){
+                      aux = num-1;
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    }
+                    else if(num==4 || num ==12 || num==20 || num==28 || num==5 || num==13 || num==21 || num==29) {
+                      aux = num+2;
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    }
+                    else if(num==7 || num==15 || num==23 || num==31){
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    }
+                    else if(num==6 || num==14 || num==22 || num==30){
+                      aux = num-1;
+                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    }
+                    else {
+                      tablaContent += '<td>' + resultados[num] + '</td>';
+                    }
                 }
 
             }
@@ -460,7 +617,7 @@ var crear = function (tabla, isAl) {
             tablaContent += '</tr>';
         }
         tablaContent += '</tbody>';
-        if (tabla == "#tablaVerdad") { $('#cardFuncion').html('F=' + mainFuncion + '<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Detener ejercicio</button>') }
+        if (tabla == "#tablaVerdad") { $('#cardFuncion').html('F=' + mainFuncion + '<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Abandonar ejercicio</button>') }
     }
     $(tabla).append(tablaContent);
     if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
