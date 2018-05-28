@@ -368,9 +368,8 @@ function ComprobarRespuesta(resultados) {
     //var resultados = IniciarReduccion();
     for (let i = 0; i < resultados.length; i++) {
         if (new Set([...respuesta].filter(x => !resultados[i].has(x))).size == 0) {
-            return [true, i];
-            break;
+            return i;
         }
     }
-    return [false];
+    return -1;
 }

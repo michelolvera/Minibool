@@ -10,6 +10,10 @@ $(document).ready(function () {
     $('#btnIniciarConocido').hide();
     $('#mapaContenedor').hide();
     $("#respCont").hide();
+
+    $("#btnEnviarRes").click(function (event) {
+        validarRes();
+    });
 });
 $('#conocidoModal').on('shown.bs.modal', function () {
     $('#exampleModal').trigger('focus')
@@ -684,16 +688,9 @@ function validarRes() {
             cadenaResultado += multi + "+";
         }
         cadenaResultado = cadenaResultado.substring(0, cadenaResultado.length - 1);
-        if (repuestaCorrecta[1] == i) {
+        if (repuestaCorrecta == i) {
             $('#resulados').append("<p class='alert alert-success' role='alert'>" + cadenaResultado + " (Tu respuesta)</p>");
         } else
             $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
-    }
-    if (repuestaCorrecta[0]) {
-        //Respuesta correcta
-
-    }
-    else {
-        //Respuesta incorrecta
     }
 }
