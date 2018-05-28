@@ -73,8 +73,9 @@ function mapak() {
 var limpiar = function (tabla) {
     $(tabla).html('');
 }
-var activarEjercicios = function () {
-    $('#btnEjercicios').removeClass('disabled')
+var reinciarEjercicios = function () {
+    $('#btnEjercicios').removeClass('disabled');
+
 }
 var cambioCvar = function () {
     if ($('#botonporFuncion').hasClass('active')) {
@@ -124,12 +125,11 @@ var crear = function (tabla, isAl) {
     //Caso tabla de verdad grande
     if (tabla == "#tablaVerdad") {
         $("#respCont").show();
-        $('#btnEjercicios').addClass('disabled')
-        $('#btnEjercicios').removeClass('active')
-        $('#tabtablaVerdad').removeClass('disabled')
-        $('#tabtablaVerdad').addClass('active')
-        $('#tabMapakarnaugh').removeClass('disabled')
-        $('#tabCircuito').removeClass('disabled')
+        $('#tabtablaVerdad').removeClass('disabled');
+        $('#tabtablaVerdad').addClass('active');
+        $('#tabMapakarnaugh').removeClass('disabled');
+        $('#tabCircuito').removeClass('disabled');
+        $('#resulados').empty();
         tablaContent = '<thead>' +
             '<tr>' +
             '<th scope="col">A</th>' +
@@ -621,7 +621,7 @@ var crear = function (tabla, isAl) {
             tablaContent += '</tr>';
         }
         tablaContent += '</tbody>';
-        if (tabla == "#tablaVerdad") { $('#cardFuncion').html('F=' + mainFuncion + '<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Abandonar ejercicio</button>') }
+        if (tabla == "#tablaVerdad") { $('#cardFuncion').html('F=' + mainFuncion) }
     }
     $(tabla).append(tablaContent);
     if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
@@ -689,7 +689,7 @@ function validarRes() {
         }
         cadenaResultado = cadenaResultado.substring(0, cadenaResultado.length - 1);
         if (repuestaCorrecta == i) {
-            $('#resulados').append("<p class='alert alert-success' role='alert'>" + cadenaResultado + " (Tu respuesta)</p>");
+            $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>Tu solucion.</p></div>");
         } else
             $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
     }

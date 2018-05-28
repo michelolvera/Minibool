@@ -93,3 +93,7 @@ canvas {
 .contenedorPrincipal{
   margin: 1em auto;
 }
+
+#lista_notificaciones{
+  width: 100%;
+}
