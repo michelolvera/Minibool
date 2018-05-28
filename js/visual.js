@@ -226,7 +226,7 @@ var crear = function (tabla, isAl) {
             '<tbody>' +
             '<tr>';
         for (var num = 0; num < vueltas; num++) {
-          var aux=0;
+            var aux = 0;
             // CASO MAPA DE KARNAUGH MINI DENTRO DE LOS DOS KARNAUGH
             if (tabla == "#tablaMapaKMini") {
                 if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
@@ -237,22 +237,22 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">1</th>'
                     }
                     //aqui seccion de los valores
-                    if (num==2 || num ==6) {
-                      aux = num+1;
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
+                    if (num == 2 || num == 6) {
+                        aux = num + 1;
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
                     }
-                    else if(num==3 || num ==7){
-                      aux = num-1;
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
+                    else if (num == 3 || num == 7) {
+                        aux = num - 1;
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
                     }
                     else {
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                          '</td>';
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                            '</td>';
                     }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
@@ -269,32 +269,32 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui seccion de los valores
-                    if (num==2 || num ==6 || num==14 || num==10) {
-                      aux = num+1;
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
+                    if (num == 2 || num == 6 || num == 14 || num == 10) {
+                        aux = num + 1;
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
                     }
-                    else if(num==3 || num ==7 || num==15 || num==11){
-                      aux = num-1;
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
-                        if (num==7) {
-                          num+=4;
+                    else if (num == 3 || num == 7 || num == 15 || num == 11) {
+                        aux = num - 1;
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
+                        if (num == 7) {
+                            num += 4;
                         }
-                        if (entrado && num==11) {
-                          num=15;
+                        if (entrado && num == 11) {
+                            num = 15;
                         }
-                        if (num==15 && !entrado) {
-                          num-=8;
-                          entrado=true;
+                        if (num == 15 && !entrado) {
+                            num -= 8;
+                            entrado = true;
                         }
                     }
                     else {
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                          '</td>';
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                            '</td>';
                     }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
@@ -311,56 +311,56 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui la seccion de los valores
-                    if (num==7) {
-                      aux = num-3;
+                    if (num == 7) {
+                        aux = num - 3;
                     }
-                    if (num==15) {
-                      aux = num-3;
-                      num+=8;
+                    if (num == 15) {
+                        aux = num - 3;
+                        num += 8;
                     }
-                    if (entrado && num==23) {
-                      aux = num-3;
-                      num=31;
+                    if (entrado && num == 23) {
+                        aux = num - 3;
+                        num = 31;
                     }
-                    if (num==31 && !entrado) {
-                      aux = num-3;
-                      num-=16;
-                      entrado=true;
+                    if (num == 31 && !entrado) {
+                        aux = num - 3;
+                        num -= 16;
+                        entrado = true;
                     }
-                    if (num==2 || num==10 || num==18 || num==26) {
-                      aux = num+1;
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
+                    if (num == 2 || num == 10 || num == 18 || num == 26) {
+                        aux = num + 1;
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
                     }
-                    else if(num==3 || num ==11 || num==19 || num==27){
-                      aux = num-1;
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
+                    else if (num == 3 || num == 11 || num == 19 || num == 27) {
+                        aux = num - 1;
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
                     }
-                    else if(num==4 || num ==12 || num==20 || num==28 || num==5 || num==13 || num==21 || num==29) {
-                      aux = num+2;
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
+                    else if (num == 4 || num == 12 || num == 20 || num == 28 || num == 5 || num == 13 || num == 21 || num == 29) {
+                        aux = num + 2;
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
                     }
-                    else if(num==7 || num==15 || num==23 || num==31){
+                    else if (num == 7 || num == 15 || num == 23 || num == 31) {
 
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
                     }
-                    else if(num==6 || num==14 || num==22 || num==30){
-                      aux = num-1;
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                          '</td>';
+                    else if (num == 6 || num == 14 || num == 22 || num == 30) {
+                        aux = num - 1;
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '</td>';
                     }
                     else {
-                      tablaContent += '<td>' +
-                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                          '</td>';
+                        tablaContent += '<td>' +
+                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                            '</td>';
                     }
                 }
             }
@@ -374,16 +374,16 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">1</th>'
                     }
                     //aqui seccion de los valores
-                    if (num==2 || num ==6) {
-                      aux = num+1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    if (num == 2 || num == 6) {
+                        aux = num + 1;
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
                     }
-                    else if(num==3 || num ==7){
-                      aux = num-1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    else if (num == 3 || num == 7) {
+                        aux = num - 1;
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
                     }
                     else {
-                      tablaContent += '<td>' + resultados[num] + '</td>';;
+                        tablaContent += '<td>' + resultados[num] + '</td>';;
                     }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
@@ -400,26 +400,26 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui seccion de los valores
-                    if (num==2 || num ==6 || num==14 || num==10) {
-                      aux = num+1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    if (num == 2 || num == 6 || num == 14 || num == 10) {
+                        aux = num + 1;
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
                     }
-                    else if(num==3 || num ==7 || num==15 || num==11){
-                      aux = num-1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
-                        if (num==7) {
-                          num+=4;
+                    else if (num == 3 || num == 7 || num == 15 || num == 11) {
+                        aux = num - 1;
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        if (num == 7) {
+                            num += 4;
                         }
-                        if (entrado && num==11) {
-                          num=15;
+                        if (entrado && num == 11) {
+                            num = 15;
                         }
-                        if (num==15 && !entrado) {
-                          num-=8;
-                          entrado=true;
+                        if (num == 15 && !entrado) {
+                            num -= 8;
+                            entrado = true;
                         }
                     }
                     else {
-                      tablaContent += '<td>' + resultados[num] + '</td>';
+                        tablaContent += '<td>' + resultados[num] + '</td>';
                     }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
@@ -436,43 +436,43 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui seccion de los valores
-                    if (num==7) {
-                      aux = num-3;
+                    if (num == 7) {
+                        aux = num - 3;
                     }
-                    if (num==15) {
-                      aux = num-3;
-                      num+=8;
+                    if (num == 15) {
+                        aux = num - 3;
+                        num += 8;
                     }
-                    if (entrado && num==23) {
-                      aux = num-3;
-                      num=31;
+                    if (entrado && num == 23) {
+                        aux = num - 3;
+                        num = 31;
                     }
-                    if (num==31 && !entrado) {
-                      aux = num-3;
-                      num-=16;
-                      entrado=true;
+                    if (num == 31 && !entrado) {
+                        aux = num - 3;
+                        num -= 16;
+                        entrado = true;
                     }
-                    if (num==2 || num==10 || num==18 || num==26) {
-                      aux = num+1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    if (num == 2 || num == 10 || num == 18 || num == 26) {
+                        aux = num + 1;
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
                     }
-                    else if(num==3 || num ==11 || num==19 || num==27){
-                      aux = num-1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    else if (num == 3 || num == 11 || num == 19 || num == 27) {
+                        aux = num - 1;
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
                     }
-                    else if(num==4 || num ==12 || num==20 || num==28 || num==5 || num==13 || num==21 || num==29) {
-                      aux = num+2;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    else if (num == 4 || num == 12 || num == 20 || num == 28 || num == 5 || num == 13 || num == 21 || num == 29) {
+                        aux = num + 2;
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
                     }
-                    else if(num==7 || num==15 || num==23 || num==31){
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    else if (num == 7 || num == 15 || num == 23 || num == 31) {
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
                     }
-                    else if(num==6 || num==14 || num==22 || num==30){
-                      aux = num-1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                    else if (num == 6 || num == 14 || num == 22 || num == 30) {
+                        aux = num - 1;
+                        tablaContent += '<td>' + resultados[aux] + '</td>';
                     }
                     else {
-                      tablaContent += '<td>' + resultados[num] + '</td>';
+                        tablaContent += '<td>' + resultados[num] + '</td>';
                     }
                 }
 
@@ -677,17 +677,23 @@ function validarRes() {
     var resultadosOptimos = IniciarReduccion(resultados);
     var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos);
     console.log(resultadosOptimos);
-    if (repuestaCorrecta)
-        alert ("Felcidades encontraste la respuesta.");
-    else
-        alert("Tu respuesta no es valida.");
     $('#resulados').empty();
     for (let i = 0; i < resultadosOptimos.length; i++) {
         let cadenaResultado = "";
         for (let multi of resultadosOptimos[i]) {
-            cadenaResultado+=multi+"+";
+            cadenaResultado += multi + "+";
         }
-        cadenaResultado=cadenaResultado.substring(0,cadenaResultado.length-1);
-        $('#resulados').append("<p>"+cadenaResultado+"</p>");
+        cadenaResultado = cadenaResultado.substring(0, cadenaResultado.length - 1);
+        if (repuestaCorrecta[1] == i) {
+            $('#resulados').append("<p class='alert alert-success' role='alert'>" + cadenaResultado + " (Tu respuesta)</p>");
+        } else
+            $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
+    }
+    if (repuestaCorrecta[0]) {
+        //Respuesta correcta
+
+    }
+    else {
+        //Respuesta incorrecta
     }
 }

@@ -84,29 +84,29 @@
         <a id="cardFuncion">Para iniciar, vaya a la sección de ejercicios del menu principal</a>
       </div>
     </div>
-    <div class="container" id="tablaContenedor">
+    <div class="container-fluid" id="tablaContenedor">
       <div class="row">
-      <div class="col-sm-12 col-lg-6 table-responsive">
-        <table id="tablaVerdad" class="table table-striped table-bordered table-hover">
+        <div class="col-sm-12 col-lg-6 table-responsive">
+          <table id="tablaVerdad" class="table table-striped table-bordered table-hover">
 
-        </table>
-      </div>
+          </table>
+        </div>
 
-      <div class="col-sm-12 col-lg-6" id="respCont">
-        <h3>Su respuesta:<h3>
+        <div class="col-sm-12 col-lg-6" id="respCont">
+          <h3>Su respuesta:</h3>
           <div class="input-group-prepend">
-            <span id="spaninputFuncion" class="input-group-text">F=</span>
-            <input id="inputResp" type="text" class="form-control" aria-label="">
+            <span class="input-group-text" id="spaninputFuncion">F=</span>
+            <input class="form-control" id="inputResp" aria-label="" type="text">
           </div>
-          <button id="btnEnviarRes" href="./principal" class="btn btn-outline-primary derecha" onclick="validarRes()">Enviar respuesta</button>
-          <div class="col-sm-12 col-lg-6" id="resulados">
-            <!--Michel aqui pones los mensajes de respuesta-->
+          <div style="text-align: right;">
+            <button class="btn btn-outline-primary" id="btnEnviarRes" onclick="validarRes()" href="./principal">Enviar respuesta</button>
           </div>
+          <div id="resulados">
+          </div>
+        </div>
       </div>
-    </div>
     </div>
     <div id="tablaMapaK" class="container">
-
     </div>
     <div id="circuitoContenedor"></div>
   </section>
@@ -120,15 +120,15 @@
   <script src="../js/fun/fun.js"></script>
   <script src="../js/fun/qm.js"></script>
 </body>
-<footer>
+<!--<footer>
   <div class="card-footer text-muted">
     <img id="logoITM" src="../imagenes/Itmorelia.png" class="rounded float-left">
-      <!--<p class="text-center">Software elaborado para el Tecnologico Nacional de México</p>
+      <p class="text-center">Software elaborado para el Tecnologico Nacional de México</p>
       <p class="text-center">Por: Michel Olvera Pérez, Jorge Luis Arreygue Avila y Alan Cruz Roblez Vazquez</p>
-      <p class="text-center">Con asesormiento del M.C José Alfredo Jiménez García</p>-->
+      <p class="text-center">Con asesormiento del M.C José Alfredo Jiménez García</p>
     <img id="logoTecN" src="../imagenes/Logo-TecNM.png" class="rounded float-right">
   </div>
-</footer>
+</footer>-->
 <!-- Modal de aleatorio-->
 <div class="modal fade" id="aleatorioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -198,7 +198,7 @@
         <div class="btn-group btn-group-md">
           <button id="botonporFuncion" onClick="func()" class="btn btn-primary">Función</button>
           <button id="botonporTabladeVerdad" onClick="tabla()" class="btn btn-primary">Tabla de verdad</button>
-          <button id="botonporMapaK" onclick="mapak()"  class="btn btn-primary">Mapa de Karnaugh</button>
+          <button id="botonporMapaK" onclick="mapak()" class="btn btn-primary">Mapa de Karnaugh</button>
         </div>
         <p> </p>
         <div id="inpFuncion">
@@ -257,10 +257,10 @@
         <div id="tablaMapaKMini" class="container">
 
         </div>
-              <div class="modal-footer">
-                <button id="btnCerrarConocido" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button id="btnIniciarConocido" onClick="crear('#tablaVerdad',false)" type="button" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
-              </div>
+        <div class="modal-footer">
+          <button id="btnCerrarConocido" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button id="btnIniciarConocido" onClick="crear('#tablaVerdad',false)" type="button" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
+        </div>
 
       </div>
     </div>
