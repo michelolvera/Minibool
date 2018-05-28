@@ -90,6 +90,6 @@ canvas {
   height: auto;
 }
 
-#tablaContenedor{
+.contenedorPrincipal{
   margin: 1em auto;
 }
