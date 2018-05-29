@@ -89,7 +89,7 @@ canvas {
   width: 100%;
   height: auto;
 }
-<<<<<<< HEAD
+
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -99,7 +99,6 @@ canvas {
   line-height: 1.42;
   border-radius: 50%;
 }
-=======
 
 .contenedorPrincipal{
   margin: 1em auto;
@@ -108,4 +107,3 @@ canvas {
 #lista_notificaciones{
   width: 100%;
 }
->>>>>>> cf8b9809aeb77553bde6dc3acfe852a18bca9b3b

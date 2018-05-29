@@ -12,10 +12,6 @@ $(document).ready(function () {
     $('#btnIniciarConocido').hide();
     $('#mapaContenedor').hide();
     $("#respCont").hide();
-
-    $("#btnEnviarRes").click(function (event) {
-        validarRes();
-    });
 });
 $('#conocidoModal').on('shown.bs.modal', function () {
     $('#exampleModal').trigger('focus')
@@ -75,9 +71,8 @@ function mapak() {
 var limpiar = function (tabla) {
     $(tabla).html('');
 }
-var reinciarEjercicios = function () {
-    $('#btnEjercicios').removeClass('disabled');
-
+var activarEjercicios = function () {
+    $('#btnEjercicios').removeClass('disabled')
 }
 var cambioCvar = function () {
     if ($('#botonporFuncion').hasClass('active')) {
@@ -127,11 +122,12 @@ var crear = function (tabla, isAl) {
     //Caso tabla de verdad grande
     if (tabla == "#tablaVerdad") {
         $("#respCont").show();
-        $('#tabtablaVerdad').removeClass('disabled');
-        $('#tabtablaVerdad').addClass('active');
-        $('#tabMapakarnaugh').removeClass('disabled');
-        $('#tabCircuito').removeClass('disabled');
-        $('#resulados').empty();
+        $('#btnEjercicios').addClass('disabled')
+        $('#btnEjercicios').removeClass('active')
+        $('#tabtablaVerdad').removeClass('disabled')
+        $('#tabtablaVerdad').addClass('active')
+        $('#tabMapakarnaugh').removeClass('disabled')
+        $('#tabCircuito').removeClass('disabled')
         tablaContent = '<thead>' +
             '<tr>' +
             '<th scope="col">A</th>' +
@@ -232,7 +228,7 @@ var crear = function (tabla, isAl) {
             '<tbody>' +
             '<tr>';
         for (var num = 0; num < vueltas; num++) {
-            var aux = 0;
+          var aux=0;
             // CASO MAPA DE KARNAUGH MINI DENTRO DE LOS DOS KARNAUGH
             if (tabla == "#tablaMapaKMini") {
                 if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
@@ -243,22 +239,22 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">1</th>'
                     }
                     //aqui seccion de los valores
-                    if (num == 2 || num == 6) {
-                        aux = num + 1;
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                    if (num==2 || num ==6) {
+                      aux = num+1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
                     }
-                    else if (num == 3 || num == 7) {
-                        aux = num - 1;
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                    else if(num==3 || num ==7){
+                      aux = num-1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
                     }
                     else {
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                            '</td>';
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                          '</td>';
                     }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
@@ -275,32 +271,32 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui seccion de los valores
-                    if (num == 2 || num == 6 || num == 14 || num == 10) {
-                        aux = num + 1;
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                    if (num==2 || num ==6 || num==14 || num==10) {
+                      aux = num+1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
                     }
-                    else if (num == 3 || num == 7 || num == 15 || num == 11) {
-                        aux = num - 1;
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
-                        if (num == 7) {
-                            num += 4;
+                    else if(num==3 || num ==7 || num==15 || num==11){
+                      aux = num-1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
+                        if (num==7) {
+                          num+=4;
                         }
-                        if (entrado && num == 11) {
-                            num = 15;
+                        if (entrado && num==11) {
+                          num=15;
                         }
-                        if (num == 15 && !entrado) {
-                            num -= 8;
-                            entrado = true;
+                        if (num==15 && !entrado) {
+                          num-=8;
+                          entrado=true;
                         }
                     }
                     else {
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                            '</td>';
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                          '</td>';
                     }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
@@ -317,56 +313,56 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui la seccion de los valores
-                    if (num == 7) {
-                        aux = num - 3;
+                    if (num==7) {
+                      aux = num-3;
                     }
-                    if (num == 15) {
-                        aux = num - 3;
-                        num += 8;
+                    if (num==15) {
+                      aux = num-3;
+                      num+=8;
                     }
-                    if (entrado && num == 23) {
-                        aux = num - 3;
-                        num = 31;
+                    if (entrado && num==23) {
+                      aux = num-3;
+                      num=31;
                     }
-                    if (num == 31 && !entrado) {
-                        aux = num - 3;
-                        num -= 16;
-                        entrado = true;
+                    if (num==31 && !entrado) {
+                      aux = num-3;
+                      num-=16;
+                      entrado=true;
                     }
-                    if (num == 2 || num == 10 || num == 18 || num == 26) {
-                        aux = num + 1;
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                    if (num==2 || num==10 || num==18 || num==26) {
+                      aux = num+1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
                     }
-                    else if (num == 3 || num == 11 || num == 19 || num == 27) {
-                        aux = num - 1;
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                    else if(num==3 || num ==11 || num==19 || num==27){
+                      aux = num-1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
                     }
-                    else if (num == 4 || num == 12 || num == 20 || num == 28 || num == 5 || num == 13 || num == 21 || num == 29) {
-                        aux = num + 2;
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                    else if(num==4 || num ==12 || num==20 || num==28 || num==5 || num==13 || num==21 || num==29) {
+                      aux = num+2;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
                     }
-                    else if (num == 7 || num == 15 || num == 23 || num == 31) {
+                    else if(num==7 || num==15 || num==23 || num==31){
 
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
                     }
-                    else if (num == 6 || num == 14 || num == 22 || num == 30) {
-                        aux = num - 1;
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                    else if(num==6 || num==14 || num==22 || num==30){
+                      aux = num-1;
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                          '</td>';
                     }
                     else {
-                        tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
-                            '</td>';
+                      tablaContent += '<td>' +
+                          '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                          '</td>';
                     }
                 }
             }
@@ -380,7 +376,6 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">1</th>'
                     }
                     //aqui seccion de los valores
-<<<<<<< HEAD
                     if (num==2 || num ==6) {
                       aux = num+1;
                       tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
@@ -391,18 +386,6 @@ var crear = function (tabla, isAl) {
                     }
                     else {
                       tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[num] + '</td>';;
-=======
-                    if (num == 2 || num == 6) {
-                        aux = num + 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                    }
-                    else if (num == 3 || num == 7) {
-                        aux = num - 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                    }
-                    else {
-                        tablaContent += '<td>' + resultados[num] + '</td>';;
->>>>>>> cf8b9809aeb77553bde6dc3acfe852a18bca9b3b
                     }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
@@ -419,7 +402,6 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui seccion de los valores
-<<<<<<< HEAD
                     if (num==2 || num ==6 || num==14 || num==10) {
                       aux = num+1;
                       tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
@@ -429,32 +411,17 @@ var crear = function (tabla, isAl) {
                       tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                         if (num==7) {
                           num+=4;
-=======
-                    if (num == 2 || num == 6 || num == 14 || num == 10) {
-                        aux = num + 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                    }
-                    else if (num == 3 || num == 7 || num == 15 || num == 11) {
-                        aux = num - 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                        if (num == 7) {
-                            num += 4;
->>>>>>> cf8b9809aeb77553bde6dc3acfe852a18bca9b3b
                         }
-                        if (entrado && num == 11) {
-                            num = 15;
+                        if (entrado && num==11) {
+                          num=15;
                         }
-                        if (num == 15 && !entrado) {
-                            num -= 8;
-                            entrado = true;
+                        if (num==15 && !entrado) {
+                          num-=8;
+                          entrado=true;
                         }
                     }
                     else {
-<<<<<<< HEAD
                       tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[num] + '</td>';
-=======
-                        tablaContent += '<td>' + resultados[num] + '</td>';
->>>>>>> cf8b9809aeb77553bde6dc3acfe852a18bca9b3b
                     }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
@@ -471,23 +438,22 @@ var crear = function (tabla, isAl) {
                         tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     //aqui seccion de los valores
-                    if (num == 7) {
-                        aux = num - 3;
+                    if (num==7) {
+                      aux = num-3;
                     }
-                    if (num == 15) {
-                        aux = num - 3;
-                        num += 8;
+                    if (num==15) {
+                      aux = num-3;
+                      num+=8;
                     }
-                    if (entrado && num == 23) {
-                        aux = num - 3;
-                        num = 31;
+                    if (entrado && num==23) {
+                      aux = num-3;
+                      num=31;
                     }
-                    if (num == 31 && !entrado) {
-                        aux = num - 3;
-                        num -= 16;
-                        entrado = true;
+                    if (num==31 && !entrado) {
+                      aux = num-3;
+                      num-=16;
+                      entrado=true;
                     }
-<<<<<<< HEAD
                     if (num==2 || num==10 || num==18 || num==26) {
                       aux = num+1;
                       tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
@@ -509,29 +475,6 @@ var crear = function (tabla, isAl) {
                     }
                     else {
                       tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[num] + '</td>';
-=======
-                    if (num == 2 || num == 10 || num == 18 || num == 26) {
-                        aux = num + 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                    }
-                    else if (num == 3 || num == 11 || num == 19 || num == 27) {
-                        aux = num - 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                    }
-                    else if (num == 4 || num == 12 || num == 20 || num == 28 || num == 5 || num == 13 || num == 21 || num == 29) {
-                        aux = num + 2;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                    }
-                    else if (num == 7 || num == 15 || num == 23 || num == 31) {
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                    }
-                    else if (num == 6 || num == 14 || num == 22 || num == 30) {
-                        aux = num - 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
-                    }
-                    else {
-                        tablaContent += '<td>' + resultados[num] + '</td>';
->>>>>>> cf8b9809aeb77553bde6dc3acfe852a18bca9b3b
                     }
                 }
 
@@ -676,7 +619,7 @@ var crear = function (tabla, isAl) {
             tablaContent += '</tr>';
         }
         tablaContent += '</tbody>';
-        if (tabla == "#tablaVerdad") { $('#cardFuncion').html('F=' + mainFuncion) }
+        if (tabla == "#tablaVerdad") { $('#cardFuncion').html('F=' + mainFuncion + '<button href="./principal" class="btn btn-outline-danger derecha" onclick="activarEjercicios(), location.reload()" data-toggle="modal">Abandonar ejercicio</button>') }
     }
     $(tabla).append(tablaContent);
     if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
@@ -739,17 +682,18 @@ function validarRes() {
     var resultadosOptimos = IniciarReduccion(resultados);
     var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos);
     console.log(resultadosOptimos);
+    if (repuestaCorrecta)
+        alert ("Felcidades encontraste la respuesta.");
+    else
+        alert("Tu respuesta no es valida.");
     $('#resulados').empty();
     for (let i = 0; i < resultadosOptimos.length; i++) {
         let cadenaResultado = "";
         for (let multi of resultadosOptimos[i]) {
-            cadenaResultado += multi + "+";
+            cadenaResultado+=multi+"+";
         }
-        cadenaResultado = cadenaResultado.substring(0, cadenaResultado.length - 1);
-        if (repuestaCorrecta == i) {
-            $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>Tu solucion.</p></div>");
-        } else
-            $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
+        cadenaResultado=cadenaResultado.substring(0,cadenaResultado.length-1);
+        $('#resulados').append("<p>"+cadenaResultado+"</p>");
     }
 }
 
@@ -760,7 +704,7 @@ var cambiarColor= function(celda){
     if ($('cel'+celda).hasClass('btn-primary')) {
       console.log('entro al if prim');
       $('cel'+celda).removeClass('btn-primary')
-
+    }
     if ($('cel'+celda).hasClass('btn-secondary')) {
       $('cel'+celda).removeClass('btn-secondary')
     }
