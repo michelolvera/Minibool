@@ -1,10 +1,12 @@
 var resultados = new Array();
+var claseColor="";
 $(document).ready(function () {
 
     $("#inpFuncion").hide();
     $('#inpTabla').hide();
     $('#inpTablaK').hide();
     $('#tablaMapaK').hide();
+    $('#colores').hide();
     $('#circuitoContenedor').hide();
     $('#inputFuncion').val("");
     $('#btnIniciarConocido').hide();
@@ -376,14 +378,14 @@ var crear = function (tabla, isAl) {
                     //aqui seccion de los valores
                     if (num==2 || num ==6) {
                       aux = num+1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                     }
                     else if(num==3 || num ==7){
                       aux = num-1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                     }
                     else {
-                      tablaContent += '<td>' + resultados[num] + '</td>';;
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[num] + '</td>';;
                     }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
@@ -402,11 +404,11 @@ var crear = function (tabla, isAl) {
                     //aqui seccion de los valores
                     if (num==2 || num ==6 || num==14 || num==10) {
                       aux = num+1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                     }
                     else if(num==3 || num ==7 || num==15 || num==11){
                       aux = num-1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                         if (num==7) {
                           num+=4;
                         }
@@ -419,7 +421,7 @@ var crear = function (tabla, isAl) {
                         }
                     }
                     else {
-                      tablaContent += '<td>' + resultados[num] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[num] + '</td>';
                     }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
@@ -454,25 +456,25 @@ var crear = function (tabla, isAl) {
                     }
                     if (num==2 || num==10 || num==18 || num==26) {
                       aux = num+1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                     }
                     else if(num==3 || num ==11 || num==19 || num==27){
                       aux = num-1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                     }
                     else if(num==4 || num ==12 || num==20 || num==28 || num==5 || num==13 || num==21 || num==29) {
                       aux = num+2;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                     }
                     else if(num==7 || num==15 || num==23 || num==31){
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                     }
                     else if(num==6 || num==14 || num==22 || num==30){
                       aux = num-1;
-                      tablaContent += '<td>' + resultados[aux] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[aux] + '</td>';
                     }
                     else {
-                      tablaContent += '<td>' + resultados[num] + '</td>';
+                      tablaContent += '<td id="cel'+num+'" onClick="cambiarColor('+num+')">' + resultados[num] + '</td>';
                     }
                 }
 
@@ -659,17 +661,20 @@ function cambiarNum(num) {
 var tabTablaclick = function () {
     $('#tablaContenedor').show();
     $('#tablaMapaK').hide();
+    $('#colores').hide();
     $('#circuitoContenedor').hide();
 }
 var tabMapaclick = function () {
     $('#tablaContenedor').hide();
     $('#tablaMapaK').show();
+    $('#colores').show();
     $('#circuitoContenedor').hide();
 }
 var tabCircuitoclick = function () {
     $('#tablaContenedor').hide();
     $('#tablaMapaK').hide();
     $('#circuitoContenedor').show();
+    $('#colores').hide();
 }
 
 function validarRes() {
@@ -690,4 +695,53 @@ function validarRes() {
         cadenaResultado=cadenaResultado.substring(0,cadenaResultado.length-1);
         $('#resulados').append("<p>"+cadenaResultado+"</p>");
     }
+}
+
+var cambiarColor= function(celda){
+  //$('#cel'+celda).css('background-color', 'red');
+  if (claseColor=='no') {
+    console.log('entro al no');
+    if ($('cel'+celda).hasClass('btn-primary')) {
+      console.log('entro al if prim');
+      $('cel'+celda).removeClass('btn-primary')
+
+    if ($('cel'+celda).hasClass('btn-secondary')) {
+      $('cel'+celda).removeClass('btn-secondary')
+    }
+    if ($('cel'+celda).hasClass('btn-success')) {
+      $('cel'+celda).removeClass('btn-success')
+    }
+    if ($('cel'+celda).hasClass('btn-danger')) {
+      $('cel'+celda).removeClass('btn-danger')
+    }
+    if ($('cel'+celda).hasClass('btn-warning')) {
+      $('cel'+celda).removeClass('btn-warning')
+    }
+    if ($('cel'+celda).hasClass('btn-info')) {
+      $('cel'+celda).removeClass('btn-info')
+    }
+    if ($('cel'+celda).hasClass('btn-dark')) {
+      $('cel'+celda).removeClass('btn-dark')
+    }
+  }
+  else {
+      $('#cel'+celda).addClass(claseColor);
+  }
+}
+function defColor(clase,boton){
+  if(boton == '#c8'){
+    claseColor = 'no'
+  }
+  else {
+    claseColor = clase;
+  }
+  $('#c1').html('');
+  $('#c2').html('');
+  $('#c3').html('');
+  $('#c4').html('');
+  $('#c5').html('');
+  $('#c6').html('');
+  $('#c7').html('');
+  $('#c8').html('');
+  $(boton).html('/');
 }
