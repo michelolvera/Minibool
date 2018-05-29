@@ -301,7 +301,7 @@ function comprobarSolucionesPetrick(soluciones, miniTerminos, tablaImplicantes) 
 
 function IniciarReduccion(kmapResultado) {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado);
-    if (miniTerminos[miniTerminos.length-1]["minterms"][0] <= Math.pow(2, cantidadVariables - 1) - 1) {
+    if (miniTerminos[miniTerminos.length - 1]["minterms"][0] <= Math.pow(2, cantidadVariables - 1) - 1) {
         alert("Una variable se eliminara ya que nunca esta activa.");
         cantidadVariables--;
         var miniTerminos = ObtenerMiniTerminos(kmapResultado, false);
@@ -368,9 +368,8 @@ function ComprobarRespuesta(resultados) {
     //var resultados = IniciarReduccion();
     for (let i = 0; i < resultados.length; i++) {
         if (new Set([...respuesta].filter(x => !resultados[i].has(x))).size == 0) {
-            return true;
-            break;
+            return i;
         }
     }
-    return false;
+    return -1;
 }
