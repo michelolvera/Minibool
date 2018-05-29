@@ -23,7 +23,7 @@
                         <a id="btnEjercicios" role="button" class="nav-link button" href="../../principal/">Ejercicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="btnRanking" href="#">Clasificación</a>
+                        <a id="btnRanking" role="button" class="nav-link" href="#vntn_notificaciones" data-toggle="modal" onclick="cargar_ranking()">Clasificación</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="btnAdmin" role="button" class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -48,8 +48,9 @@
                         <a id="btn_dd_usuario_actual" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" href="#">Usuario:</a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btn_dd_usuario_actual">
-                            <a id="btn_usuario_cuenta" class="dropdown-item" role="button" class="nav-link" onclick="cargar_datos_usuario();" data-toggle="modal" href="#usuario_gestion">Configurar cuenta</a>
-                            <a id="btn_usuario_resultados" class="dropdown-item" href="#">Mis resultados</a>
+                            <a id="btn_usuario_cuenta" class="dropdown-item" role="button" class="nav-link" onclick="cargar_datos_usuario();" data-toggle="modal"
+                                href="#usuario_gestion">Configurar cuenta</a>
+                                <a id="btn_usuario_resultados" class="dropdown-item" href='#detalles' onclick='detalles_usuario();' data-toggle='modal'>Mis resultados</a>
                             <div class="dropdown-divider"></div>
                             <div class="container">
                                 <a id="btn_usuario_cerrar" class="btn btn-outline-danger" style="width: 100%;" href="#">Cerrar sesión</a>
@@ -133,9 +134,8 @@
                     <button id="btn_cerrar_notificaciones_principal" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <table>
-                        <div id="lista_notificaciones">
-                        </div>
+                    <table id="lista_notificaciones">
+
                     </table>
                 </div>
             </div>
@@ -443,6 +443,22 @@
                 </div>
                 <div class="modal-footer">
                     <button id="btn_guardar_acualizar_gestion" class="btn btn-md btn-outline-success" onclick="guardar_datos_usuario();">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal de detalles usuario-->
+    <div class="modal fade" id="detalles">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="text_titulo_detalles" class="modal-title">Detalles</h3>
+                    <button id="btn_cerrar_detalles" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id="body_modal_detalles">
+
+                    </div>
                 </div>
             </div>
         </div>

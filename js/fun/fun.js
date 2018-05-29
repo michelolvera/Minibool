@@ -67,6 +67,8 @@ function getCookie(cname) {
 }
 
 function cargar_notificaciones() {
+  $("#text_titulo_notificaciones_principal").empty();
+  $("#text_titulo_notificaciones_principal").append("Notificaciones");
   $.ajax({
     method: "post",
     url: phpPath,
@@ -104,6 +106,8 @@ function consulta_numero_notificaciones() {
 }
 
 function cargar_ranking() {
+  $("#text_titulo_notificaciones_principal").empty();
+  $("#text_titulo_notificaciones_principal").append("Clasificación");
   $.ajax({
     method: "post",
     url: phpPath,
@@ -205,4 +209,26 @@ function guardar_datos_usuario(){
         .fail(function () {
           alert("Error");
         });
+}
+
+function detalles_usuario(){
+  $("#body_modal_detalles").empty();
+  $.ajax({
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "detallesUsuario",
+      userName: getCookie("user"),
+      userPass: getCookie("pass"),
+      indice: 1
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      //console.log(jsonObject);
+      $("#body_modal_detalles").append("<p>Ultimo ingreso: " + jsonObject[0].ultimo_ingreso+"</p>");
+    })
+    .fail(function () {
+      alert("Error");
+    });
 }

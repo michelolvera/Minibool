@@ -201,6 +201,25 @@ function cargarUsuario() {
     });
 }
 function cargar_detalles() {
-  $("#lb_ultimo_acceso").empty();
-  $("#lb_ultimo_acceso").append("no se xD solo se que su id es: " + idUsuarioSeleccionado);
+  $("#body_modal_detalles").empty();
+  $.ajax({
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "detallesUsuarioAmd",
+      idUsuario: idUsuarioSeleccionado,
+      userName: getCookie("user"),
+      userPass: getCookie("pass"),
+      indice: 1
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      //console.log(jsonObject);
+      $("#body_modal_detalles").append("<p>Ultimo ingreso: " + jsonObject[0].ultimo_ingreso+"</p>");
+    })
+    .fail(function () {
+      alert("Error");
+    });
+  
 }

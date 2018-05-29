@@ -15,9 +15,9 @@ function CargarTextosPagina() {
 }
 
 function inicializacion() {
-    grafica_paises();
     grafica_ejercicios_det();
     grafica_ejercicios_alea();
+    grafica_paises();
 }
 
 function grafica_ejercicios_det() {

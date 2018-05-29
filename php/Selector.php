@@ -183,5 +183,22 @@ switch ($funcion){
   $respuesta = consultaSQL("CALL sp_guardar_usuario('".$userName."','".$userPass."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$codigoPais."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."');");
   echo $respuesta[0]['Actualizado'];
   break;
+
+  case 'detallesUsuarioAmd':
+    $idUsuario = $_REQUEST["idUsuario"];
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $indice = $_REQUEST["indice"];
+    $respuesta = consultaSQL("CALL sp_detalles_usuario_adm('".$userName."','".$userPass."','".$idUsuario."','".$indice."');");
+    echo json_encode($respuesta);
+  break;
+
+  case 'detallesUsuario':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $indice = $_REQUEST["indice"];
+    $respuesta = consultaSQL("CALL sp_detalles_usuario('".$userName."','".$userPass."','".$indice."');");
+    echo json_encode($respuesta);
+  break;
 }
 ?>
