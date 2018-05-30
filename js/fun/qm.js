@@ -139,21 +139,20 @@ function OrdenarMiniTerminos(miniTerminos, cantidadUnos = false) {
     return miniTerminos;
 }
 
-function MetodoDePetrickAlgebraico(productosDeSumas, multiplesIdentidades = true) {
-    console.log(productosDeSumas);
+function MetodoDePetrickAlgebraico(EcuacionPetrick, multiplesIdentidades = true) {
     let productosRecursivos = Array();
-    if (productosDeSumas.length > 1) {
+    if (EcuacionPetrick.length > 1) {
         let distribuido = Array();
         //Distribuir y buscar similares con las reglas x+x=x, xx=x y x+xy=x, volver a llamar este metodo.
         //Distribuir y aplicar xx=x
         /* //Buscar conincidencias de literales
         let dis1, dis2;
         let continuar = true;
-        for (let i = 0; i < productosDeSumas.length; i++) {
-            for (let j = i + 1; j < productosDeSumas.length; j++) {
-                for (let k = 0; k < productosDeSumas[i].length; k++) {
-                    for (let l = 0; l < productosDeSumas[j].length; l++) {
-                        if (new Set([...productosDeSumas[i][k]].filter(x => productosDeSumas[j][l].has(x))).size != 0) {
+        for (let i = 0; i < EcuacionPetrick.length; i++) {
+            for (let j = i + 1; j < EcuacionPetrick.length; j++) {
+                for (let k = 0; k < EcuacionPetrick[i].length; k++) {
+                    for (let l = 0; l < EcuacionPetrick[j].length; l++) {
+                        if (new Set([...EcuacionPetrick[i][k]].filter(x => EcuacionPetrick[j][l].has(x))).size != 0) {
                             dis1 = i;
                             dis2 = j;
                             continuar = false;
@@ -168,33 +167,33 @@ function MetodoDePetrickAlgebraico(productosDeSumas, multiplesIdentidades = true
             if (!continuar) break
         }*/
         //Si se uniran conjuntos conincidentes, cambiar 0 por dis1 y 1 por dis2
-        for (let i = 0; i < productosDeSumas[0].length; i++) {
-            for (let j = 0; j < productosDeSumas[1].length; j++) {
+        for (let i = 0; i < EcuacionPetrick[0].length; i++) {
+            for (let j = 0; j < EcuacionPetrick[1].length; j++) {
                 //Unir conjuntos
-                distribuido.push(new Set([...productosDeSumas[0][i], ...productosDeSumas[1][j]]));
+                distribuido.push(new Set([...EcuacionPetrick[0][i], ...EcuacionPetrick[1][j]]));
             }
         }
         //Llenar arreglo
         /*
-        for (let i = 0; i < productosDeSumas.length; i++) {
+        for (let i = 0; i < EcuacionPetrick.length; i++) {
             if (i == dis1 || i == dis2)
                 continue;
-            productosRecursivos.push(productosDeSumas[i]);
+            productosRecursivos.push(EcuacionPetrick[i]);
         }*/
         //Aplicar identidades
         if (multiplesIdentidades)
             distribuido = indentidadesPetrick(distribuido);//Necesario distribuir desde el principio?
         productosRecursivos.push(distribuido);
         //Llenar arreglo
-        for (let i = 2; i < productosDeSumas.length; i++) {
-            productosRecursivos.push(productosDeSumas[i]);
+        for (let i = 2; i < EcuacionPetrick.length; i++) {
+            productosRecursivos.push(EcuacionPetrick[i]);
         }
         return MetodoDePetrickAlgebraico(productosRecursivos, multiplesIdentidades);
-    } else if (productosDeSumas.length == 1) {
+    } else if (EcuacionPetrick.length == 1) {
         //Buscar terminos semejantes con ayuda de las reglas x+x=x, xx=x y x+xy=x?? y retornar el ultimo resultado
         if (!multiplesIdentidades)
-            return indentidadesPetrick(productosDeSumas)[0];
-        return productosDeSumas[0];
+            return indentidadesPetrick(EcuacionPetrick)[0];
+        return EcuacionPetrick[0];
     } else
         return Array();
 }
@@ -245,8 +244,8 @@ function indentidadesPetrick(sumas) {
     return aux;
 }
 
-function ObtenerProductosDeSumas(implicantes) {
-    let productosDeSumas = Array();
+function ObtenerEcuacionPetrick(implicantes) {
+    let EcuacionPetrick = Array();
     for (let i = 0; i < implicantes.length; i++) {
         for (let j = i + 1; j < implicantes.length; j++) {
             for (let k = 0; k < implicantes[i].length; k++) {
@@ -254,28 +253,28 @@ function ObtenerProductosDeSumas(implicantes) {
                     let suma = Array();
                     suma.push(new Set().add(String.fromCharCode(65 + i)));//String.fromCharCode(65 + i)
                     suma.push(new Set().add(String.fromCharCode(65 + j)));//String.fromCharCode(65 + j)
-                    productosDeSumas.push(suma);
+                    EcuacionPetrick.push(suma);
                     break;
                 }
             }
         }
     }
-    return productosDeSumas;
+    return EcuacionPetrick;
 }
 
-function ConvertirImplicanteAConjuntoExpresion(implicante) {
-    let expresion = "";
+function ConvertirImplicanteAExpresion(implicante, sumasoproductos) {//Si sumasoproductos = true, se regresaran Sumas de Productos, si es falsa se retornan productos de sumas.
+    let expresion = sumasoproductos ? "" : "(";
     for (let i = 0; i < implicante["bin"].length; i++) {
         switch (implicante["bin"].charAt(i)) {
             case '0':
-                expresion += (String.fromCharCode(65 + i) + "'");
+                expresion += sumasoproductos ? String.fromCharCode(65 + i) + "'" : String.fromCharCode(65 + i) + "+";
                 break;
             case '1':
-                expresion += (String.fromCharCode(65 + i));
+                expresion += sumasoproductos ? String.fromCharCode(65 + i) : String.fromCharCode(65 + i) + "'+";
                 break;
         }
     }
-    return expresion;
+    return sumasoproductos ? expresion : expresion.substring(0, expresion.length - 1) + ")";
 }
 
 function comprobarSolucionesPetrick(soluciones, miniTerminos, tablaImplicantes) {
@@ -299,7 +298,7 @@ function comprobarSolucionesPetrick(soluciones, miniTerminos, tablaImplicantes) 
     return auxPetrick;
 }
 
-function IniciarReduccion(kmapResultado) {
+function IniciarReduccion(kmapResultado, sumasoproductos) {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado);
     if (miniTerminos[miniTerminos.length - 1]["minterms"][0] <= Math.pow(2, cantidadVariables - 1) - 1) {
         alert("Una variable se eliminara ya que nunca esta activa.");
@@ -325,13 +324,10 @@ function IniciarReduccion(kmapResultado) {
     /////////////////////////////
     miniTerminos = OrdenarMiniTerminos(miniTerminos);//Ordenar mini terminos
     var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
-    var productosDeSumas = ObtenerProductosDeSumas(tablaImplicantes);
+    var EcuacionPetrick = ObtenerEcuacionPetrick(tablaImplicantes);
 
     //Aplicar metodo de Petrick
-    var terminosPetrick = MetodoDePetrickAlgebraico(productosDeSumas);
-    console.log(tablaImplicantes);
-    console.log(productosDeSumas);
-    console.log(terminosPetrick);
+    var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
     //Limpiar resultados erroneos usando la tabla de implicantes primos
     terminosPetrick = comprobarSolucionesPetrick(terminosPetrick, miniTerminos, tablaImplicantes);
     if (terminosPetrick.length == 0) {
@@ -356,16 +352,30 @@ function IniciarReduccion(kmapResultado) {
     for (let i = 0; i < terminosPetrick.length; i++) {
         let solucion = new Set();
         for (let implicante of terminosPetrick[i]) {
-            solucion.add(ConvertirImplicanteAConjuntoExpresion(implicantes[implicante.charCodeAt(0) - 65]));
+            solucion.add(ConvertirImplicanteAExpresion(implicantes[implicante.charCodeAt(0) - 65], sumasoproductos));
         }
         solucionesFinales.push(solucion);
     }
     return solucionesFinales;
 }
 
-function ComprobarRespuesta(resultados) {
-    let respuesta = new Set(...[document.getElementById("inputResp").value.toUpperCase().split('+')]);
+function ComprobarRespuesta(resultados, sumasoproductos) {
+    let respuesta = sumasoproductos ? new Set(...[document.getElementById("inputResp").value.toUpperCase().split('+')]) : new Set(...[document.getElementById("inputResp").value.toUpperCase().split(/\)\(/)]);
     //var resultados = IniciarReduccion();
+    if (!sumasoproductos) {
+        let aux = new Set();
+        for (let termino of respuesta) {
+            if (termino[0] != "(") {
+                termino = "(" + termino;
+            }
+            if (termino[termino.length - 1] != ")") {
+                termino += ")";
+            }
+            aux.add(termino);
+        }
+        respuesta = aux;
+    }
+
     for (let i = 0; i < resultados.length; i++) {
         if (new Set([...respuesta].filter(x => !resultados[i].has(x))).size == 0) {
             return i;

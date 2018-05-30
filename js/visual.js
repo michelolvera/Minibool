@@ -1,4 +1,5 @@
 var resultados = new Array();
+productosSumas = true; //true, se regresaran Sumas de Productos, si es falsa se retornan productos de sumas.
 $(document).ready(function () {
 
     $("#inpFuncion").hide();
@@ -10,10 +11,6 @@ $(document).ready(function () {
     $('#btnIniciarConocido').hide();
     $('#mapaContenedor').hide();
     $("#respCont").hide();
-
-    $("#btnEnviarRes").click(function (event) {
-        validarRes();
-    });
 });
 $('#conocidoModal').on('shown.bs.modal', function () {
     $('#exampleModal').trigger('focus')
@@ -91,7 +88,7 @@ var cambioCvar = function () {
     }
 
 }
-var crear = function (tabla, isAl) {
+var crear = function (tabla, isAl) {//isAl true es aleatorio, false es deterministico
     var mainFuncion = "";
     var valA = "";
     var valB = "";
@@ -630,6 +627,17 @@ var crear = function (tabla, isAl) {
         } else {
             crear('#tablaMapaK', false);
         }
+        ////////////////////////////////// HAGO CONSTAR QUE ESTO NO ME GUSTA ATT. Michel  ////////////////////////////////
+        if (tabla == "#tablaVerdad") {
+            $("#contenedorBoton").empty();
+            $("#contenedorBoton").append('<button class="btn btn-outline-primary" id="btnEnviarRes" href="#">Enviar respuesta</button>');
+            $("#btnEnviarRes").click(function (event) {
+                validarRes();
+            });
+            productosSumas = isAl ? $('input:radio[name=resolverPorAleatorio]:checked').val() == 1 ? true : false : $('input:radio[name=resolverPorDeterministico]:checked').val() == 1 ? true : false;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 };
 
@@ -677,20 +685,24 @@ var tabCircuitoclick = function () {
 }
 
 function validarRes() {
-    console.log(resultados);
-    var resultadosOptimos = IniciarReduccion(resultados);
-    var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos);
-    console.log(resultadosOptimos);
+    var resultadosOptimos = IniciarReduccion(resultados, productosSumas);
+    var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos, productosSumas);
+    let correcto = false;
     $('#resulados').empty();
+    $('#resulados').append("<p class='alert alert-warning' role='alert'>Posibles soluciones:</p>");
+    $("#contenedorBoton").empty();
     for (let i = 0; i < resultadosOptimos.length; i++) {
         let cadenaResultado = "";
         for (let multi of resultadosOptimos[i]) {
-            cadenaResultado += multi + "+";
+            cadenaResultado += multi + (productosSumas ? "+" : '');
         }
-        cadenaResultado = cadenaResultado.substring(0, cadenaResultado.length - 1);
+        cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 1) : cadenaResultado;
         if (repuestaCorrecta == i) {
+            correcto = true;
             $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>Tu solucion.</p></div>");
         } else
             $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
+
     }
+    $("#inputResp").addClass(correcto ? "ejercicioCorrecto" : "ejercicioIncorrecto");
 }

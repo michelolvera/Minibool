@@ -55,7 +55,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btn_dd_usuario_actual">
               <a id="btn_usuario_cuenta" class="dropdown-item" role="button" class="nav-link" data-toggle="modal" href="#usuario_gestion"
                 onclick="cargar_datos_usuario();">Configurar cuenta</a>
-                <a id="btn_usuario_resultados" class="dropdown-item" href='#detalles' onclick='detalles_usuario();' data-toggle='modal'>Mis resultados</a>
+              <a id="btn_usuario_resultados" class="dropdown-item" href='#detalles' onclick='detalles_usuario();' data-toggle='modal'>Mis resultados</a>
               <div class="dropdown-divider"></div>
               <div class="container">
                 <a id="btn_usuario_cerrar" class="btn btn-outline-danger" style="width: 100%;" href="#">Cerrar sesión</a>
@@ -95,12 +95,11 @@
 
         <div class="col-sm-12 col-lg-6" id="respCont">
           <h3>Su respuesta:</h3>
-          <div class="input-group-prepend">
+          <div id="formSolucion" class="input-group-prepend">
             <span class="input-group-text" id="spaninputFuncion">F=</span>
             <input class="form-control" id="inputResp" aria-label="" type="text">
           </div>
-          <div style="text-align: right;">
-            <button class="btn btn-outline-primary" id="btnEnviarRes" href="./principal">Enviar respuesta</button>
+          <div id="contenedorBoton" style="text-align: right;">
           </div>
           <div id="resulados">
           </div>
@@ -153,14 +152,14 @@
             <input type="radio" name="options" id="var5" autocomplete="off">5
           </label>
         </div>
-        <h5 id="labelResolverpor">Resolver por:</h5>
-        <div id="options" class="btn-group btn-group-toggle" data-toggle="buttons">
+        <h5 id="labelResolverporAleatorio">Resolver por:</h5>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
-            <input type="radio" name="options" id="inputporSumadeP" autocomplete="off" checked>
+            <input type="radio" name="resolverPorAleatorio" id="inputporSumadeP" value="1" autocomplete="off" checked>
             <span id="spanSumadeP">Suma de productos</span>
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="options" id="inputporProddeS" autocomplete="off">
+            <input type="radio" name="resolverPorAleatorio" id="inputporProddeS" value="0" autocomplete="off">
             <span id="spanProddeS">Productos de suma</span>
           </label>
         </div>
@@ -193,6 +192,17 @@
           </label>
           <label class="btn btn-primary">
             <input type="radio" onchange="cambioCvar()" name="options" id="Cvar5" autocomplete="off">5
+          </label>
+        </div>
+        <h5 id="labelResolverporDeterministico">Resolver por:</h5>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="resolverPorDeterministico" id="inputporSumadeP" value="1" autocomplete="off" checked>
+            <span id="spanSumadeP">Suma de productos</span>
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="resolverPorDeterministico" id="inputporProddeS" value="0" autocomplete="off">
+            <span id="spanProddeS">Productos de suma</span>
           </label>
         </div>
         <h5 id="datosTitulo">Datos en:</h5>
@@ -591,18 +601,19 @@
 </div>
 <!--modal de detalles usuario-->
 <div class="modal fade" id="detalles">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 id="text_titulo_detalles" class="modal-title">Detalles</h3>
-          <button id="btn_cerrar_detalles" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group" id="body_modal_detalles">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="text_titulo_detalles" class="modal-title">Detalles</h3>
+        <button id="btn_cerrar_detalles" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" id="body_modal_detalles">
 
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
 </html>

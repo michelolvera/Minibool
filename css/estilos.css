@@ -81,10 +81,7 @@ footer {
     width:100%;
   height: 100px;
 }
-#btnEnviarRes{
-  margin: 1em 0 1em 0;
-  margin-right: 0%;
-}
+
 canvas {
   width: 100%;
   height: auto;
@@ -96,4 +93,20 @@ canvas {
 
 #lista_notificaciones{
   width: 100%;
+}
+
+#contenedorLogin{
+  margin-top: 4em;
+}
+
+.ejercicioCorrecto{
+  box-shadow: #28a745 0px 0px 0.2em inset;
+}
+
+.ejercicioIncorrecto{
+  box-shadow: #dc3545 0px 0px 0.2em inset;
+}
+
+#formSolucion{
+  margin: 1em 0 1em 0;
 }
