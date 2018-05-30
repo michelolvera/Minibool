@@ -685,6 +685,12 @@ var tabCircuitoclick = function () {
 }
 
 function validarRes() {
+    if (!productosSumas) {
+        //Invertir 0s y 1s!!
+        for (let i = 0; i < resultados.length; i++) {
+            resultados[i] = resultados[i] == 1 ? 0 : 1;
+        }
+    }
     var resultadosOptimos = IniciarReduccion(resultados, productosSumas);
     var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos, productosSumas);
     let correcto = false;
