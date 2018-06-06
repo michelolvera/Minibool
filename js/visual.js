@@ -5,7 +5,6 @@ $(document).ready(function () {
     $("#inpFuncion").hide();
     $('#inpTabla').hide();
     $('#inpTablaK').hide();
-    $('#tablaMapaK').hide();
     $('#circuitoContenedor').hide();
     $('#inputFuncion').val("");
     $('#btnIniciarConocido').hide();
@@ -666,22 +665,6 @@ function cambiarNum(num) {
     else {
         $('#btnMapak' + num).html('0');
     }
-}
-
-var tabTablaclick = function () {
-    $('#tablaContenedor').show();
-    $('#tablaMapaK').hide();
-    $('#circuitoContenedor').hide();
-}
-var tabMapaclick = function () {
-    $('#tablaContenedor').hide();
-    $('#tablaMapaK').show();
-    $('#circuitoContenedor').hide();
-}
-var tabCircuitoclick = function () {
-    $('#tablaContenedor').hide();
-    $('#tablaMapaK').hide();
-    $('#circuitoContenedor').show();
 }
 
 function validarRes() {

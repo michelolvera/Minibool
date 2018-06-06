@@ -68,18 +68,6 @@
   </header>
 
   <section id="principal" class="container-fluid margen_despues_nav">
-
-    <ul class="nav nav-tabs nav-justified">
-      <li class="nav-item">
-        <a id="tabtablaVerdad" data-toggle="tab" class="nav-link disabled" onclick="tabTablaclick()">Tabla de verdad</a>
-      </li>
-      <li class="nav-item">
-        <a id="tabMapakarnaugh" data-toggle="tab" class="nav-link disabled" onclick="tabMapaclick()">Mapa de Karnaugh</a>
-      </li>
-      <li class="nav-item">
-        <a id="tabCircuito" data-toggle="tab" class="nav-link disabled" onclick="tabCircuitoclick()">Circuito lógico</a>
-      </li>
-    </ul>
     <div class="card" style="width: auto;">
       <div class="card-header">
         <a id="cardFuncion">Para iniciar, vaya a la sección de ejercicios del menu principal</a>
@@ -94,6 +82,8 @@
         </div>
 
         <div class="col-sm-12 col-lg-6" id="respCont">
+          <div id="tablaMapaK" class="container-fluid contenedorPrincipal">
+          </div>
           <h3>Su respuesta:</h3>
           <div id="formSolucion" class="input-group-prepend">
             <span class="input-group-text" id="spaninputFuncion">F=</span>
@@ -106,8 +96,7 @@
         </div>
       </div>
     </div>
-    <div id="tablaMapaK" class="container-fluid contenedorPrincipal">
-    </div>
+
     <div id="circuitoContenedor" class="container-fluid contenedorPrincipal"></div>
   </section>
 
