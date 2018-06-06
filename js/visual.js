@@ -675,6 +675,21 @@ function validarRes() {
         }
     }
     var resultadosOptimos = IniciarReduccion(resultados, productosSumas);
+    //Limpiar los resultados redundantes o mas largos que el mas optimo
+    let optimoLargo = 0;
+    for (let i = 0; i < resultadosOptimos.length; i++) {
+        if (optimoLargo == 0)
+            optimoLargo = resultadosOptimos[i].size;
+        if (resultadosOptimos[i].size < optimoLargo)
+            optimoLargo = resultadosOptimos[i].size;
+    }
+    let aux = Array();
+    for (let i = 0; i < resultadosOptimos.length; i++) {
+        if (!(resultadosOptimos[i].size > optimoLargo))
+            aux.push(resultadosOptimos[i]);
+    }
+    resultadosOptimos = aux;
+
     var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos, productosSumas);
     let correcto = false;
     $('#resulados').empty();
