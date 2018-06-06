@@ -1,5 +1,9 @@
 var resultados = new Array();
 productosSumas = true; //true, se regresaran Sumas de Productos, si es falsa se retornan productos de sumas.
+
+var es_aleatorio=false;
+var numero_variable = 0; 
+
 $(document).ready(function () {
 
     $("#inpFuncion").hide();
@@ -104,12 +108,15 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     $("#tablaMapaKMini").hide();
     if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
         vueltas = 8;
+        numero_variable=3;
     }
     if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
         vueltas = 16;
+        numero_variable=4;
     }
     if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
         vueltas = 32;
+        numero_variable=5;
     }
     // Entrada de la funcion
     if ($('#botonporFuncion').hasClass('active')) {
@@ -694,8 +701,98 @@ function validarRes() {
 
     }
     //La variable correcto indica si el ejercicio es correcto o no.
-
+    
+    if(obtener_id_ejercicio()!=0){
+        if(correcto){
+            $.ajax({
+                method: "post",
+                url: phpPath,
+                data: {
+                  funcion: "registroEjercicio",
+                  userName: getCookie("user"),
+                  userPass: getCookie("pass"),
+                  ej_correcto:1,
+                  nu_variable:obtener_id_ejercicio()
+                },
+                dataType: "json"
+              })
+                .done(function (respuesta) {
+                  console.log(respuesta);
+                })
+                .fail(function () {
+                  alert("Error");
+                });
+        }else{
+            $.ajax({
+                method: "post",
+                url: phpPath,
+                data: {
+                  funcion: "registroEjercicio",
+                  userName: getCookie("user"),
+                  userPass: getCookie("pass"),
+                  ej_correcto:0,
+                  nu_variable:obtener_id_ejercicio()
+                },
+                dataType: "json"
+              })
+                .done(function (respuesta) {
+                    console.log(respuesta);
+                })
+                .fail(function () {
+                  alert("Error");
+                });
+        }
+    }
+    
     $("#inputResp").removeClass("ejercicioCorrecto");
     $("#inputResp").removeClass("ejercicioIncorrecto");
     $("#inputResp").addClass(correcto ? "ejercicioCorrecto" : "ejercicioIncorrecto");
+}
+
+function tipo_ejercicio(valor_tipo){
+    switch(valor_tipo){
+        case 'aleatorio':
+        es_aleatorio=true
+        break;
+        case 'deterministico':
+        es_aleatorio=false;
+        break;
+    }
+}
+
+function obtener_id_ejercicio(){
+    
+    if(es_aleatorio){
+        switch(numero_variable){
+            case 0:
+            return 0;
+            break;
+            case 3:
+            return 1;
+            break;
+            case 4:
+            return 2;
+            break;
+            case 5:
+            return 3;
+            break;
+        }
+    }
+    else
+    {
+        switch(numero_variable){
+            case 0:
+            return 0;
+            break;
+            case 3:
+            return 4;
+            break;
+            case 4:
+            return 5;
+            break;
+            case 5:
+            return 6;
+            break;
+        }
+    }
 }

@@ -200,5 +200,14 @@ switch ($funcion){
     $respuesta = consultaSQL("CALL sp_detalles_usuario('".$userName."','".$userPass."','".$indice."');");
     echo json_encode($respuesta);
   break;
+
+  case 'registroEjercicio':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $ej_correcto = $_REQUEST["ej_correcto"];
+    $nu_variable = $_REQUEST["nu_variable"];
+    $respuesta = consultaSQL("CALL sp_registrar_ejercicio('".$userName."','".$userPass."','".$ej_correcto."','".$nu_variable."');");
+    echo $respuesta[0]["Registro"];
+  break;
 }
 ?>
