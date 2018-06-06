@@ -300,11 +300,11 @@ function comprobarSolucionesPetrick(soluciones, miniTerminos, tablaImplicantes) 
 
 function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = true) {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado, calcularVariables);
-    if (miniTerminos[miniTerminos.length - 1]["minterms"][0] <= Math.pow(2, cantidadVariables - 1) - 1) {
+    /*if (miniTerminos[miniTerminos.length - 1]["minterms"][0] <= Math.pow(2, cantidadVariables - 1) - 1) {
         alert("Una variable se eliminara ya que nunca esta activa.");
         cantidadVariables--;
         return IniciarReduccion(kmapResultado, sumasoproductos, false);
-    } else {
+    } else {*/
         var implicantes = ReductorRecursivo(miniTerminos);
         //Limpiar Implicantes Duplicados
         let posRepetido = Array();
@@ -357,7 +357,7 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
             solucionesFinales.push(solucion);
         }
         return solucionesFinales;
-    }
+    //}
     return null;
 }
 
