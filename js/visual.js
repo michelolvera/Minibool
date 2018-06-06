@@ -710,5 +710,9 @@ function validarRes() {
             $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
 
     }
+    //La variable correcto indica si el ejercicio es correcto o no.
+
+    $("#inputResp").removeClass("ejercicioCorrecto");
+    $("#inputResp").removeClass("ejercicioIncorrecto");
     $("#inputResp").addClass(correcto ? "ejercicioCorrecto" : "ejercicioIncorrecto");
 }
