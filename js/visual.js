@@ -656,7 +656,7 @@ function dec2bin(dec, c) {
 }
 function getRandom() {
     var num = Math.random();
-    if (num < 0.8) return 1;  //probabilidad 0.8
+    if (num < 0.6) return 1;  //probabilidad 0.8
     else return 0;  //probabilidad 0.2
 }
 function cambiarNum(num) {
