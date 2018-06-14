@@ -33,10 +33,8 @@ function Inicializacion() {
   $('#in_administrador_act').change(function (event) {
     if (this.value == 1) {
       $('#in_administrador_act').val("0");
-      alert($('#in_administrador_act').val());
     } else {
       $('#in_administrador_act').val("1");
-      alert($('#in_administrador_act').val());
     }
   })
 }
@@ -100,7 +98,26 @@ function realizar_accion() {
         });
       break;
     case 'eliminarTodo':
-      alert("eliminar todo");
+    $("#btn_cerrar").click();
+    $.ajax({
+      method: "post",
+      url: phpPath,
+      data: {
+        funcion: "eliminarTodo",
+        userName: getCookie("user"),
+        userPass: getCookie("pass"),
+      },
+    })
+      .done(function (respuesta) {
+        if (respuesta == 1) {
+          alert("Se ha eliminado a todos lo usuarios y sus datos exitosamente (excluyendo a el administrador actual)");
+        } else {
+          alert("Error al momento de actualizar datos no cuenta con los permisos");
+        }
+      })
+      .fail(function () {
+        alert("Error");
+      });
       break;
     case 'actualizar':
       $("#btn_cerrar_actualizar").click();

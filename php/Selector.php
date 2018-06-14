@@ -52,6 +52,13 @@ switch ($funcion){
     echo $respuesta[0]['Eliminado'];
   break;
 
+  case 'eliminarTodo':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $respuesta = consultaSQL("CALL sp_eliminar_todo('".$userName."','".$userPass."');");
+    echo $respuesta[0]['Eliminado'];
+  break;
+
   case 'actualizarUsuario':
   $userName = $_REQUEST["userName"];
   $userPass = $_REQUEST["userPass"];
