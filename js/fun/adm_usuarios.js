@@ -31,10 +31,12 @@ function Inicializacion() {
   });
 
   $('#in_administrador_act').change(function (event) {
-    if ($('#in_administrador_act').val("1") == 1) {
+    if (this.value == 1) {
       $('#in_administrador_act').val("0");
+      alert($('#in_administrador_act').val());
     } else {
       $('#in_administrador_act').val("1");
+      alert($('#in_administrador_act').val());
     }
   })
 }
