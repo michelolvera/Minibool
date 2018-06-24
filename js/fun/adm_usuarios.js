@@ -98,26 +98,27 @@ function realizar_accion() {
         });
       break;
     case 'eliminarTodo':
-    $("#btn_cerrar").click();
-    $.ajax({
-      method: "post",
-      url: phpPath,
-      data: {
-        funcion: "eliminarTodo",
-        userName: getCookie("user"),
-        userPass: getCookie("pass"),
-      },
-    })
-      .done(function (respuesta) {
-        if (respuesta == 1) {
-          alert("Se ha eliminado a todos lo usuarios y sus datos exitosamente (excluyendo a el administrador actual)");
-        } else {
-          alert("Error al momento de actualizar datos no cuenta con los permisos");
-        }
+      $("#btn_cerrar").click();
+      $.ajax({
+        method: "post",
+        url: phpPath,
+        data: {
+          funcion: "eliminarTodo",
+          userName: getCookie("user"),
+          userPass: getCookie("pass"),
+        },
       })
-      .fail(function () {
-        alert("Error");
-      });
+        .done(function (respuesta) {
+          if (respuesta == 1) {
+            alert("Se ha eliminado a todos lo usuarios y sus datos exitosamente (excluyendo a el administrador actual)");
+            llenar_tabla($("#in_nombre").val(), $("#in_apellido_pat").val(), $("#in_apellido_mat").val());
+          } else {
+            alert("Error al momento de actualizar datos no cuenta con los permisos");
+          }
+        })
+        .fail(function () {
+          alert("Error");
+        });
       break;
     case 'actualizar':
       $("#btn_cerrar_actualizar").click();
@@ -367,7 +368,7 @@ function cargar_detalles() {
                         '<tr><td>Cuatro</td><td>' + deterministico.cuatro.correctos + '</td><td>' + deterministico.cuatro.incorrectos + '</td><td>' + deterministico.cuatro.puntos + '</td></tr>' +
                         '<tr><td>Cinco</td><td>' + deterministico.cinco.correctos + '</td><td>' + deterministico.cinco.incorrectos + '</td><td>' + deterministico.cinco.puntos + '</td></tr>' +
                         "</table>");
-                        $("#body_modal_detalles").append("<p>Total = " + (parseInt(deterministico.tres.puntos) + parseInt(deterministico.cuatro.puntos) + parseInt(deterministico.cinco.puntos)) + "<p>");
+                      $("#body_modal_detalles").append("<p>Total = " + (parseInt(deterministico.tres.puntos) + parseInt(deterministico.cuatro.puntos) + parseInt(deterministico.cinco.puntos)) + "<p>");
                       $("#body_modal_detalles").append("<p>Aleatorios: <p>");
                       $("#body_modal_detalles").append("<table class='table table-striped table-bordered table-hover'>" +
                         '<th>Variables </th>' +
@@ -378,7 +379,7 @@ function cargar_detalles() {
                         '<tr><td>Cuatro</td><td>' + aleatorio.cuatro.correctos + '</td><td>' + aleatorio.cuatro.incorrectos + '</td><td>' + aleatorio.cuatro.puntos + '</td></tr>' +
                         '<tr><td>Cinco</td><td>' + aleatorio.cinco.correctos + '</td><td>' + aleatorio.cinco.incorrectos + '</td><td>' + aleatorio.cinco.puntos + '</td></tr>' +
                         "</table>");
-                        $("#body_modal_detalles").append("<p>Total = " + (parseInt(aleatorio.tres.puntos) + parseInt(aleatorio.cuatro.puntos) + parseInt(aleatorio.cinco.puntos)) + "<p>");
+                      $("#body_modal_detalles").append("<p>Total = " + (parseInt(aleatorio.tres.puntos) + parseInt(aleatorio.cuatro.puntos) + parseInt(aleatorio.cinco.puntos)) + "<p>");
                     })
                     .fail(function () {
                       alert("Error");
@@ -400,4 +401,22 @@ function cargar_detalles() {
       alert("Error");
     });
 
+}
+
+
+function respaldarCSV() {
+  $.ajax({
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "consultaCSV"
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      console.log(jsonObject);
+    })
+    .fail(function () {
+      alert("Error");
+    });
 }

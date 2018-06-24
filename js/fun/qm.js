@@ -358,7 +358,6 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
         }
         return solucionesFinales;
     //}
-    return null;
 }
 
 function ComprobarRespuesta(resultados, sumasoproductos) {

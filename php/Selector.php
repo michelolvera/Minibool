@@ -216,5 +216,10 @@ switch ($funcion){
     $respuesta = consultaSQL("CALL sp_registrar_ejercicio('".$userName."','".$userPass."','".$ej_correcto."','".$nu_variable."');");
     echo $respuesta[0]["Registro"];
   break;
+
+  case 'consultaCSV':
+    $respuesta = consultaSQL("SELECT usuario FROM usuarios;");
+    echo json_encode($respuesta);
+  break;
 }
 ?>

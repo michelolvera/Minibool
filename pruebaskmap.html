@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="js/fun/qm.js"></script>
+    
     <title>Document</title>
 </head>
+
 <body>
-        <input type="text" id="txt_respuesta">
-        <button onclick="ComprobarRespuesta();">Comprobar</button>
+    <input type="text" id="txt_respuesta">
+    <button onclick="ComprobarRespuesta();">Comprobar</button>
+    <a id="descargar">descarga</a>
+    <script type="text/javascript">
+        var contenidoDeArchivo = "Hola Mundo!";
+        var elem = document.getElementById('descargar');
+
+        elem.download = "archivo.txt";
+        elem.href = "data:text/plain;charset=UTF-8;page=21,the%20data:1234,5678";
+    </script>
 </body>
+
 </html>
