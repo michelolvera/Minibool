@@ -1,0 +1,113 @@
+#in_notificacion{
+  height: 38px;
+}
+
+.verde{
+  background:#009688;
+  color:#fff;
+}
+.verde_margen{
+  background:#009688;
+  color:#fff;
+  margin-left: 1em;
+}
+
+.margen_despues_nav{
+  margin-top: 4rem;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-ajuste-medio {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-control .form-ajuste-medio{
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+}
+#head{
+  margin: auto;
+  height: 100px;
+}
+#logoITM{
+  height: 100px;
+}
+#bienvenidos{
+  height: 80%;
+}
+#logoTecN{
+  height: 100px;
+  margin-left: 0
+}
+#content{
+  margin-left: 8%;
+  margin-right: 8%;
+}
+.derecha{
+  float: right;
+  margin-right: 3%;
+  margin-left: auto;
+
+}
+.izquierda{
+  float: left;
+  margin-right: auto;
+}
+#principal{
+  min-height: 450px;
+  height: auto;
+}
+footer {
+  bottom: 0;
+    width:100%;
+  height: 100px;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+}
+
+.contenedorPrincipal{
+  margin: 1em auto;
+}
+
+#lista_notificaciones{
+  width: 100%;
+}
+
+#contenedorLogin{
+  margin-top: 4em;
+}
+
+.ejercicioCorrecto{
+  box-shadow: #28a745 0px 0px 0.2em inset;
+}
+
+.ejercicioIncorrecto{
+  box-shadow: #dc3545 0px 0px 0.2em inset;
+}
+
+#formSolucion{
+  margin: 1em 0 1em 0;
+}
+
+.celdaMarcada{
+  box-shadow: 0px 0px 0.5em #17a2b8 inset;
+  background: azure;
+}

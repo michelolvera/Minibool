@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shirink-to-fit=no">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <title>Inicio de sesión</title>
+</head>
+<body>
+    <header class="bg-info text-white cabecera">
+        <div class="container-fluid" >
+            <h1>B-Learning</h1>
+        </div>
+    </header>
+    <div class="container">
+        <form class="form-ajuste-medio">
+            <br>
+            <h2 id="text_olvidaste_contraseña" class="h2 font-weight-normal">¿Olvidaste tu contraseña?</h2>
+            <br>
+            <h4 id="text_ingresa_correo" class="lead">Ingresa tu dirección de correo en el siguiente cuadro para recibir tu contraseña:</h2>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label id="lb_correo" class="sr-only">Correo</label>
+                    <input type="email" class="form-control" id="in_correo" placeholder="Correo electronico" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <a href="../../" class="btn verde" id="btn_cancelar">Cancelar</a>
+                    <button class="btn verde" type="submit" id="btn_aceptar">Entrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+</body>
+</html>
