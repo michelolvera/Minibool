@@ -195,7 +195,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         }
         tablaContent += '</span>' +
             '</div>' +
-            '<div class="col-12 col-sm-6 col-md-11">' +
+            '<div class="col-10 col-sm-6 col-md-11">' +
             '  <div  class="table-responsive">' +
             '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
         if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
