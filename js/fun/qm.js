@@ -325,7 +325,6 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
         miniTerminos = OrdenarMiniTerminos(miniTerminos);//Ordenar mini terminos
         var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
         var EcuacionPetrick = ObtenerEcuacionPetrick(tablaImplicantes);
-
         //Aplicar metodo de Petrick
         var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
         //Limpiar resultados erroneos usando la tabla de implicantes primos
@@ -356,7 +355,7 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
             }
             solucionesFinales.push(solucion);
         }
-        return solucionesFinales;
+        return [solucionesFinales, terminosPetrick, implicantes];
     //}
 }
 

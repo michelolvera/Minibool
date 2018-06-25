@@ -1,7 +1,7 @@
-var phpPath = "../../php/Selector.php";
-var langPath = "../../json/string.json";
+var phpPath = "../php/Selector.php";
+var langPath = "../json/string.json";
 var grafica;
-var homePath = "../../";
+var homePath = "../";
 function CargarFunciones() {
     inicializacion();
 }

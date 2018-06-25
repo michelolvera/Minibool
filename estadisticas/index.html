@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shirink-to-fit=no">
-  <link rel="stylesheet" href="../../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../css/estilos.css">
-  <title>Administración</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+  <title>Estadísticas</title>
 </head>
 
 <body>
   <header class="cabecera">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a id="btnTitulo" class="navbar-brand btn" href="../../">MiniBool</a>
+      <a id="btnTitulo" class="navbar-brand btn" href="../">MiniBool</a>
       <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#barra_navegacion" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,21 +20,21 @@
       <div class="collapse navbar-collapse" id="barra_navegacion">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a id="btnEjercicios" role="button" class="nav-link button" href="../../principal/">Ejercicios</a>
+            <a id="btnEjercicios" role="button" class="nav-link button" href="../principal/">Ejercicios</a>
           </li>
           <li class="nav-item">
             <a id="btnRanking" role="button" class="nav-link" href="#vntn_notificaciones" data-toggle="modal" onclick="cargar_ranking()">Clasificación</a>
           </li>
           <li class="nav-item">
-            <a id="btn_adm_estadisticas" role="button" class="nav-link" href="../estadisticas/">Estadísticas</a>
+            <a id="btn_adm_estadisticas" role="button" class="nav-link active" href="#">Estadísticas</a>
           </li>
           <li class="nav-item dropdown">
-            <a id="btnAdmin" role="button" class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            <a id="btnAdmin" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
               href="#">Administracion</a>
             <div class="dropdown-menu" aria-labelledby="btnAdmin">
-              <a id="btn_adm_ponderacion" class="dropdown-item" href="../ponderacion/">Ponderación</a>
-              <a id="btn_adm_notificaciones" class="dropdown-item" href="../notificaciones/">Notificaciones</a>
-              <a id="btn_adm_usuarios" class="dropdown-item" href="../usuarios/">Usuarios</a>
+              <a id="btn_adm_ponderacion" class="dropdown-item" href="../admin/ponderacion/">Ponderación</a>
+              <a id="btn_adm_notificaciones" class="dropdown-item" href="../admin/notificaciones/">Notificaciones</a>
+              <a id="btn_adm_usuarios" class="dropdown-item" href="../admin/usuarios/">Usuarios</a>
             </div>
           </li>
         </ul>
@@ -63,11 +63,7 @@
       </div>
     </nav>
   </header>
-  <div class="container">
-    <br>
-    <h2 id="text_gestion_estadisticas" class="h2 mb-3 font-weight-normal">Estadísticas</h2>
-    <br>
-
+  <div class="container margen_despues_nav">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6">
@@ -426,11 +422,11 @@
       </div>
     </div>
   </div>
-  <script src="../../js/jquery.js"></script>
-  <script src="../../js/bootstrap.min.js"></script>
-  <script src="../../js/fun/adm_estadisticas.js"></script>
-  <script src="../../js/fun/fun.js"></script>
-  <script src="../../dist/Chart.bundle.min.js"></script>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/fun/adm_estadisticas.js"></script>
+  <script src="../js/fun/fun.js"></script>
+  <script src="../dist/Chart.bundle.min.js"></script>
 </body>
 
 </html>

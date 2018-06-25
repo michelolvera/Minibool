@@ -1,8 +1,8 @@
 var resultados = new Array();
 productosSumas = true; //true, se regresaran Sumas de Productos, si es falsa se retornan productos de sumas.
 
-var es_aleatorio=false;
-var numero_variable = 0; 
+var es_aleatorio = false;
+var numero_variable = 0;
 
 $(document).ready(function () {
 
@@ -108,15 +108,15 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     $("#tablaMapaKMini").hide();
     if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
         vueltas = 8;
-        numero_variable=3;
+        numero_variable = 3;
     }
     if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
         vueltas = 16;
-        numero_variable=4;
+        numero_variable = 4;
     }
     if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
         vueltas = 32;
-        numero_variable=5;
+        numero_variable = 5;
     }
     // Entrada de la funcion
     if ($('#botonporFuncion').hasClass('active')) {
@@ -247,18 +247,18 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     if (num == 2 || num == 6) {
                         aux = num + 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                     }
                     else if (num == 3 || num == 7) {
                         aux = num - 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                     }
                     else {
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                            '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
                             '</td>';
                     }
                 }
@@ -279,13 +279,13 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     if (num == 2 || num == 6 || num == 14 || num == 10) {
                         aux = num + 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                     }
                     else if (num == 3 || num == 7 || num == 15 || num == 11) {
                         aux = num - 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                         if (num == 7) {
                             num += 4;
@@ -300,7 +300,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     }
                     else {
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                            '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
                             '</td>';
                     }
                 }
@@ -337,36 +337,36 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     if (num == 2 || num == 10 || num == 18 || num == 26) {
                         aux = num + 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                     }
                     else if (num == 3 || num == 11 || num == 19 || num == 27) {
                         aux = num - 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                     }
                     else if (num == 4 || num == 12 || num == 20 || num == 28 || num == 5 || num == 13 || num == 21 || num == 29) {
                         aux = num + 2;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                     }
                     else if (num == 7 || num == 15 || num == 23 || num == 31) {
 
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                     }
                     else if (num == 6 || num == 14 || num == 22 || num == 30) {
                         aux = num - 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn verde" onClick="cambiarNum(' + aux + ')">0</button>' +
+                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
                             '</td>';
                     }
                     else {
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn verde" onClick="cambiarNum(' + num + ')">0</button>' +
+                            '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
                             '</td>';
                     }
                 }
@@ -383,14 +383,14 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     //aqui seccion de los valores
                     if (num == 2 || num == 6) {
                         aux = num + 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                     }
                     else if (num == 3 || num == 7) {
                         aux = num - 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                     }
                     else {
-                        tablaContent += '<td>' + resultados[num] + '</td>';;
+                        tablaContent += '<td id="celda' + num + '">' + resultados[num] + '</td>';;
                     }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
@@ -409,11 +409,11 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     //aqui seccion de los valores
                     if (num == 2 || num == 6 || num == 14 || num == 10) {
                         aux = num + 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                     }
                     else if (num == 3 || num == 7 || num == 15 || num == 11) {
                         aux = num - 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                         if (num == 7) {
                             num += 4;
                         }
@@ -426,7 +426,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                         }
                     }
                     else {
-                        tablaContent += '<td>' + resultados[num] + '</td>';
+                        tablaContent += '<td id="celda' + num + '">' + resultados[num] + '</td>';
                     }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
@@ -461,25 +461,25 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     }
                     if (num == 2 || num == 10 || num == 18 || num == 26) {
                         aux = num + 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                     }
                     else if (num == 3 || num == 11 || num == 19 || num == 27) {
                         aux = num - 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                     }
                     else if (num == 4 || num == 12 || num == 20 || num == 28 || num == 5 || num == 13 || num == 21 || num == 29) {
                         aux = num + 2;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                     }
                     else if (num == 7 || num == 15 || num == 23 || num == 31) {
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                     }
                     else if (num == 6 || num == 14 || num == 22 || num == 30) {
                         aux = num - 1;
-                        tablaContent += '<td>' + resultados[aux] + '</td>';
+                        tablaContent += '<td id="celda' + aux + '">' + resultados[aux] + '</td>';
                     }
                     else {
-                        tablaContent += '<td>' + resultados[num] + '</td>';
+                        tablaContent += '<td id="celda' + num + '">' + resultados[num] + '</td>';
                     }
                 }
 
@@ -619,7 +619,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             }
             // Tabla de verdad mini dentro de las dos tablas
             if (tabla == "#tablaVerdadMini") {
-                tablaContent += '<td class="no-border"><button id="btnTabla' + num + '" class="btn verde"  onClick="cambiarNum(' + num + ')">0</button></td>';
+                tablaContent += '<td class="no-border"><button id="btnTabla' + num + '" class="btn btn-primary"  onClick="cambiarNum(' + num + ')">0</button></td>';
             }
             tablaContent += '</tr>';
         }
@@ -681,7 +681,8 @@ function validarRes() {
             resultados[i] = resultados[i] == 1 ? 0 : 1;
         }
     }
-    var resultadosOptimos = IniciarReduccion(resultados, productosSumas);
+    var resultadosConCombinacion = IniciarReduccion(resultados, productosSumas);
+    var resultadosOptimos = resultadosConCombinacion[0];
     //Limpiar los resultados redundantes o mas largos que el mas optimo
     let optimoLargo = 0;
     for (let i = 0; i < resultadosOptimos.length; i++) {
@@ -690,12 +691,16 @@ function validarRes() {
         if (resultadosOptimos[i].size < optimoLargo)
             optimoLargo = resultadosOptimos[i].size;
     }
-    let aux = Array();
+    let auxResultado = Array();
+    let auxImplicante = Array();
     for (let i = 0; i < resultadosOptimos.length; i++) {
-        if (!(resultadosOptimos[i].size > optimoLargo))
-            aux.push(resultadosOptimos[i]);
+        if (!(resultadosOptimos[i].size > optimoLargo)) {
+            auxResultado.push(resultadosOptimos[i]);
+            auxImplicante.push(resultadosConCombinacion[1][i]);
+        }
     }
-    resultadosOptimos = aux;
+    resultadosOptimos = auxResultado;
+    resultadosConCombinacion[1] = auxImplicante;
 
     var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos, productosSumas);
     let correcto = false;
@@ -704,8 +709,10 @@ function validarRes() {
     $("#contenedorBoton").empty();
     for (let i = 0; i < resultadosOptimos.length; i++) {
         let cadenaResultado = "";
+        let aux = 0;
         for (let multi of resultadosOptimos[i]) {
-            cadenaResultado += multi + (productosSumas ? "+" : '');
+            cadenaResultado += "<a href='#' onmouseover='resaltarResultados([" + resultadosConCombinacion[2][[...resultadosConCombinacion[1][i]][aux].charCodeAt(0) - 65]["minterms"] + "])'>" + multi + (productosSumas ? "</a>+" : '</a>');
+            aux++;
         }
         cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 1) : cadenaResultado;
         if (repuestaCorrecta == i) {
@@ -715,99 +722,108 @@ function validarRes() {
             $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
 
     }
+
     //La variable correcto indica si el ejercicio es correcto o no.
-    
-    if(obtener_id_ejercicio()!=0){
-        if(correcto){
+
+    if (obtener_id_ejercicio() != 0) {
+        if (correcto) {
             $.ajax({
                 method: "post",
                 url: phpPath,
                 data: {
-                  funcion: "registroEjercicio",
-                  userName: getCookie("user"),
-                  userPass: getCookie("pass"),
-                  ej_correcto:1,
-                  nu_variable:obtener_id_ejercicio()
+                    funcion: "registroEjercicio",
+                    userName: getCookie("user"),
+                    userPass: getCookie("pass"),
+                    ej_correcto: 1,
+                    nu_variable: obtener_id_ejercicio()
                 },
                 dataType: "json"
-              })
+            })
                 .done(function (respuesta) {
-                  console.log(respuesta);
+
                 })
                 .fail(function () {
-                  alert("Error");
+                    alert("Error");
                 });
-        }else{
+        } else {
             $.ajax({
                 method: "post",
                 url: phpPath,
                 data: {
-                  funcion: "registroEjercicio",
-                  userName: getCookie("user"),
-                  userPass: getCookie("pass"),
-                  ej_correcto:0,
-                  nu_variable:obtener_id_ejercicio()
+                    funcion: "registroEjercicio",
+                    userName: getCookie("user"),
+                    userPass: getCookie("pass"),
+                    ej_correcto: 0,
+                    nu_variable: obtener_id_ejercicio()
                 },
                 dataType: "json"
-              })
+            })
                 .done(function (respuesta) {
-                    console.log(respuesta);
+
                 })
                 .fail(function () {
-                  alert("Error");
+                    alert("Error");
                 });
         }
     }
-    
+
     $("#inputResp").removeClass("ejercicioCorrecto");
     $("#inputResp").removeClass("ejercicioIncorrecto");
     $("#inputResp").addClass(correcto ? "ejercicioCorrecto" : "ejercicioIncorrecto");
 }
 
-function tipo_ejercicio(valor_tipo){
-    switch(valor_tipo){
+function tipo_ejercicio(valor_tipo) {
+    switch (valor_tipo) {
         case 'aleatorio':
-        es_aleatorio=true
-        break;
+            es_aleatorio = true
+            break;
         case 'deterministico':
-        es_aleatorio=false;
-        break;
+            es_aleatorio = false;
+            break;
     }
 }
 
-function obtener_id_ejercicio(){
-    
-    if(es_aleatorio){
-        switch(numero_variable){
+function obtener_id_ejercicio() {
+
+    if (es_aleatorio) {
+        switch (numero_variable) {
             case 0:
-            return 0;
-            break;
+                return 0;
+                break;
             case 3:
-            return 1;
-            break;
+                return 1;
+                break;
             case 4:
-            return 2;
-            break;
+                return 2;
+                break;
             case 5:
-            return 3;
-            break;
+                return 3;
+                break;
         }
     }
-    else
-    {
-        switch(numero_variable){
+    else {
+        switch (numero_variable) {
             case 0:
-            return 0;
-            break;
+                return 0;
+                break;
             case 3:
-            return 4;
-            break;
+                return 4;
+                break;
             case 4:
-            return 5;
-            break;
+                return 5;
+                break;
             case 5:
-            return 6;
-            break;
+                return 6;
+                break;
         }
+    }
+}
+
+function resaltarResultados(arrayResaltar) {
+    for (let i = 0; i < Math.pow(2,cantidadVariables); i++) {
+        $("#celda" + i).removeClass("celdaMarcada");
+    }
+    for (let i = 0; i < arrayResaltar.length; i++) {
+        $("#celda" + arrayResaltar[i]).addClass("celdaMarcada");
     }
 }
