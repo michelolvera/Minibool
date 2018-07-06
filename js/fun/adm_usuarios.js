@@ -403,7 +403,6 @@ function cargar_detalles() {
 
 }
 
-
 function respaldarCSV() {
   $.ajax({
     method: "post",
@@ -415,6 +414,9 @@ function respaldarCSV() {
   })
     .done(function (jsonObject) {
       console.log(jsonObject);
+      let stringCSV = "";
+      document.getElementById("descargarRespaldoBtn").download = "archivo.txt";
+      document.getElementById("descargarRespaldoBtn").href = "data:text/plain;charset=UTF-8;"+stringCSV;
     })
     .fail(function () {
       alert("Error");
