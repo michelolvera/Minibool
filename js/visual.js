@@ -717,9 +717,17 @@ function validarRes() {
         cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 1) : cadenaResultado;
         if (repuestaCorrecta == i) {
             correcto = true;
+            //Reproducir sonido correcto
             $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>Tu solucion.</p></div>");
-        } else
+        } else{
+            //Reproducir sonido incorrecto
             $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
+        }
+
+        if(correcto)
+            document.getElementById('sonidoCorrecto').play();
+        else
+            document.getElementById('sonidoIncorrecto').play();
 
     }
 
