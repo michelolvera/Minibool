@@ -1,6 +1,5 @@
 <?php
 include 'ManejoSQL.php';
-include 'Usuario.php';
 
 $funcion = $_REQUEST["funcion"];
 
