@@ -835,3 +835,51 @@ function resaltarResultados(arrayResaltar) {
         $("#celda" + arrayResaltar[i]).addClass("celdaMarcada");
     }
 }
+
+function activarNVariablesAleatorio(){
+    if ($('#var3').is(':checked')) {
+        document.getElementById("cancelarNVariables").value = 3;
+    }
+    if ($('#var4').is(':checked')) {
+        document.getElementById("cancelarNVariables").value = 4;
+    }
+    if ($('#var5').is(':checked')) {
+        document.getElementById("cancelarNVariables").value = 5;
+    }
+
+    $("#inputNVariables").css('display', 'flex');
+    $("#var3").prop('disabled', true);
+    $("#labelVar3").addClass('disabled');
+    $("#var4").prop('disabled', true);
+    $("#labelVar4").addClass('disabled');
+    $("#var5").prop('disabled', true);
+    $("#labelVar5").addClass('disabled');
+
+    $("#cancelarNVariables").click(function (event){
+        $("#labelVarN").removeClass('active');
+        $("#inputNVariables").css('display', 'none');
+        $("#var3").prop('disabled', false);
+        $("#labelVar3").removeClass('disabled');
+        $("#var4").prop('disabled', false);
+        $("#labelVar4").removeClass('disabled');
+        $("#var5").prop('disabled', false);
+        $("#labelVar5").removeClass('disabled');
+        //ActivarUltimoControl
+        $("#var"+document.getElementById("cancelarNVariables").value).prop('checked', true);
+        $("#labelVar"+document.getElementById("cancelarNVariables").value).addClass('active');
+    });
+}
+
+function desactivarNVariables(ultimo){
+    $("#labelVarN").removeClass('active');
+    $("#inputNVariables").css('display', 'none');
+    $("#var3").prop('disabled', false);
+    $("#labelVar3").removeClass('disabled');
+    $("#var4").prop('disabled', false);
+    $("#labelVar4").removeClass('disabled');
+    $("#var5").prop('disabled', false);
+    $("#labelVar5").removeClass('disabled');
+    //ActivarUltimoControl
+    $("#var"+ultimo).prop('checked', true);
+    $("#labelVar3"+ultimo).addClass('active');
+}

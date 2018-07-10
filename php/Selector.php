@@ -217,7 +217,9 @@ switch ($funcion){
   break;
 
   case 'consultaCSV':
-    $respuesta = consultaSQL("SELECT usuario FROM usuarios;");
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $respuesta = consultaSQL("CALL sp_respaldo('".$userName."','".$userPass."');");
     echo json_encode($respuesta);
   break;
 }
