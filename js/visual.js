@@ -174,28 +174,10 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     //Caso los dos mapas de Karnaugh
     if (tabla == "#tablaMapaK" || tabla == "#tablaMapaKMini") {
         $("#tablaMapaKMini").show();
-        tablaContent = '  <div class="row no-gutters">' +
-            '<div class="col-2 col-md-1">' +
-            '<span id="varsIzq" class="align-middle">' +
-            '<br/>' +
-            '<br/>' +
-            '<br/>' +
-            '<br/>';
-        if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
-            tablaContent += '<b>A</b>';
-        }
-        else {
-            tablaContent += '<br/>' +
-                '<br/>' +
-                '<b>A</b>' +
-                '<br/>' +
-                '<br/>' +
-                '<br/>' +
-                '<b>B</b>';
-        }
+        tablaContent = '  <div class="row no-gutters">';
         tablaContent += '</span>' +
             '</div>' +
-            '<div class="col-10 col-sm-6 col-md-11">' +
+            '<div class="col-12">' +
             '  <div  class="table-responsive">' +
             '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
         if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
@@ -211,7 +193,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             '<table  class="table table-striped table-bordered table-hover">' +
             '<thead>' +
             '<tr>' +
-            '<th scope="col"></th>';
+            '<th scope="col">'+(($('#var3').is(':checked') || $('#Cvar3').is(':checked')) ? "A" : "AB")+'</th>';
         if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
             tablaContent += '<th scope="col">000</th>' +
                 '<th scope="col">001</th>' +
