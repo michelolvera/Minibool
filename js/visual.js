@@ -134,10 +134,10 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         $('#tabCircuito').removeClass('disabled');
         $('#resulados').empty();
         tablaContent = '<thead>' +
-            '<tr>' +
-            '<th scope="col">A</th>' +
-            '<th scope="col">B</th>' +
-            '<th scope="col">C</th>';
+        '<tr>' +
+        '<th scope="col">A</th>' +
+        '<th scope="col">B</th>' +
+        '<th scope="col">C</th>';
         if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
             tablaContent += '<th scope="col">D</th>';
         }
@@ -148,16 +148,16 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         }
         tablaContent += '<th scope="col">F</th>';
         tablaContent += '</tr>' +
-            '</thead>' +
-            '<tbody>';
+        '</thead>' +
+        '<tbody>';
     }
     // CASO TABLA DE VERDAD MINI
     if (tabla == "#tablaVerdadMini") {
         tablaContent = '<thead>' +
-            '<tr>' +
-            '<th scope="col">A</th>' +
-            '<th scope="col">B</th>' +
-            '<th scope="col">C</th>';
+        '<tr>' +
+        '<th scope="col">A</th>' +
+        '<th scope="col">B</th>' +
+        '<th scope="col">C</th>';
         if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
             tablaContent += '<th scope="col">D</th>';
         }
@@ -168,18 +168,18 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         }
         tablaContent += '<th scope="col">F</th>';
         tablaContent += '</tr>' +
-            '</thead>' +
-            '<tbody>';
+        '</thead>' +
+        '<tbody>';
     }
     //Caso los dos mapas de Karnaugh
     if (tabla == "#tablaMapaK" || tabla == "#tablaMapaKMini") {
         $("#tablaMapaKMini").show();
         tablaContent = '  <div class="row no-gutters">';
         tablaContent += '</span>' +
-            '</div>' +
-            '<div class="col-12">' +
-            '  <div  class="table-responsive">' +
-            '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
+        '</div>' +
+        '<div class="col-12">' +
+        '  <div  class="table-responsive">' +
+        '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
         if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
             tablaContent += '<b>BC</b>';
         }
@@ -190,30 +190,30 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             tablaContent += '<b>CDE</b>';
         }
         tablaContent += '</div>' +
-            '<table  class="table table-striped table-bordered table-hover">' +
-            '<thead>' +
-            '<tr>' +
-            '<th scope="col">'+(($('#var3').is(':checked') || $('#Cvar3').is(':checked')) ? "A" : "AB")+'</th>';
+        '<table  class="table table-striped table-bordered table-hover">' +
+        '<thead>' +
+        '<tr>' +
+        '<th scope="col">'+(($('#var3').is(':checked') || $('#Cvar3').is(':checked')) ? "A" : "AB")+'</th>';
         if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
             tablaContent += '<th scope="col">000</th>' +
-                '<th scope="col">001</th>' +
-                '<th scope="col">011</th>' +
-                '<th scope="col">010</th>' +
-                '<th scope="col">110</th>' +
-                '<th scope="col">111</th>' +
-                '<th scope="col">101</th>' +
-                '<th scope="col">100</th>';
+            '<th scope="col">001</th>' +
+            '<th scope="col">011</th>' +
+            '<th scope="col">010</th>' +
+            '<th scope="col">110</th>' +
+            '<th scope="col">111</th>' +
+            '<th scope="col">101</th>' +
+            '<th scope="col">100</th>';
         }
         else {
             tablaContent += '<th scope="col">00</th>' +
-                '<th scope="col">01</th>' +
-                '<th scope="col">11</th>' +
-                '<th scope="col">10</th>';
+            '<th scope="col">01</th>' +
+            '<th scope="col">11</th>' +
+            '<th scope="col">10</th>';
         }
         tablaContent += '</tr>' +
-            '</thead>' +
-            '<tbody>' +
-            '<tr>';
+        '</thead>' +
+        '<tbody>' +
+        '<tr>';
         for (var num = 0; num < vueltas; num++) {
             var aux = 0;
             // CASO MAPA DE KARNAUGH MINI DENTRO DE LOS DOS KARNAUGH
@@ -229,19 +229,19 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     if (num == 2 || num == 6) {
                         aux = num + 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                     }
                     else if (num == 3 || num == 7) {
                         aux = num - 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                     }
                     else {
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
+                        '</td>';
                     }
                 }
                 if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
@@ -261,14 +261,14 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     if (num == 2 || num == 6 || num == 14 || num == 10) {
                         aux = num + 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                     }
                     else if (num == 3 || num == 7 || num == 15 || num == 11) {
                         aux = num - 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                         if (num == 7) {
                             num += 4;
                         }
@@ -282,8 +282,8 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     }
                     else {
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
+                        '</td>';
                     }
                 }
                 if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
@@ -319,37 +319,37 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     if (num == 2 || num == 10 || num == 18 || num == 26) {
                         aux = num + 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                     }
                     else if (num == 3 || num == 11 || num == 19 || num == 27) {
                         aux = num - 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                     }
                     else if (num == 4 || num == 12 || num == 20 || num == 28 || num == 5 || num == 13 || num == 21 || num == 29) {
                         aux = num + 2;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                     }
                     else if (num == 7 || num == 15 || num == 23 || num == 31) {
 
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                     }
                     else if (num == 6 || num == 14 || num == 22 || num == 30) {
                         aux = num - 1;
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + aux + '" class="btn btn-primary" onClick="cambiarNum(' + aux + ')">0</button>' +
+                        '</td>';
                     }
                     else {
                         tablaContent += '<td>' +
-                            '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
-                            '</td>';
+                        '<button id="btnMapak' + num + '" class="btn btn-primary" onClick="cambiarNum(' + num + ')">0</button>' +
+                        '</td>';
                     }
                 }
             }
@@ -468,13 +468,23 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             }
         }
         tablaContent += '</tr>' +
-            '</tbody>' +
-            '</table>' +
-            '</div></div></div>';
+        '</tbody>' +
+        '</table>' +
+        '</div></div></div>';
 
     }
     //caso tablas de verdad
     if (tabla == "#tablaVerdadMini" || tabla == "#tablaVerdad") {
+        //Generar los resultados aleatorios
+        let cerosunos = true;
+        while(cerosunos){
+            for (var num = 0; num < vueltas; num++){
+                resultados[num] = getRandom();
+                if (resultados[num-1]!=resultados[num])
+                    cerosunos = false;
+            }
+        }
+
         for (var num = 0; num < vueltas; num++) {
             tablaContent += '<tr>';
             if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
@@ -482,8 +492,8 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                 valB = dec2bin(num, 3).charAt(1);
                 valC = dec2bin(num, 3).charAt(2);
                 tablaContent += '<td scope="row">' + dec2bin(num, 3).charAt(0) + '</th>' +
-                    '<td>' + dec2bin(num, 3).charAt(1) + '</td>' +
-                    '<td>' + dec2bin(num, 3).charAt(2) + '</td>';
+                '<td>' + dec2bin(num, 3).charAt(1) + '</td>' +
+                '<td>' + dec2bin(num, 3).charAt(2) + '</td>';
             }
             if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
                 valA = dec2bin(num, 4).charAt(0);
@@ -491,9 +501,9 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                 valC = dec2bin(num, 4).charAt(2);
                 valD = dec2bin(num, 4).charAt(3);
                 tablaContent += '<td scope="row">' + dec2bin(num, 4).charAt(0) + '</th>' +
-                    '<td>' + dec2bin(num, 4).charAt(1) + '</td>' +
-                    '<td>' + dec2bin(num, 4).charAt(2) + '</td>' +
-                    '<td>' + dec2bin(num, 4).charAt(3) + '</td>';
+                '<td>' + dec2bin(num, 4).charAt(1) + '</td>' +
+                '<td>' + dec2bin(num, 4).charAt(2) + '</td>' +
+                '<td>' + dec2bin(num, 4).charAt(3) + '</td>';
             }
 
             if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
@@ -503,15 +513,14 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                 valD = dec2bin(num, 5).charAt(3);
                 valE = dec2bin(num, 5).charAt(4);
                 tablaContent += '<td scope="row">' + dec2bin(num, 5).charAt(0) + '</th>' +
-                    '<td>' + dec2bin(num, 5).charAt(1) + '</td>' +
-                    '<td>' + dec2bin(num, 5).charAt(2) + '</td>' +
-                    '<td>' + dec2bin(num, 5).charAt(3) + '</td>' +
-                    '<td>' + dec2bin(num, 5).charAt(4) + '</td>';
+                '<td>' + dec2bin(num, 5).charAt(1) + '</td>' +
+                '<td>' + dec2bin(num, 5).charAt(2) + '</td>' +
+                '<td>' + dec2bin(num, 5).charAt(3) + '</td>' +
+                '<td>' + dec2bin(num, 5).charAt(4) + '</td>';
             }
             // Tabla de verdad dentro de las dos tablas
             if (tabla == "#tablaVerdad") {
                 if (isAl) {
-                    resultados[num] = getRandom();
                     tablaContent += '<td class="table-success">' + resultados[num] + '</td>';
                 }
                 else {
@@ -608,13 +617,13 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         tablaContent += '</tbody>';
         if (tabla == "#tablaVerdad") { $('#cardFuncion').html('F=' + mainFuncion) }
     }
-    $(tabla).append(tablaContent);
-    if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
-        if (isAl) {
-            crear('#tablaMapaK', true);
-        } else {
-            crear('#tablaMapaK', false);
-        }
+$(tabla).append(tablaContent);
+if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
+    if (isAl) {
+        crear('#tablaMapaK', true);
+    } else {
+        crear('#tablaMapaK', false);
+    }
         ////////////////////////////////// HAGO CONSTAR QUE ESTO NO ME GUSTA ATT. Michel  ////////////////////////////////
         if (tabla == "#tablaVerdad") {
             $("#contenedorBoton").empty();
@@ -729,12 +738,12 @@ function validarRes() {
                 },
                 dataType: "json"
             })
-                .done(function (respuesta) {
+            .done(function (respuesta) {
 
-                })
-                .fail(function () {
-                    alert("Error");
-                });
+            })
+            .fail(function () {
+                alert("Error");
+            });
         } else {
             $.ajax({
                 method: "post",
@@ -748,12 +757,12 @@ function validarRes() {
                 },
                 dataType: "json"
             })
-                .done(function (respuesta) {
+            .done(function (respuesta) {
 
-                })
-                .fail(function () {
-                    alert("Error");
-                });
+            })
+            .fail(function () {
+                alert("Error");
+            });
         }
     }
 
@@ -765,11 +774,11 @@ function validarRes() {
 function tipo_ejercicio(valor_tipo) {
     switch (valor_tipo) {
         case 'aleatorio':
-            es_aleatorio = true
-            break;
+        es_aleatorio = true
+        break;
         case 'deterministico':
-            es_aleatorio = false;
-            break;
+        es_aleatorio = false;
+        break;
     }
 }
 
@@ -778,33 +787,33 @@ function obtener_id_ejercicio() {
     if (es_aleatorio) {
         switch (numero_variable) {
             case 0:
-                return 0;
-                break;
+            return 0;
+            break;
             case 3:
-                return 1;
-                break;
+            return 1;
+            break;
             case 4:
-                return 2;
-                break;
+            return 2;
+            break;
             case 5:
-                return 3;
-                break;
+            return 3;
+            break;
         }
     }
     else {
         switch (numero_variable) {
             case 0:
-                return 0;
-                break;
+            return 0;
+            break;
             case 3:
-                return 4;
-                break;
+            return 4;
+            break;
             case 4:
-                return 5;
-                break;
+            return 5;
+            break;
             case 5:
-                return 6;
-                break;
+            return 6;
+            break;
         }
     }
 }

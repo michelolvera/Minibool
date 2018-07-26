@@ -45,6 +45,9 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="nav-item">
+					<a role="button" class="nav-link" href="#vntn_acercade" data-toggle="modal">Acerca de</a>
+				</li>
+				<li class="nav-item">
 					<a id="btn_mostrar_notificaciones" role="button" class="nav-link" href="#vntn_notificaciones" data-toggle="modal" onclick="cargar_notificaciones();">
 						Notificaciones
 						<span class="badge badge-light">0</span>
@@ -303,7 +306,6 @@
 </div>
 
 <!-- Modal para que el usuario gestione sus propios datos -->
-
 <div class="modal fade" id="usuario_gestion">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -623,5 +625,35 @@
 		</div>
 	</div>
 </div>
-
+<!-- Modal acerca de-->
+<div class="modal fade" id="vntn_acercade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 id="text_titulo_acercade_principal" class="modal-title">Acerca de:</h3>
+				<button id="btn_cerrar_acercade_principal" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body" style="text-align: center;">
+				<p><h2>MiniBool</h2></p>
+				<p>Este proyecto es un software didáctico que permite leer expresiones booleanas diferentes formatos (Tablas de verdad, Mapas de Karnaugh, Funciones booleanas expresadas en mini-término o maxi-términos, expresiones booleana no estandarizadas), simplifica dichas expresiones, contribuyendo a mejorar el desempeño de los estudiantes que cursan carreras del área de la computación en diversas instituciones.</p>
+				<p><strong>Profesores colaboradores del proyecto:</strong><br>
+					<a href="mailto:ppalf@yahoo.com">M.C. JOSE ALFREDO JIMÉNEZ MURILLO</a><br>
+					<a href="mailto:octavio1872@hotmail.com">DR. OCTAVIO SALUD ORTIZ ORTIZ</a><br>
+					<a href="mailto:itmnelly@gmail.com">M.A. LAURA NELLY ALVARADO ZAMORA</a>
+				</p>
+				<p><strong>Desarrolladores:</strong><br>
+					<a href="mailto:coke_1224@hotmail.com">JORGE LUIS ARREYGUE ÁVILA</a> (UI, Parser)<br>
+					<a href="mailto:michelolvera@icloud.com">MICHEL ENRIQUE OLVERA PEREZ</a> (UI, Quine–McCluskey, Metodo de Petrick)<br>
+					<a href="mailto:itmnelly@gmail.com">ALAN CRUZ ROBLES VAZQUEZ =</a> (UI, DB)
+				</p>
+				<p><strong>Agradecimientos especiales:</strong><br>
+					<strong>Tecnológico Nacional de México</strong><br>
+					<a href="http://tecnm.mx/"><img src="../imagenes/Logo-TecNM.png"></a><br>
+					<strong>Instituto Tecnológico de Morelia</strong><br>
+					<a href="http://www.itmorelia.edu.mx/"><img src="../imagenes/Itmorelia.png"></a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
 </html>
