@@ -1,13 +1,12 @@
-var phpPath = "../../php/Selector.php";
-var langPath = "../../json/string.json";
+var phpPath = "../php/Selector.php";
+var langPath = "../json/string.json";
 var grafica;
-var homePath = "../../";
+var homePath = "../";
 function CargarFunciones() {
     inicializacion();
 }
 
 function ValidarCookie() {
-    comprobarAdminPagina();
 }
 
 function CargarTextosPagina() {
@@ -15,9 +14,9 @@ function CargarTextosPagina() {
 }
 
 function inicializacion() {
-    grafica_paises();
     grafica_ejercicios_det();
     grafica_ejercicios_alea();
+    grafica_paises();
 }
 
 function grafica_ejercicios_det() {

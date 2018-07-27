@@ -1,6 +1,5 @@
 <?php
 include 'ManejoSQL.php';
-include 'Usuario.php';
 
 $funcion = $_REQUEST["funcion"];
 
@@ -49,6 +48,13 @@ switch ($funcion){
     $userName = $_REQUEST["userName"];
     $userPass = $_REQUEST["userPass"];
     $respuesta = consultaSQL("CALL sp_eliminar_usuario('".$userName."','".$userPass."','".$idUsuario."');");
+    echo $respuesta[0]['Eliminado'];
+  break;
+
+  case 'eliminarTodo':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $respuesta = consultaSQL("CALL sp_eliminar_todo('".$userName."','".$userPass."');");
     echo $respuesta[0]['Eliminado'];
   break;
 
@@ -182,6 +188,39 @@ switch ($funcion){
   $numSemestre = $_REQUEST["numSemestre"];
   $respuesta = consultaSQL("CALL sp_guardar_usuario('".$userName."','".$userPass."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$codigoPais."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."');");
   echo $respuesta[0]['Actualizado'];
+  break;
+
+  case 'detallesUsuarioAmd':
+    $idUsuario = $_REQUEST["idUsuario"];
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $indice = $_REQUEST["indice"];
+    $respuesta = consultaSQL("CALL sp_detalles_usuario_adm('".$userName."','".$userPass."','".$idUsuario."','".$indice."');");
+    echo json_encode($respuesta);
+  break;
+
+  case 'detallesUsuario':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $indice = $_REQUEST["indice"];
+    $respuesta = consultaSQL("CALL sp_detalles_usuario('".$userName."','".$userPass."','".$indice."');");
+    echo json_encode($respuesta);
+  break;
+
+  case 'registroEjercicio':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $ej_correcto = $_REQUEST["ej_correcto"];
+    $nu_variable = $_REQUEST["nu_variable"];
+    $respuesta = consultaSQL("CALL sp_registrar_ejercicio('".$userName."','".$userPass."','".$ej_correcto."','".$nu_variable."');");
+    echo $respuesta[0]["Registro"];
+  break;
+
+  case 'consultaCSV':
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $respuesta = consultaSQL("CALL sp_respaldo('".$userName."','".$userPass."');");
+    echo json_encode($respuesta);
   break;
 }
 ?>
