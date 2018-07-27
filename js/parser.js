@@ -17,7 +17,7 @@ booleanFun = /*
     this.expected = expected;
     this.found    = found;
     this.location = location;
-    this.name     = "Error de sintaxis";
+    this.name     = "SyntaxError";
 
     if (typeof Error.captureStackTrace === "function") {
       Error.captureStackTrace(this, peg$SyntaxError);
@@ -46,11 +46,11 @@ booleanFun = /*
           },
 
           any: function(expectation) {
-            return "cualquier caracter";
+            return "any character";
           },
 
           end: function(expectation) {
-            return "final de la linea";
+            return "end of input";
           },
 
           other: function(expectation) {
@@ -117,20 +117,20 @@ booleanFun = /*
           return descriptions[0];
 
         case 2:
-          return descriptions[0] + " o " + descriptions[1];
+          return descriptions[0] + " or " + descriptions[1];
 
         default:
           return descriptions.slice(0, -1).join(", ")
-            + ", o "
+            + ", or "
             + descriptions[descriptions.length - 1];
       }
     }
 
     function describeFound(found) {
-      return found ? "\"" + literalEscape(found) + "\"" : "fin de la linea";
+      return found ? "\"" + literalEscape(found) + "\"" : "end of input";
     }
 
-    return "Se esperaba " + describeExpected(expected) + " pero " + describeFound(found) + " encontrado.";
+    return "Expected " + describeExpected(expected) + " but " + describeFound(found) + " found.";
   };
 
   function peg$parse(input, options) {
@@ -163,7 +163,7 @@ booleanFun = /*
         peg$c10 = function(expr) { return "("+expr+")"; },
         peg$c11 = peg$otherExpectation("var"),
         peg$c12 = /^[A-Za-z]/,
-        peg$c13 = peg$classExpectation([["A", "Z"], ["a", "Z"]], false, false),
+        peg$c13 = peg$classExpectation([["A", "Z"], ["a", "z"]], false, false),
         peg$c14 = function() { return text().toUpperCase(); },
         peg$c15 = peg$otherExpectation("whitespace"),
         peg$c16 = /^[ \t\n\r]/,
