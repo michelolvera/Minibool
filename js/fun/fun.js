@@ -67,6 +67,8 @@ function getCookie(cname) {
 }
 
 function cargar_notificaciones() {
+  $("#text_titulo_notificaciones_principal").empty();
+  $("#text_titulo_notificaciones_principal").append("Notificaciones");
   $.ajax({
     method: "post",
     url: phpPath,
@@ -104,6 +106,8 @@ function consulta_numero_notificaciones() {
 }
 
 function cargar_ranking() {
+  $("#text_titulo_notificaciones_principal").empty();
+  $("#text_titulo_notificaciones_principal").append("Clasificación");
   $.ajax({
     method: "post",
     url: phpPath,
@@ -205,4 +209,181 @@ function guardar_datos_usuario(){
         .fail(function () {
           alert("Error");
         });
+}
+
+function detalles_usuario(){
+  var deterministico = { tres: { puntos: "0", correctos: "0", incorrectos: "0" }, cuatro: { puntos: "0", correctos: "0", incorrectos: "0" }, cinco: { puntos: "0", correctos: "0", incorrectos: "0" } };
+  var aleatorio = { tres: { puntos: "0", correctos: "0", incorrectos: "0" }, cuatro: { puntos: "0", correctos: "0", incorrectos: "0" }, cinco: { puntos: "0", correctos: "0", incorrectos: "0" } };
+  $("#body_modal_detalles").empty();
+  $.ajax({
+    method: "post",
+    url: phpPath,
+    data: {
+      funcion: "detallesUsuario",
+      userName: getCookie("user"),
+      userPass: getCookie("pass"),
+      indice: 1
+    },
+    dataType: "json"
+  })
+    .done(function (jsonObject) {
+      $("#body_modal_detalles").append("<p>Ultimo ingreso: " + jsonObject[0].ultimo_ingreso + "</p>");
+
+      $.ajax({
+        method: "post",
+        url: phpPath,
+        data: {
+          funcion: "detallesUsuario",
+          userName: getCookie("user"),
+          userPass: getCookie("pass"),
+          indice: 2
+        },
+        dataType: "json"
+      })
+        .done(function (jsonObject) {
+          if (jsonObject != 0) {
+            jsonObject.forEach(element => {
+              switch (element["variables"]) {
+                case "Tres":
+                  deterministico.tres.puntos = element["total"];
+                  deterministico.tres.correctos = element["numero"];
+                  break;
+                case "Cuatro":
+                  deterministico.cuatro.puntos = element["total"];
+                  deterministico.cuatro.correctos = element["numero"];
+                  break;
+                case "Cinco":
+                  deterministico.cinco.puntos = element["total"];
+                  deterministico.cinco.correctos = element["numero"];
+                  break;
+              }
+            });
+          }
+          $.ajax({
+            method: "post",
+            url: phpPath,
+            data: {
+              funcion: "detallesUsuario",
+              userName: getCookie("user"),
+              userPass: getCookie("pass"),
+              indice: 3
+            },
+            dataType: "json"
+          })
+            .done(function (jsonObject) {
+              if (jsonObject != 0) {
+                jsonObject.forEach(element => {
+                  switch (element["variables"]) {
+                    case "Tres":
+                      deterministico.tres.incorrectos = element["numero"];
+                      break;
+                    case "Cuatro":
+                      deterministico.cuatro.incorrectos = element["numero"];
+                      break;
+                    case "Cinco":
+                      deterministico.cinco.incorrectos = element["numero"];
+                      break;
+                  }
+                });
+              }
+              $.ajax({
+                method: "post",
+                url: phpPath,
+                data: {
+                  funcion: "detallesUsuario",
+                  userName: getCookie("user"),
+                  userPass: getCookie("pass"),
+                  indice: 4
+                },
+                dataType: "json"
+              })
+                .done(function (jsonObject) {
+                  if (jsonObject != 0) {
+                    jsonObject.forEach(element => {
+                      switch (element["variables"]) {
+                        case "Tres":
+                          aleatorio.tres.puntos = element["total"];
+                          aleatorio.tres.correctos = element["numero"];
+                          break;
+                        case "Cuatro":
+                          aleatorio.cuatro.puntos = element["total"];
+                          aleatorio.cuatro.correctos = element["numero"];
+                          break;
+                        case "Cinco":
+                          aleatorio.cinco.puntos = element["total"];
+                          aleatorio.cinco.correctos = element["numero"];
+                          break;
+                      }
+                    });
+                  }
+                  $.ajax({
+                    method: "post",
+                    url: phpPath,
+                    data: {
+                      funcion: "detallesUsuario",
+                      userName: getCookie("user"),
+                      userPass: getCookie("pass"),
+                      indice: 5
+                    },
+                    dataType: "json"
+                  })
+                    .done(function (jsonObject) {
+                      if (jsonObject != 0) {
+                        jsonObject.forEach(element => {
+                          switch (element["variables"]) {
+                            case "Tres":
+                              aleatorio.tres.incorrectos = element["numero"];
+                              break;
+                            case "Cuatro":
+                              aleatorio.cuatro.incorrectos = element["numero"];
+                              break;
+                            case "Cinco":
+                              aleatorio.cinco.incorrectos = element["numero"];
+                              break;
+                          }
+                        });
+                      }
+                      $("#body_modal_detalles").append("<p> Puntos total = " + (parseInt(aleatorio.tres.puntos) + parseInt(aleatorio.cuatro.puntos) + parseInt(aleatorio.cinco.puntos) + parseInt(deterministico.tres.puntos) + parseInt(deterministico.cuatro.puntos) + parseInt(deterministico.cinco.puntos)) + "<p>");
+                      $("#body_modal_detalles").append("<p>Deterministicos: <p>");
+                      $("#body_modal_detalles").append("<table class='table table-striped table-bordered table-hover'>" +
+                        '<th>Variables </th>' +
+                        '<th>Correctos </th>' +
+                        '<th>Incorrectos </th>' +
+                        '<th>Puntos </th> ' +
+                        '<tr><td>Tres</td><td>' + deterministico.tres.correctos + '</td><td>' + deterministico.tres.incorrectos + '</td><td>' + deterministico.tres.puntos + '</td></tr>' +
+                        '<tr><td>Cuatro</td><td>' + deterministico.cuatro.correctos + '</td><td>' + deterministico.cuatro.incorrectos + '</td><td>' + deterministico.cuatro.puntos + '</td></tr>' +
+                        '<tr><td>Cinco</td><td>' + deterministico.cinco.correctos + '</td><td>' + deterministico.cinco.incorrectos + '</td><td>' + deterministico.cinco.puntos + '</td></tr>' +
+                        "</table>");
+                        $("#body_modal_detalles").append("<p>Total = " + (parseInt(deterministico.tres.puntos) + parseInt(deterministico.cuatro.puntos) + parseInt(deterministico.cinco.puntos)) + "<p>");
+                      $("#body_modal_detalles").append("<p>Aleatorios: <p>");
+                      $("#body_modal_detalles").append("<table class='table table-striped table-bordered table-hover'>" +
+                        '<th>Variables </th>' +
+                        '<th>Correctos </th>' +
+                        '<th>Incorrectos </th>' +
+                        '<th>Puntos </th> ' +
+                        '<tr><td>Tres</td><td>' + aleatorio.tres.correctos + '</td><td>' + aleatorio.tres.incorrectos + '</td><td>' + aleatorio.tres.puntos + '</td></tr>' +
+                        '<tr><td>Cuatro</td><td>' + aleatorio.cuatro.correctos + '</td><td>' + aleatorio.cuatro.incorrectos + '</td><td>' + aleatorio.cuatro.puntos + '</td></tr>' +
+                        '<tr><td>Cinco</td><td>' + aleatorio.cinco.correctos + '</td><td>' + aleatorio.cinco.incorrectos + '</td><td>' + aleatorio.cinco.puntos + '</td></tr>' +
+                        "</table>");
+                        $("#body_modal_detalles").append("<p>Total = " + (parseInt(aleatorio.tres.puntos) + parseInt(aleatorio.cuatro.puntos) + parseInt(aleatorio.cinco.puntos)) + "<p>");
+                    })
+                    .fail(function () {
+                      alert("Error");
+                    });
+                })
+                .fail(function () {
+                  alert("Error");
+                });
+            })
+            .fail(function () {
+              alert("Error");
+            });
+        })
+        .fail(function () {
+          alert("Error");
+        });
+    })
+    .fail(function () {
+      alert("Error");
+    });
 }
