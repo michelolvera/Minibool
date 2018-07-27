@@ -861,6 +861,39 @@ function activarNVariablesAleatorio(){
     });
 }
 
+function activarNVariablesConocido(){
+    if ($('#Cvar3').is(':checked')) {
+        document.getElementById("cancelarNVariables").value = 3;
+    }
+    if ($('#Cvar4').is(':checked')) {
+        document.getElementById("cancelarNVariables").value = 4;
+    }
+    if ($('#Cvar5').is(':checked')) {
+        document.getElementById("cancelarNVariables").value = 5;
+    }
+
+    $("#inputCNVariables").css('display', 'flex');
+    $("#Cvar3").prop('disabled', true);
+    $("#labelCVar3").addClass('disabled');
+    $("#Cvar4").prop('disabled', true);
+    $("#labelCVar4").addClass('disabled');
+    $("#Cvar5").prop('disabled', true);
+    $("#labelCVar5").addClass('disabled');
+
+    $("#cancelarCNVariables").click(function (event){
+        $("#labelCVarN").removeClass('active');
+        $("#inputCNVariables").css('display', 'none');
+        $("#Cvar3").prop('disabled', false);
+        $("#labelCVar3").removeClass('disabled');
+        $("#Cvar4").prop('disabled', false);
+        $("#labelCVar4").removeClass('disabled');
+        $("#Cvar5").prop('disabled', false);
+        $("#labelCVar5").removeClass('disabled');
+        //ActivarUltimoControl
+        $("#var"+document.getElementById("cancelarNVariables").value).prop('checked', true);
+        $("#labelVar"+document.getElementById("cancelarNVariables").value).addClass('active');
+    });
+}
 function desactivarNVariables(ultimo){
     $("#labelVarN").removeClass('active');
     $("#inputNVariables").css('display', 'none');

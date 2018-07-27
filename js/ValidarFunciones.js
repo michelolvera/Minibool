@@ -21,6 +21,23 @@ function teclaPorClick(){
 
 
 ////////////////////  FUNCIONES PARA VALIDAR FUNCIONES  ///////////////////
+function validarVariables(nVars){
+  if (nVars>3) {
+    nVars-=3
+    var mayus = 68+nVars;//90
+    var minus=100+nVars;//122
+  }else{
+    var mayus = 68;//90
+    var minus=100;//122
+  }
+  for (; mayus < 91 ; mayus++) {
+    if($("#inputFuncion").val().includes(String.fromCharCode(mayus)) || $("#inputFuncion").val().includes(String.fromCharCode(minus))){
+      mostrarError('Error: Variable '+ String.fromCharCode(mayus) +' no permitida');
+    }
+    minus++;
+  }
+}
+
 function validarEntrada(){
   try {
     booleanFun.parse($("#inputFuncion").val())
@@ -33,18 +50,20 @@ function validarEntrada(){
   if($("#inputFuncion").val()==null){
     $('#btnIniciarConocido').hide();
   }
+  if($("#inputFuncion").val().includes('F') || $("#inputFuncion").val().includes('f')){
+    mostrarError('Error: Variable F no permitida en ningún momento');
+  }
   if ($('#Cvar3').is(':checked')) {
-     if($("#inputFuncion").val().includes('D') || $("#inputFuncion").val().includes('d')){
-       mostrarError('Error: Variable D no permitida');
-     }
-     if($("#inputFuncion").val().includes('E') || $("#inputFuncion").val().includes('e')){
-       mostrarError('Error: Variable E no permitida');
-     }
+     validarVariables(3);
   }
   if ($('#Cvar4').is(':checked')) {
-     if($("#inputFuncion").val().includes('E') || $("#inputFuncion").val().includes('e')){
-       mostrarError('Error: Variable E no permitida');
-     }
+     validarVariables(4);
+  }//CvarN
+  if ($('#Cvar5').is(':checked')) {
+     validarVariables(5);
+  }
+  if ($('#CvarN').is(':checked')) {
+     validarVariables($("#CNVariables").val());
   }
 }
 
