@@ -15,6 +15,7 @@ $(document).ready(function () {
     $('#mapaContenedor').hide();
     $("#respCont").hide();
 });
+
 $('#conocidoModal').on('shown.bs.modal', function () {
     $('#exampleModal').trigger('focus')
 })
@@ -708,10 +709,8 @@ function validarRes() {
         cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 1) : cadenaResultado;
         if (repuestaCorrecta == i) {
             correcto = true;
-            //Reproducir sonido correcto
             $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>Tu solucion.</p></div>");
         } else{
-            //Reproducir sonido incorrecto
             $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
         }
 

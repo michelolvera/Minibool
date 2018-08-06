@@ -331,6 +331,7 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
         terminosPetrick = comprobarSolucionesPetrick(terminosPetrick, miniTerminos, tablaImplicantes);
         if (terminosPetrick.length == 0) {
             //No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.
+            console.log("No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.");
             terminosPetrick = [new Set()];
             let comprobar = Array(miniTerminos.length);
             for (let i = 0; i < tablaImplicantes.length; i++) {
