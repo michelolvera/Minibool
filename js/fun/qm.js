@@ -90,14 +90,14 @@ function ReductorRecursivo(miniTerms) {
                     miniTerms[j]["combinado"] = true;
                 }
             }
-        if (!miniTerms[i]["combinado"]) {
-            implicantesPrimarios.push(miniTerms[i]);
+            if (!miniTerms[i]["combinado"]) {
+                implicantesPrimarios.push(miniTerms[i]);
+            }
         }
+        return contadorConbinaciones == 0 ? miniTerms : ReductorRecursivo(implicantesPrimarios);
     }
-    return contadorConbinaciones == 0 ? miniTerms : ReductorRecursivo(implicantesPrimarios);
-}
 
-function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos) {
+    function GenerarTablaImplicantesPrimos(miniTerminos, implicantesPrimos) {
     //Ordenar mini terminos de mayor a menor en valor binario
     let tabla = Array();
     for (let i = 0; i < implicantesPrimos.length; i++) {
@@ -195,7 +195,7 @@ function MetodoDePetrickAlgebraico(EcuacionPetrick, multiplesIdentidades = true)
             return indentidadesPetrick(EcuacionPetrick)[0];
         return EcuacionPetrick[0];
     } else
-        return Array();
+    return Array();
 }
 
 function indentidadesPetrick(sumas) {
@@ -267,17 +267,17 @@ function ConvertirImplicanteAExpresion(implicante, sumasoproductos) {//Si sumaso
     for (let i = 0; i < implicante["bin"].length; i++) {
         switch (implicante["bin"].charAt(i)) {
             case '0':
-                expresion += sumasoproductos ? String.fromCharCode(65 + i) + "'" : String.fromCharCode(65 + i) + "+";
-                break;
+            expresion += sumasoproductos ? String.fromCharCode(65 + i) + "'" : String.fromCharCode(65 + i) + "+";
+            break;
             case '1':
-                expresion += sumasoproductos ? String.fromCharCode(65 + i) : String.fromCharCode(65 + i) + "'+";
-                break;
+            expresion += sumasoproductos ? String.fromCharCode(65 + i) : String.fromCharCode(65 + i) + "'+";
+            break;
         }
     }
     return sumasoproductos ? expresion : expresion.substring(0, expresion.length - 1) + ")";
 }
 
-function comprobarSolucionesPetrick(soluciones, miniTerminos, tablaImplicantes) {
+function comprobarSoluciones(soluciones, miniTerminos, tablaImplicantes) {
     let auxPetrick = Array();
     for (let i = 0; i < soluciones.length; i++) {
         let comprobar = Array(miniTerminos.length);
@@ -328,7 +328,7 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
         //Aplicar metodo de Petrick
         var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
         //Limpiar resultados erroneos usando la tabla de implicantes primos
-        terminosPetrick = comprobarSolucionesPetrick(terminosPetrick, miniTerminos, tablaImplicantes);
+        terminosPetrick = comprobarSoluciones(terminosPetrick, miniTerminos, tablaImplicantes);
         if (terminosPetrick.length == 0) {
             //No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.
             console.log("No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.");
@@ -383,4 +383,25 @@ function ComprobarRespuesta(resultados, sumasoproductos) {
         }
     }
     return -1;
+}
+
+function combinaciones(numero) {
+    let final = new Array();
+    for (i = 0; i < Math.pow(2, numero); i++) {
+        let arreglo = new Array(numero);
+        let aux = i;
+        for (l = 0; l < numero; l++) {
+            arreglo[l] = aux % 2;
+            aux=Math.round(aux/2);
+        }
+        let res = new Array();
+        for (j = 0; j < numero; j++) {
+            if (arreglo[j] == 1) {
+                res.push(j);
+            }
+        }
+        if(!res.length == 0)
+            final.push(res);
+    }
+    return final;
 }
