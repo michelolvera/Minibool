@@ -63,6 +63,7 @@ function validarEntrada(){
      validarVariables(5);
   }
   if ($('#CvarN').is(':checked')) {
+    console.log($("#CNVariables").val());
      validarVariables($("#CNVariables").val());
   }
 }
