@@ -328,10 +328,12 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
         //Aplicar metodo de Petrick
         var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
         //Limpiar resultados erroneos usando la tabla de implicantes primos
+        console.log(terminosPetrick);
         terminosPetrick = comprobarSoluciones(terminosPetrick, miniTerminos, tablaImplicantes);
         if (terminosPetrick.length == 0) {
-            //No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.
-            console.log("No hay soluciones con una sola aplicacion de identidad, se tomaran todos los implicantes como solucion.");
+            //No hay soluciones utilizando petrick algebraico.
+            terminosPetrick = comprobarSoluciones(combinaciones(implicantes.length), miniTerminos, tablaImplicantes);
+            /*//Tomar todos los implicantes como solucion.
             terminosPetrick = [new Set()];
             let comprobar = Array(miniTerminos.length);
             for (let i = 0; i < tablaImplicantes.length; i++) {
@@ -345,7 +347,7 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
             for (let j = 0; j < comprobar.length; j++) {
                 if (!comprobar[j])
                     return null;
-            }
+            }*/
         }
         //Solucion encontrada, convertir a expresion
         let solucionesFinales = Array();
@@ -394,13 +396,13 @@ function combinaciones(numero) {
             arreglo[l] = aux % 2;
             aux=Math.round(aux/2);
         }
-        let res = new Array();
+        let res = new Set();
         for (j = 0; j < numero; j++) {
             if (arreglo[j] == 1) {
-                res.push(j);
+                res.add(String.fromCharCode(65 + j));
             }
         }
-        if(!res.length == 0)
+        if(!res.size == 0)
             final.push(res);
     }
     return final;
