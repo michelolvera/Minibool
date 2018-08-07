@@ -328,10 +328,10 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
         //Aplicar metodo de Petrick
         var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
         //Limpiar resultados erroneos usando la tabla de implicantes primos
-        console.log(terminosPetrick);
         terminosPetrick = comprobarSoluciones(terminosPetrick, miniTerminos, tablaImplicantes);
         if (terminosPetrick.length == 0) {
             //No hay soluciones utilizando petrick algebraico.
+            console.log("Petrick fallo, intentando prueba y error");
             terminosPetrick = comprobarSoluciones(combinaciones(implicantes.length), miniTerminos, tablaImplicantes);
             /*//Tomar todos los implicantes como solucion.
             terminosPetrick = [new Set()];
