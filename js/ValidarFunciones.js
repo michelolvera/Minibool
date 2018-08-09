@@ -23,7 +23,7 @@ function teclaPorClick(){
 ////////////////////  FUNCIONES PARA VALIDAR FUNCIONES  ///////////////////
 function validarVariables(nVars){
 	if (nVars>3) {
-		nVars-=3
+		nVars-=2;
 		var mayus = 68+nVars;//90
 		var minus=100+nVars;//122
 	}else{
@@ -73,4 +73,3 @@ var mostrarError = function(e){
 	$("#invalidMessage").text(e);
 	$('#btnIniciarConocido').hide();
 }
-

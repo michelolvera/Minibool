@@ -94,12 +94,7 @@ var cambioCvar = function () {
 }
 var crear = function (tabla, isAl) {//isAl true es aleatorio, false es deterministico
     var mainFuncion = "";
-    var valA = "";
-    var valB = "";
-    var valC = "";
-    var valD = "";
-    var valE = "";
-    var vars = "";
+    var valores = new Array();
     var f = "";
     var res = "";
     var tablaContent = "";
@@ -108,16 +103,21 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     limpiar(tabla);
     $("#tablaMapaKMini").hide();
     if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
-        vueltas = 8;
         numero_variable = 3;
     }
     if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
-        vueltas = 16;
         numero_variable = 4;
     }
     if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
-        vueltas = 32;
         numero_variable = 5;
+    }
+    if ($('#labelVarN').is(':checked')) {
+      numero_variable = ($('#NVariables').val());
+    }
+    vueltas= Math.pow(2,numero_variable);
+    //GENERAR LAS VARIABLES
+    for (var i = 65; i < 65+numero_variable; i++) {
+       eval('var val'+String.fromCharCode(i)+'="";');
     }
     // Entrada de la funcion
     if ($('#botonporFuncion').hasClass('active')) {
@@ -146,6 +146,11 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
             tablaContent += '<th scope="col">D</th>';
             tablaContent += '<th scope="col">E</th>';
+        }
+        if ($('#labelVarN').is(':checked')) {
+          for (var i = 68; i < 68+numero_variable; i++) {
+            tablaContent += '<th scope="col">'+ String.fromCharCode(i) +'</th>';
+          }
         }
         tablaContent += '<th scope="col">F</th>';
         tablaContent += '</tr>' +
@@ -465,14 +470,12 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                         tablaContent += '<td id="celda' + num + '">' + resultados[num] + '</td>';
                     }
                 }
-
             }
         }
         tablaContent += '</tr>' +
         '</tbody>' +
         '</table>' +
         '</div></div></div>';
-
     }
     //caso tablas de verdad
     if (tabla == "#tablaVerdadMini" || tabla == "#tablaVerdad") {
@@ -485,22 +488,21 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                     cerosunos = false;
             }
         }
-
         for (var num = 0; num < vueltas; num++) {
             tablaContent += '<tr>';
             if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
-                valA = dec2bin(num, 3).charAt(0);
-                valB = dec2bin(num, 3).charAt(1);
-                valC = dec2bin(num, 3).charAt(2);
+                valores[0] = dec2bin(num, 3).charAt(0);
+                valores[1] = dec2bin(num, 3).charAt(1);
+                valores[2] = dec2bin(num, 3).charAt(2);
                 tablaContent += '<td scope="row">' + dec2bin(num, 3).charAt(0) + '</th>' +
                 '<td>' + dec2bin(num, 3).charAt(1) + '</td>' +
                 '<td>' + dec2bin(num, 3).charAt(2) + '</td>';
             }
             if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
-                valA = dec2bin(num, 4).charAt(0);
-                valB = dec2bin(num, 4).charAt(1);
-                valC = dec2bin(num, 4).charAt(2);
-                valD = dec2bin(num, 4).charAt(3);
+                valores[0] = dec2bin(num, 4).charAt(0);
+                valores[1] = dec2bin(num, 4).charAt(1);
+                valores[2] = dec2bin(num, 4).charAt(2);
+                valores[3] = dec2bin(num, 4).charAt(3);
                 tablaContent += '<td scope="row">' + dec2bin(num, 4).charAt(0) + '</th>' +
                 '<td>' + dec2bin(num, 4).charAt(1) + '</td>' +
                 '<td>' + dec2bin(num, 4).charAt(2) + '</td>' +
@@ -508,16 +510,24 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             }
 
             if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
-                valA = dec2bin(num, 5).charAt(0);
-                valB = dec2bin(num, 5).charAt(1);
-                valC = dec2bin(num, 5).charAt(2);
-                valD = dec2bin(num, 5).charAt(3);
-                valE = dec2bin(num, 5).charAt(4);
+                valores[0] = dec2bin(num, 5).charAt(0);
+                valores[1] = dec2bin(num, 5).charAt(1);
+                valores[2] = dec2bin(num, 5).charAt(2);
+                valores[3] = dec2bin(num, 5).charAt(3);
+                valores[4] = dec2bin(num, 5).charAt(4);
                 tablaContent += '<td scope="row">' + dec2bin(num, 5).charAt(0) + '</th>' +
                 '<td>' + dec2bin(num, 5).charAt(1) + '</td>' +
                 '<td>' + dec2bin(num, 5).charAt(2) + '</td>' +
                 '<td>' + dec2bin(num, 5).charAt(3) + '</td>' +
                 '<td>' + dec2bin(num, 5).charAt(4) + '</td>';
+            }
+            if ($('#labelVarN').is(':checked')) {
+                tablaContent += '<td scope="row">' + dec2bin(num, numero_variable).charAt(0) + '</th>';
+                valores[0] = dec2bin(num, numero_variable).charAt(0);
+              for (var i = 1; i < numero_variable; i++) {
+                tablaContent += '<td>' + dec2bin(num, numero_variable).charAt(i) + '</th>';
+                valores[i] = dec2bin(num, numero_variable).charAt(i);
+              }
             }
             // Tabla de verdad dentro de las dos tablas
             if (tabla == "#tablaVerdad") {
@@ -530,16 +540,16 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                         try {
                             replaceFuncion = booleanFun.parse(mainFuncion);
                             for (var i = 0; i < replaceFuncion.length; i++) {
-                                replaceFuncion = replaceFuncion.replace('A', valA)
-                                replaceFuncion = replaceFuncion.replace('B', valB)
-                                replaceFuncion = replaceFuncion.replace('C', valC)
-                                replaceFuncion = replaceFuncion.replace('D', valD)
-                                replaceFuncion = replaceFuncion.replace('E', valE)
-                                replaceFuncion = replaceFuncion.replace('a', valA)
-                                replaceFuncion = replaceFuncion.replace('b', valB)
-                                replaceFuncion = replaceFuncion.replace('c', valC)
-                                replaceFuncion = replaceFuncion.replace('d', valD)
-                                replaceFuncion = replaceFuncion.replace('e', valE)
+                                replaceFuncion = replaceFuncion.replace('A', valores[0])
+                                replaceFuncion = replaceFuncion.replace('B', valores[1])
+                                replaceFuncion = replaceFuncion.replace('C', valores[2])
+                                replaceFuncion = replaceFuncion.replace('D', valores[3])
+                                replaceFuncion = replaceFuncion.replace('E', valores[4])
+                                replaceFuncion = replaceFuncion.replace('a', valores[0])
+                                replaceFuncion = replaceFuncion.replace('b', valores[1])
+                                replaceFuncion = replaceFuncion.replace('c', valores[2])
+                                replaceFuncion = replaceFuncion.replace('d', valores[3])
+                                replaceFuncion = replaceFuncion.replace('e', valores[4])
                                 mainFuncion = mainFuncion.replace('a', 'A')
                                 mainFuncion = mainFuncion.replace('b', 'B')
                                 mainFuncion = mainFuncion.replace('c', 'C')
@@ -576,35 +586,18 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                             mainFuncion += '+';
                         }
                         entrado = true;
-                        if (valA == '1') {
-                            mainFuncion += 'A';
-                        }
-                        if (valA == '0') {
-                            mainFuncion += "A'";
-                        }
-                        if (valB == '1') {
-                            mainFuncion += 'B';
-                        }
-                        if (valB == '0') {
-                            mainFuncion += "B'";
-                        }
-                        if (valC == '1') {
-                            mainFuncion += 'C';
-                        }
-                        if (valC == '0') {
-                            mainFuncion += "C'";
-                        }
-                        if (valD == '1') {
-                            mainFuncion += 'D';
-                        }
-                        if (valD == '0') {
-                            mainFuncion += "D'";
-                        }
-                        if (valE == '1') {
-                            mainFuncion += 'E';
-                        }
-                        if (valE == '0') {
-                            mainFuncion += "E'";
+                        var mayus = 65;
+                        for (var i = 0; i <numero_variable; i++) {
+                          if (i==5) {
+                            mayus++;
+                          }
+                          if (valores[i] == '1') {
+                              mainFuncion += String.fromCharCode(mayus);
+                          }
+                          if (valores[i] == '0') {
+                              mainFuncion += String.fromCharCode(mayus)+"'";
+                          }
+                          mayus++;
                         }
                     }
                 }
