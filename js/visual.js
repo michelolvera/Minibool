@@ -90,6 +90,9 @@ var cambioCvar = function () {
         mapak();
         //$('#btnIniciarConocido').show();
     }
+    if ($('#labelCVarN').hasClass('active')) {
+      $('#botonporMapaK').addClass('disabled');
+    }
 
 }
 var crear = function (tabla, isAl) {//isAl true es aleatorio, false es deterministico
@@ -111,14 +114,13 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
         numero_variable = 5;
     }
-    if ($('#labelVarN').is(':checked')) {
-      numero_variable = ($('#NVariables').val());
+    if ($('#labelVarN').hasClass('active')) {
+      numero_variable = parseInt(($('#NVariables').val()));
+    }
+    if ($('#labelCVarN').hasClass('active')) {
+      numero_variable = parseInt(($('#CNVariables').val()));
     }
     vueltas= Math.pow(2,numero_variable);
-    //GENERAR LAS VARIABLES
-    for (var i = 65; i < 65+numero_variable; i++) {
-       eval('var val'+String.fromCharCode(i)+'="";');
-    }
     // Entrada de la funcion
     if ($('#botonporFuncion').hasClass('active')) {
         mainFuncion = $("#inputFuncion").val();
@@ -135,23 +137,15 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         $('#tabCircuito').removeClass('disabled');
         $('#resulados').empty();
         tablaContent = '<thead>' +
-        '<tr>' +
-        '<th scope="col">A</th>' +
-        '<th scope="col">B</th>' +
-        '<th scope="col">C</th>';
-        if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
-            tablaContent += '<th scope="col">D</th>';
-        }
-
-        if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
-            tablaContent += '<th scope="col">D</th>';
-            tablaContent += '<th scope="col">E</th>';
-        }
-        if ($('#labelVarN').is(':checked')) {
-          for (var i = 68; i < 68+numero_variable; i++) {
+        '<tr>';
+          var tope = 65+numero_variable;
+          for (var i = 65; i < tope ; i++) {
+            if (i==70) {
+              i++;
+              tope++;
+            }
             tablaContent += '<th scope="col">'+ String.fromCharCode(i) +'</th>';
           }
-        }
         tablaContent += '<th scope="col">F</th>';
         tablaContent += '</tr>' +
         '</thead>' +
@@ -160,17 +154,14 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     // CASO TABLA DE VERDAD MINI
     if (tabla == "#tablaVerdadMini") {
         tablaContent = '<thead>' +
-        '<tr>' +
-        '<th scope="col">A</th>' +
-        '<th scope="col">B</th>' +
-        '<th scope="col">C</th>';
-        if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
-            tablaContent += '<th scope="col">D</th>';
-        }
-
-        if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
-            tablaContent += '<th scope="col">D</th>';
-            tablaContent += '<th scope="col">E</th>';
+        '<tr>' ;
+        var tope = 65+numero_variable;
+        for (var i = 65; i < tope ; i++) {
+          if (i==70) {
+            i++;
+            tope++;
+          }
+          tablaContent += '<th scope="col">'+ String.fromCharCode(i) +'</th>';
         }
         tablaContent += '<th scope="col">F</th>';
         tablaContent += '</tr>' +
@@ -179,13 +170,15 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     }
     //Caso los dos mapas de Karnaugh
     if (tabla == "#tablaMapaK" || tabla == "#tablaMapaKMini") {
-        $("#tablaMapaKMini").show();
-        tablaContent = '  <div class="row no-gutters">';
-        tablaContent += '</span>' +
-        '</div>' +
-        '<div class="col-12">' +
-        '  <div  class="table-responsive">' +
-        '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
+        if (!$('#labelVarN').hasClass('active') && !$('#labelCVarN').hasClass('active')) {
+          $("#tablaMapaKMini").show();
+          tablaContent = '  <div class="row no-gutters">';
+          tablaContent += '</span>' +
+          '</div>' +
+          '<div class="col-12">' +
+          '  <div  class="table-responsive">' +
+          '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
+        }
         if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
             tablaContent += '<b>BC</b>';
         }
@@ -195,11 +188,13 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         else if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
             tablaContent += '<b>CDE</b>';
         }
-        tablaContent += '</div>' +
-        '<table  class="table table-striped table-bordered table-hover">' +
-        '<thead>' +
-        '<tr>' +
-        '<th scope="col">'+(($('#var3').is(':checked') || $('#Cvar3').is(':checked')) ? "A" : "AB")+'</th>';
+        if (!$('#labelVarN').hasClass('active') && !$('#labelCVarN').hasClass('active')) {
+          tablaContent += '</div>' +
+          '<table  class="table table-striped table-bordered table-hover">' +
+          '<thead>' +
+          '<tr>' +
+          '<th scope="col">'+(($('#var3').is(':checked') || $('#Cvar3').is(':checked')) ? "A" : "AB")+'</th>';
+        }
         if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
             tablaContent += '<th scope="col">000</th>' +
             '<th scope="col">001</th>' +
@@ -211,15 +206,19 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             '<th scope="col">100</th>';
         }
         else {
+          if (!$('#labelVarN').hasClass('active') && !$('#labelCVarN').hasClass('active')) {
             tablaContent += '<th scope="col">00</th>' +
             '<th scope="col">01</th>' +
             '<th scope="col">11</th>' +
             '<th scope="col">10</th>';
+          }
         }
-        tablaContent += '</tr>' +
-        '</thead>' +
-        '<tbody>' +
-        '<tr>';
+        if (!$('#labelVarN').hasClass('active') && !$('#labelCVarN').hasClass('active') ) {
+          tablaContent += '</tr>' +
+          '</thead>' +
+          '<tbody>' +
+          '<tr>';
+        }
         for (var num = 0; num < vueltas; num++) {
             var aux = 0;
             // CASO MAPA DE KARNAUGH MINI DENTRO DE LOS DOS KARNAUGH
@@ -472,16 +471,18 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                 }
             }
         }
-        tablaContent += '</tr>' +
-        '</tbody>' +
-        '</table>' +
-        '</div></div></div>';
+        if ($('#labelVarN').hasClass('active')) {
+          tablaContent += '</tr>' +
+          '</tbody>' +
+          '</table>' +
+          '</div></div></div>';
+        }
     }
     //caso tablas de verdad
     if (tabla == "#tablaVerdadMini" || tabla == "#tablaVerdad") {
         //Generar los resultados aleatorios
-        let cerosunos = true;
-        while(cerosunos){
+       let cerosunos = true;
+       while(cerosunos){
             for (var num = 0; num < vueltas; num++){
                 resultados[num] = getRandom();
                 if (resultados[num-1]!=resultados[num])
@@ -490,45 +491,13 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         }
         for (var num = 0; num < vueltas; num++) {
             tablaContent += '<tr>';
-            if ($('#var3').is(':checked') || $('#Cvar3').is(':checked')) {
-                valores[0] = dec2bin(num, 3).charAt(0);
-                valores[1] = dec2bin(num, 3).charAt(1);
-                valores[2] = dec2bin(num, 3).charAt(2);
-                tablaContent += '<td scope="row">' + dec2bin(num, 3).charAt(0) + '</th>' +
-                '<td>' + dec2bin(num, 3).charAt(1) + '</td>' +
-                '<td>' + dec2bin(num, 3).charAt(2) + '</td>';
-            }
-            if ($('#var4').is(':checked') || $('#Cvar4').is(':checked')) {
-                valores[0] = dec2bin(num, 4).charAt(0);
-                valores[1] = dec2bin(num, 4).charAt(1);
-                valores[2] = dec2bin(num, 4).charAt(2);
-                valores[3] = dec2bin(num, 4).charAt(3);
-                tablaContent += '<td scope="row">' + dec2bin(num, 4).charAt(0) + '</th>' +
-                '<td>' + dec2bin(num, 4).charAt(1) + '</td>' +
-                '<td>' + dec2bin(num, 4).charAt(2) + '</td>' +
-                '<td>' + dec2bin(num, 4).charAt(3) + '</td>';
-            }
-
-            if ($('#var5').is(':checked') || $('#Cvar5').is(':checked')) {
-                valores[0] = dec2bin(num, 5).charAt(0);
-                valores[1] = dec2bin(num, 5).charAt(1);
-                valores[2] = dec2bin(num, 5).charAt(2);
-                valores[3] = dec2bin(num, 5).charAt(3);
-                valores[4] = dec2bin(num, 5).charAt(4);
-                tablaContent += '<td scope="row">' + dec2bin(num, 5).charAt(0) + '</th>' +
-                '<td>' + dec2bin(num, 5).charAt(1) + '</td>' +
-                '<td>' + dec2bin(num, 5).charAt(2) + '</td>' +
-                '<td>' + dec2bin(num, 5).charAt(3) + '</td>' +
-                '<td>' + dec2bin(num, 5).charAt(4) + '</td>';
-            }
-            if ($('#labelVarN').is(':checked')) {
                 tablaContent += '<td scope="row">' + dec2bin(num, numero_variable).charAt(0) + '</th>';
                 valores[0] = dec2bin(num, numero_variable).charAt(0);
               for (var i = 1; i < numero_variable; i++) {
                 tablaContent += '<td>' + dec2bin(num, numero_variable).charAt(i) + '</th>';
                 valores[i] = dec2bin(num, numero_variable).charAt(i);
               }
-            }
+
             // Tabla de verdad dentro de las dos tablas
             if (tabla == "#tablaVerdad") {
                 if (isAl) {
