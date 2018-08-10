@@ -251,8 +251,8 @@ function ObtenerEcuacionPetrick(implicantes) {
             for (let k = 0; k < implicantes[i].length; k++) {
                 if (implicantes[i][k] && implicantes[j][k]) {
                     let suma = Array();
-                    suma.push(new Set().add(String.fromCharCode(65 + i)));//String.fromCharCode(65 + i)
-                    suma.push(new Set().add(String.fromCharCode(65 + j)));//String.fromCharCode(65 + j)
+                    suma.push(new Set().add(i));//String.fromCharCode(65 + i)
+                    suma.push(new Set().add(j));//String.fromCharCode(65 + j)
                     EcuacionPetrick.push(suma);
                     break;
                 }
@@ -283,8 +283,8 @@ function comprobarSoluciones(soluciones, miniTerminos, tablaImplicantes) {
         let comprobar = Array(miniTerminos.length);
         let agregar = true;
         for (let implicante of soluciones[i]) {
-            for (let j = 0; j < tablaImplicantes[implicante.charCodeAt(0) - 65].length; j++) {
-                if (tablaImplicantes[implicante.charCodeAt(0) - 65][j])
+            for (let j = 0; j < tablaImplicantes[implicante].length; j++) {
+                if (tablaImplicantes[implicante][j])
                     comprobar[j] = true;
             }
         }
@@ -300,12 +300,16 @@ function comprobarSoluciones(soluciones, miniTerminos, tablaImplicantes) {
 
 function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = true) {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado, calcularVariables);
+    console.log("Miniterminos:");
+    console.log(miniTerminos);
     /*if (miniTerminos[miniTerminos.length - 1]["minterms"][0] <= Math.pow(2, cantidadVariables - 1) - 1) {
         alert("Una variable se eliminara ya que nunca esta activa.");
         cantidadVariables--;
         return IniciarReduccion(kmapResultado, sumasoproductos, false);
     } else {*/
         var implicantes = ReductorRecursivo(miniTerminos);
+        console.log("Implicantes:");
+        console.log(implicantes);
         //Limpiar Implicantes Duplicados
         let posRepetido = Array();
         for (let i = 0; i < implicantes.length - 1; i++) {
@@ -321,12 +325,23 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
                 aux.push(implicantes[index]);
         }
         implicantes = aux;
+        console.log("Implicantes reducidos:");
+        console.log(implicantes);
         /////////////////////////////
         miniTerminos = OrdenarMiniTerminos(miniTerminos);//Ordenar mini terminos
+        console.log("Miniterminos ordenados:");
+        console.log(miniTerminos);
         var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
+        console.log("Tabla Implicantes:");
+        console.log(tablaImplicantes);
         var EcuacionPetrick = ObtenerEcuacionPetrick(tablaImplicantes);
+        console.log("Ecuacion de Petrick:");
+        console.log(EcuacionPetrick);
         //Aplicar metodo de Petrick
+        //var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
         var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
+        console.log("Terminos Petrick:");
+        console.log(terminosPetrick);
         //Limpiar resultados erroneos usando la tabla de implicantes primos
         terminosPetrick = comprobarSoluciones(terminosPetrick, miniTerminos, tablaImplicantes);
         if (terminosPetrick.length == 0) {
@@ -354,7 +369,7 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
         for (let i = 0; i < terminosPetrick.length; i++) {
             let solucion = new Set();
             for (let implicante of terminosPetrick[i]) {
-                solucion.add(ConvertirImplicanteAExpresion(implicantes[implicante.charCodeAt(0) - 65], sumasoproductos));
+                solucion.add(ConvertirImplicanteAExpresion(implicantes[implicante], sumasoproductos));
             }
             solucionesFinales.push(solucion);
         }
@@ -389,7 +404,7 @@ function ComprobarRespuesta(resultados, sumasoproductos) {
 
 function combinaciones(numero) {
     let final = new Array();
-    for (i = 0; i < Math.pow(2, numero); i++) {
+    for (let i = 0; i < Math.pow(2, numero); i++) {
         let arreglo = new Array(numero);
         let aux = i;
         for (l = 0; l < numero; l++) {
@@ -397,9 +412,9 @@ function combinaciones(numero) {
             aux=Math.round(aux/2);
         }
         let res = new Set();
-        for (j = 0; j < numero; j++) {
+        for (let j = 0; j < numero; j++) {
             if (arreglo[j] == 1) {
-                res.add(String.fromCharCode(65 + j));
+                res.add(j);
             }
         }
         if(!res.size == 0)

@@ -665,7 +665,7 @@ function validarRes() {
         let cadenaResultado = "";
         let aux = 0;
         for (let multi of resultadosOptimos[i]) {
-            cadenaResultado += "<a href='#' onmouseover='resaltarResultados([" + resultadosConCombinacion[2][[...resultadosConCombinacion[1][i]][aux].charCodeAt(0) - 65]["minterms"] + "])'>" + multi + (productosSumas ? "</a>+" : '</a>');
+            cadenaResultado += "<a href='#' onmouseover='resaltarResultados([" + resultadosConCombinacion[2][[...resultadosConCombinacion[1][i]][aux]]["minterms"] + "])'>" + multi + (productosSumas ? "</a>+" : '</a>');
             aux++;
         }
         cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 1) : cadenaResultado;
