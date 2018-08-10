@@ -395,7 +395,7 @@ function ComprobarRespuesta(resultados, sumasoproductos) {
     }
 
     for (let i = 0; i < resultados.length; i++) {
-        if (new Set([...respuesta].filter(x => !resultados[i].has(x))).size == 0) {
+        if (new Set([...resultados[i]].filter(x => !respuesta.has(x))).size == 0) {
             return i;
         }
     }
