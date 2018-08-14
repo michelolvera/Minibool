@@ -508,23 +508,18 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                         replaceFuncion = mainFuncion;
                         try {
                             replaceFuncion = booleanFun.parse(mainFuncion);
-                            for (var i = 0; i < replaceFuncion.length; i++) {
-                                replaceFuncion = replaceFuncion.replace('A', valores[0])
-                                replaceFuncion = replaceFuncion.replace('B', valores[1])
-                                replaceFuncion = replaceFuncion.replace('C', valores[2])
-                                replaceFuncion = replaceFuncion.replace('D', valores[3])
-                                replaceFuncion = replaceFuncion.replace('E', valores[4])
-                                replaceFuncion = replaceFuncion.replace('a', valores[0])
-                                replaceFuncion = replaceFuncion.replace('b', valores[1])
-                                replaceFuncion = replaceFuncion.replace('c', valores[2])
-                                replaceFuncion = replaceFuncion.replace('d', valores[3])
-                                replaceFuncion = replaceFuncion.replace('e', valores[4])
-                                mainFuncion = mainFuncion.replace('a', 'A')
-                                mainFuncion = mainFuncion.replace('b', 'B')
-                                mainFuncion = mainFuncion.replace('c', 'C')
-                                mainFuncion = mainFuncion.replace('d', 'D')
-                                mainFuncion = mainFuncion.replace('e', 'E')
-                            }
+                            mainFuncion = mainFuncion.toUpperCase();
+                            console.log(mainFuncion);
+                            var mayus=65;
+                              for (var j = 0; j < numero_variable; j++) {
+                                if (mayus==70) {
+                                  mayus++;
+                                }
+                                console.log(String.fromCharCode(mayus));
+                                replaceFuncion = replaceFuncion.replace(eval("/"+String.fromCharCode(mayus)+"/g"), valores[j]);
+                                mayus++;
+                              }
+
                         } catch (e) {
                             error = e;
                         }
