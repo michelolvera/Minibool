@@ -1,9 +1,7 @@
 var resultados = new Array();
 productosSumas = true; //true, se regresaran Sumas de Productos, si es falsa se retornan productos de sumas.
-
 var es_aleatorio = false;
 var numero_variable = 0;
-
 $(document).ready(function () {
 
     $("#inpFuncion").hide();
@@ -15,11 +13,9 @@ $(document).ready(function () {
     $('#mapaContenedor').hide();
     $("#respCont").hide();
 });
-
 $('#conocidoModal').on('shown.bs.modal', function () {
     $('#exampleModal').trigger('focus')
 })
-
 var func = function () {
     $('#botonporFuncion').addClass('active');
     $('#botonporTabladeVerdad').removeClass('active');
@@ -124,9 +120,6 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     // Entrada de la funcion
     if ($('#botonporFuncion').hasClass('active')) {
         mainFuncion = $("#inputFuncion").val();
-    }
-    else {
-
     }
     //Caso tabla de verdad grande
     if (tabla == "#tablaVerdad") {
@@ -497,7 +490,6 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                 tablaContent += '<td>' + dec2bin(num, numero_variable).charAt(i) + '</th>';
                 valores[i] = dec2bin(num, numero_variable).charAt(i);
               }
-
             // Tabla de verdad dentro de las dos tablas
             if (tabla == "#tablaVerdad") {
                 if (isAl) {
@@ -519,7 +511,6 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                                 replaceFuncion = replaceFuncion.replace(eval("/"+String.fromCharCode(mayus)+"/g"), valores[j]);
                                 mayus++;
                               }
-
                         } catch (e) {
                             error = e;
                         }
@@ -591,11 +582,9 @@ if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
             });
             productosSumas = isAl ? $('input:radio[name=resolverPorAleatorio]:checked').val() == 1 ? true : false : $('input:radio[name=resolverPorDeterministico]:checked').val() == 1 ? true : false;
         }
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 };
-
 function dec2bin(dec, c) {
     var num = (dec >>> 0).toString(2);
     while (num.length < c) {
@@ -622,7 +611,6 @@ function cambiarNum(num) {
         $('#btnMapak' + num).html('0');
     }
 }
-
 function validarRes() {
     if (!productosSumas) {
         //Invertir 0s y 1s!!
@@ -737,9 +725,7 @@ function tipo_ejercicio(valor_tipo) {
         break;
     }
 }
-
 function obtener_id_ejercicio() {
-
     if (es_aleatorio) {
         switch (numero_variable) {
             case 0:
@@ -773,7 +759,6 @@ function obtener_id_ejercicio() {
         }
     }
 }
-
 function resaltarResultados(arrayResaltar) {
     for (let i = 0; i < Math.pow(2,cantidadVariables); i++) {
         $("#celda" + i).removeClass("celdaMarcada");
@@ -782,7 +767,6 @@ function resaltarResultados(arrayResaltar) {
         $("#celda" + arrayResaltar[i]).addClass("celdaMarcada");
     }
 }
-
 function activarNVariablesAleatorio(){
     if ($('#var3').is(':checked')) {
         document.getElementById("cancelarNVariables").value = 3;
@@ -801,7 +785,6 @@ function activarNVariablesAleatorio(){
     $("#labelVar4").addClass('disabled');
     $("#var5").prop('disabled', true);
     $("#labelVar5").addClass('disabled');
-
     $("#cancelarNVariables").click(function (event){
         $("#labelVarN").removeClass('active');
         $("#inputNVariables").css('display', 'none');
@@ -816,7 +799,6 @@ function activarNVariablesAleatorio(){
         $("#labelVar"+document.getElementById("cancelarNVariables").value).addClass('active');
     });
 }
-
 function activarNVariablesConocido(){
     if ($('#Cvar3').is(':checked')) {
         document.getElementById("cancelarNVariables").value = 3;
@@ -827,7 +809,6 @@ function activarNVariablesConocido(){
     if ($('#Cvar5').is(':checked')) {
         document.getElementById("cancelarNVariables").value = 5;
     }
-
     $("#inputCNVariables").css('display', 'flex');
     $("#Cvar3").prop('disabled', true);
     $("#labelCVar3").addClass('disabled');
@@ -835,7 +816,6 @@ function activarNVariablesConocido(){
     $("#labelCVar4").addClass('disabled');
     $("#Cvar5").prop('disabled', true);
     $("#labelCVar5").addClass('disabled');
-
     $("#cancelarCNVariables").click(function (event){
         $("#labelCVarN").removeClass('active');
         $("#inputCNVariables").css('display', 'none');
