@@ -564,7 +564,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             tablaContent += '</tr>';
         }
         tablaContent += '</tbody>';
-        if (tabla == "#tablaVerdad") { $('#cardFuncion').html('F=' + mainFuncion) }
+        if (tabla == "#tablaVerdad") { $('#cardFuncion').html((isAl ? "<strong>Aleatorio: </strong>" : "<strong>Deterministico: </strong>") +'F=' + mainFuncion) }
     }
 $(tabla).append(tablaContent);
 if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
@@ -580,6 +580,8 @@ if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
             $("#btnEnviarRes").click(function (event) {
                 validarRes();
             });
+            $("#barraProgreso").css('width', '0%');
+            $("#descripcionContenedor").empty();
             productosSumas = isAl ? $('input:radio[name=resolverPorAleatorio]:checked').val() == 1 ? true : false : $('input:radio[name=resolverPorDeterministico]:checked').val() == 1 ? true : false;
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -618,6 +620,8 @@ function validarRes() {
             resultados[i] = resultados[i] == 1 ? 0 : 1;
         }
     }
+    $("#contenedorBoton").empty();
+    $("#contenedorProgreso").css('display', 'flex');
     var resultadosConCombinacion = IniciarReduccion(resultados, productosSumas);
     var resultadosOptimos = resultadosConCombinacion[0];
     //Limpiar los resultados redundantes o mas largos que el mas optimo
@@ -638,31 +642,31 @@ function validarRes() {
     }
     resultadosOptimos = auxResultado;
     resultadosConCombinacion[1] = auxImplicante;
-
+    $("#barraProgreso").css('width', '100%');
     var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos, productosSumas);
     let correcto = false;
     $('#resulados').empty();
     $('#resulados').append("<p class='alert alert-warning' role='alert'>Posibles soluciones:</p>");
-    $("#contenedorBoton").empty();
     for (let i = 0; i < resultadosOptimos.length; i++) {
         let cadenaResultado = "";
         let aux = 0;
         for (let multi of resultadosOptimos[i]) {
-            cadenaResultado += "<a href='#' onmouseover='resaltarResultados([" + resultadosConCombinacion[2][[...resultadosConCombinacion[1][i]][aux]]["minterms"] + "])'>" + multi + (productosSumas ? "</a>+" : '</a>');
+            cadenaResultado += "<a href='#' onmouseover='resaltarResultados([" + resultadosConCombinacion[2][[...resultadosConCombinacion[1][i]][aux]]["minterms"] + "])'>" + multi + (productosSumas ? "</a> + " : '</a> ');
             aux++;
         }
-        cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 1) : cadenaResultado;
+        cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 2) : cadenaResultado;
         if (repuestaCorrecta == i) {
             correcto = true;
             $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>Tu solucion.</p></div>");
         } else{
-            $('#resulados').append("<p class='alert alert-info' role='alert'>" + cadenaResultado + "</p>");
+            $('#resulados').append("<div class='alert alert-info' role='alert'>" + cadenaResultado + "</div>");
         }
 
         if(correcto)
             document.getElementById('sonidoCorrecto').play();
         else
             document.getElementById('sonidoIncorrecto').play();
+        //$("#contenedorProgreso").css('display', 'none');
 
     }
 
@@ -686,7 +690,7 @@ function validarRes() {
 
             })
             .fail(function () {
-                alert("Error");
+                console.log("Error al registrar calificacion.");
             });
         } else {
             $.ajax({
@@ -705,7 +709,7 @@ function validarRes() {
 
             })
             .fail(function () {
-                alert("Error");
+                console.log("Error al registrar calificacion.");
             });
         }
     }

@@ -78,6 +78,17 @@
 			<a id="cardFuncion">Para iniciar, vaya a la sección de ejercicios del menu principal</a>
 		</div>
 	</div>
+	<div id="descripcionContenedor" class="container-fluid contenedorPrincipal" style="text-align: center;">
+		<div class="jumbotron">
+			<h1 class="display-4">MiniBool</h1>
+			<p class="lead">Este proyecto es un software didáctico que permite leer expresiones booleanas diferentes formatos (Tablas de verdad, Mapas de Karnaugh, Funciones booleanas expresadas en mini-términos o maxi-términos, expresiones booleanas no estandarizadas), simplifica dichas expresiones, contribuyendo a mejorar el desempeño de los estudiantes que cursan carreras del área de la computación en diversas instituciones.</p>
+			<hr>
+			<div class="container" style="width: 80%; margin: 0 auto;">
+				<img style="width: 30%;" src="../imagenes/Logo-TecNM.png" class="left" alt="Tecnológico Nacional de México">
+				<img style="width: 30%;" src="../imagenes/Itmorelia.png" class="right" alt="Instituto Tecnológico de Morelia">
+			</div>
+		</div>
+	</div>
 	<div class="container-fluid contenedorPrincipal" id="tablaContenedor">
 		<div class="row">
 			<div class="col-sm-12 col-lg-6 table-responsive">
@@ -90,12 +101,15 @@
 				<div id="tablaMapaK" class="container-fluid contenedorPrincipal">
 				</div>
 				<div class="col-12">
-					<h3>Su respuesta:</h3>
+					<h3>Escribe tu respuesta:</h3>
 					<div id="formSolucion" class="input-group-prepend">
 						<span class="input-group-text" id="spaninputFuncion">F=</span>
 						<input class="form-control" id="inputResp" aria-label="" type="text">
 					</div>
 					<div id="contenedorBoton" style="text-align: right;">
+					</div>
+					<div id="contenedorProgreso" class="progress" style="display: none; margin: 1em 0;">
+						<div id="barraProgreso" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 					</div>
 					<div id="resulados">
 					</div>
@@ -103,27 +117,25 @@
 			</div>
 		</div>
 	</div>
-
-	<div id="circuitoContenedor" class="container-fluid contenedorPrincipal"></div>
 </section>
 
 <audio style="display: none;" id="sonidoCorrecto">
 	<source src="../sonido/correcto.opus" type="audio/ogg">
-	<source src="../sonido/correcto.m4a" type="audio/aac">
-</audio>
-<audio style="display: none;" id="sonidoIncorrecto">
-	<source src="../sonido/incorrecto.opus" type="audio/ogg">
-	<source src="../sonido/incorrecto.m4a" type="audio/aac">
-</audio>
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/parser.js"></script>
-<script src="../js/ValidarFunciones.js"></script>
-<script src="../js/visual.js"></script>
-<script src="../js/fun/principal.js"></script>
-<script src="../js/fun/fun.js"></script>
-<script src="../js/fun/qm.js"></script>
-</body>
+		<source src="../sonido/correcto.m4a" type="audio/aac">
+		</audio>
+		<audio style="display: none;" id="sonidoIncorrecto">
+			<source src="../sonido/incorrecto.opus" type="audio/ogg">
+				<source src="../sonido/incorrecto.m4a" type="audio/aac">
+				</audio>
+				<script src="../js/jquery.js"></script>
+				<script src="../js/bootstrap.min.js"></script>
+				<script src="../js/parser.js"></script>
+				<script src="../js/ValidarFunciones.js"></script>
+				<script src="../js/visual.js"></script>
+				<script src="../js/fun/principal.js"></script>
+				<script src="../js/fun/fun.js"></script>
+				<script src="../js/fun/qm.js"></script>
+			</body>
 <!--<footer>
 	<div class="card-footer text-muted">
 		<img id="logoITM" src="../imagenes/Itmorelia.png" class="rounded float-left">
@@ -213,11 +225,11 @@
 					<label id="labelCVar5" class="btn btn-primary">
 						<input type="radio" onchange="cambioCvar()" name="options" id="Cvar5" autocomplete="off">5
 					</label>
-          <label id="labelCVarN" class="btn btn-primary" onclick="activarNVariablesConocido()">
+					<label id="labelCVarN" class="btn btn-primary" onclick="activarNVariablesConocido()">
 						<input type="radio" onchange="cambioCvar()" name="options" id="CvarN" autocomplete="off">n
 					</label>
 				</div>
-        <div class="input-group" id="inputCNVariables" style="margin: 1em 0; display: none;">
+				<div class="input-group" id="inputCNVariables" style="margin: 1em 0; display: none;">
 					<div class="alert alert-warning" role="alert">
 						<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> El procesamiento de más de 5 variables puede considerarse exigente para su equipo de computo. Podria no obtener resultados finales.
 					</div>
@@ -659,11 +671,30 @@
 			</div>
 			<div class="modal-body" style="text-align: center;">
 				<p><h2>MiniBool</h2></p>
-				<p>Este proyecto es un software didáctico que permite leer expresiones booleanas diferentes formatos (Tablas de verdad, Mapas de Karnaugh, Funciones booleanas expresadas en mini-término o maxi-términos, expresiones booleana no estandarizadas), simplifica dichas expresiones, contribuyendo a mejorar el desempeño de los estudiantes que cursan carreras del área de la computación en diversas instituciones.</p>
-				<p><strong>Profesores colaboradores del proyecto:</strong><br>
-					<a href="mailto:ppalf@yahoo.com">M.C. JOSE ALFREDO JIMÉNEZ MURILLO</a><br>
-					<a href="mailto:octavio1872@hotmail.com">DR. OCTAVIO SALUD ORTIZ ORTIZ</a><br>
-					<a href="mailto:itmnelly@gmail.com">M.A. LAURA NELLY ALVARADO ZAMORA</a>
+				<p>Este proyecto es un software didáctico que permite leer expresiones booleanas diferentes formatos (Tablas de verdad, Mapas de Karnaugh, Funciones booleanas expresadas en mini-términos o maxi-términos, expresiones booleanas no estandarizadas), simplifica dichas expresiones, contribuyendo a mejorar el desempeño de los estudiantes que cursan carreras del área de la computación en diversas instituciones.</p>
+				<p><strong>Profesores colaboradores del proyecto:</strong></p>
+				<p>
+					<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/profesores/josealfredo.jpg">
+					<a href="mailto:jjimenez@itmorelia.edu.mx">M.C. JOSE ALFREDO JIMÉNEZ MURILLO</a><br>
+					<span>Obtuvo el título de Ingeniero Industrial Mecánico por el Tecnológico Nacional de México, Campus Instituto Tecnológico de Morelia (ITM). Maestría en Cómputo aplicado por el Colegio de Postgraduados en Montecillo Edo. de México. Maestría en Ciencias en la Enseñanza de las ciencias por el CIIDET Querétaro Qro., Mex. Autor de los libros “Matemáticas para la Computación” y “Fundamentos de programación” de la Editorial Alfaomega. Autor también del libro “Matemáticas para informática” de la Editorial Marcombo.  Maestro Titular de la asignatura “Matemáticas discretas” en la carrera de Ingeniería en Sistemas Computacionales en el ITM.</span>
+				</p>
+				<p>
+					<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/profesores/octavio.jpg">
+					<a href="mailto:octavioortiz@itmorelia.edu.mx">DR. OCTAVIO SALUD ORTIZ ORTIZ</a><br>
+					<span>Doctorado en Tecnologías de la Información y las Comunicaciones por la Universidad Politécnica de Cartagena, España.  Obtención de la mención "Cum Laude". Profesor con Perfil Deseable, período 2017-2019. Miembro del Sistema Nacional de Investigadores distinción 	"Candidato", período 2018-2020.
+					</span>
+				</p>
+				<p>
+					<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/profesores/Nelly.jpg">
+					<a href="mailto:alvarado@itmorelia.edu.mx">M.A. LAURA NELLY ALVARADO ZAMORA</a><br>
+					<span>Maestría en Administración Orientada a los Sistemas por la Universidad Michoacana de San Nicolás de Hidalgo. Desde 1997 profesora de tiempo completo en el Tecnológico Nacional de México campus Instituto Tecnológico de Morelia, impartiendo materias relacionadas con el área de programación y desarrollo de software, además de desempeñar otros cargos como coordinadora del Diplomado en informática, Coordinadora del PADHIE (Programa Académico para el Desarrollo de Habilidades en Idiomas Extranjeros), Secretaria de la Academia de Sistemas y Computación y actualmente Coordinadora de la carrera de Ingeniería en Sistemas Computacionales.
+					</span>
+				</p>
+				<p>
+					<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/profesores/erendira.jpg">
+					<a href="mailto:emjimenezh@gmail.com">DR (C). ERÉNDIRA MIRIAM JIMÉNEZ HERNÁNDEZ</a><br>
+					<span>Obtuvo el título de Ingeniera en Sistemas Computacionales, con mención honorífica, en el Instituto Tecnológico de Morelia (ITM), y el grado de Maestría en Ciencias de la Computación en el Centro de Investigación en Computación (CIC), del Instituto Politécnico Nacional (IPN). Actualmente es candidata al grado de Doctor en Ingeniería de la Computación, en la Universidad Nacional Autónoma de México (UNAM). Es autora del libro “Fundamentos de programación” de la editorial Alfaomega.
+					</span>
 				</p>
 				<p><strong>Desarrolladores:</strong><br>
 					<a href="mailto:coke_1224@hotmail.com">JORGE LUIS ARREYGUE ÁVILA</a> <strong>(UI, Parser)</strong><br>

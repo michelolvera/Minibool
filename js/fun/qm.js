@@ -300,16 +300,14 @@ function comprobarSoluciones(soluciones, miniTerminos, tablaImplicantes) {
 
 function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = true) {
     var miniTerminos = ObtenerMiniTerminos(kmapResultado, calcularVariables);
-    console.log("Miniterminos:");
-    console.log(miniTerminos);
+    $("#barraProgreso").css('width', '10%');
     /*if (miniTerminos[miniTerminos.length - 1]["minterms"][0] <= Math.pow(2, cantidadVariables - 1) - 1) {
         alert("Una variable se eliminara ya que nunca esta activa.");
         cantidadVariables--;
         return IniciarReduccion(kmapResultado, sumasoproductos, false);
     } else {*/
         var implicantes = ReductorRecursivo(miniTerminos);
-        console.log("Implicantes:");
-        console.log(implicantes);
+        $("#barraProgreso").css('width', '20%');
         //Limpiar Implicantes Duplicados
         let posRepetido = Array();
         for (let i = 0; i < implicantes.length - 1; i++) {
@@ -325,29 +323,25 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
                 aux.push(implicantes[index]);
         }
         implicantes = aux;
-        console.log("Implicantes reducidos:");
-        console.log(implicantes);
+        $("#barraProgreso").css('width', '30%');
         /////////////////////////////
         miniTerminos = OrdenarMiniTerminos(miniTerminos);//Ordenar mini terminos
-        console.log("Miniterminos ordenados:");
-        console.log(miniTerminos);
+        $("#barraProgreso").css('width', '40%');
         var tablaImplicantes = GenerarTablaImplicantesPrimos(miniTerminos, implicantes);
-        console.log("Tabla Implicantes:");
-        console.log(tablaImplicantes);
+        $("#barraProgreso").css('width', '50%');
         var EcuacionPetrick = ObtenerEcuacionPetrick(tablaImplicantes);
-        console.log("Ecuacion de Petrick:");
-        console.log(EcuacionPetrick);
+        $("#barraProgreso").css('width', '60%');
         //Aplicar metodo de Petrick
         //var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
         var terminosPetrick = MetodoDePetrickAlgebraico(EcuacionPetrick);
-        console.log("Terminos Petrick:");
-        console.log(terminosPetrick);
+        $("#barraProgreso").css('width', '70%');
         //Limpiar resultados erroneos usando la tabla de implicantes primos
         terminosPetrick = comprobarSoluciones(terminosPetrick, miniTerminos, tablaImplicantes);
         if (terminosPetrick.length == 0) {
             //No hay soluciones utilizando petrick algebraico.
             console.log("Petrick fallo, intentando prueba y error");
             terminosPetrick = comprobarSoluciones(combinaciones(implicantes.length), miniTerminos, tablaImplicantes);
+            $("#barraProgreso").css('width', '80%');
             /*//Tomar todos los implicantes como solucion.
             terminosPetrick = [new Set()];
             let comprobar = Array(miniTerminos.length);
@@ -373,6 +367,7 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
             }
             solucionesFinales.push(solucion);
         }
+        $("#barraProgreso").css('width', '90%');
         return [solucionesFinales, terminosPetrick, implicantes];
     //}
 }
