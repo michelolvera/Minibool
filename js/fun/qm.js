@@ -267,10 +267,10 @@ function ConvertirImplicanteAExpresion(implicante, sumasoproductos) {//Si sumaso
     for (let i = 0; i < implicante["bin"].length; i++) {
         switch (implicante["bin"].charAt(i)) {
             case '0':
-            expresion += sumasoproductos ? String.fromCharCode(65 + i) + "'" : String.fromCharCode(65 + i) + "+";
+            expresion += sumasoproductos ? String.fromCharCode((65 + i) >= 70 ? (66+i) : (65+i)) + "'" : String.fromCharCode((65 + i) >= 70 ? (66+i) : (65+i)) + "+";
             break;
             case '1':
-            expresion += sumasoproductos ? String.fromCharCode(65 + i) : String.fromCharCode(65 + i) + "'+";
+            expresion += sumasoproductos ? String.fromCharCode((65 + i) >= 70 ? (66+i) : (65+i)) : String.fromCharCode((65 + i) >= 70 ? (66+i) : (65+i)) + "'+";
             break;
         }
     }
