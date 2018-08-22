@@ -18,9 +18,17 @@ $(document).ready(function () {
           $(".navbar-collapse").collapse('hide');
       }
     });
+    $("#btnIniciarAleatorio").click(function(event){
+        $("#btnIniciarAleatorio").hide();
+        $("#btnIniciarConocido").hide();
+    });
+    $("#btnIniciarConocido").click(function(event){
+        $("#btnIniciarConocido").hide();
+        $("#btnIniciarAleatorio").hide();
+    });
 });
-var nuevoEjercicio = function (){
-
+var cambioVar = function (){
+  $("#btnIniciarAleatorio").show();
 }
 var func = function () {
     $('#botonporFuncion').addClass('active');

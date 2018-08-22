@@ -158,17 +158,17 @@
 			<div class="modal-body">
 				<h5 id="labelVariablesAleatorio">Variables:</h5>
 				<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					<label id="labelVar3" class="btn btn-primary active">
-						<input type="radio" name="options" id="var3" autocomplete="off" checked>3
+					<label onClick="cambioVar()" id="labelVar3" class="btn btn-primary active">
+						<input type="radio"  name="options" id="var3" autocomplete="off" checked>3
 					</label>
-					<label id="labelVar4" class="btn btn-primary">
-						<input type="radio" name="options" id="var4" autocomplete="off">4
+					<label onClick="cambioVar()" id="labelVar4" class="btn btn-primary">
+						<input type="radio" onClick="cambioVar()" name="options" id="var4" autocomplete="off">4
 					</label>
-					<label id="labelVar5" class="btn btn-primary">
-						<input type="radio" name="options" id="var5" autocomplete="off">5
+					<label onClick="cambioVar()" id="labelVar5"  class="btn btn-primary">
+						<input type="radio" onClick="cambioVar()" name="options" id="var5" autocomplete="off">5
 					</label>
 					<label id="labelVarN" class="btn btn-primary" onclick="activarNVariablesAleatorio()">
-						<input  type="radio" name="options" id="varn" autocomplete="off">n
+						<input  type="radio"  name="options" id="varn" autocomplete="off">n
 					</label>
 				</div>
 				<div class="input-group" id="inputNVariables" style="margin: 1em 0; display: none;">
