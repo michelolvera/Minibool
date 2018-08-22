@@ -12,10 +12,14 @@ $(document).ready(function () {
     $('#btnIniciarConocido').hide();
     $('#mapaContenedor').hide();
     $("#respCont").hide();
+    $("#mensajef").hide();
 });
 $('#conocidoModal').on('shown.bs.modal', function () {
     $('#exampleModal').trigger('focus')
 })
+var nuevoEjercicio = function (){
+
+}
 var func = function () {
     $('#botonporFuncion').addClass('active');
     $('#botonporTabladeVerdad').removeClass('active');
