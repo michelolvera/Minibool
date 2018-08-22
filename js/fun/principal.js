@@ -37,7 +37,7 @@ function CargarTextosPagina() {
     $("#btn_usuario_cuenta").text(JsonIdioma["ConfigurarCuenta"]);
     $("#btn_usuario_resultados").text(JsonIdioma["MisResultados"]);
     $("#btn_usuario_cerrar").text(JsonIdioma["CerrarSesion"]);
-    $('#ejemplos').text(JsonIdioma[ejemplos]);
+    $("#ejemplos").text(JsonIdioma[ejemplos]);
     //Modal
     $("#labelTituloModal1").text(JsonIdioma["ModoAleatorio"]);
     $("#labelVariablesAleatorio").text(JsonIdioma["Variables"] + ":");
