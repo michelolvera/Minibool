@@ -13,10 +13,12 @@ $(document).ready(function () {
     $('#mapaContenedor').hide();
     $("#respCont").hide();
     $("#mensajef").hide();
+    $(".navbar-nav li a").click(function(event) {
+      if( !$(event.target).hasClass('dropdown-toggle') ) {
+          $(".navbar-collapse").collapse('hide');
+      }
+    });
 });
-$('#conocidoModal').on('shown.bs.modal', function () {
-    $('#exampleModal').trigger('focus')
-})
 var nuevoEjercicio = function (){
 
 }
@@ -824,6 +826,14 @@ function activarNVariablesConocido(){
     $("#labelCVar4").addClass('disabled');
     $("#Cvar5").prop('disabled', true);
     $("#labelCVar5").addClass('disabled');
+
+    $("#botonporFuncion").prop('disabled', true);
+    $("#botonporFuncion").addClass('disabled');
+    $("#botonporMapaK").prop('disabled', true);
+    $("#botonporMapaK").addClass('disabled');
+    $("#botonporTabladeVerdad").prop('disabled', true);
+    $("#botonporTabladeVerdad").addClass('disabled');
+
     $("#cancelarCNVariables").click(function (event){
         $("#labelCVarN").removeClass('active');
         $("#inputCNVariables").css('display', 'none');
@@ -833,9 +843,30 @@ function activarNVariablesConocido(){
         $("#labelCVar4").removeClass('disabled');
         $("#Cvar5").prop('disabled', false);
         $("#labelCVar5").removeClass('disabled');
+
+        $("#botonporFuncion").prop('disabled', false);
+        $("#botonporFuncion").removeClass('disabled');
+        $("#botonporMapaK").prop('disabled', false);
+        $("#botonporMapaK").removeClass('disabled');
+        $("#botonporTabladeVerdad").prop('disabled', false);
+        $("#botonporTabladeVerdad").removeClass('disabled');
         //ActivarUltimoControl
         $("#var"+document.getElementById("cancelarNVariables").value).prop('checked', true);
         $("#labelVar"+document.getElementById("cancelarNVariables").value).addClass('active');
+    });
+    $("#CNVariables").on('change keypress keyup', function (event){
+      if($("#CNVariables").val()<6 || $("#CNVariables").val()>25 || !$("#CNVariables").val()){
+        $("#botonporFuncion").prop('disabled', true);
+        $("#botonporFuncion").addClass('disabled');
+        $("#botonporTabladeVerdad").prop('disabled', true);
+        $("#botonporTabladeVerdad").addClass('disabled');
+      }
+      else{
+        $("#botonporFuncion").prop('disabled', false);
+        $("#botonporFuncion").removeClass('disabled');
+        $("#botonporTabladeVerdad").prop('disabled', false);
+        $("#botonporTabladeVerdad").removeClass('disabled');
+      }
     });
 }
 function desactivarNVariables(ultimo){
