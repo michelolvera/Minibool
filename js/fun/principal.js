@@ -22,7 +22,6 @@ function ValidarCookie() {
 }
 
 function CargarTextosPagina() {
-    $("#btnTitulo").text(JsonIdioma["SimplificacionBolenana"]);
     $("#btnEjercicios").text(JsonIdioma["Ejercicios"]);
     $("#btnAelatorio").text(JsonIdioma["Aleatorio"]);
     $("#btnConocido").text(JsonIdioma["Conocido"]);
