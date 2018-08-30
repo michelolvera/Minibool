@@ -32,7 +32,7 @@ function validarVariables(nVars){
 	}
 	for (; mayus < 91 ; mayus++) {
 		if($("#inputFuncion").val().includes(String.fromCharCode(mayus)) || $("#inputFuncion").val().includes(String.fromCharCode(minus))){
-			mostrarError(JsonIdioma[varError1]+ String.fromCharCode(mayus) +JsonIdioma[varError2]);
+			mostrarError((JsonIdioma["varError1"])+ String.fromCharCode(mayus) +(JsonIdioma["varError2"]));
 		}
 		minus++;
 	}
@@ -51,7 +51,7 @@ function validarEntrada(){
 		$('#btnIniciarConocido').hide();
 	}
 	if($("#inputFuncion").val().includes('F') || $("#inputFuncion").val().includes('f')){
-		mostrarError(JsonIdioma[varF]);
+		mostrarError(JsonIdioma["varF"]);
 	}
 	if ($('#Cvar3').is(':checked')) {
 		validarVariables(3);
