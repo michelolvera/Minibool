@@ -137,6 +137,7 @@ function realizar_accion() {
         codigoPais: $("#combo_pais_act").val(),
         administrador: $("#in_administrador_act").val(),
         correoElectronico: $("#in_correo_act").val(),
+        contrasena: $("#in_contrasenia_act").val(),
         apellidoM: $("#in_apellido_mat_act").val(),
         apellidoP: $("#in_apellido_pat_act").val(),
         nombreReal: $("#in_nombre_act").val(),
@@ -144,6 +145,7 @@ function realizar_accion() {
       },
     })
     .done(function (respuesta) {
+      console.log(respuesta);
       if (respuesta == 1) {
         alert("Datos actualiazados exitozamente");
         llenar_tabla($("#in_nombre").val(), $("#in_apellido_pat").val(), $("#in_apellido_mat").val());
@@ -175,6 +177,7 @@ function cargarUsuario() {
   $("#in_apellido_pat_act").val("");
   $("#in_apellido_mat_act").val("");
   $("#in_correo_act").val("");
+  $("#in_contrasenia_act").val("");
   $("#in_escuela_act").val("");
   $("#in_carrera_act").val("");
   $("#in_semestre_act").val("");
@@ -195,6 +198,7 @@ function cargarUsuario() {
     $("#in_apellido_pat_act").val(jsonObject[0]["apellido_paterno"]);
     $("#in_apellido_mat_act").val(jsonObject[0]["apellido_materno"]);
     $("#in_correo_act").val(jsonObject[0]["correo"]);
+    $("#in_contrasenia_act").val(jsonObject[0]["contrasena"]);
     if (jsonObject[0]["administrador"] == 1) {
       $("#in_administrador_act").prop('checked', true);
       $("#in_administrador_act").val("1");
