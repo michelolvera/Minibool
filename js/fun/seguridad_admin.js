@@ -1,4 +1,3 @@
-
 function comprobarAdminPagina() {
     var usuario = getCookie("user");
     var contraseña = getCookie("pass");

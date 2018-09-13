@@ -143,7 +143,6 @@ function cargar_datos_usuario() {
   $("#in_escuela_act_gestion").val("");
   $("#in_carrera_act_gestion").val("");
   $("#in_semestre_act_gestion").val("");
-  console.log("hola");
   $.ajax({
     method: "post",
     url: phpPath,
@@ -155,7 +154,6 @@ function cargar_datos_usuario() {
     dataType: "json"
   })
     .done(function (jsonObject) {
-      console.log(jsonObject);
       $("#in_usuario_gestion").val(jsonObject[0]["usuario"]);
       $("#in_nombre_act_gestion").val(jsonObject[0]["nombre"]);
       $("#in_apellido_pat_act_gestion").val(jsonObject[0]["apellido_paterno"]);
@@ -206,6 +204,8 @@ function guardar_datos_usuario(){
 
           if (respuesta == 1) {
             alert("Datos actualiazados exitozamente");
+            setCookie("user", getCookie("user"), 0);
+            setCookie("pass", $("#in_contrasenia_act_gestion").val(), 0);
           } else {
             alert("Error al momento de actualizar datos");
           }

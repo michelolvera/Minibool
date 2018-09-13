@@ -17,6 +17,16 @@ function ValidarCookie() {
             if (msg == 0) {
                 CerrarSesion();
             }
+            $.ajax({
+                method: "POST",
+                url: phpPath,
+                data: { funcion: "esAdministrador", userName: getCookie("user"), userPass: getCookie("pass")}
+            })
+            .done(function (msg) {
+                if (msg == 1) {
+                    $("#admSet").css('display', 'block');
+                }
+            });
         });
     }
 }
