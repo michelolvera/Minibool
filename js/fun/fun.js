@@ -139,6 +139,7 @@ function cargar_datos_usuario() {
   $("#in_apellido_pat_act_gestion").val("");
   $("#in_apellido_mat_act_gestion").val("");
   $("#in_correo_act_gestion").val("");
+  $("#in_contrasenia_act_gestion").val("");
   $("#in_escuela_act_gestion").val("");
   $("#in_carrera_act_gestion").val("");
   $("#in_semestre_act_gestion").val("");
@@ -153,12 +154,12 @@ function cargar_datos_usuario() {
     dataType: "json"
   })
     .done(function (jsonObject) {
-      console.log(jsonObject);
       $("#in_usuario_gestion").val(jsonObject[0]["usuario"]);
       $("#in_nombre_act_gestion").val(jsonObject[0]["nombre"]);
       $("#in_apellido_pat_act_gestion").val(jsonObject[0]["apellido_paterno"]);
       $("#in_apellido_mat_act_gestion").val(jsonObject[0]["apellido_materno"]);
       $("#in_correo_act_gestion").val(jsonObject[0]["correo"]);
+      $("#in_contrasenia_act_gestion").val(jsonObject[0]["contrasena"]);
       $("#combo_pais_act_gestion").val(jsonObject[0]["pais"]);
       if (jsonObject[0]["estudiante"] == 1) {
         $("input[type=radio][name=in_estudia_si_gestion]")[0].checked = true;
@@ -192,6 +193,7 @@ function guardar_datos_usuario(){
           esEstudiante: $('[name=in_estudia_si_gestion]:checked').val(),
           codigoPais: $("#combo_pais_act_gestion").val(),
           correoElectronico: $("#in_correo_act_gestion").val(),
+          contrasena: $("#in_contrasenia_act_gestion").val(),
           apellidoM: $("#in_apellido_mat_act_gestion").val(),
           apellidoP: $("#in_apellido_pat_act_gestion").val(),
           nombreReal: $("#in_nombre_act_gestion").val(),
@@ -202,6 +204,8 @@ function guardar_datos_usuario(){
 
           if (respuesta == 1) {
             alert("Datos actualiazados exitozamente");
+            setCookie("user", getCookie("user"), 0);
+            setCookie("pass", $("#in_contrasenia_act_gestion").val(), 0);
           } else {
             alert("Error al momento de actualizar datos");
           }

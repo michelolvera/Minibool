@@ -69,7 +69,18 @@
     "Usuarios":"Usuarios",
     "invalidParenthMessage":"¡Función invalida!: Revise que no haya dejado parentesis abiertos",
     "invalidNullFunMessage":"¡Función invalida!: Campo de la función vacio",
-    "invalidMainMessage":"¡Función invalida!"
+    "invalidMainMessage":"¡Función invalida!",
+    "endofinput":"fin de la entrada",
+    "anycharacter":"cualquier caracter",
+    "expected":"Se esperaba ",
+    "but":" pero ",
+    "found":" encontrado.",
+    "or":" o ",
+    "syntaxerror":"Error de sintaxis",
+    "varError1":"Error: Variable ",
+    "varError2":" no permitida.",
+    "varF":"Error: Caracter F no permitida en ningún momento",
+    "ejemplos":"Ejemplos de escritura permitida"
   },
   "en-US": {
     "nombreIdioma": "English - United States",
@@ -80,7 +91,7 @@
     "tituloLogin": "Login",
     "Usuario": "User",
     "Pass": "Password",
-    "RecordarPass": "Remenber password",
+    "RecordarPass": "Remember password",
     "IniciarSesion": "Log in",
     "OlvidastePass": "Did you forget your password?",
     "SinCuenta": "You do not have an account?",
@@ -141,7 +152,19 @@
     "Usuarios":"Users",
     "invalidParenthMessage":"¡Invalid function!: Check that you have not left open parentheses",
     "invalidNullFunMessage":"¡Invalid function!: Function field is empty",
-    "invalidMainMessage":"¡Invalid function!"
+    "invalidMainMessage":"¡Invalid function!",
+    "endofinput":"end of input",
+    "anycharacter":"any character",
+    "expected":"Expected ",
+    "but":" but ",
+    "found":" found.",
+    "or":" or ",
+    "syntaxerror":"Syntax error",
+    "parserError":"Error",
+    "varError1":"Error: Variable ",
+    "varError2":" not allowed.",
+    "varF":"Error: Character F not allowed at any time",
+    "ejemplos":"Examples of allowed writing"
   },
   "fr-FR": {
     "nombreIdioma": "Française - France",
@@ -213,6 +236,18 @@
     "Usuarios":"Utilisateurs",
     "invalidParenthMessage":"¡Fonction invalide!: Vérifiez que vous n'avez pas laissé de parenthèses ouvertes",
     "invalidNullFunMessage":"¡Fonction invalide!: Le champ de fonction est vide",
-    "invalidMainMessage":"¡Fonction invalide!"
+    "invalidMainMessage":"¡Fonction invalide!",
+    "endofinput":"fin de l'entrée",
+    "anycharacter":"n'importe quel charr",
+    "expected":"Attendu ",
+    "but":" mais ",
+    "found":" a trouvé.",
+    "or":" ou ",
+    "syntaxerror":"Erreur de syntaxe",
+    "parserError":"Erreur",
+    "varError1":"Erreur: Variable ",
+    "varError2":" pas autorisé.",
+    "varF":"Erreur: Caractère  F n'est pas autorisée à tout moment",
+    "ejemplos":"Exemples d'écriture autorisée"
   }
 }

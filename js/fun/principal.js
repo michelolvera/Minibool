@@ -17,12 +17,21 @@ function ValidarCookie() {
             if (msg == 0) {
                 CerrarSesion();
             }
+            $.ajax({
+                method: "POST",
+                url: phpPath,
+                data: { funcion: "esAdministrador", userName: getCookie("user"), userPass: getCookie("pass")}
+            })
+            .done(function (msg) {
+                if (msg == 1) {
+                    $("#admSet").css('display', 'block');
+                }
+            });
         });
     }
 }
 
 function CargarTextosPagina() {
-    $("#btnTitulo").text(JsonIdioma["SimplificacionBolenana"]);
     $("#btnEjercicios").text(JsonIdioma["Ejercicios"]);
     $("#btnAelatorio").text(JsonIdioma["Aleatorio"]);
     $("#btnConocido").text(JsonIdioma["Conocido"]);
@@ -37,7 +46,7 @@ function CargarTextosPagina() {
     $("#btn_usuario_cuenta").text(JsonIdioma["ConfigurarCuenta"]);
     $("#btn_usuario_resultados").text(JsonIdioma["MisResultados"]);
     $("#btn_usuario_cerrar").text(JsonIdioma["CerrarSesion"]);
-
+    $("#ejemplos").text(JsonIdioma["ejemplos"]);
     //Modal
     $("#labelTituloModal1").text(JsonIdioma["ModoAleatorio"]);
     $("#labelVariablesAleatorio").text(JsonIdioma["Variables"] + ":");

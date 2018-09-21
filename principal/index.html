@@ -2,609 +2,717 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/estilos.css">
-  <title>Principal</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/estilos.css">
+	<title>Principal</title>
 </head>
 
 <body id="bod">
-  <header class="">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a id="btnTitulo" class="navbar-brand btn" href="#">MiniBool</a>
-      <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#barra_navegacion" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="barra_navegacion">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a id="btnEjercicios" role="button" class="nav-link dropdown-toggle active" href="#" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Ejercicios</a>
-            <div class="dropdown-menu" aria-labelledby="btnEjercicios">
-              <a id="btnAelatorio" class="dropdown-item" data-toggle="modal" data-target="#aleatorioModal" href="#" onclick="tipo_ejercicio('aleatorio');">Aleatorio</a>
-              <a id="btnConocido" class="dropdown-item" data-toggle="modal" data-target="#conocidoModal" href="#" onclick="tipo_ejercicio('deterministico');">Determinístico</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a id="btnRanking" role="button" class="nav-link" href="#vntn_notificaciones" data-toggle="modal" onclick="cargar_ranking()">Clasificación</a>
-          </li>
-          <li class="nav-item">
-            <a id="btn_adm_estadisticas" role="button" class="nav-link" href="../estadisticas/">Estadísticas</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a id="btnAdmin" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              href="#">Administracion</a>
-            <div class="dropdown-menu" aria-labelledby="btnAdmin">
-              <a id="btn_adm_ponderacion" class="dropdown-item" href="../admin/ponderacion/">Ponderación</a>
-              <a id="btn_adm_notificaciones" class="dropdown-item" href="../admin/notificaciones/">Notificaciones</a>
-              <a id="btn_adm_usuarios" class="dropdown-item" href="../admin/usuarios/">Usuarios</a>
-            </div>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item">
-            <a id="btn_mostrar_notificaciones" role="button" class="nav-link" href="#vntn_notificaciones" data-toggle="modal" onclick="cargar_notificaciones();">
-              Notificaciones
-              <span class="badge badge-light">0</span>
-              <span class="sr-only">unread messages</span>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a id="btn_dd_usuario_actual" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" href="#">Usuario:</a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btn_dd_usuario_actual">
-              <a id="btn_usuario_cuenta" class="dropdown-item" role="button" class="nav-link" data-toggle="modal" href="#usuario_gestion"
-                onclick="cargar_datos_usuario();">Configurar cuenta</a>
-              <a id="btn_usuario_resultados" class="dropdown-item" href='#detalles' onclick='detalles_usuario();' data-toggle='modal'>Mis resultados</a>
-              <div class="dropdown-divider"></div>
-              <div class="container">
-                <a id="btn_usuario_cerrar" class="btn btn-outline-danger" style="width: 100%;" href="#">Cerrar sesión</a>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+	<header class="">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">
+				<img src="../imagenes/logo-blanco.svg" alt="Logo" style="max-width: 100%; width: 70px;">
+			</a>
+			<button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#barra_navegacion" aria-controls="navbarSupportedContent"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="barra_navegacion">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown">
+					<a id="btnEjercicios" role="button" class="nav-link dropdown-toggle active" href="#" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Ejercicios</a>
+					<div class="dropdown-menu" aria-labelledby="btnEjercicios">
+						<a id="btnAelatorio" class="dropdown-item" data-toggle="modal" data-target="#aleatorioModal" href="#" onclick="tipo_ejercicio('aleatorio');">Aleatorio</a>
+						<a id="btnConocido" class="dropdown-item" data-toggle="modal" data-target="#conocidoModal" href="#" onclick="tipo_ejercicio('deterministico');">Determinístico</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a id="btnRanking" role="button" class="nav-link" href="#vntn_notificaciones" data-toggle="modal" onclick="cargar_ranking()">Clasificación</a>
+				</li>
+				<li class="nav-item">
+					<a id="btn_adm_estadisticas" role="button" class="nav-link" href="../estadisticas/">Estadísticas</a>
+				</li>
+				<li id="admSet" class="nav-item dropdown" style="display: none;">
+					<a id="btnAdmin" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+					href="#">Administracion</a>
+					<div class="dropdown-menu" aria-labelledby="btnAdmin">
+						<a id="btn_adm_ponderacion" class="dropdown-item" href="../admin/ponderacion/">Ponderación</a>
+						<a id="btn_adm_notificaciones" class="dropdown-item" href="../admin/notificaciones/">Notificaciones</a>
+						<a id="btn_adm_usuarios" class="dropdown-item" href="../admin/usuarios/">Usuarios</a>
+					</div>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="nav-item">
+					<a role="button" class="nav-link" href="#vntn_acercade" data-toggle="modal">Acerca de</a>
+				</li>
+				<li class="nav-item">
+					<a id="btn_mostrar_notificaciones" role="button" class="nav-link" href="#vntn_notificaciones" data-toggle="modal" onclick="cargar_notificaciones();">
+						Notificaciones
+						<span class="badge badge-light">0</span>
+						<span class="sr-only">unread messages</span>
+					</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a id="btn_dd_usuario_actual" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false" href="#">Usuario:</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btn_dd_usuario_actual">
+						<a id="btn_usuario_cuenta" class="dropdown-item" role="button" class="nav-link" data-toggle="modal" href="#usuario_gestion"
+						onclick="cargar_datos_usuario();">Configurar cuenta</a>
+						<a id="btn_usuario_resultados" class="dropdown-item" href='#detalles' onclick='detalles_usuario();' data-toggle='modal'>Mis resultados</a>
+						<div class="dropdown-divider"></div>
+						<div class="container">
+							<a id="btn_usuario_cerrar" class="btn btn-outline-danger" style="width: 100%;" href="#">Cerrar sesión</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</header>
 
-  <section id="principal" class="container-fluid margen_despues_nav">
-    <div class="card" style="width: auto;">
-      <div class="card-header">
-        <a id="cardFuncion">Para iniciar, vaya a la sección de ejercicios del menu principal</a>
-      </div>
-    </div>
-    <div class="container-fluid contenedorPrincipal" id="tablaContenedor">
-      <div class="row">
-        <div class="col-sm-12 col-lg-6 table-responsive">
-          <table id="tablaVerdad" class="table table-striped table-bordered table-hover">
+<section id="principal" class="container-fluid margen_despues_nav">
+	<div class="card" style="width: auto;">
+		<div class="card-header">
+			<a id="cardFuncion">Para iniciar, vaya a la sección de ejercicios del menu principal</a>
+		</div>
+	</div>
+	<div id="descripcionContenedor" class="container-fluid contenedorPrincipal" style="text-align: center;">
+		<div class="jumbotron">
+			<p><img src="../imagenes/logo-negro.svg" alt="Logo"></p>
+			<p class="lead">Este proyecto es un software didáctico que permite leer expresiones booleanas en diferentes formatos (Tablas de verdad, Mapas de Karnaugh, Funciones booleanas expresadas en mini-términos, maxi-términos o expresiones booleanas no estandarizadas), simplifica dichas expresiones, contribuyendo a mejorar el desempeño de los estudiantes que cursan carreras del área de la computación en diversas instituciones.</p>
+			<hr>
+			<div class="container" style="width: 80%; margin: 0 auto;">
+				<img style="width: 30%;" src="../imagenes/Logo-TecNM.png" class="left" alt="Tecnológico Nacional de México">
+				<img style="width: 30%;" src="../imagenes/Itmorelia.png" class="right" alt="Instituto Tecnológico de Morelia">
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid contenedorPrincipal" id="tablaContenedor">
+		<div class="row">
+			<div class="col-sm-12 col-lg-6 table-responsive">
+				<table id="tablaVerdad" class="table table-striped table-bordered table-hover">
 
-          </table>
-        </div>
+				</table>
+			</div>
 
-        <div class="col-sm-12 col-lg-6" id="respCont">
-          <div id="tablaMapaK" class="container-fluid contenedorPrincipal">
-          </div>
-          <h3>Su respuesta:</h3>
-          <div id="formSolucion" class="input-group-prepend">
-            <span class="input-group-text" id="spaninputFuncion">F=</span>
-            <input class="form-control" id="inputResp" aria-label="" type="text">
-          </div>
-          <div id="contenedorBoton" style="text-align: right;">
-          </div>
-          <div id="resulados">
-          </div>
-        </div>
-      </div>
-    </div>
+			<div class="col-sm-12 col-lg-6" id="respCont">
+				<div id="tablaMapaK" class="container-fluid contenedorPrincipal">
+				</div>
+				<div class="col-12">
+					<h3>Escribe tu respuesta:</h3>
+					<div id="formSolucion" class="input-group-prepend">
+						<span class="input-group-text" id="spaninputFuncion">F=</span>
+						<input class="form-control" id="inputResp" aria-label="" type="text">
+					</div>
+					<div id="contenedorBoton" style="text-align: right;">
+					</div>
+					<div id="contenedorProgreso" class="progress" style="display: none; margin: 1em 0;">
+						<div id="barraProgreso" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+					<div id="resulados">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-    <div id="circuitoContenedor" class="container-fluid contenedorPrincipal"></div>
-  </section>
-
-  <script src="../js/jquery.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/parser.js"></script>
-  <script src="../js/ValidarFunciones.js"></script>
-  <script src="../js/visual.js"></script>
-  <script src="../js/fun/principal.js"></script>
-  <script src="../js/fun/fun.js"></script>
-  <script src="../js/fun/qm.js"></script>
-</body>
+<audio style="display: none;" id="sonidoCorrecto">
+	<source src="../sonido/correcto.opus" type="audio/ogg">
+		<source src="../sonido/correcto.m4a" type="audio/aac">
+		</audio>
+		<audio style="display: none;" id="sonidoIncorrecto">
+			<source src="../sonido/incorrecto.opus" type="audio/ogg">
+				<source src="../sonido/incorrecto.m4a" type="audio/aac">
+				</audio>
+				<script src="../js/jquery.js"></script>
+				<script src="../js/bootstrap.min.js"></script>
+				<script src="../js/parser.js"></script>
+				<script src="../js/ValidarFunciones.js"></script>
+				<script src="../js/visual.js"></script>
+				<script src="../js/fun/principal.js"></script>
+				<script src="../js/fun/fun.js"></script>
+				<script src="../js/fun/qm.js"></script>
+			</body>
 <!--<footer>
-  <div class="card-footer text-muted">
-    <img id="logoITM" src="../imagenes/Itmorelia.png" class="rounded float-left">
-      <p class="text-center">Software elaborado para el Tecnologico Nacional de México</p>
-      <p class="text-center">Por: Michel Olvera Pérez, Jorge Luis Arreygue Avila y Alan Cruz Roblez Vazquez</p>
-      <p class="text-center">Con asesormiento del M.C José Alfredo Jiménez García</p>
-    <img id="logoTecN" src="../imagenes/Logo-TecNM.png" class="rounded float-right">
-  </div>
+	<div class="card-footer text-muted">
+		<img id="logoITM" src="../imagenes/Itmorelia.png" class="rounded float-left">
+			<p class="text-center">Software elaborado para el Tecnologico Nacional de México</p>
+			<p class="text-center">Por: Michel Olvera Pérez, Jorge Luis Arreygue Avila y Alan Cruz Roblez Vazquez</p>
+			<p class="text-center">Con asesormiento del M.C José Alfredo Jiménez García</p>
+		<img id="logoTecN" src="../imagenes/Logo-TecNM.png" class="rounded float-right">
+	</div>
 </footer>-->
 <!-- Modal de aleatorio-->
 <div class="modal fade" id="aleatorioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="labelTituloModal1">Generación aleatoria de expresión booleana</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h5 id="labelVariablesAleatorio">Variables:</h5>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="options" id="var3" autocomplete="off" checked>3
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="var4" autocomplete="off">4
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="var5" autocomplete="off">5
-          </label>
-        </div>
-        <h5 id="labelResolverporAleatorio">Resolver por:</h5>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="resolverPorAleatorio" id="inputporSumadeP" value="1" autocomplete="off" checked>
-            <span id="spanSumadeP">Suma de productos</span>
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="resolverPorAleatorio" id="inputporProddeS" value="0" autocomplete="off">
-            <span id="spanProddeS">Productos de suma</span>
-          </label>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button id="btnCerrarAleatorio" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button id="btnIniciarAleatorio" onClick="crear('#tablaVerdad',true)" type="btnIniciar" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="labelTituloModal1">Generación aleatoria de expresión booleana</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<h5 id="labelVariablesAleatorio">Variables:</h5>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label onClick="cambioVar()" id="labelVar3" class="btn btn-primary active">
+						<input type="radio"  name="options" id="var3" autocomplete="off" checked>3
+					</label>
+					<label onClick="cambioVar()" id="labelVar4" class="btn btn-primary">
+						<input type="radio" onClick="cambioVar()" name="options" id="var4" autocomplete="off">4
+					</label>
+					<label onClick="cambioVar()" id="labelVar5"  class="btn btn-primary">
+						<input type="radio" onClick="cambioVar()" name="options" id="var5" autocomplete="off">5
+					</label>
+					<label id="labelVarN" class="btn btn-primary" onclick="activarNVariablesAleatorio()">
+						<input  type="radio"  name="options" id="varn" autocomplete="off">n
+					</label>
+				</div>
+				<div class="input-group" id="inputNVariables" style="margin: 1em 0; display: none;">
+					<div class="alert alert-warning" role="alert">
+						<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> El procesamiento de más de 5 variables puede considerarse exigente para su equipo de computo. Podria no obtener resultados finales.
+					</div>
+					<span id="spaninputFuncion" class="input-group-text">n =</span>
+					<input id="NVariables" type="number" class="form-control" min="6" max="25" aria-label="Introduce numero de Variables.">
+					<div class="input-group-append">
+						<button id="cancelarNVariables" class="btn btn-danger">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<h5 id="labelResolverporAleatorio">Resolver por:</h5>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label class="btn btn-primary active">
+						<input type="radio" name="resolverPorAleatorio" id="inputporSumadeP" value="1" autocomplete="off" checked>
+						<span id="spanSumadeP">Suma de productos</span>
+					</label>
+					<label class="btn btn-primary">
+						<input type="radio" name="resolverPorAleatorio" id="inputporProddeS" value="0" autocomplete="off">
+						<span id="spanProddeS">Productos de suma</span>
+					</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="btnCerrarAleatorio" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				<button id="btnIniciarAleatorio" onclick="resultados = new Array(); crear('#tablaVerdad',true);" type="btnIniciar" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- Modal de conocido-->
 <div class="modal fade" id="conocidoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="labelTituloModal2">Simplificación de expresión booleana</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h5 id="labelVariablesConocido">Variables:</h5>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" onchange="cambioCvar()" name="options" id="Cvar3" autocomplete="off" checked>3
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" onchange="cambioCvar()" name="options" id="Cvar4" autocomplete="off">4
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" onchange="cambioCvar()" name="options" id="Cvar5" autocomplete="off">5
-          </label>
-        </div>
-        <h5 id="labelResolverporDeterministico">Resolver por:</h5>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="resolverPorDeterministico" id="inputporSumadeP" value="1" autocomplete="off" checked>
-            <span id="spanSumadeP">Suma de productos</span>
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="resolverPorDeterministico" id="inputporProddeS" value="0" autocomplete="off">
-            <span id="spanProddeS">Productos de suma</span>
-          </label>
-        </div>
-        <h5 id="datosTitulo">Datos en:</h5>
-        <div class="btn-group btn-group-md">
-          <button id="botonporFuncion" onClick="func()" class="btn btn-primary">Función</button>
-          <button id="botonporTabladeVerdad" onClick="tabla()" class="btn btn-primary">Tabla de verdad</button>
-          <button id="botonporMapaK" onclick="mapak()" class="btn btn-primary">Mapa de Karnaugh</button>
-        </div>
-        <p> </p>
-        <div id="inpFuncion">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span id="spaninputFuncion" class="input-group-text">F=</span>
-            </div>
-            <input id="inputFuncion" type="text" class="form-control" onkeyup="validarEntrada()" aria-label="">
-            <div class="invalid-feedback">
-              <p id="invalidMessage">¡Función invalida!</p>
-            </div>
-          </div>
-          <div id="teclado" class="">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="labelTituloModal2">Simplificación de expresión booleana</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<h5 id="labelVariablesConocido">Variables:</h5>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label id="labelCVar3" class="btn btn-primary active">
+						<input type="radio" onchange="cambioCvar()" name="options" id="Cvar3" autocomplete="off" checked>3
+					</label>
+					<label id="labelCVar4" class="btn btn-primary">
+						<input type="radio" onchange="cambioCvar()" name="options" id="Cvar4" autocomplete="off">4
+					</label>
+					<label id="labelCVar5" class="btn btn-primary">
+						<input type="radio" onchange="cambioCvar()" name="options" id="Cvar5" autocomplete="off">5
+					</label>
+					<label id="labelCVarN" class="btn btn-primary" onclick="activarNVariablesConocido()">
+						<input type="radio" onchange="cambioCvar()" name="options" id="CvarN" autocomplete="off">n
+					</label>
+				</div>
+				<div class="input-group" id="inputCNVariables" style="margin: 1em 0; display: none;">
+					<div class="alert alert-warning" role="alert">
+						<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> El procesamiento de más de 5 variables puede considerarse exigente para su equipo de computo. Podria no obtener resultados finales.
+					</div>
+					<span id="spaninputFuncion" class="input-group-text">n =</span>
+					<input id="CNVariables" type="number" class="form-control" min="6" max="25" aria-label="Introduce numero de Variables.">
+					<div  class="input-group-append">
+						<button id="cancelarCNVariables" class="btn btn-danger">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+				<h5 id="labelResolverporDeterministico">Resolver por:</h5>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label class="btn btn-primary active">
+						<input type="radio" name="resolverPorDeterministico" id="inputporSumadeP" value="1" autocomplete="off" checked>
+						<span id="spanSumadeP">Suma de productos</span>
+					</label>
+					<label class="btn btn-primary">
+						<input type="radio" name="resolverPorDeterministico" id="inputporProddeS" value="0" autocomplete="off">
+						<span id="spanProddeS">Productos de suma</span>
+					</label>
+				</div>
+				<h5 id="datosTitulo">Datos en:</h5>
+				<div class="btn-group btn-group-md">
+					<button id="botonporFuncion" onclick="func()" class="btn btn-primary">Función</button>
+					<button id="botonporTabladeVerdad" onclick="tabla()" class="btn btn-primary">Tabla de verdad</button>
+					<button id="botonporMapaK" onclick="mapak()" class="btn btn-primary">Mapa de Karnaugh</button>
+				</div>
+				<p> </p>
+				<div id="inpFuncion">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span id="spaninputFuncion" class="input-group-text">F=</span>
+						</div>
+						<input id="inputFuncion" type="text" class="form-control" onkeyup="validarEntrada()" aria-label="">
+						<div class="invalid-feedback">
+							<p id="invalidMessage">¡Función invalida!</p>
+						</div>
+					</div>
+					<div id="teclado" class="">
+						<div class="card">
+							<div  id="mensajef" class="alert alert-warning" role="alert">
+								<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>La letra F es un caracter reservado.
+							</div>
+							<div class="card-body">
+								<h5 id="ejemplos" class="card-title">Ejemplos de escritura permitida</h5>
+								<h6 class="card-subtitle mb-2 text-muted"></h6>
+								<p class="card-text">
+									<div class="card">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item">F= AB'C+A'BC+A'C'</li>
+											<li class="list-group-item">F= (A+B+C')(A'+B'+C)</li>
+											<li class="list-group-item">F= B((C'+DB)'+AB(D+EA))'</li>
+										</ul>
+									</div>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
 
+				<div id="inpTabla">
+					<div id="tablaContenedorMini" class="table-responsive">
+						<table id="tablaVerdadMini" class="table table-striped table-bordered table-hover">
 
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Escritura permitida</h5>
-                <h6 class="card-subtitle mb-2 text-muted"></h6>
-                <p class="card-text">
-                  <div class="card">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Variables:
-                        <div class="btn-group btn-group-md">
-                          <button id="teclaA" onclick="teclaAClick()" class="btn btn-primary">A</button>
-                          <button id="teclaB" onclick="teclaBClick()" class="btn btn-primary">B</button>
-                          <button id="teclaC" onclick="teclaCClick()" class="btn btn-primary">C</button>
-                          <button id="teclaD" onclick="teclaDClick()" class="btn btn-primary">D</button>
-                          <button id="teclaE" onclick="teclaEClick()" class="btn btn-primary">E</button>
-                        </div>
-                      </li>
-                      <li class="list-group-item">Operadores:
-                        <div class="btn-group btn-group-md">
-                          <button id="" class="btn btn-primary">(AB)</button>
-                          <button id="" class="btn btn-primary">A'</button>
-                          <button id="" class="btn btn-primary">AB</button>
-                          <!--<button id=""  class="btn btn-primary">A^B</button>-->
-                          <button id="" class="btn btn-primary">A+B</button>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+						</table>
+					</div>
+				</div>
+				<div id="tablaMapaKMini" class="container">
 
-        <div id="inpTabla">
-          <div id="tablaContenedorMini" class="table-responsive">
-            <table id="tablaVerdadMini" class="table table-striped table-bordered table-hover">
+				</div>
+				<div class="modal-footer">
+					<button id="btnCerrarConocido" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					<button id="btnIniciarConocido" onclick="resultados = new Array();crear('#tablaVerdad',false);" type="button" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
+				</div>
 
-            </table>
-          </div>
-        </div>
-        <div id="tablaMapaKMini" class="container">
-
-        </div>
-        <div class="modal-footer">
-          <button id="btnCerrarConocido" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button id="btnIniciarConocido" onClick="crear('#tablaVerdad',false)" type="button" data-dismiss="modal" class="btn btn-primary">Iniciar</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- Modal notificaciones-->
 <div class="modal fade" id="vntn_notificaciones">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="text_titulo_notificaciones_principal" class="modal-title">Notificaciones</h3>
-        <button id="btn_cerrar_notificaciones_principal" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      </div>
-      <div class="modal-body">
-        <table id="lista_notificaciones">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 id="text_titulo_notificaciones_principal" class="modal-title">Notificaciones</h3>
+				<button id="btn_cerrar_notificaciones_principal" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<table id="lista_notificaciones">
 
-        </table>
-      </div>
-    </div>
-  </div>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Modal para que el usuario gestione sus propios datos -->
-
 <div class="modal fade" id="usuario_gestion">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="text_titulo_usuario_gestion" class="modal-title">Actualizar Usuario</h3>
-        <button id="btn_cerrar_usuario_gestion" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label id="lb_usuario_gestion" for="in_usuario_gestion" class="font-weight-bold">Usuario</label>
-          <input type="text" id="in_usuario_gestion" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label id="lb_nombre_gestion" for="in_nombre_act_gestion" class="font-weight-bold">Nombre</label>
-          <input type="text" id="in_nombre_act_gestion" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label id="lb_apellido_pat_gestion" for="in_apellido_pat_act_gestion" class="font-weight-bold">Apellido paterno</label>
-          <input type="text" id="in_apellido_pat_act_gestion" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label id="lb_apellido_mat_gestion" for="in_apellido_mat_act_gestion" class="font-weight-bold">Apellido materno</label>
-          <input type="text" id="in_apellido_mat_act_gestion" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label id="lb_correo_gestion" for="in_correo_act_gestion" class="font-weight-bold">Correo electrónico</label>
-          <input type="email" id="in_correo_act_gestion" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label id="lb_pais_gestion" for="combo_pais_act_gestion" class="font-weight-bold">País</label>
-          <select class="custom-select mr-sm-2" id="combo_pais_act_gestion">
-            <option value="AF">Afganistán</option>
-            <option value="AL">Albania</option>
-            <option value="DE">Alemania</option>
-            <option value="AD">Andorra</option>
-            <option value="AO">Angola</option>
-            <option value="AI">Anguilla</option>
-            <option value="AQ">Antártida</option>
-            <option value="AG">Antigua y Barbuda</option>
-            <option value="AN">Antillas Holandesas</option>
-            <option value="SA">Arabia Saudí</option>
-            <option value="DZ">Argelia</option>
-            <option value="AR">Argentina</option>
-            <option value="AM">Armenia</option>
-            <option value="AW">Aruba</option>
-            <option value="AU">Australia</option>
-            <option value="AT">Austria</option>
-            <option value="AZ">Azerbaiyán</option>
-            <option value="BS">Bahamas</option>
-            <option value="BH">Bahrein</option>
-            <option value="BD">Bangladesh</option>
-            <option value="BB">Barbados</option>
-            <option value="BE">Bélgica</option>
-            <option value="BZ">Belice</option>
-            <option value="BJ">Benin</option>
-            <option value="BM">Bermudas</option>
-            <option value="BY">Bielorrusia</option>
-            <option value="MM">Birmania</option>
-            <option value="BO">Bolivia</option>
-            <option value="BA">Bosnia y Herzegovina</option>
-            <option value="BW">Botswana</option>
-            <option value="BR">Brasil</option>
-            <option value="BN">Brunei</option>
-            <option value="BG">Bulgaria</option>
-            <option value="BF">Burkina Faso</option>
-            <option value="BI">Burundi</option>
-            <option value="BT">Bután</option>
-            <option value="CV">Cabo Verde</option>
-            <option value="KH">Camboya</option>
-            <option value="CM">Camerún</option>
-            <option value="CA">Canadá</option>
-            <option value="TD">Chad</option>
-            <option value="CL">Chile</option>
-            <option value="CN">China</option>
-            <option value="CY">Chipre</option>
-            <option value="VA">Ciudad del Vaticano (Santa Sede)</option>
-            <option value="CO">Colombia</option>
-            <option value="KM">Comores</option>
-            <option value="CG">Congo</option>
-            <option value="CD">Congo, República Democrática del</option>
-            <option value="KR">Corea</option>
-            <option value="KP">Corea del Norte</option>
-            <option value="CI">Costa de Marfíl</option>
-            <option value="CR">Costa Rica</option>
-            <option value="HR">Croacia (Hrvatska)</option>
-            <option value="CU">Cuba</option>
-            <option value="DK">Dinamarca</option>
-            <option value="DJ">Djibouti</option>
-            <option value="DM">Dominica</option>
-            <option value="EC">Ecuador</option>
-            <option value="EG">Egipto</option>
-            <option value="SV">El Salvador</option>
-            <option value="AE">Emiratos Árabes Unidos</option>
-            <option value="ER">Eritrea</option>
-            <option value="SI">Eslovenia</option>
-            <option value="ES">España</option>
-            <option value="US">Estados Unidos</option>
-            <option value="EE">Estonia</option>
-            <option value="ET">Etiopía</option>
-            <option value="FJ">Fiji</option>
-            <option value="PH">Filipinas</option>
-            <option value="FI">Finlandia</option>
-            <option value="FR">Francia</option>
-            <option value="GA">Gabón</option>
-            <option value="GM">Gambia</option>
-            <option value="GE">Georgia</option>
-            <option value="GH">Ghana</option>
-            <option value="GI">Gibraltar</option>
-            <option value="GD">Granada</option>
-            <option value="GR">Grecia</option>
-            <option value="GL">Groenlandia</option>
-            <option value="GP">Guadalupe</option>
-            <option value="GU">Guam</option>
-            <option value="GT">Guatemala</option>
-            <option value="GY">Guayana</option>
-            <option value="GF">Guayana Francesa</option>
-            <option value="GN">Guinea</option>
-            <option value="GQ">Guinea Ecuatorial</option>
-            <option value="GW">Guinea-Bissau</option>
-            <option value="HT">Haití</option>
-            <option value="HN">Honduras</option>
-            <option value="HU">Hungría</option>
-            <option value="IN">India</option>
-            <option value="ID">Indonesia</option>
-            <option value="IQ">Irak</option>
-            <option value="IR">Irán</option>
-            <option value="IE">Irlanda</option>
-            <option value="BV">Isla Bouvet</option>
-            <option value="CX">Isla de Christmas</option>
-            <option value="IS">Islandia</option>
-            <option value="KY">Islas Caimán</option>
-            <option value="CK">Islas Cook</option>
-            <option value="CC">Islas de Cocos o Keeling</option>
-            <option value="FO">Islas Faroe</option>
-            <option value="HM">Islas Heard y McDonald</option>
-            <option value="FK">Islas Malvinas</option>
-            <option value="MP">Islas Marianas del Norte</option>
-            <option value="MH">Islas Marshall</option>
-            <option value="UM">Islas menores de Estados Unidos</option>
-            <option value="PW">Islas Palau</option>
-            <option value="SB">Islas Salomón</option>
-            <option value="SJ">Islas Svalbard y Jan Mayen</option>
-            <option value="TK">Islas Tokelau</option>
-            <option value="TC">Islas Turks y Caicos</option>
-            <option value="VI">Islas Vírgenes (EEUU)</option>
-            <option value="VG">Islas Vírgenes (Reino Unido)</option>
-            <option value="WF">Islas Wallis y Futuna</option>
-            <option value="IL">Israel</option>
-            <option value="IT">Italia</option>
-            <option value="JM">Jamaica</option>
-            <option value="JP">Japón</option>
-            <option value="JO">Jordania</option>
-            <option value="KZ">Kazajistán</option>
-            <option value="KE">Kenia</option>
-            <option value="KG">Kirguizistán</option>
-            <option value="KI">Kiribati</option>
-            <option value="KW">Kuwait</option>
-            <option value="LA">Laos</option>
-            <option value="LS">Lesotho</option>
-            <option value="LV">Letonia</option>
-            <option value="LB">Líbano</option>
-            <option value="LR">Liberia</option>
-            <option value="LY">Libia</option>
-            <option value="LI">Liechtenstein</option>
-            <option value="LT">Lituania</option>
-            <option value="LU">Luxemburgo</option>
-            <option value="MK">Macedonia, Ex-República Yugoslava de</option>
-            <option value="MG">Madagascar</option>
-            <option value="MY">Malasia</option>
-            <option value="MW">Malawi</option>
-            <option value="MV">Maldivas</option>
-            <option value="ML">Malí</option>
-            <option value="MT">Malta</option>
-            <option value="MA">Marruecos</option>
-            <option value="MQ">Martinica</option>
-            <option value="MU">Mauricio</option>
-            <option value="MR">Mauritania</option>
-            <option value="YT">Mayotte</option>
-            <option value="MX" selected>México</option>
-            <option value="FM">Micronesia</option>
-            <option value="MD">Moldavia</option>
-            <option value="MC">Mónaco</option>
-            <option value="MN">Mongolia</option>
-            <option value="MS">Montserrat</option>
-            <option value="MZ">Mozambique</option>
-            <option value="NA">Namibia</option>
-            <option value="NR">Nauru</option>
-            <option value="NP">Nepal</option>
-            <option value="NI">Nicaragua</option>
-            <option value="NE">Níger</option>
-            <option value="NG">Nigeria</option>
-            <option value="NU">Niue</option>
-            <option value="NF">Norfolk</option>
-            <option value="NO">Noruega</option>
-            <option value="NC">Nueva Caledonia</option>
-            <option value="NZ">Nueva Zelanda</option>
-            <option value="OM">Omán</option>
-            <option value="NL">Países Bajos</option>
-            <option value="PA">Panamá</option>
-            <option value="PG">Papúa Nueva Guinea</option>
-            <option value="PK">Paquistán</option>
-            <option value="PY">Paraguay</option>
-            <option value="PE">Perú</option>
-            <option value="PN">Pitcairn</option>
-            <option value="PF">Polinesia Francesa</option>
-            <option value="PL">Polonia</option>
-            <option value="PT">Portugal</option>
-            <option value="PR">Puerto Rico</option>
-            <option value="QA">Qatar</option>
-            <option value="UK">Reino Unido</option>
-            <option value="CF">República Centroafricana</option>
-            <option value="CZ">República Checa</option>
-            <option value="ZA">República de Sudáfrica</option>
-            <option value="DO">República Dominicana</option>
-            <option value="SK">República Eslovaca</option>
-            <option value="RE">Reunión</option>
-            <option value="RW">Ruanda</option>
-            <option value="RO">Rumania</option>
-            <option value="RU">Rusia</option>
-            <option value="EH">Sahara Occidental</option>
-            <option value="KN">Saint Kitts y Nevis</option>
-            <option value="WS">Samoa</option>
-            <option value="AS">Samoa Americana</option>
-            <option value="SM">San Marino</option>
-            <option value="VC">San Vicente y Granadinas</option>
-            <option value="SH">Santa Helena</option>
-            <option value="LC">Santa Lucía</option>
-            <option value="ST">Santo Tomé y Príncipe</option>
-            <option value="SN">Senegal</option>
-            <option value="SC">Seychelles</option>
-            <option value="SL">Sierra Leona</option>
-            <option value="SG">Singapur</option>
-            <option value="SY">Siria</option>
-            <option value="SO">Somalia</option>
-            <option value="LK">Sri Lanka</option>
-            <option value="PM">St Pierre y Miquelon</option>
-            <option value="SZ">Suazilandia</option>
-            <option value="SD">Sudán</option>
-            <option value="SE">Suecia</option>
-            <option value="CH">Suiza</option>
-            <option value="SR">Surinam</option>
-            <option value="TH">Tailandia</option>
-            <option value="TW">Taiwán</option>
-            <option value="TZ">Tanzania</option>
-            <option value="TJ">Tayikistán</option>
-            <option value="TF">Territorios franceses del Sur</option>
-            <option value="TP">Timor Oriental</option>
-            <option value="TG">Togo</option>
-            <option value="TO">Tonga</option>
-            <option value="TT">Trinidad y Tobago</option>
-            <option value="TN">Túnez</option>
-            <option value="TM">Turkmenistán</option>
-            <option value="TR">Turquía</option>
-            <option value="TV">Tuvalu</option>
-            <option value="UA">Ucrania</option>
-            <option value="UG">Uganda</option>
-            <option value="UY">Uruguay</option>
-            <option value="UZ">Uzbekistán</option>
-            <option value="VU">Vanuatu</option>
-            <option value="VE">Venezuela</option>
-            <option value="VN">Vietnam</option>
-            <option value="YE">Yemen</option>
-            <option value="YU">Yugoslavia</option>
-            <option value="ZM">Zambia</option>
-            <option value="ZW">Zimbabue</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <div>
-            <span id="sp_estudiante_gestion" class="font-weight-bold">¿Eres estudiante?</span>
-          </div>
-          <div>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" id="in_estudia_si_gestion" name="in_estudia_si_gestion" class="custom-control-input" value="1">
-              <label id="lb_estudia_si_gestion" class="custom-control-label" for="in_estudia_si_gestion">Si</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" id="in_estudia_no_gestion" name="in_estudia_si_gestion" class="custom-control-input" value="0" checked>
-              <label id="lb_estudia_no_gestion" class="custom-control-label" for="in_estudia_no_gestion">No</label>
-            </div>
-          </div>
-          <div id="PreguntasEstudiante_gestion" style="display: none;">
-            <div class="form-group">
-              <label id="lb_escuela_gestion" for="in_escuela_act_gestion" class="font-weight-bold">Escuela</label>
-              <input type="text" id="in_escuela_act_gestion" class="form-control" placeholder="Nombre de la escuela">
-            </div>
-            <div class="form-group">
-              <label id="lb_carrera_gestion" for="in_carrera_act_gestion" class="font-weight-bold">Especialidad o licenciatura</label>
-              <input type="text" id="in_carrera_act_gestion" class="form-control" placeholder="Nombre de la especialidad o licenciatura">
-            </div>
-            <div class="form-group">
-              <label id="lb_semestre_gestion" for="in_semestre_act_gestion" class="font-weight-bold">Semestre</label>
-              <input type="number" min="1" max="20" id="in_semestre_act_gestion" class="form-control" placeholder="Número de semestre">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button id="btn_guardar_acualizar_gestion" class="btn btn-md btn-outline-success" onclick="guardar_datos_usuario();">Guardar</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 id="text_titulo_usuario_gestion" class="modal-title">Actualizar Usuario</h3>
+				<button id="btn_cerrar_usuario_gestion" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label id="lb_usuario_gestion" for="in_usuario_gestion" class="font-weight-bold">Usuario</label>
+					<input type="text" id="in_usuario_gestion" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label id="lb_nombre_gestion" for="in_nombre_act_gestion" class="font-weight-bold">Nombre</label>
+					<input type="text" id="in_nombre_act_gestion" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label id="lb_apellido_pat_gestion" for="in_apellido_pat_act_gestion" class="font-weight-bold">Apellido paterno</label>
+					<input type="text" id="in_apellido_pat_act_gestion" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label id="lb_apellido_mat_gestion" for="in_apellido_mat_act_gestion" class="font-weight-bold">Apellido materno</label>
+					<input type="text" id="in_apellido_mat_act_gestion" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label id="lb_correo_gestion" for="in_correo_act_gestion" class="font-weight-bold">Correo electrónico</label>
+					<input type="email" id="in_correo_act_gestion" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label id="lb_contrasenia_gestion" for="in_contrasenia_act_gestion" class="font-weight-bold">Contraseña</label>
+					<input type="password" id="in_contrasenia_act_gestion" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label id="lb_pais_gestion" for="combo_pais_act_gestion" class="font-weight-bold">País</label>
+					<select class="custom-select mr-sm-2" id="combo_pais_act_gestion">
+						<option value="AF">Afganistán</option>
+						<option value="AL">Albania</option>
+						<option value="DE">Alemania</option>
+						<option value="AD">Andorra</option>
+						<option value="AO">Angola</option>
+						<option value="AI">Anguilla</option>
+						<option value="AQ">Antártida</option>
+						<option value="AG">Antigua y Barbuda</option>
+						<option value="AN">Antillas Holandesas</option>
+						<option value="SA">Arabia Saudí</option>
+						<option value="DZ">Argelia</option>
+						<option value="AR">Argentina</option>
+						<option value="AM">Armenia</option>
+						<option value="AW">Aruba</option>
+						<option value="AU">Australia</option>
+						<option value="AT">Austria</option>
+						<option value="AZ">Azerbaiyán</option>
+						<option value="BS">Bahamas</option>
+						<option value="BH">Bahrein</option>
+						<option value="BD">Bangladesh</option>
+						<option value="BB">Barbados</option>
+						<option value="BE">Bélgica</option>
+						<option value="BZ">Belice</option>
+						<option value="BJ">Benin</option>
+						<option value="BM">Bermudas</option>
+						<option value="BY">Bielorrusia</option>
+						<option value="MM">Birmania</option>
+						<option value="BO">Bolivia</option>
+						<option value="BA">Bosnia y Herzegovina</option>
+						<option value="BW">Botswana</option>
+						<option value="BR">Brasil</option>
+						<option value="BN">Brunei</option>
+						<option value="BG">Bulgaria</option>
+						<option value="BF">Burkina Faso</option>
+						<option value="BI">Burundi</option>
+						<option value="BT">Bután</option>
+						<option value="CV">Cabo Verde</option>
+						<option value="KH">Camboya</option>
+						<option value="CM">Camerún</option>
+						<option value="CA">Canadá</option>
+						<option value="TD">Chad</option>
+						<option value="CL">Chile</option>
+						<option value="CN">China</option>
+						<option value="CY">Chipre</option>
+						<option value="VA">Ciudad del Vaticano (Santa Sede)</option>
+						<option value="CO">Colombia</option>
+						<option value="KM">Comores</option>
+						<option value="CG">Congo</option>
+						<option value="CD">Congo, República Democrática del</option>
+						<option value="KR">Corea</option>
+						<option value="KP">Corea del Norte</option>
+						<option value="CI">Costa de Marfíl</option>
+						<option value="CR">Costa Rica</option>
+						<option value="HR">Croacia (Hrvatska)</option>
+						<option value="CU">Cuba</option>
+						<option value="DK">Dinamarca</option>
+						<option value="DJ">Djibouti</option>
+						<option value="DM">Dominica</option>
+						<option value="EC">Ecuador</option>
+						<option value="EG">Egipto</option>
+						<option value="SV">El Salvador</option>
+						<option value="AE">Emiratos Árabes Unidos</option>
+						<option value="ER">Eritrea</option>
+						<option value="SI">Eslovenia</option>
+						<option value="ES">España</option>
+						<option value="US">Estados Unidos</option>
+						<option value="EE">Estonia</option>
+						<option value="ET">Etiopía</option>
+						<option value="FJ">Fiji</option>
+						<option value="PH">Filipinas</option>
+						<option value="FI">Finlandia</option>
+						<option value="FR">Francia</option>
+						<option value="GA">Gabón</option>
+						<option value="GM">Gambia</option>
+						<option value="GE">Georgia</option>
+						<option value="GH">Ghana</option>
+						<option value="GI">Gibraltar</option>
+						<option value="GD">Granada</option>
+						<option value="GR">Grecia</option>
+						<option value="GL">Groenlandia</option>
+						<option value="GP">Guadalupe</option>
+						<option value="GU">Guam</option>
+						<option value="GT">Guatemala</option>
+						<option value="GY">Guayana</option>
+						<option value="GF">Guayana Francesa</option>
+						<option value="GN">Guinea</option>
+						<option value="GQ">Guinea Ecuatorial</option>
+						<option value="GW">Guinea-Bissau</option>
+						<option value="HT">Haití</option>
+						<option value="HN">Honduras</option>
+						<option value="HU">Hungría</option>
+						<option value="IN">India</option>
+						<option value="ID">Indonesia</option>
+						<option value="IQ">Irak</option>
+						<option value="IR">Irán</option>
+						<option value="IE">Irlanda</option>
+						<option value="BV">Isla Bouvet</option>
+						<option value="CX">Isla de Christmas</option>
+						<option value="IS">Islandia</option>
+						<option value="KY">Islas Caimán</option>
+						<option value="CK">Islas Cook</option>
+						<option value="CC">Islas de Cocos o Keeling</option>
+						<option value="FO">Islas Faroe</option>
+						<option value="HM">Islas Heard y McDonald</option>
+						<option value="FK">Islas Malvinas</option>
+						<option value="MP">Islas Marianas del Norte</option>
+						<option value="MH">Islas Marshall</option>
+						<option value="UM">Islas menores de Estados Unidos</option>
+						<option value="PW">Islas Palau</option>
+						<option value="SB">Islas Salomón</option>
+						<option value="SJ">Islas Svalbard y Jan Mayen</option>
+						<option value="TK">Islas Tokelau</option>
+						<option value="TC">Islas Turks y Caicos</option>
+						<option value="VI">Islas Vírgenes (EEUU)</option>
+						<option value="VG">Islas Vírgenes (Reino Unido)</option>
+						<option value="WF">Islas Wallis y Futuna</option>
+						<option value="IL">Israel</option>
+						<option value="IT">Italia</option>
+						<option value="JM">Jamaica</option>
+						<option value="JP">Japón</option>
+						<option value="JO">Jordania</option>
+						<option value="KZ">Kazajistán</option>
+						<option value="KE">Kenia</option>
+						<option value="KG">Kirguizistán</option>
+						<option value="KI">Kiribati</option>
+						<option value="KW">Kuwait</option>
+						<option value="LA">Laos</option>
+						<option value="LS">Lesotho</option>
+						<option value="LV">Letonia</option>
+						<option value="LB">Líbano</option>
+						<option value="LR">Liberia</option>
+						<option value="LY">Libia</option>
+						<option value="LI">Liechtenstein</option>
+						<option value="LT">Lituania</option>
+						<option value="LU">Luxemburgo</option>
+						<option value="MK">Macedonia, Ex-República Yugoslava de</option>
+						<option value="MG">Madagascar</option>
+						<option value="MY">Malasia</option>
+						<option value="MW">Malawi</option>
+						<option value="MV">Maldivas</option>
+						<option value="ML">Malí</option>
+						<option value="MT">Malta</option>
+						<option value="MA">Marruecos</option>
+						<option value="MQ">Martinica</option>
+						<option value="MU">Mauricio</option>
+						<option value="MR">Mauritania</option>
+						<option value="YT">Mayotte</option>
+						<option value="MX" selected>México</option>
+						<option value="FM">Micronesia</option>
+						<option value="MD">Moldavia</option>
+						<option value="MC">Mónaco</option>
+						<option value="MN">Mongolia</option>
+						<option value="MS">Montserrat</option>
+						<option value="MZ">Mozambique</option>
+						<option value="NA">Namibia</option>
+						<option value="NR">Nauru</option>
+						<option value="NP">Nepal</option>
+						<option value="NI">Nicaragua</option>
+						<option value="NE">Níger</option>
+						<option value="NG">Nigeria</option>
+						<option value="NU">Niue</option>
+						<option value="NF">Norfolk</option>
+						<option value="NO">Noruega</option>
+						<option value="NC">Nueva Caledonia</option>
+						<option value="NZ">Nueva Zelanda</option>
+						<option value="OM">Omán</option>
+						<option value="NL">Países Bajos</option>
+						<option value="PA">Panamá</option>
+						<option value="PG">Papúa Nueva Guinea</option>
+						<option value="PK">Paquistán</option>
+						<option value="PY">Paraguay</option>
+						<option value="PE">Perú</option>
+						<option value="PN">Pitcairn</option>
+						<option value="PF">Polinesia Francesa</option>
+						<option value="PL">Polonia</option>
+						<option value="PT">Portugal</option>
+						<option value="PR">Puerto Rico</option>
+						<option value="QA">Qatar</option>
+						<option value="UK">Reino Unido</option>
+						<option value="CF">República Centroafricana</option>
+						<option value="CZ">República Checa</option>
+						<option value="ZA">República de Sudáfrica</option>
+						<option value="DO">República Dominicana</option>
+						<option value="SK">República Eslovaca</option>
+						<option value="RE">Reunión</option>
+						<option value="RW">Ruanda</option>
+						<option value="RO">Rumania</option>
+						<option value="RU">Rusia</option>
+						<option value="EH">Sahara Occidental</option>
+						<option value="KN">Saint Kitts y Nevis</option>
+						<option value="WS">Samoa</option>
+						<option value="AS">Samoa Americana</option>
+						<option value="SM">San Marino</option>
+						<option value="VC">San Vicente y Granadinas</option>
+						<option value="SH">Santa Helena</option>
+						<option value="LC">Santa Lucía</option>
+						<option value="ST">Santo Tomé y Príncipe</option>
+						<option value="SN">Senegal</option>
+						<option value="SC">Seychelles</option>
+						<option value="SL">Sierra Leona</option>
+						<option value="SG">Singapur</option>
+						<option value="SY">Siria</option>
+						<option value="SO">Somalia</option>
+						<option value="LK">Sri Lanka</option>
+						<option value="PM">St Pierre y Miquelon</option>
+						<option value="SZ">Suazilandia</option>
+						<option value="SD">Sudán</option>
+						<option value="SE">Suecia</option>
+						<option value="CH">Suiza</option>
+						<option value="SR">Surinam</option>
+						<option value="TH">Tailandia</option>
+						<option value="TW">Taiwán</option>
+						<option value="TZ">Tanzania</option>
+						<option value="TJ">Tayikistán</option>
+						<option value="TF">Territorios franceses del Sur</option>
+						<option value="TP">Timor Oriental</option>
+						<option value="TG">Togo</option>
+						<option value="TO">Tonga</option>
+						<option value="TT">Trinidad y Tobago</option>
+						<option value="TN">Túnez</option>
+						<option value="TM">Turkmenistán</option>
+						<option value="TR">Turquía</option>
+						<option value="TV">Tuvalu</option>
+						<option value="UA">Ucrania</option>
+						<option value="UG">Uganda</option>
+						<option value="UY">Uruguay</option>
+						<option value="UZ">Uzbekistán</option>
+						<option value="VU">Vanuatu</option>
+						<option value="VE">Venezuela</option>
+						<option value="VN">Vietnam</option>
+						<option value="YE">Yemen</option>
+						<option value="YU">Yugoslavia</option>
+						<option value="ZM">Zambia</option>
+						<option value="ZW">Zimbabue</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<div>
+						<span id="sp_estudiante_gestion" class="font-weight-bold">¿Eres estudiante?</span>
+					</div>
+					<div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="in_estudia_si_gestion" name="in_estudia_si_gestion" class="custom-control-input" value="1">
+							<label id="lb_estudia_si_gestion" class="custom-control-label" for="in_estudia_si_gestion">Si</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="in_estudia_no_gestion" name="in_estudia_si_gestion" class="custom-control-input" value="0" checked>
+							<label id="lb_estudia_no_gestion" class="custom-control-label" for="in_estudia_no_gestion">No</label>
+						</div>
+					</div>
+					<div id="PreguntasEstudiante_gestion" style="display: none;">
+						<div class="form-group">
+							<label id="lb_escuela_gestion" for="in_escuela_act_gestion" class="font-weight-bold">Escuela</label>
+							<input type="text" id="in_escuela_act_gestion" class="form-control" placeholder="Nombre de la escuela">
+						</div>
+						<div class="form-group">
+							<label id="lb_carrera_gestion" for="in_carrera_act_gestion" class="font-weight-bold">Especialidad o licenciatura</label>
+							<input type="text" id="in_carrera_act_gestion" class="form-control" placeholder="Nombre de la especialidad o licenciatura">
+						</div>
+						<div class="form-group">
+							<label id="lb_semestre_gestion" for="in_semestre_act_gestion" class="font-weight-bold">Semestre</label>
+							<input type="number" min="1" max="20" id="in_semestre_act_gestion" class="form-control" placeholder="Número de semestre">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="btn_guardar_acualizar_gestion" class="btn btn-md btn-outline-success" onclick="guardar_datos_usuario();">Guardar</button>
+			</div>
+		</div>
+	</div>
 </div>
 <!--modal de detalles usuario-->
 <div class="modal fade" id="detalles">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="text_titulo_detalles" class="modal-title">Detalles</h3>
-        <button id="btn_cerrar_detalles" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group" id="body_modal_detalles">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 id="text_titulo_detalles" class="modal-title">Detalles</h3>
+				<button id="btn_cerrar_detalles" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group" id="body_modal_detalles">
 
-        </div>
-      </div>
-    </div>
-  </div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
+<!-- Modal acerca de-->
+<div class="modal fade" id="vntn_acercade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 id="text_titulo_acercade_principal" class="modal-title">Acerca de:</h3>
+				<button id="btn_cerrar_acercade_principal" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body" style="text-align: center;">
+				<p><img src="../imagenes/logo-negro.svg" alt="Logo"></p>
+				<p>Este proyecto es un software didáctico que permite leer expresiones booleanas en diferentes formatos (Tablas de verdad, Mapas de Karnaugh, Funciones booleanas expresadas en mini-términos, maxi-términos o expresiones booleanas no estandarizadas), simplifica dichas expresiones, contribuyendo a mejorar el desempeño de los estudiantes que cursan carreras del área de la computación en diversas instituciones.</p>
+				<p><strong>Profesores colaboradores del proyecto:</strong></p>
+				<p>
+					<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/profesores/josealfredo.jpg">
+					<a href="mailto:jjimenez@itmorelia.edu.mx">M.C. JOSE ALFREDO JIMÉNEZ MURILLO</a><br>
+					<span>Obtuvo el título de Ingeniero Industrial Mecánico por el Tecnológico Nacional de México, Campus Instituto Tecnológico de Morelia (ITM). Maestría en Cómputo aplicado por el Colegio de Postgraduados en Montecillo Edo. de México. Maestría en Ciencias en la Enseñanza de las ciencias por el CIIDET Querétaro Qro., Mex. Autor de los libros “Matemáticas para la Computación” y “Fundamentos de programación” de la Editorial Alfaomega. Autor también del libro “Matemáticas para informática” de la Editorial Marcombo.  Maestro Titular de la asignatura “Matemáticas discretas” en la carrera de Ingeniería en Sistemas Computacionales en el ITM.</span>
+				</p>
+				<p>
+					<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/profesores/octavio.jpg">
+					<a href="mailto:octavioortiz@itmorelia.edu.mx">DR. OCTAVIO SALUD ORTIZ ORTIZ</a><br>
+					<span>Doctorado en Tecnologías de la Información y las Comunicaciones por la Universidad Politécnica de Cartagena, España.  Obtención de la mención "Cum Laude". Profesor con Perfil Deseable, período 2017-2019. Miembro del Sistema Nacional de Investigadores distinción 	"Candidato", período 2018-2020.
+					</span>
+				</p>
+				<p>
+					<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/profesores/Nelly.jpg">
+					<a href="mailto:alvarado@itmorelia.edu.mx">M.A. LAURA NELLY ALVARADO ZAMORA</a><br>
+					<span>Maestría en Administración Orientada a los Sistemas por la Universidad Michoacana de San Nicolás de Hidalgo. Desde 1997 profesora de tiempo completo en el Tecnológico Nacional de México campus Instituto Tecnológico de Morelia, impartiendo materias relacionadas con el área de programación y desarrollo de software, además de desempeñar otros cargos como coordinadora del Diplomado en informática, Coordinadora del PADHIE (Programa Académico para el Desarrollo de Habilidades en Idiomas Extranjeros), Secretaria de la Academia de Sistemas y Computación y actualmente Coordinadora de la carrera de Ingeniería en Sistemas Computacionales.
+					</span>
+				</p>
+				<p>
+					<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/profesores/erendira.jpg">
+					<a href="mailto:emjimenezh@gmail.com">DR (C). ERÉNDIRA MIRIAM JIMÉNEZ HERNÁNDEZ</a><br>
+					<span>Obtuvo el título de Ingeniera en Sistemas Computacionales, con mención honorífica, en el Instituto Tecnológico de Morelia (ITM), y el grado de Maestría en Ciencias de la Computación en el Centro de Investigación en Computación (CIC), del Instituto Politécnico Nacional (IPN). Actualmente es candidata al grado de Doctor en Ingeniería de la Computación, en la Universidad Nacional Autónoma de México (UNAM). Es autora del libro “Fundamentos de programación” de la editorial Alfaomega.
+					</span>
+				</p>
+				<p><strong>Desarrolladores:</strong></p>
+				<p><img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/desarrolladores/jlaa.jpg">
+					<a href="mailto:coke_1224@hotmail.com">JORGE LUIS ARREYGUE ÁVILA</a> <strong>(UI,Function Parser)</strong><br>
+					<span>Estudiante de ultimo semestre de Ingeniera en Sistemas Computacionales, en el Instituto Tecnológico de Morelia (ITM), estudiante en la especialidad de Tecnologias Web. Interesado en el ambito del desarrollo web aplicado. Certificado en Java por Develop. Constancias en 	Unity, programación en C# y Swift por parte del ITM. Experencia en ambientes de trabajo con la tecnologia .NET y en SGBD de Microsoft SQL Server.
+					</span>
+				</p>
+				<p><img class="img-thumbnail mx-auto d-block" style="width: 150px; height: 150px;" src="../imagenes/desarrolladores/meop.png">
+					<a href="mailto:michelolvera@icloud.com">MICHEL ENRIQUE OLVERA PEREZ</a> <strong>(UI, Quine–McCluskey, Método de Petrick)</strong><br>
+					<span>
+						Estudiante de último semestre de ingeniería en sistemas en el Instituto Tecnológico de Morelia (ITM), especializado en ingeniería de software, apasionado por la tecnología y las metodologías. Experiencia en Java, C#, C/C++, Kotling, JS, SQL (MySQL, MariaDB, SQL Server) y entusiasta de Rust.
+					</span></p>
+					<p><img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="../imagenes/desarrolladores/acrv.png">
+						<a href="mailto:alan.cruzrv@gmail.com/">ALAN CRUZ ROBLES VAZQUEZ</a> <strong>(UI, DB)</strong>
+						<span>Estudiante de ultimo semestre de Ingeniera en Sistemas Computacionales, en el Instituto Tecnológico de Morelia (ITM), estudiante en la especialidad de Ingeniería de Software. Con conocimientos de programación en Java, JNI, C#, .NET, C++, C, Android, en SGBD de Microsoft SQL Server 2008.</span>		
+					</p>
+					<p><strong>Agradecimientos especiales:</strong><br>
+						<strong>Tecnológico Nacional de México</strong><br>
+						<a href="http://tecnm.mx/"><img src="../imagenes/Logo-TecNM.png"></a><br>
+						<strong>Instituto Tecnológico de Morelia</strong><br>
+						<a href="http://www.itmorelia.edu.mx/"><img src="../imagenes/Itmorelia.png"></a><br>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </html>
+

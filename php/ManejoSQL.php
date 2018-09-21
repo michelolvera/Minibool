@@ -1,10 +1,10 @@
 <?php
-$sqlUser="root";
-$sqlPass="";
+$sqlUser="minibool";
+$sqlPass="6/A7G!je)sYrh>?SA3";
 
 function iniciaConexion(){
   GLOBAL $sqlUser, $sqlPass;
-  $conexionMySQL = @mysqli_connect("localhost", $sqlUser, $sqlPass, "blearning");
+  $conexionMySQL = @mysqli_connect("localhost", $sqlUser, $sqlPass, "minibool");
   if (!$conexionMySQL) {
     return null;
     die();

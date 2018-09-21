@@ -1,6 +1,5 @@
 <?php
 include 'ManejoSQL.php';
-include 'Usuario.php';
 
 $funcion = $_REQUEST["funcion"];
 
@@ -68,13 +67,14 @@ switch ($funcion){
   $apellidoP = $_REQUEST["apellidoP"];
   $apellidoM = $_REQUEST["apellidoM"];
   $correoElectronico = $_REQUEST["correoElectronico"];
+  $contrasena = $_REQUEST["contrasena"];
   $administrador = $_REQUEST["administrador"];
   $codigoPais = $_REQUEST["codigoPais"];
   $esEstudiante = $_REQUEST["esEstudiante"];
   $nombreEscuela = $_REQUEST["nombreEscuela"];
   $nombreCarrera = $_REQUEST["nombreCarrera"];
   $numSemestre = $_REQUEST["numSemestre"];
-  $respuesta = consultaSQL("CALL sp_actualizar_usuario('".$userName."','".$userPass."','".$idUsuario."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$codigoPais."','".$administrador."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."');");
+  $respuesta = consultaSQL("CALL sp_actualizar_usuario('".$userName."','".$userPass."','".$idUsuario."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$contrasena."','".$codigoPais."','".$administrador."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."');");
   echo $respuesta[0]['Actualizado'];
   break;
 
@@ -182,12 +182,13 @@ switch ($funcion){
   $apellidoP = $_REQUEST["apellidoP"];
   $apellidoM = $_REQUEST["apellidoM"];
   $correoElectronico = $_REQUEST["correoElectronico"];
+  $contrasena = $_REQUEST["contrasena"];
   $codigoPais = $_REQUEST["codigoPais"];
   $esEstudiante = $_REQUEST["esEstudiante"];
   $nombreEscuela = $_REQUEST["nombreEscuela"];
   $nombreCarrera = $_REQUEST["nombreCarrera"];
   $numSemestre = $_REQUEST["numSemestre"];
-  $respuesta = consultaSQL("CALL sp_guardar_usuario('".$userName."','".$userPass."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$codigoPais."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."');");
+  $respuesta = consultaSQL("CALL sp_guardar_usuario('".$userName."','".$userPass."','".$nombreUsuario."','".$nombreReal."','".$apellidoP."','".$apellidoM."','".$correoElectronico."','".$contrasena."','".$codigoPais."','".$esEstudiante."','".$nombreEscuela."','".$nombreCarrera."','".$numSemestre."');");
   echo $respuesta[0]['Actualizado'];
   break;
 
@@ -218,7 +219,9 @@ switch ($funcion){
   break;
 
   case 'consultaCSV':
-    $respuesta = consultaSQL("SELECT usuario FROM usuarios;");
+    $userName = $_REQUEST["userName"];
+    $userPass = $_REQUEST["userPass"];
+    $respuesta = consultaSQL("CALL sp_respaldo('".$userName."','".$userPass."');");
     echo json_encode($respuesta);
   break;
 }

@@ -12,15 +12,37 @@
 
 <body>
     <input type="text" id="txt_respuesta">
-    <button onclick="ComprobarRespuesta();">Comprobar</button>
+    <button onclick="combinaciones(5);">Comprobar</button>
     <a id="descargar">descarga</a>
     <script type="text/javascript">
         var contenidoDeArchivo = "Hola Mundo!";
         var elem = document.getElementById('descargar');
 
         elem.download = "archivo.txt";
-        elem.href = "data:text/plain;charset=UTF-8;page=21,the%20data:1234,5678";
-    </script>
+        elem.href = "data:text/plain;charset=UTF-8;page=21,the%20data:1234,5678\nHola";
+
+        function combinaciones(numero) {
+            let final = new Array();
+            for (i = 0; i < Math.pow(2, numero); i++) {
+              let arreglo = new Array(numero);
+              let aux = i;
+              for (l = 0; l < numero; l++) {
+                arreglo[l] = aux % 2;
+                aux=Math.round(aux/2);
+            }
+            let res = new Array();
+            for (j = 0; j < numero; j++) {
+                if (arreglo[j] == 1) {
+                  res.push(j);
+              }
+          }
+          if(!res.length == 0)
+            final.push(res);
+      }
+      console.log(final);
+      return final;
+  }
+</script>
 </body>
 
 </html>
