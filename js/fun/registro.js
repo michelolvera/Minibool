@@ -37,6 +37,7 @@ function CargarFunciones() {
           }
         })
           .done(function (msg) {
+            console.log(msg);
             if (msg == 1) {
               alert(JsonIdioma["registroExitoso"]);
               location.href = "../";

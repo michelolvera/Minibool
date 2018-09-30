@@ -179,9 +179,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     if (tabla == "#tablaMapaK" || tabla == "#tablaMapaKMini") {
         if (!$('#labelVarN').hasClass('active') && !$('#labelCVarN').hasClass('active')) {
           $("#tablaMapaKMini").show();
-          tablaContent = '  <div class="row no-gutters">';
-          tablaContent += '</span>' +
-          '</div>' +
+          tablaContent += '</div>' +
           '<div class="col-12">' +
           '  <div  class="table-responsive">' +
           '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
@@ -578,7 +576,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             tablaContent += '</tr>';
         }
         tablaContent += '</tbody>';
-        if (tabla == "#tablaVerdad") { $('#cardFuncion').html((isAl ? "<strong>Aleatorio: </strong>" : "<strong>Deterministico: </strong>") +'F=' + mainFuncion) }
+        if (tabla == "#tablaVerdad") { $('#cardFuncion').html((isAl ? "<strong>"+JsonIdioma["Aleatorio"]+": </strong>" : "<strong>"+JsonIdioma["Conocido"]+": </strong>") +'F=' + mainFuncion) }
     }
 $(tabla).append(tablaContent);
 if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
@@ -590,13 +588,20 @@ if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
         ////////////////////////////////// HAGO CONSTAR QUE ESTO NO ME GUSTA ATT. Michel  ////////////////////////////////
         if (tabla == "#tablaVerdad") {
             $("#contenedorBoton").empty();
-            $("#contenedorBoton").append('<button class="btn btn-outline-primary" id="btnEnviarRes" href="#">Enviar respuesta</button>');
+            $("#contenedorBoton").append('<button class="btn btn-outline-primary" id="btnEnviarRes" href="#">'+JsonIdioma["EnviarRespuesta"]+'</button>');
             $("#btnEnviarRes").click(function (event) {
                 validarRes();
             });
             $("#barraProgreso").css('width', '0%');
-            $("#descripcionContenedor").empty();
+            $("#descripcionContenedor").css('display', 'none');
+            $("#tablaContenedor").css('display', 'block');
             productosSumas = isAl ? $('input:radio[name=resolverPorAleatorio]:checked').val() == 1 ? true : false : $('input:radio[name=resolverPorDeterministico]:checked').val() == 1 ? true : false;
+            $("#botonporFuncion").removeClass("active");
+            $("#botonporTabladeVerdad").removeClass("active");
+            $("#botonporMapaK").removeClass("active");
+            $("#inpFuncion").css("display", "none");
+            $("#inpTabla").css("display", "none");
+            $("#tablaMapaKMini").css("display", "none");
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
