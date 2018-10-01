@@ -139,7 +139,9 @@
     "ActualizacionCorrecta":"Datos actualizados correctamente",
     "NotificacionEliminada":"La notificación se ha eliminado correctamente",
     "Detalles":"Resultados",
-    "Eliminar":"Eliminar"
+    "Eliminar":"Eliminar",
+    "PosiblesSoluciones":"Posibles soluciones:",
+    "TuSolucion":"Tu solución"
   },
   "en-US": {
     "nombreIdioma": "English - United States",
@@ -282,7 +284,9 @@
     "ActualizacionCorrecta":"Correctly updated data",
     "NotificacionEliminada":"The notification has been successfully removed",
     "Detalles":"Results",
-    "Eliminar":"Delete"
+    "Eliminar":"Delete",
+    "PosiblesSoluciones":"Possible solutions:",
+    "TuSolucion":"Your solution"
   },
   "fr-FR": {
     "nombreIdioma": "Française - France",
@@ -424,6 +428,8 @@
     "ActualizacionCorrecta":"Données correctement mises à jour",
     "NotificacionEliminada":"La notification a été supprimée avec succès",
     "Detalles":"Résultats",
-    "Eliminar":"Supprimer"
+    "Eliminar":"Supprimer",
+    "PosiblesSoluciones":"Solutions possibles:",
+    "TuSolucion":"Votre solution"
   }
 }

@@ -227,7 +227,7 @@ function detalles_usuario() {
     dataType: "json"
   })
     .done(function (jsonObject) {
-      $("#body_modal_detalles").append("<p>"+JsonIdioma["UltimoIngreso"]+": " + jsonObject[0].ultimo_ingreso + "</p>");
+      $("#body_modal_detalles").append("<p>" + JsonIdioma["UltimoIngreso"] + ": " + jsonObject[0].ultimo_ingreso + "</p>");
 
       $.ajax({
         method: "post",
@@ -343,29 +343,29 @@ function detalles_usuario() {
                           }
                         });
                       }
-                      $("#body_modal_detalles").append("<p>"+JsonIdioma["PuntajeTotal"]+" = " + (parseInt(aleatorio.tres.puntos) + parseInt(aleatorio.cuatro.puntos) + parseInt(aleatorio.cinco.puntos) + parseInt(deterministico.tres.puntos) + parseInt(deterministico.cuatro.puntos) + parseInt(deterministico.cinco.puntos)) + "<p>");
-                      $("#body_modal_detalles").append("<p>"+JsonIdioma["Conocido"]+": <p>");
-                      $("#body_modal_detalles").append("<table class='table table-striped table-bordered table-hover'>" +
-                        '<th>'+JsonIdioma["Variables"]+'</th>' +
-                        '<th>'+JsonIdioma["Correctos"]+'</th>' +
-                        '<th>'+JsonIdioma["Incorrectos"]+'</th>' +
-                        '<th>'+JsonIdioma["Puntaje"]+'</th> ' +
+                      $("#body_modal_detalles").append("<p>" + JsonIdioma["PuntajeTotal"] + " = " + (parseInt(aleatorio.tres.puntos) + parseInt(aleatorio.cuatro.puntos) + parseInt(aleatorio.cinco.puntos) + parseInt(deterministico.tres.puntos) + parseInt(deterministico.cuatro.puntos) + parseInt(deterministico.cinco.puntos)) + "<p>");
+                      $("#body_modal_detalles").append("<p>" + JsonIdioma["Conocido"] + ": <p>");
+                      $("#body_modal_detalles").append("<table class='table text-center table-hover'><thead>" +
+                        '<th>' + JsonIdioma["Variables"] + '</th>' +
+                        '<th>' + JsonIdioma["Correctos"] + '</th>' +
+                        '<th>' + JsonIdioma["Incorrectos"] + '</th>' +
+                        '<th>' + JsonIdioma["Puntaje"] + '</th></thead><tbody>' +
                         '<tr><td>3</td><td>' + deterministico.tres.correctos + '</td><td>' + deterministico.tres.incorrectos + '</td><td>' + deterministico.tres.puntos + '</td></tr>' +
                         '<tr><td>4</td><td>' + deterministico.cuatro.correctos + '</td><td>' + deterministico.cuatro.incorrectos + '</td><td>' + deterministico.cuatro.puntos + '</td></tr>' +
                         '<tr><td>5</td><td>' + deterministico.cinco.correctos + '</td><td>' + deterministico.cinco.incorrectos + '</td><td>' + deterministico.cinco.puntos + '</td></tr>' +
-                        "</table>");
-                      $("#body_modal_detalles").append("<p>"+JsonIdioma["Total"]+" = " + (parseInt(deterministico.tres.puntos) + parseInt(deterministico.cuatro.puntos) + parseInt(deterministico.cinco.puntos)) + "<p>");
-                      $("#body_modal_detalles").append("<p>"+JsonIdioma["Aleatorio"]+": <p>");
-                      $("#body_modal_detalles").append("<table class='table table-striped table-bordered table-hover'>" +
-                      '<th>'+JsonIdioma["Variables"]+'</th>' +
-                      '<th>'+JsonIdioma["Correctos"]+'</th>' +
-                      '<th>'+JsonIdioma["Incorrectos"]+'</th>' +
-                      '<th>'+JsonIdioma["Puntaje"]+'</th> ' +
+                        "</tbody></table>");
+                      $("#body_modal_detalles").append("<p>" + JsonIdioma["Total"] + " = " + (parseInt(deterministico.tres.puntos) + parseInt(deterministico.cuatro.puntos) + parseInt(deterministico.cinco.puntos)) + "<p>");
+                      $("#body_modal_detalles").append("<p>" + JsonIdioma["Aleatorio"] + ": <p>");
+                      $("#body_modal_detalles").append("<table class='table text-center table-hover'><thead>" +
+                        '<th>' + JsonIdioma["Variables"] + '</th>' +
+                        '<th>' + JsonIdioma["Correctos"] + '</th>' +
+                        '<th>' + JsonIdioma["Incorrectos"] + '</th>' +
+                        '<th>' + JsonIdioma["Puntaje"] + '</th></thead><tbody>' +
                         '<tr><td>3</td><td>' + aleatorio.tres.correctos + '</td><td>' + aleatorio.tres.incorrectos + '</td><td>' + aleatorio.tres.puntos + '</td></tr>' +
                         '<tr><td>4</td><td>' + aleatorio.cuatro.correctos + '</td><td>' + aleatorio.cuatro.incorrectos + '</td><td>' + aleatorio.cuatro.puntos + '</td></tr>' +
                         '<tr><td>5</td><td>' + aleatorio.cinco.correctos + '</td><td>' + aleatorio.cinco.incorrectos + '</td><td>' + aleatorio.cinco.puntos + '</td></tr>' +
-                        "</table>");
-                      $("#body_modal_detalles").append("<p>"+JsonIdioma["Total"]+" = " + (parseInt(aleatorio.tres.puntos) + parseInt(aleatorio.cuatro.puntos) + parseInt(aleatorio.cinco.puntos)) + "<p>");
+                        "</tbody></table>");
+                      $("#body_modal_detalles").append("<p>" + JsonIdioma["Total"] + " = " + (parseInt(aleatorio.tres.puntos) + parseInt(aleatorio.cuatro.puntos) + parseInt(aleatorio.cinco.puntos)) + "<p>");
                     })
                     .fail(function () {
                       alert("Error");

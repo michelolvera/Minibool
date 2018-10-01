@@ -195,7 +195,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         }
         if (!$('#labelVarN').hasClass('active') && !$('#labelCVarN').hasClass('active')) {
           tablaContent += '</div>' +
-          '<table  class="table table-striped table-bordered table-hover">' +
+          '<table class="table table-bordered table-hover text-center">' +
           '<thead>' +
           '<tr>' +
           '<th scope="col">'+(($('#var3').is(':checked') || $('#Cvar3').is(':checked')) ? "A" : "AB")+'</th>';
@@ -665,7 +665,7 @@ function validarRes() {
     var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos, productosSumas);
     let correcto = false;
     $('#resulados').empty();
-    $('#resulados').append("<p class='alert alert-warning' role='alert'>Posibles soluciones:</p>");
+    $('#resulados').append("<p class='alert alert-warning' role='alert'>"+JsonIdioma["PosiblesSoluciones"]+"</p>");
     for (let i = 0; i < resultadosOptimos.length; i++) {
         let cadenaResultado = "";
         let aux = 0;
@@ -676,7 +676,7 @@ function validarRes() {
         cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 2) : cadenaResultado;
         if (repuestaCorrecta == i) {
             correcto = true;
-            $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>Tu solucion.</p></div>");
+            $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>"+JsonIdioma["TuSolucion"]+"</p></div>");
         } else{
             $('#resulados').append("<div class='alert alert-info' role='alert'>" + cadenaResultado + "</div>");
         }
@@ -753,32 +753,24 @@ function obtener_id_ejercicio() {
         switch (numero_variable) {
             case 0:
             return 0;
-            break;
             case 3:
             return 1;
-            break;
             case 4:
             return 2;
-            break;
             case 5:
             return 3;
-            break;
         }
     }
     else {
         switch (numero_variable) {
             case 0:
             return 0;
-            break;
             case 3:
             return 4;
-            break;
             case 4:
             return 5;
-            break;
             case 5:
             return 6;
-            break;
         }
     }
 }

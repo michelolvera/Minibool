@@ -373,7 +373,7 @@ function IniciarReduccion(kmapResultado, sumasoproductos, calcularVariables = tr
 }
 
 function ComprobarRespuesta(resultados, sumasoproductos) {
-    let respuesta = sumasoproductos ? new Set(...[document.getElementById("inputResp").value.toUpperCase().split('+')]) : new Set(...[document.getElementById("inputResp").value.toUpperCase().split(/\)\(/)]);
+    let respuesta = sumasoproductos ? new Set(...[document.getElementById("inputResp").value.replace(/\s/g,'').toUpperCase().split('+')]) : new Set(...[document.getElementById("inputResp").value.toUpperCase().split(/\)\(/)]);
     //var resultados = IniciarReduccion();
     if (!sumasoproductos) {
         let aux = new Set();
