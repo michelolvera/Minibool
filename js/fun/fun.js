@@ -115,8 +115,10 @@ function cargar_ranking() {
   })
     .done(function (jsonObject) {
       $("#lista_notificaciones").empty();
+      let cont = 1;
       jsonObject.forEach(row => {
-        $("#lista_notificaciones").append("<tr><td><div class='alert alert-info' role='alert'>" + row["nombre_completo"] + "</div></td><td style='width: 20%; text-align: center;'><div class='alert alert-info' role='alert'>" + row["total"] + "</div></td></tr>");
+        $("#lista_notificaciones").append("<tr><td><div class='alert alert-info' role='alert'>" + cont + ".- "+ row["nombre_completo"] + "</div></td><td style='width: 20%; text-align: center;'><div class='alert alert-info' role='alert'>" + row["total"] + "</div></td></tr>");
+        cont++;
       });
     })
     .fail(function () {

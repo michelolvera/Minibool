@@ -393,10 +393,10 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                         tablaContent += '</tr><tr><th scope="row">01</th>'
                     }
                     else if (num == 8) {
-                        tablaContent += '</tr><tr><th scope="row">11</th>'
+                        tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     else if (num == 12) {
-                        tablaContent += '</tr><tr><th scope="row">10</th>'
+                        tablaContent += '</tr><tr><th scope="row">11</th>'
                     }
                     //aqui seccion de los valores
                     if (num == 2 || num == 6 || num == 14 || num == 10) {

@@ -141,7 +141,9 @@
     "Detalles":"Resultados",
     "Eliminar":"Eliminar",
     "PosiblesSoluciones":"Posibles soluciones:",
-    "TuSolucion":"Tu solución"
+    "TuSolucion":"Tu solución",
+    "EliminadoUsuarios":"Se ha eliminado a todos los usuarios y sus datos exitosamente (excluyendo a el administrador actual)",
+    "NuevaNotificacion":"Notificación creada correctamente"
   },
   "en-US": {
     "nombreIdioma": "English - United States",
@@ -286,7 +288,9 @@
     "Detalles":"Results",
     "Eliminar":"Delete",
     "PosiblesSoluciones":"Possible solutions:",
-    "TuSolucion":"Your solution"
+    "TuSolucion":"Your solution",
+    "EliminadoUsuarios":"All users and their data have been successfully deleted (excluding the current administrator)",
+    "NuevaNotificacion":"Notification Created Successfully"
   },
   "fr-FR": {
     "nombreIdioma": "Française - France",
@@ -430,6 +434,8 @@
     "Detalles":"Résultats",
     "Eliminar":"Supprimer",
     "PosiblesSoluciones":"Solutions possibles:",
-    "TuSolucion":"Votre solution"
+    "TuSolucion":"Votre solution",
+    "EliminadoUsuarios":"Tous les utilisateurs et leurs données ont été supprimés avec succès (à l'exception de l'administrateur actuel)",
+    "NuevaNotificacion":"Notification créée avec succès"
   }
 }

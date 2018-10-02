@@ -120,7 +120,7 @@ function llenar_tabla() {
       $("#tabla_notificaciones").empty();
       $("#tabla_notificaciones").append(tabla);
       jsonObject.forEach(row => {
-        $("#tabla_notificaciones").append("<tr><td>" + row["fecha"] + "</td><td>" + row["notificacion"] + "</td><td>" + Color(row["tipo"]) + "</td><td><div class='btn-toolbar'><div class='btn-group mx-auto'><button href='#actualizar' class='btn btn-outline-success' onclick='seleccion(" + row["id"] + ", \"actualizar\");' data-toggle='modal'>Actualizar</button><button href='#confirmacion' class='btn btn-outline-danger' onclick='seleccion(" + row["id"] + ", \"eliminar\");' data-toggle='modal'>Eliminar</button></div></div></td></tr>");
+        $("#tabla_notificaciones").append("<tr><td>" + row["fecha"] + "</td><td>" + row["notificacion"] + "</td><td>" + Color(row["tipo"]) + "</td><td><div class='btn-toolbar'><div class='btn-group mx-auto'><button href='#actualizar' class='btn btn-outline-success' onclick='seleccion(" + row["id"] + ", \"actualizar\");' data-toggle='modal'>"+JsonIdioma["Actualizar"]+"</button><button href='#confirmacion' class='btn btn-outline-danger' onclick='seleccion(" + row["id"] + ", \"eliminar\");' data-toggle='modal'>"+JsonIdioma["Eliminar"]+"</button></div></div></td></tr>");
       });
       $("#tabla_notificaciones").append("</tbody>");
     })
@@ -227,7 +227,7 @@ function crear_nueva() {
   })
     .done(function (respuesta) {
       if (respuesta == 1) {
-        alert("Notificacion Creada");
+        alert(JsonIdioma["NuevaNotificacion"]);
         llenar_tabla();
         $("#in_notificacion").val("");
         $("#combo_tipo").val("primary");

@@ -200,7 +200,7 @@ function realizar_accion() {
       })
         .done(function (respuesta) {
           if (respuesta == 1) {
-            alert("Se ha eliminado a todos lo usuarios y sus datos exitosamente (excluyendo a el administrador actual)");
+            alert(JsonIdioma["EliminadoUsuarios"]);
             llenar_tabla($("#in_nombre").val(), $("#in_apellido_pat").val(), $("#in_apellido_mat").val());
           } else {
             alert("Error al momento de actualizar datos no cuenta con los permisos");

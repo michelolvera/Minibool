@@ -19,7 +19,7 @@ function CargarFunciones() {
       .done(function (respuesta) {
         console.log(respuesta);
         if (respuesta == 1) {
-          alert("Las ponderaciones se han guardado correctamente");
+          alert(JsonIdioma["ActualizacionCorrecta"]);
         } else {
           alert("Ha currido un error al intentar guadar");
         }
