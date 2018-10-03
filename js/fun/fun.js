@@ -14,7 +14,6 @@ $(document).ready(function () {
   setCookie("lang", lang, 30);
   //Validar Cookie de usuario
   ValidarCookie();//Cada pagina maneja esto de manera diferente.
-  CargarFunciones();
 });
 
 function CargarIdioma(idioma) {
@@ -26,6 +25,7 @@ function CargarIdioma(idioma) {
     .done(function (jsonObject) {
       JsonIdioma = jsonObject[idioma];
       CargarTextosPagina();
+      CargarFunciones();
     })
     .fail(function () {
 
