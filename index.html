@@ -1,52 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shirink-to-fit=no">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/estilos.css">
-  <title id="titulo">Inicio de sesión</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shirink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
+	<title id="titulo"></title>
 </head>
-
 <body>
-  <header class="">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
-        <img src="imagenes/logo-blanco.svg" alt="Logo" style="max-width: 100%; width: 70px;">    
-      </a>
-    </nav>
-  </header>
-  <div id="contenedorLogin" class="container text-center">
-    <form id="login_form" class="form-signin" onsubmit="return false;">
-      <br>
-      <h2 id="titulo_h2" class="h2 mb-3 font-weight-normal">Inicio de sesión</h2>
-      <label id="lb_usuario" for="in_usuario" class="sr-only">Usuario:</label>
-      <input type="text" class="form-control" id="in_usuario" placeholder="Usuario:" required autofocus>
-      <label id="lb_contrasena" for="in_contrasena" class="sr-only">Contraseña:</label>
-      <input type="password" class="form-control" id="in_contrasena" placeholder="Contraseña:" required>
-      <div class="">
-        <label id="lb_recordar" for="in_recordar">Recordar contraseña</label>
-        <input type="checkbox" id="in_recordar">
-      </div>
-      <br>
-      <button class="btn btn-lg btn-block btn-outline-success" type="submit" id="btn_acceso">Iniciar sesión</button>
-      <br>
-      <a href="registro/recuperarpass/" id="btn_olvido_contrasena">¿Olvidaste tu contraseña?</a>
-      <label id="lb_no_cuenta" for="btn_crear_cuenta">¿No tienes cuenta?</label>
-      <a href="registro/" id="btn_crear_cuenta">Crear una cuenta</a>
-      <br>
-      <br>
-      <label for="combo_lang" id="lb_lang">Idioma:</label>
-      <select class="custom-select mr-sm-2" id="combo_lang">
-
-      </select>
-    </form>
-  </div>
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/fun/login.js"></script>
-  <script src="js/fun/fun.js"></script>
+	<header class="">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">
+				<img src="imagenes/logo-blanco.svg" alt="Logo" style="max-width: 100%; width: 70px;">
+			</a>
+			<button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#barra_navegacion"
+			 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="barra_navegacion">
+				<ul class="navbar-nav mr-auto">
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item">
+						<a id="btn_acercade" role="button" class="nav-link" href="#vntn_acercade" data-toggle="modal"></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<div id="contenedorLogin" class="container text-center">
+		<form id="login_form" class="form-signin" onsubmit="return false;">
+			<br>
+			<h2 id="titulo_h2" class="h2 mb-3 font-weight-normal"></h2>
+			<label id="lb_usuario" for="in_usuario" class="sr-only"></label>
+			<input type="text" class="form-control" id="in_usuario" required autofocus>
+			<label id="lb_contrasena" for="in_contrasena" class="sr-only"></label>
+			<input type="password" class="form-control" id="in_contrasena" required>
+			<div class="">
+				<label id="lb_recordar" for="in_recordar"></label>
+				<input type="checkbox" id="in_recordar">
+			</div>
+			<br>
+			<button class="btn btn-lg btn-block btn-outline-success" type="submit" id="btn_acceso"></button>
+			<br>
+			<a href="registro/recuperarpass/" id="btn_olvido_contrasena"></a>
+			<label id="lb_no_cuenta" for="btn_crear_cuenta"></label>
+			<a href="registro/" id="btn_crear_cuenta"></a>
+			<br>
+			<br>
+			<label for="combo_lang" id="lb_lang"></label>
+			<select class="custom-select mr-sm-2" id="combo_lang">
+			</select>
+		</form>
+	</div>
+	<!-- Modal acerca de-->
+	<div class="modal fade" id="vntn_acercade">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 id="text_titulo_acercade_principal" class="modal-title"></h3>
+					<button id="btn_cerrar_acercade_principal" tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body" style="text-align: center;">
+					<p><img src="imagenes/logo-negro.svg" alt="Logo"></p>
+					<p id="AcercaDeModal"></p>
+					<p><strong id="profesoresColab"></strong></p>
+					<p>
+						<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="imagenes/profesores/josealfredo.jpg">
+						<a href="mailto:jjimenez@itmorelia.edu.mx">M.C. JOSE ALFREDO JIMÉNEZ MURILLO</a><br>
+						<span id="joseDesc"></span>
+					</p>
+					<p>
+						<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="imagenes/profesores/octavio.jpg">
+						<a href="mailto:octavioortiz@itmorelia.edu.mx">DR. OCTAVIO SALUD ORTIZ ORTIZ</a><br>
+						<span id="octavioDesc"></span>
+					</p>
+					<p>
+						<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="imagenes/profesores/Nelly.jpg">
+						<a href="mailto:alvarado@itmorelia.edu.mx">M.A. LAURA NELLY ALVARADO ZAMORA</a><br>
+						<span id="nellyDesc"></span>
+					</p>
+					<p>
+						<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="imagenes/profesores/erendira.jpg">
+						<a href="mailto:emjimenezh@gmail.com">DR (C). ERÉNDIRA MIRIAM JIMÉNEZ HERNÁNDEZ</a><br>
+						<span id="miriamDesc"></span>
+					</p>
+					<p><strong id="desarrolladores"></strong></p>
+					<p><img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="imagenes/desarrolladores/jlaa.jpg">
+						<a href="mailto:coke_1224@hotmail.com">JORGE LUIS ARREYGUE ÁVILA</a> <strong>(UI, UX, Parser)</strong><br>
+						<span id="descJorge"></span>
+					</p>
+					<p>
+						<img class="img-thumbnail mx-auto d-block" style="width: 150px; height: 150px;" src="imagenes/desarrolladores/meop.png">
+						<a href="mailto:michelolvera@icloud.com">MICHEL ENRIQUE OLVERA PEREZ</a> <strong>(UI, UX, Quine–McCluskey, Petrick)</strong><br>
+						<span id="descMichel"></span>
+					</p>
+					<p>
+						<img class="img-thumbnail mx-auto d-block" style="width: 120px; height: 150px;" src="imagenes/desarrolladores/acrv.png">
+						<a href="mailto:alan.cruzrv@gmail.com/">ALAN CRUZ ROBLES VAZQUEZ</a> <strong>(UI, UX, DB, Security)</strong><br>
+						<span id="descAlan"></span>
+					</p>
+					<p><strong id="agradecimientoEspecial"></strong><br>
+						<strong id="TecMex"></strong><br>
+						<a href="http://tecnm.mx/"><img src="imagenes/Logo-TecNM.png"></a><br>
+						<strong id="TecMor"></strong><br>
+						<a href="http://www.itmorelia.edu.mx/"><img src="imagenes/Itmorelia.png"></a><br>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/fun/login.js"></script>
+	<script src="js/fun/fun.js"></script>
 </body>
-
 </html>

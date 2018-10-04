@@ -179,9 +179,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
     if (tabla == "#tablaMapaK" || tabla == "#tablaMapaKMini") {
         if (!$('#labelVarN').hasClass('active') && !$('#labelCVarN').hasClass('active')) {
           $("#tablaMapaKMini").show();
-          tablaContent = '  <div class="row no-gutters">';
-          tablaContent += '</span>' +
-          '</div>' +
+          tablaContent += '</div>' +
           '<div class="col-12">' +
           '  <div  class="table-responsive">' +
           '    <div id="varsDer" class="mx-auto" style="width: 100px;">';
@@ -197,7 +195,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
         }
         if (!$('#labelVarN').hasClass('active') && !$('#labelCVarN').hasClass('active')) {
           tablaContent += '</div>' +
-          '<table  class="table table-striped table-bordered table-hover">' +
+          '<table class="table table-bordered table-hover text-center">' +
           '<thead>' +
           '<tr>' +
           '<th scope="col">'+(($('#var3').is(':checked') || $('#Cvar3').is(':checked')) ? "A" : "AB")+'</th>';
@@ -395,10 +393,10 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
                         tablaContent += '</tr><tr><th scope="row">01</th>'
                     }
                     else if (num == 8) {
-                        tablaContent += '</tr><tr><th scope="row">11</th>'
+                        tablaContent += '</tr><tr><th scope="row">10</th>'
                     }
                     else if (num == 12) {
-                        tablaContent += '</tr><tr><th scope="row">10</th>'
+                        tablaContent += '</tr><tr><th scope="row">11</th>'
                     }
                     //aqui seccion de los valores
                     if (num == 2 || num == 6 || num == 14 || num == 10) {
@@ -578,7 +576,7 @@ var crear = function (tabla, isAl) {//isAl true es aleatorio, false es determini
             tablaContent += '</tr>';
         }
         tablaContent += '</tbody>';
-        if (tabla == "#tablaVerdad") { $('#cardFuncion').html((isAl ? "<strong>Aleatorio: </strong>" : "<strong>Deterministico: </strong>") +'F=' + mainFuncion) }
+        if (tabla == "#tablaVerdad") { $('#cardFuncion').html((isAl ? "<strong>"+JsonIdioma["Aleatorio"]+": </strong>" : "<strong>"+JsonIdioma["Conocido"]+": </strong>") +'F=' + mainFuncion) }
     }
 $(tabla).append(tablaContent);
 if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
@@ -590,13 +588,20 @@ if (tabla != '#tablaMapaK' && tabla != '#tablaMapaKMini') {
         ////////////////////////////////// HAGO CONSTAR QUE ESTO NO ME GUSTA ATT. Michel  ////////////////////////////////
         if (tabla == "#tablaVerdad") {
             $("#contenedorBoton").empty();
-            $("#contenedorBoton").append('<button class="btn btn-outline-primary" id="btnEnviarRes" href="#">Enviar respuesta</button>');
+            $("#contenedorBoton").append('<button class="btn btn-outline-primary" id="btnEnviarRes" href="#">'+JsonIdioma["EnviarRespuesta"]+'</button>');
             $("#btnEnviarRes").click(function (event) {
                 validarRes();
             });
             $("#barraProgreso").css('width', '0%');
-            $("#descripcionContenedor").empty();
+            $("#descripcionContenedor").css('display', 'none');
+            $("#tablaContenedor").css('display', 'block');
             productosSumas = isAl ? $('input:radio[name=resolverPorAleatorio]:checked').val() == 1 ? true : false : $('input:radio[name=resolverPorDeterministico]:checked').val() == 1 ? true : false;
+            $("#botonporFuncion").removeClass("active");
+            $("#botonporTabladeVerdad").removeClass("active");
+            $("#botonporMapaK").removeClass("active");
+            $("#inpFuncion").css("display", "none");
+            $("#inpTabla").css("display", "none");
+            $("#tablaMapaKMini").css("display", "none");
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
@@ -660,7 +665,7 @@ function validarRes() {
     var repuestaCorrecta = ComprobarRespuesta(resultadosOptimos, productosSumas);
     let correcto = false;
     $('#resulados').empty();
-    $('#resulados').append("<p class='alert alert-warning' role='alert'>Posibles soluciones:</p>");
+    $('#resulados').append("<p class='alert alert-warning' role='alert'>"+JsonIdioma["PosiblesSoluciones"]+"</p>");
     for (let i = 0; i < resultadosOptimos.length; i++) {
         let cadenaResultado = "";
         let aux = 0;
@@ -671,7 +676,7 @@ function validarRes() {
         cadenaResultado = productosSumas ? cadenaResultado.substring(0, cadenaResultado.length - 2) : cadenaResultado;
         if (repuestaCorrecta == i) {
             correcto = true;
-            $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>Tu solucion.</p></div>");
+            $('#resulados').append("<div class='alert alert-success' role='alert'><p>" + cadenaResultado + "</p><hr><p class='mb-0'>"+JsonIdioma["TuSolucion"]+"</p></div>");
         } else{
             $('#resulados').append("<div class='alert alert-info' role='alert'>" + cadenaResultado + "</div>");
         }
@@ -748,32 +753,24 @@ function obtener_id_ejercicio() {
         switch (numero_variable) {
             case 0:
             return 0;
-            break;
             case 3:
             return 1;
-            break;
             case 4:
             return 2;
-            break;
             case 5:
             return 3;
-            break;
         }
     }
     else {
         switch (numero_variable) {
             case 0:
             return 0;
-            break;
             case 3:
             return 4;
-            break;
             case 4:
             return 5;
-            break;
             case 5:
             return 6;
-            break;
         }
     }
 }

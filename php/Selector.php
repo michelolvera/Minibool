@@ -163,7 +163,7 @@ switch ($funcion){
   break;
 
   case 'obtenerRanking':
-    $respuesta = consultaSQL("SELECT U.usuario, SUM(E.puntos) AS total FROM ejercicio_usuario as EU INNER JOIN usuarios as U ON EU.id_usuario=U.id_usuario INNER JOIN ejercicios AS E ON EU.id_ejercicio= E.id_ejercicio WHERE EU.correcto=1 GROUP BY U.usuario ORDER BY SUM(E.puntos) DESC; ");
+    $respuesta = consultaSQL("SELECT CONCAT(U.nombre, ' ', U.apellido_paterno, ' ', U.apellido_materno, ' (',U.usuario,')') AS 'nombre_completo', SUM(E.puntos) AS total FROM ejercicio_usuario as EU INNER JOIN usuarios as U ON EU.id_usuario=U.id_usuario INNER JOIN ejercicios AS E ON EU.id_ejercicio= E.id_ejercicio WHERE EU.correcto=1 GROUP BY U.usuario ORDER BY SUM(E.puntos) DESC LIMIT 100");
     echo json_encode($respuesta);
   break;
 
