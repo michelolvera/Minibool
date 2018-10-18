@@ -1,4 +1,4 @@
 # Minibool
 Proyecto Minibool
 
-[Versiones](/releases)
+[Versiones](https://github.com/michelolvera/Minibool/releases)
