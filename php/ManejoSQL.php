@@ -1,6 +1,6 @@
 <?php
-$sqlUser="minibool";
-$sqlPass="6/A7G!je)sYrh>?SA3";
+$sqlUser="root"; //Your User
+$sqlPass=""; //Your Password
 
 function iniciaConexion(){
   GLOBAL $sqlUser, $sqlPass;

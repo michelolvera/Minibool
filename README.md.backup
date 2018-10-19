@@ -34,7 +34,7 @@ After this create the minibool database and import the script called `minibool.s
 Feel free to report errors in the [issues section](https://github.com/michelolvera/Minibool/issues) with a detailed description on how to replicate the problem or send your corrections creating a Pull Request, will probably be accepted.
 
 ## Thanks to:
-- M.C. Jose Alfredo Jiménez Murillo, who always motivated the development team and gave us free boolean algebra classes.
+- M.C. Jose Alfredo Jiménez Murillo, who always motivated the development team and gave us free Boolean algebra classes.
 - Tecnológico Nacional de México, for accepting the project on a national level in Mexico.
 - Instituto Tecnológico de Morelia, for allowing the project on one of its servers and being my Alma mater.
 
