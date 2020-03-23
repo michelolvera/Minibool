@@ -1,10 +1,11 @@
 <?php
-$sqlUser="root"; //Your User
+$sqlUser=""; //Your User
 $sqlPass=""; //Your Password
+$sqlDB =""; //Your DB
 
 function iniciaConexion(){
-  GLOBAL $sqlUser, $sqlPass;
-  $conexionMySQL = @mysqli_connect("localhost", $sqlUser, $sqlPass, "minibool");
+  GLOBAL $sqlUser, $sqlPass, $sqlDB;
+  $conexionMySQL = @mysqli_connect("localhost", $sqlUser, $sqlPass, $sqlDB);
   if (!$conexionMySQL) {
     return null;
     die();

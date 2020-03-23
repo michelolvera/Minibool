@@ -142,7 +142,7 @@ switch ($funcion){
   case 'esAdministrador':
     $userName = $_REQUEST["userName"];
     $userPass = $_REQUEST["userPass"];
-    $respuesta = consultaSQL("SELECT administrador FROM usuarios WHERE usuario = '".$userName."' AND contrasenia = AES_ENCRYPT('".$userPass."', '%b_learning%')");
+    $respuesta = consultaSQL("SELECT administrador FROM usuarios WHERE usuario = '".$userName."' AND contrasenia = AES_ENCRYPT('".$userPass."', '%your_password%')");
     echo $respuesta[0]["administrador"];
   break;
 

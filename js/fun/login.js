@@ -76,6 +76,7 @@ function CargarListaIdiomas() {
     dataType: "json"
   })
     .done(function (jsonObject) {
+      $("#combo_lang").empty();
       for (var lang in jsonObject) {
         $("#combo_lang").append("<option value='" + lang + "'>" + jsonObject[lang]["nombreIdioma"] + "</option>");
       }
