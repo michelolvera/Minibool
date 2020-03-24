@@ -54,19 +54,19 @@ function CargarTextosPagina() {
   $("#lb_lang").text(JsonIdioma["Idioma"] + ":");
   $("#btn_acercade").text(JsonIdioma["AcercaDe"]);
   $("#text_titulo_acercade_principal").text(JsonIdioma["AcercaDe"]);
-    $("#AcercaDeModal").text(JsonIdioma["Descripcion"]);
-    $("#profesoresColab").text(JsonIdioma["ProfColab"]);
-    $("#joseDesc").text(JsonIdioma["JoseDesc"]);
-    $("#octavioDesc").text(JsonIdioma["OctavioDesc"]);
-    $("#nellyDesc").text(JsonIdioma["NellyDesc"]);
-    $("#miriamDesc").text(JsonIdioma["MiriamDesc"]);
-    $("#desarrolladores").text(JsonIdioma["Desarrolladores"]);
-    $("#descJorge").text(JsonIdioma["DescJorge"]);
-    $("#descMichel").text(JsonIdioma["DescMichel"]);
-    $("#descAlan").text(JsonIdioma["DescAlan"]);
-    $("#agradecimientoEspecial").text(JsonIdioma["AgradecimientoEspecial"]);
-    $("#TecMex").text(JsonIdioma["TecMex"]);
-    $("#TecMor").text(JsonIdioma["TecMor"]);
+  $("#AcercaDeModal").text(JsonIdioma["Descripcion"]);
+  $("#profesoresColab").text(JsonIdioma["ProfColab"]);
+  $("#joseDesc").text(JsonIdioma["JoseDesc"]);
+  $("#octavioDesc").text(JsonIdioma["OctavioDesc"]);
+  $("#nellyDesc").text(JsonIdioma["NellyDesc"]);
+  $("#miriamDesc").text(JsonIdioma["MiriamDesc"]);
+  $("#hannaDesc").text(JsonIdioma["HannaDesc"]);
+  $("#fridaDesc").text(JsonIdioma["FridaDesc"]);
+  $("#marioDesc").text(JsonIdioma["MarioDesc"]);
+  $("#desarrolladores").text(JsonIdioma["Desarrolladores"]);
+  $("#descJorge").text(JsonIdioma["DescJorge"]);
+  $("#descMichel").text(JsonIdioma["DescMichel"]);
+  $("#descAlan").text(JsonIdioma["DescAlan"]);
 }
 
 function CargarListaIdiomas() {

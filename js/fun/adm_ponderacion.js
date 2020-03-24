@@ -81,13 +81,13 @@ function CargarTextosPagina() {
   $("#octavioDesc").text(JsonIdioma["OctavioDesc"]);
   $("#nellyDesc").text(JsonIdioma["NellyDesc"]);
   $("#miriamDesc").text(JsonIdioma["MiriamDesc"]);
+  $("#hannaDesc").text(JsonIdioma["HannaDesc"]);
+  $("#fridaDesc").text(JsonIdioma["FridaDesc"]);
+  $("#marioDesc").text(JsonIdioma["MarioDesc"]);
   $("#desarrolladores").text(JsonIdioma["Desarrolladores"]);
   $("#descJorge").text(JsonIdioma["DescJorge"]);
   $("#descMichel").text(JsonIdioma["DescMichel"]);
   $("#descAlan").text(JsonIdioma["DescAlan"]);
-  $("#agradecimientoEspecial").text(JsonIdioma["AgradecimientoEspecial"]);
-  $("#TecMex").text(JsonIdioma["TecMex"]);
-  $("#TecMor").text(JsonIdioma["TecMor"]);
   //Epecifico
   $("#text-varibles").text(JsonIdioma["Variables"]);
   $("#text-aleatorio").text(JsonIdioma["Aleatorio"]);
