@@ -1,11 +1,11 @@
 <?php
-$sqlUser=""; //Your User
-$sqlPass=""; //Your Password
-$sqlDB =""; //Your DB
+$sqlUser="sql3397181"; //Your User
+$sqlPass="WrHgZ96WXr"; //Your Password
+$sqlDB ="sql3397181"; //Your DB
 
 function iniciaConexion(){
   GLOBAL $sqlUser, $sqlPass, $sqlDB;
-  $conexionMySQL = @mysqli_connect("localhost", $sqlUser, $sqlPass, $sqlDB);
+  $conexionMySQL = @mysqli_connect("sql3.freemysqlhosting.net", $sqlUser, $sqlPass, $sqlDB);
   if (!$conexionMySQL) {
     return null;
     die();
