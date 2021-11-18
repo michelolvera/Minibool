@@ -1,7 +1,7 @@
 <?php
-$sqlUser="sql3397181"; //Your User
-$sqlPass="WrHgZ96WXr"; //Your Password
-$sqlDB ="sql3397181"; //Your DB
+$sqlUser="sql3451937"; //Your User
+$sqlPass="5y31qXTt2I"; //Your Password
+$sqlDB ="sql3451937"; //Your DB
 
 function iniciaConexion(){
   GLOBAL $sqlUser, $sqlPass, $sqlDB;
