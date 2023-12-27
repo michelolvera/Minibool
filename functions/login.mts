@@ -3,8 +3,7 @@ import {constants} from "node:http2";
 import mysql from 'mysql2/promise'
 
 export default async (req: Request, context: Context) => {
-    let bodyArray = (await req.body.getReader().read()).value
-    let request_data = JSON.parse(new TextDecoder().decode(bodyArray));
+    let request_data = await req.json()
 
     let connection = await mysql.createConnection({
         host     : '104.154.253.39',

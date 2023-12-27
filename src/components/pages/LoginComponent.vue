@@ -3,6 +3,7 @@ import NoAuthNavbarComponent from "../elements/NoAuthNavbarComponent.vue"
 import untypedLangData from '../../assets/strings/lang.json'
 import { getCookie, setCookie } from '../../utils/utils'
 import axios from "axios"
+import router from "../../router.ts";
 
 const langData: {[key: string]: any} = untypedLangData
 defineProps<{ currentLang: string }>()
@@ -20,20 +21,22 @@ async function validateLogin(event: Event){
   if (response.status == 204){
     setCookie("user", user, remember ? 30 : 0)
     setCookie("pass", password, remember ? 30 : 0)
-    location.href = "home"
+    await router.push('home')
   }
 }
 
 async function requestLogin(user: string, password: string){
   let apiURL = '/.netlify/functions/login'
-  return await axios.post(apiURL, {user: user, password: password})
+  let response = await axios.post(apiURL, {user: user, password: password})
+
+  return response
 }
 
 if (getCookie("user") != "" && getCookie("pass") != ""){
   let response = requestLogin(getCookie("user"), getCookie("pass"));
   response.then(responseData => {
     if (responseData.status == 204){
-      location.href = "home"
+      router.push("home")
     }
   })
 }

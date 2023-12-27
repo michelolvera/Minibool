@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import AboutModalComponent from "./AboutModalComponent.vue"
 import untypedLangData from '../../assets/strings/lang.json'
-import { getCookie } from '../../utils/utils'
+import { getCookie, setCookie } from '../../utils/utils'
 import RankingModalComponent from "./RankingModalComponent.vue"
 import axios from "axios"
 import {ref} from "vue"
+import router from "../../router.ts";
+import NotificationsModalComponent from "./NotificationsModalComponent.vue";
 
 defineProps<{ currentLang: string }>()
 const langData: {[key: string]: any} = untypedLangData
 const rankingData = ref([])
+const notifications = ref([])
 const notificationsCount = ref(0)
 
 let response = axios.get('/.netlify/functions/count-notifications');
@@ -24,6 +27,20 @@ async function updateRankingData(event: Event){
   if (response.status == 200){
     rankingData.value = response.data
   }
+}
+
+async function updateNotificationData(event: Event){
+  let response = await axios.get('/.netlify/functions/notifications')
+
+  if (response.status == 200){
+    notifications.value = response.data
+  }
+}
+
+async function closeSession(event: Event){
+  setCookie("user", "", -1);
+  setCookie("pass", "", -1);
+  await router.push('/');
 }
 </script>
 
@@ -60,7 +77,7 @@ async function updateRankingData(event: Event){
             </ul>
           </div>
           <a class="nav-link ms-auto" href="#" data-bs-toggle="modal" data-bs-target="#vntn_acercade">{{langData[currentLang]['AcercaDe']}}</a>
-          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#vntn_acercade">{{langData[currentLang]['Notificacion']}}<span class="badge bg-secondary ms-1">{{notificationsCount}}</span></a>
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#vntn_notifications" @click="updateNotificationData">{{langData[currentLang]['Notificacion']}}<span class="badge bg-secondary ms-1">{{notificationsCount}}</span></a>
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{langData[currentLang]['Usuario'] + ': ' + getCookie("user")}}
@@ -68,6 +85,8 @@ async function updateRankingData(event: Event){
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#">{{langData[currentLang]['ConfigurarCuenta']}}</a></li>
               <li><a class="dropdown-item" href="#">{{langData[currentLang]['MisResultados']}}</a></li>
+              <li class="dropdown-divider"></li>
+              <li class="d-grid"><button class="btn btn-outline-danger w-auto mx-2" @click="closeSession">{{langData[currentLang]['CerrarSesion']}}</button></li>
             </ul>
           </div>
         </div>
@@ -76,6 +95,7 @@ async function updateRankingData(event: Event){
   </nav>
   <about-modal-component :current-lang=currentLang />
   <ranking-modal-component :current-lang=currentLang :ranking-data=rankingData />
+  <notifications-modal-component :current-lang=currentLang :notifications=notifications />
 </template>
 
 <style scoped>
