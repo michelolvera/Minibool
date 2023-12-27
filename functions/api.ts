@@ -4,7 +4,7 @@ import {HTTP_STATUS_OK} from "@netlify/functions/dist/lib/consts";
 
 const handler: HandlerResponse = async (event: HandlerEvent) => {
     let response: HandlerResponse = {
-        body: event.body,
+        body: event.body!!,
         statusCode: HTTP_STATUS_OK
     };
 
