@@ -1,4 +1,3 @@
-import {Handler} from "@netlify/functions";
 import {HandlerResponse} from "@netlify/functions/dist/function/handler_response";
 import {HandlerEvent} from "@netlify/functions/dist/function/handler_event";
 import {HTTP_STATUS_OK} from "@netlify/functions/dist/lib/consts";
