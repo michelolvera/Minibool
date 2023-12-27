@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/about"
+  from = "/home"
   to = "/"
   status = 200
   force = true
