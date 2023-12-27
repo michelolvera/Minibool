@@ -9,7 +9,7 @@ if (currentLang.value == ''){
   setCookie("lang", currentLang.value, 30);
 }
 
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cname: string, cvalue: string, exdays: number) {
   if (exdays != 0) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -19,7 +19,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";path=/";
 }
 
-function getCookie(cname): string {
+function getCookie(cname: string): string {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(';');
@@ -35,8 +35,8 @@ function getCookie(cname): string {
   return "";
 }
 
-function changeLangCookie(event){
-  currentLang.value = event.target.value
+function changeLangCookie(event: Event){
+  currentLang.value = (event.target as HTMLSelectElement).value
   setCookie("lang", currentLang.value, 30);
 }
 
