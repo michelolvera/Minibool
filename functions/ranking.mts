@@ -1,6 +1,6 @@
 import type { Context } from "@netlify/functions"
 import {constants} from "node:http2";
-const mysql = require('mysql2/promise');
+import mysql from 'mysql2/promise'
 
 let connection = await mysql.createConnection({
     host     : '104.154.253.39',
