@@ -6,7 +6,7 @@ const langData: {[key: string]: any} = untypedLangData
 </script>
 
 <template>
-  <div class="modal" tabindex="-1" id="vntn_acercade">
+  <div class="modal fade" tabindex="-1" id="vntn_acercade">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">

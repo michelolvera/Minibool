@@ -15,8 +15,8 @@ const langData: {[key: string]: any} = untypedLangData
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav d-flex w-100 justify-content-end">
           <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#vntn_acercade">{{langData[currentLang]['AcercaDe']}}</a>
         </div>
       </div>

@@ -1,9 +1,42 @@
 <script setup lang="ts">
 import NoAuthNavbarComponent from "../elements/NoAuthNavbarComponent.vue"
 import untypedLangData from '../../assets/strings/lang.json'
+import { getCookie, setCookie } from '../../utils/utils'
+import axios from "axios"
 
 const langData: {[key: string]: any} = untypedLangData
 defineProps<{ currentLang: string }>()
+
+async function validateLogin(event: Event){
+  let submitEvent = event as SubmitEvent
+  submitEvent.preventDefault();
+
+  let user = (document.getElementById('userInput') as HTMLInputElement).value
+  let password = (document.getElementById('passwordInput') as HTMLInputElement).value
+  let remember = (document.getElementById('checkRememberPass') as HTMLInputElement).value == 'on'
+
+  let response = await requestLogin(user, password);
+
+  if (response.status == 204){
+    setCookie("user", user, remember ? 30 : 0)
+    setCookie("pass", password, remember ? 30 : 0)
+    location.href = "home"
+  }
+}
+
+async function requestLogin(user: string, password: string){
+  let apiURL = '/.netlify/functions/login'
+  return await axios.post(apiURL, {user: user, password: password})
+}
+
+if (getCookie("user") != "" && getCookie("pass") != ""){
+  let response = requestLogin(getCookie("user"), getCookie("pass"));
+  response.then(responseData => {
+    if (responseData.status == 204){
+      location.href = "home"
+    }
+  })
+}
 </script>
 
 <template>
@@ -11,16 +44,16 @@ defineProps<{ currentLang: string }>()
 
   <div id="contenedorLogin" class="container">
     <div class="col-12">
-      <form>
+      <form @submit="validateLogin">
         <h2 class="h2 mb-3 font-weight-normal">{{langData[currentLang]['tituloLogin']}}</h2>
         <div class="mb-3">
-          <input type="email" class="form-control" :placeholder="langData[currentLang]['Usuario']">
+          <input id="userInput" type="text" class="form-control" name="user" required :placeholder="langData[currentLang]['Usuario']">
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" :placeholder="langData[currentLang]['Pass']">
+          <input id="passwordInput" type="password" class="form-control" name="password" required :placeholder="langData[currentLang]['Pass']">
         </div>
         <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="checkRememberPass">
+          <input type="checkbox" name="remember" class="form-check-input" id="checkRememberPass">
           <label class="form-check-label" for="checkRememberPass">{{langData[currentLang]['RecordarPass']}}</label>
         </div>
         <div class="d-grid">
