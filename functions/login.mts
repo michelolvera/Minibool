@@ -17,4 +17,6 @@ export default async (req: Request, context: Context) => {
     if (rows[0][0].Login != 1){
         return new Response(null, {status: constants.HTTP_STATUS_BAD_REQUEST})
     }
+
+    return new Response(null, {status: constants.HTTP_STATUS_NO_CONTENT})
 }
