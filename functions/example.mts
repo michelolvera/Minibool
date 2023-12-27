@@ -9,5 +9,7 @@ export default async (req: Request, context: Context) => {
         database : 'anonymous'
     });
 
+    await connection.end()
+
     return Response.json({data: "example"})
 }
