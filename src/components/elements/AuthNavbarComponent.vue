@@ -66,7 +66,7 @@ async function closeSession(event: Event){
           </div>
           <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#vntn_ranking" @click="updateRankingData">{{langData[currentLang]['Clasificacion']}}</a>
           <a class="nav-link" href="/estadisticas">{{langData[currentLang]['Estadisticas']}}</a>
-          <div class="nav-item dropdown">
+          <div class="nav-item dropdown me-auto">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{langData[currentLang]['Administración']}}
             </a>
@@ -76,7 +76,7 @@ async function closeSession(event: Event){
               <li><a class="dropdown-item" href="#">{{langData[currentLang]['Usuarios']}}</a></li>
             </ul>
           </div>
-          <a class="nav-link ms-auto" href="#" data-bs-toggle="modal" data-bs-target="#vntn_acercade">{{langData[currentLang]['AcercaDe']}}</a>
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#vntn_acercade">{{langData[currentLang]['AcercaDe']}}</a>
           <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#vntn_notifications" @click="updateNotificationData">{{langData[currentLang]['Notificacion']}}<span class="badge bg-secondary ms-1">{{notificationsCount}}</span></a>
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

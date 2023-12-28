@@ -66,14 +66,14 @@ if (getCookie("user") != "" && getCookie("pass") != ""){
     </div>
     <div class="col-12 mt-1">
       <p>
-        <a href="/registro/recuperarpass">{{langData[currentLang]['OlvidastePass']}}</a>
+        <a href="/register/password-recovery">{{langData[currentLang]['OlvidastePass']}}</a>
       </p>
     </div>
     <div class="col-12 mt-4">
       <p>
         <label id="lb_no_cuenta">{{langData[currentLang]['SinCuenta']}}</label>
         <br>
-        <a href="/registro">{{langData[currentLang]['CreaCuenta']}}</a>
+        <a href="/register">{{langData[currentLang]['CreaCuenta']}}</a>
       </p>
     </div>
     <div class="col-12 mt-4">

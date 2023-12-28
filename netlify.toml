@@ -4,5 +4,11 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/register"
+  to = "/"
+  status = 200
+  force = true
+
 [functions]
   directory = "functions"
